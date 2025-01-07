@@ -65,6 +65,13 @@ export function CreateAccount() {
                 <input name="create-account-password-confirm" id="create-account-password-confirm" style={{ width: "100%" }} value={passwordConfirm} onChange={e => setPasswordConfirm(e.target.value)} type="password" minLength={6} required />
             </div>
 
+            <div>
+                <label className="flex gap-s align-center">
+                    <input type="checkbox" required />
+                    <span>I agree to the <a className="text-orange underline" href="#">Terms & Conditions</a> and <a className="text-orange underline" href="#">Privacy Policy</a></span>
+                </label>
+            </div>
+
             {
                 err ? (
                     <p className="text-red">{err?.response?.message}</p>
