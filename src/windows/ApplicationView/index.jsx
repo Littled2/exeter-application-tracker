@@ -1,18 +1,17 @@
 import { useCallback, useEffect, useState } from "react"
 import styles from "./styles.module.css"
 import { Popup } from "../../components/Popup"
-import { NewTask } from "../../components/forms/NewTask"
-import { LiaEdit } from "react-icons/lia"
 import { EditApp } from "../../components/forms/EditApp"
 import { AppTasksList } from "../../components/TasksList/AppTasksList"
-import { AiFillEdit, AiOutlineClose, AiOutlineDelete, AiOutlineEdit } from "react-icons/ai"
+import { AiOutlineClose, AiOutlineDelete, AiOutlineEdit } from "react-icons/ai"
 import { usePocket } from "../../contexts/pocketContext"
-import { getDate } from "../../helpers/dates"
 import { DocumentUploadDownload } from "./DocumentUploadDownload"
 import { useActiveYear } from "../../contexts/activeYearContext"
 import { Confirm } from "../../components/forms/Confirm"
-import { BiPen, BiPencil } from "react-icons/bi"
+import { BiPencil } from "react-icons/bi"
 import { usePopupsContext } from "../../contexts/popupsContext"
+import { useMasterCounter } from "../../contexts/masterCounterContext"
+import { Deadline } from "../../components/Deadline"
 
 export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }) {
 
@@ -30,13 +29,14 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
     const [ err, setErr ] = useState(false)
     const [ loading, setLoading ] = useState(true)
 
-    const [ newTaskOpen, setNewTaskOpen ] = useState()
     const [ editAppOpen, setEditAppOpen ] = useState()
     const [ confirmOpen, setConfirmOpen ] = useState(false)
 
     const { activeYear } = useActiveYear()
 
     const { pb } = usePocket()
+
+    const { setMasterCounter } = useMasterCounter()
 
 
     useEffect(() => {
@@ -83,6 +83,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
         pb.collection('applications').delete(openAppID)
         .then(() => {
             setOpenAppID(null)
+            setMasterCounter(c => c + 1)
         })
         .catch(err => {
             console.error("Error deleting application", err)
@@ -91,13 +92,12 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
     }, [ pb, openAppID ])
 
     const handleKeyPress = useCallback(e => {
-        if(e.ctrlKey && e.key === "q") {
+        if(e.key === "Delete") {
             e.preventDefault()
             e.stopPropagation()
-            
-            setNewTaskOpen(true)
+            setConfirmOpen(true)
         }
-    }, [])
+    }, [ setConfirmOpen ])
 
     useEffect(() => {
         // attach the event listener
@@ -135,9 +135,9 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                             <div className="flex col gap-s">
 
                                 <div>
-                                    <h4 className="text-white flex align-center gap-s">
-                                        <span className="cursor-pointer" onClick={() => setEditAppOpen(true)}><BiPencil /></span>
+                                    <h4 className="text-white flex align-center space-between gap-s">
                                         {application?.role}
+                                        <span className="cursor-pointer hover-text-orange" onClick={() => setEditAppOpen(true)}><BiPencil /></span>
                                     </h4>
                                     <hr/>
                                 </div>
@@ -174,7 +174,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                                     application?.deadlineType === "fixed" ? (
                                                         <>
                                                             <td className="text-white">Deadline</td>
-                                                            <td>{application?.deadline ? getDate(application?.deadline) : "-"}</td>       
+                                                            <td>{application?.deadline ? <Deadline highlight={application?.stage === "idea" || application?.stage === "applying"} deadline={application?.deadline} /> : "-"}</td>       
                                                         </>
                                                     ) : (
                                                         <>
@@ -224,7 +224,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                 <div>
                                     <div className="flex space-between">
                                         <p className="text-white">Info</p>
-                                        <span className="cursor-pointer text-white" onClick={() => setEditAppOpen(true)}><BiPencil /></span>
+                                        {/* <span className="cursor-pointer text-white" onClick={() => setEditAppOpen(true)}><BiPencil /></span> */}
                                     </div>
                                     <pre style={{fontFamily:"inherit", whiteSpace:"pre-wrap", wordWrap:"break-word", margin:"0" }}>{application?.info}</pre>
                                 </div>

@@ -4,8 +4,8 @@ import { NewApp } from "../../components/forms/NewApp";
 import { IoTicketOutline } from "react-icons/io5"
 import { NewTicket } from "../../components/forms/NewTicket";
 import { FiMoon } from "react-icons/fi"
-import { BsPerson, BsSun } from "react-icons/bs"
-import { Account } from "../../components/Account";
+import { BsGear, BsPerson, BsSun } from "react-icons/bs"
+import { Settings } from "../../components/Settings";
 import styles from "./styles.module.css"
 import { usePocket } from "../../contexts/pocketContext";
 import { NewYears } from "../../components/forms/NewYears";
@@ -20,7 +20,7 @@ export function Header() {
     const { newApplicationPopupOpen, setNewApplicationPopupOpen} = useNewApplicationPopup()
 
     const [ newTicketOpen, setNewTicketOpen ] = useState(false)
-    const [ accountOpen, setAccountOpen ] = useState(false)
+    const [ settingsOpen, setSettingsOpen ] = useState(false)
 
     const { years, setActiveYear, activeYear } = useActiveYear()
 
@@ -92,16 +92,16 @@ export function Header() {
                                                 )
                                             }
                                         </button> */}
-                                        <button onClick={() => setAccountOpen(true)}>
-                                            <BsPerson />
+                                        <button onClick={() => setSettingsOpen(true)}>
+                                            <BsGear />
                                         </button>
                                     </div>       
                                 </>
                             ) : (
                                 <>
                                     <br />
-                                    <button onClick={() => setAccountOpen(true)}>
-                                        <BsPerson />
+                                    <button onClick={() => setSettingsOpen(true)}>
+                                        <BsGear />
                                     </button>
                                 </>
                             )
@@ -116,8 +116,8 @@ export function Header() {
                 <NewTicket setTrigger={setNewTicketOpen} />
             </Popup>
 
-            <Popup title={"Your Account"} trigger={accountOpen} setTrigger={setAccountOpen}>
-                <Account setTrigger={setAccountOpen} />
+            <Popup title={"Settings"} trigger={settingsOpen} setTrigger={setSettingsOpen}>
+                <Settings setTrigger={setSettingsOpen} />
             </Popup>
 
         </>

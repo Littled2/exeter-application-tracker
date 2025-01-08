@@ -1,6 +1,7 @@
 .wrapper {
     padding: var(--spacing-small) var(--spacing-medium);
     padding-top: calc(var(--header-height) + 1rem);
+    padding-bottom: var(--spacing-large);
 }
 
 .applicationsTasksWrapper {
@@ -17,7 +18,7 @@
 }
 
 .dataVisWrapper {
-    height: 300px;
+    height: 380px;
     display: flex;
     gap: var(--spacing-medium);
 }
@@ -29,12 +30,26 @@
 
 .tasksWrapper {
     width: 400px;
+    font-size: 1.05rem;
 }
 
 .tablesWrapper {
     display: flex;
     gap: var(--spacing-medium);
     /* height: calc(100vh - 300px); */
+}
+
+
+@media screen and (max-width: 1024px) {
+    .tablesWrapper {
+        flex-direction: column;
+    }
+    .tasksWrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-small);
+    }
 }
 
 @media screen and (max-width: 800px) {
@@ -65,15 +80,8 @@
         height: unset;
     }
     .tablesWrapper {
-        flex-direction: column;
         height: unset;
         gap: var(--spacing-large);
-    }
-    .tasksWrapper {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing-small);
     }
     .asidePage {
         min-width: unset;

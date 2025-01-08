@@ -22,6 +22,8 @@
     color: var(--text-white);
     font-weight: 600;
     background-color: transparent;
+    width: 2rem;
+    height: 2rem;
 }
 
 .inner {
@@ -75,7 +77,7 @@
 }
 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1024px) {
 
     .window {
         position: fixed;

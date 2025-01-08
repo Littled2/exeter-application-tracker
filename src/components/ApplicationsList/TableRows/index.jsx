@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { getDate } from "../../../helpers/dates"
 import styles from "./styles.module.css"
+import { Deadline } from "../../Deadline"
 
 export function TableRows({ items, openAppID, setOpenAppID, showType=true, showDeadline=false, showDeadlineType=false }) {
     useEffect(() => {
@@ -19,7 +20,7 @@ export function TableRows({ items, openAppID, setOpenAppID, showType=true, showD
                             <td className={styles.role} onClick={() => setOpenAppID(item.id)}>{item?.role}</td>
                             {
                                 showType ? (
-                                    <td className="m-hide">
+                                    <td className="t-hide">
                                         {
                                             item?.type ? (
                                                 item.type.substring(0, 1).toUpperCase()
@@ -38,28 +39,7 @@ export function TableRows({ items, openAppID, setOpenAppID, showType=true, showD
                                         {
                                             item?.deadline ? (
                                                 item?.stage === 'idea' || item?.stage === 'applying' ? (
-                                                    time_difference > 0 ? (
-                                                        <span className={[ styles.deadline, styles.late ].join(' ')}>
-                                                            {
-                                                                getDate(item?.deadline)
-                                                            }
-                                                        </span>
-                                                    ) : (
-                                                        (time_difference / (-1 * 24 * 60 * 60 * 1000)) < 1 ? (
-                                                            // Same Day
-                                                            <span className={[ styles.deadline, styles.almostLate ].join(' ')}>
-                                                                {
-                                                                    getDate(item?.deadline)
-                                                                }
-                                                            </span>
-                                                        ) : (
-                                                            <span className={styles.deadline}>
-                                                                {
-                                                                    getDate(item?.deadline)
-                                                                }
-                                                            </span>
-                                                        )
-                                                    )
+                                                    <Deadline deadline={item?.deadline} />
                                                 ) : (
                                                     <span className={styles.deadline}>
                                                         {

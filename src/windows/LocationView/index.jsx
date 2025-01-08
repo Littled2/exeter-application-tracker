@@ -4,6 +4,10 @@ import ukImage from "./UK.png"
 import { usePocket } from "../../contexts/pocketContext";
 import { useActiveYear } from "../../contexts/activeYearContext";
 import { useMasterCounter } from "../../contexts/masterCounterContext";
+import { BsEye } from "react-icons/bs";
+import { Confirm } from "../../components/forms/Confirm";
+import { Tooltip } from 'react-tooltip'
+
 
 
 
@@ -13,7 +17,7 @@ function capitalizeFirstLetter(string) {
 
 export function LocationView() {
 
-    const { pb } = usePocket()
+    const { pb, user } = usePocket()
 
     const { activeYear } = useActiveYear()
     const { masterCounter } = useMasterCounter()
@@ -21,6 +25,8 @@ export function LocationView() {
     const [ hover, setHover ] = useState(null)
 
     const [ appLocations, setAppLocations ] = useState([])
+
+    const [ hideConfirmOpen, setHideConfirmOpen ] = useState(false)
 
     const table = useRef()
 
@@ -56,18 +62,38 @@ export function LocationView() {
     }, [ activeYear, masterCounter ])
 
 
-    function mouseOver(loc) {
-        setHover(loc)
+    function mouseOver(locID) {
+        setHover(locID)
     }
 
-    function mouseAway(loc) {
+    function mouseAway() {
         setHover(null)
     }
 
+    function hideComponent() {
+        pb.collection("users").update(user.id, {
+            locationView: false
+        })
+    }
+
+
     return (
         <div className={styles.wrapper}>
-            <div>
-                <b>View where you are applying</b>
+            <div className="flex space-between align-center">
+                <b><small className="text-grey">Application Locations</small></b>
+                <span
+                    className="cursor-pointer text-grey hover-text-orange"
+                    data-tooltip-id="hide-location-view-tooltip"
+                    data-tooltip-content="Hide location view"
+                    data-tooltip-place="bottom"
+                    onClick={() => setHideConfirmOpen(true)}
+                >
+                    <BsEye />
+                </span>
+
+                <Tooltip id="hide-location-view-tooltip" />
+
+                <Confirm trigger={hideConfirmOpen} setTrigger={setHideConfirmOpen} onConfirm={hideComponent} message={"Are you sure you want to hide this component? You can always un-hide it in Settings > Dashboard menu"} />
             </div>
             <div className={styles.innerWrapper}>
                 <div className={styles.inner}>
@@ -77,9 +103,9 @@ export function LocationView() {
                                 {
                                     Object.keys(appLocations).map((locID, i) => {
                                         return (
-                                            <tr onMouseEnter={() => mouseOver(locID)} onMouseLeave={() => mouseAway(locID)} key={locID + i}>
-                                                <th className={hover !== null ? ((hover === locID) ? 'text-orange' : 'text-white') : 'text-white'}>{appLocations[locID].freq}</th>
-                                                <td>{appLocations[locID].name}</td>
+                                            <tr onMouseEnter={() => mouseOver(locID)} onMouseLeave={() => mouseAway()} key={locID + i}>
+                                                <th className='text-white'>{appLocations[locID].freq}</th>
+                                                <td className={hover !== null ? ((hover === locID) ? 'text-white' : 'text-orange') : 'text-orange'}>{appLocations[locID].name}</td>
                                             </tr>
                                         )
                                     })
@@ -106,7 +132,10 @@ export function LocationView() {
                                         left: `${loc.distX}%`,
                                         top: `${loc.distY}%`,
                                         transform: `translateY(calc(-${sizePX}px / 2)) translateX(calc(-${sizePX}px / 2))`
-                                    }}></div>
+                                    }}
+                                    onMouseEnter={() => mouseOver(loc.id)}
+                                    onMouseLeave={() => mouseAway()}
+                                    ></div>
                                 )
                             })
                         }

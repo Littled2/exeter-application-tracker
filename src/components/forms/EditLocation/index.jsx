@@ -4,14 +4,14 @@ import ukImage from "./UK.png"
 import styles from "./styles.module.css"
 import { useMasterCounter } from "../../../contexts/masterCounterContext"
 
-export function NewLocation({ setTrigger }) {
+export function EditLocation({ setTrigger, location }) {
 
-    const { pb, user } = usePocket()
+    const { pb } = usePocket()
 
-    const [ name, setName ] = useState('')
+    const [ name, setName ] = useState(location.name)
 
-    const [ distX, setDistX ] = useState(50)
-    const [ distY, setDistY ] = useState(50)
+    const [ distX, setDistX ] = useState(location.distX)
+    const [ distY, setDistY ] = useState(location.distY)
 
     const newInput = useRef()
 
@@ -21,14 +21,13 @@ export function NewLocation({ setTrigger }) {
 
     const submit = e => {
         e.preventDefault()
-        pb.collection("locations").create({
+        pb.collection("locations").update(location.id, {
             name: name,
-            user: user.id,
             distX,
             distY
         })
         .then(res => {
-            console.log("Created new location", res)
+            console.log("Updated location", res)
             setTrigger(false)
             setMasterCounter(c => c + 1)
         })

@@ -9,6 +9,7 @@ import {
 import styles from "./activeYearContext.module.css"
 import { usePocket } from "./pocketContext"
 import { NewYears } from "../components/forms/NewYears"
+import { useMasterCounter } from "../contexts/masterCounterContext"
 
 const ActiveYearContext = createContext({})
 
@@ -21,53 +22,55 @@ export const ActiveYearProvider = ({ children }) => {
     const [ loading, setLoading ] = useState(true)
 
     const { pb, user } = usePocket()
+	const { masterCounter } = useMasterCounter()
 
     useEffect(() => {
 
-      if(!user) return
+		if(!user) return
 
-      if(activeYear) {
-        localStorage.setItem("activeYear", activeYear)
-      }
+		if(activeYear) {
+			localStorage.setItem("activeYear", activeYear)
+		}
 
-      pb.collection("years").getFullList({
-        sort: "order,created"
-      })
-      .then(yrs => {
+		pb.collection("years").getFullList({
+			sort: "order,created"
+		})
+		.then(yrs => {
 
 		setLoading(false)
-        setYears(yrs)
 
-        if(!activeYear && years.length > 0) {
-          setActiveYear(years[0].id)
-        }
+			setYears(yrs)
 
-      })
-      .catch(err => {
-		console.error("Error getting years", err)
-		setLoading(false)
-	  })
+			if(!activeYear && years.length > 0) {
+			setActiveYear(years[0].id)
+			}
 
-      pb.collection('years').subscribe('*', () => {
+		})
+		.catch(err => {
+			console.error("Error getting years", err)
+			setLoading(false)
+		})
 
-        console.log("Years context detected a change")
+		pb.collection('years').subscribe('*', (change) => {
 
-        pb.collection("years").getFullList({
-            sort: "order"
-        })
-        .then(yrs => {
+			pb.collection("years").getFullList({
+				sort: "order"
+			})
+			.then(yrs => {
 
-            setYears(yrs)
+				setYears(yrs)
 
-            if(!activeYear && yrs.length > 0) {
-              setActiveYear(yrs[0].id)
-            }
-        })
-        .catch(err => console.error("Error getting years", err))
+				if(!activeYear && yrs.length > 0) {
+				setActiveYear(yrs[0].id)
+				}
+			})
+			.catch(err => console.error("Error getting years", err))
 
-      });
+		});
 
-    }, [ activeYear, user ])
+		return () => pb.collection('years').unsubscribe()
+
+    }, [ activeYear, user, masterCounter ])
 
     const clearActiveYears = useCallback(() => {
       setYears([])
@@ -92,7 +95,7 @@ export const ActiveYearProvider = ({ children }) => {
       )
     ) : (
       <div className={styles.loadingWrapper}>
-        <p>Loading...</p>
+        <img className={styles.logo} src="/exeter application tracker logo.png" alt="Exeter Application Tracker logo" />
       </div>
     )
 }

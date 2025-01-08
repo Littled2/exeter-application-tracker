@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { TableSection } from "../../TableSection"
 import { TableRows } from "../../ApplicationsList/TableRows"
 import styles from "./styles.module.css"
@@ -24,19 +24,37 @@ export function AppTasksList({ application, counter, setCounter }) {
 
         pb.collection("tasks").getFullList({ sort: "deadline", filter: `complete = false && application = "${application.id}"` })
         .then(tasks => {
-            console.log(tasks)
             setTodoTasks(tasks)
         })
         .catch(err => console.error("Error getting TODO tasks", err))
 
         pb.collection("tasks").getFullList({ sort: "deadline", filter: `complete = true && application = "${application.id}"` })
         .then(tasks => {
-            console.log(tasks)
             setCompleteTasks(tasks)
         })
         .catch(err => console.error("Error getting complete tasks", err))
 
     }, [ application.id, counter ])
+
+    
+    const handleKeyPress = useCallback(e => {
+        if(e.ctrlKey && e.key === "q") {
+            e.preventDefault()
+            e.stopPropagation()
+            setNewTaskOpen(true)
+        }
+    }, [ setNewTaskOpen ])
+
+    useEffect(() => {
+        // attach the event listener
+        document.addEventListener('keydown', handleKeyPress)
+
+        // remove the event listener
+        return () => {
+            document.removeEventListener('keydown', handleKeyPress)
+        }
+    }, [handleKeyPress])
+    
 
     return (
         <>

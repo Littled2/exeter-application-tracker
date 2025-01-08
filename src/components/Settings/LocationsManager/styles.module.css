@@ -1,0 +1,29 @@
+.tab {
+    border: 1px solid var(--border-colour);
+    padding: var(--spacing-medium);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
+    min-height: 60vh;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.actionBtn {
+    background-color: transparent;
+    border: none;
+    color: var(--text-white);
+}
+
+.actionBtn:not(:disabled):hover {
+    color: var(--text-orange);
+}
+
+.actionBtn:disabled {
+    color: var(--dark-grey);
+    cursor: not-allowed;
+}

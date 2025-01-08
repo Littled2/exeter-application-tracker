@@ -6,6 +6,7 @@ import { BiPlus } from "react-icons/bi";
 import { Popup } from "../../Popup";
 import { NewOrganisation } from "../NewOrganisation";
 import { DateInput } from "../../inputs/DateInput";
+import { useMasterCounter } from "../../../contexts/masterCounterContext";
 
 export function EditApp({ app, setTrigger }) {
 
@@ -26,6 +27,8 @@ export function EditApp({ app, setTrigger }) {
 
     const { pb, user } = usePocket()
 
+    const { setMasterCounter } = useMasterCounter()
+
     function submit(e) {
         e.preventDefault()
 
@@ -45,13 +48,14 @@ export function EditApp({ app, setTrigger }) {
         
         pb.collection('applications').update(app.id, data)
         .then(res => {
-            console.log(res)
+
+            setMasterCounter(c => c + 1)
+            setTrigger(false)
+
         })
         .catch(err => {
             console.error("Error updating application", err)
         })
-
-        setTrigger(false)
     }
 
     function handleStageChange(e) {
@@ -89,7 +93,7 @@ export function EditApp({ app, setTrigger }) {
                 </div>
                 <div>
                     <div>
-                        <label>Info</label>
+                        <label>Other Info</label>
                     </div>
                     <textarea value={info} onInput={e => setInfo(e.target.value)}></textarea>
                 </div>

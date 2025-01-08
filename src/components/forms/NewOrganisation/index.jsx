@@ -15,7 +15,7 @@ export function NewOrganisation({ setTrigger, setSelectedOrgID, sc }) {
         })
         .then(res => {
             console.log(res)
-            setSelectedOrgID(res.id)
+            if(setSelectedOrgID) setSelectedOrgID(res.id)
             setTrigger(false)
             sc(c => c + 1)
         })

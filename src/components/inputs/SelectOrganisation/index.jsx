@@ -26,6 +26,7 @@ export function SelectOrganisation({ required, selected, setSelected, c }) {
         <>
             <div className="flex col gap-s">
                 <select value={selected} required={required} onInput={e => setSelected(e.target.value)}>
+                    <option>Please select an option</option>
                     {
                         organisations.map(org => {
                             return <option value={org.id} key={org.id}>{org?.name}</option>

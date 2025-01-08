@@ -8,11 +8,11 @@ import { useActiveYear } from "../../contexts/activeYearContext"
 import { Popup } from "../Popup"
 import { Confirm } from "../forms/Confirm"
 import { NewYears } from "../forms/NewYears"
+import { useMasterCounter } from "../../contexts/masterCounterContext"
 
-export function Account({ setTrigger }) {
+export function Settings({ setTrigger }) {
 
-    const { user, logout, deleteUser } = usePocket()
-    const { pb } = usePocket()
+    const { pb, user, logout, deleteUser } = usePocket()
 
     const [ edit, setEdit ] = useState()
     const [ toDelete, setToDelete ] = useState()
@@ -20,6 +20,8 @@ export function Account({ setTrigger }) {
     const [ newYearOpen, setNewYearOpen ] = useState(false)
 
     const { clearActiveYears, activeYear, setActiveYear, years } = useActiveYear()
+
+    const { setMasterCounter } = useMasterCounter()
 
     const updateOrder = useCallback(async tempYears => {
         for (let i = 0; i < tempYears.length; i++) {
@@ -154,7 +156,11 @@ export function Account({ setTrigger }) {
                     toDelete && (
                         <Confirm message={'Are you sure you want to delete the group "' + toDelete?.year + '"?'} trigger={toDelete} setTrigger={setToDelete} onConfirm={() => {
                                 pb.collection("years").delete(toDelete?.id)
-                                .then(() => setToDelete(null))
+                                .then(() => {
+                                    setToDelete(null)
+                                    setMasterCounter(c => c + 1)
+                                })
+                                .catch(err => console.error("Error deleting group", err))
                             }}
                         />
                     )

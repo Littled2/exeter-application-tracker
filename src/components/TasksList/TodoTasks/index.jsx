@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { TableSection } from "../../TableSection"
-import styles from "./styles.module.css"
 import { usePocket } from "../../../contexts/pocketContext"
 import { getDate } from "../../../helpers/dates"
 import { useActiveYear } from "../../../contexts/activeYearContext"
+import { Deadline } from "../../Deadline"
+import { Tabs } from "../../Tabs"
 
 export function TodoTasks({ setOpenAppID }) {
 
@@ -36,16 +37,84 @@ export function TodoTasks({ setOpenAppID }) {
 
     return (
         <>
-            <table>
+            {/* <table>
                 <thead>
                     <tr>
                         <th>Task</th>
                         <th>Deadline</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody> */}
 
-                    <TableSection name={"TODO"} amount={todoTasks.length}>
+                    <Tabs
+                        saveActiveTabAs={"tasks_tab"}
+                        tabs={[
+                            {
+                                name: "TODO",
+                                tab: (
+                                    <table>
+                                        <thead>
+                                            <th>Task</th>
+                                            <th width="40%">Deadline</th>
+                                        </thead>
+                                        <tbody>
+                                            <TableSection name={"TODO"} amount={todoTasks.length}>
+                                                {
+                                                    todoTasks.map(task => {
+                                                        return (
+                                                            <tr
+                                                                className="cursor-pointer"
+                                                                key={'_' + task.taskID}
+                                                                onClick={() => setOpenAppID(task.application)}
+                                                            >
+                                                                <td>{task?.info}</td>
+                                                                <td>
+                                                                    <Deadline deadline={task?.deadline} />
+                                                                </td>
+                                                            </tr>
+                                                        )
+                                                    })
+                                                }
+                                            </TableSection>
+                                        </tbody>
+                                    </table>
+                                )
+                            },
+                            {
+                                name: "Complete",
+                                tab: (
+                                    <table>
+                                        <thead>
+                                            <th>Task</th>
+                                            <th width="40%">Deadline</th>
+                                        </thead>
+                                        <tbody>
+                                            <TableSection name={"Complete"} amount={completeTasks.length}>
+                                                {
+                                                    completeTasks.map(task => {
+                                                        return (
+                                                            <tr
+                                                                className="cursor-pointer"
+                                                                key={'__' + task.taskID}
+                                                                onClick={() => setOpenAppID(task.application)}
+                                                            >
+                                                                <td>{task?.info}</td>
+                                                                <td>
+                                                                    <Deadline highlight={false} deadline={task?.deadline} />
+                                                                </td>
+                                                            </tr>
+                                                        )
+                                                    })
+                                                }
+                                            </TableSection>
+                                        </tbody>
+                                    </table>
+                                )
+                            }
+                        ]}
+                    />
+
+                    {/* <TableSection name={"TODO"} amount={todoTasks.length}>
                         {
                             todoTasks.filter(t => t.complete === false).map(task => {
 
@@ -58,9 +127,9 @@ export function TodoTasks({ setOpenAppID }) {
                                         onClick={() => setOpenAppID(task.application)}
                                     >
                                         <td>{task?.info}</td>
-                                        <td
-                                            className={diff > 0 ? styles.late : ''}
-                                        >{getDate(task?.deadline)}</td>
+                                        <td>
+                                            <Deadline deadline={task?.deadline} />
+                                        </td>
                                     </tr>
                                 )
                             })
@@ -77,7 +146,9 @@ export function TodoTasks({ setOpenAppID }) {
                                         onClick={() => setOpenAppID(task.application)}
                                     >
                                         <td>{task?.info}</td>
-                                        <td>{getDate(task?.deadline)}</td>
+                                        <td>
+                                            <Deadline highlight={false} deadline={task?.deadline} />
+                                        </td>
                                     </tr>
                                 )
                             })
@@ -85,7 +156,7 @@ export function TodoTasks({ setOpenAppID }) {
                     </TableSection>
 
                 </tbody>
-            </table>
+            </table> */}
         </>
     )
 }

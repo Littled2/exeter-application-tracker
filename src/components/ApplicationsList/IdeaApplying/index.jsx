@@ -92,9 +92,9 @@ export function IdeasApplying({ openAppID, setOpenAppID }) {
                     <tr>
                         <th width="12%">Company</th>
                         <th>Name</th>
-                        <th className="m-hide" width="6%">Type</th>
+                        <th className="t-hide" width="6%">Type</th>
                         <th className="m-hide" width="10%">Deadline</th>
-                        <th className="m-hide" width="10%">Deadline Type</th>
+                        <th className="m-hide" width="20%">Deadline Type</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -110,10 +110,14 @@ export function IdeasApplying({ openAppID, setOpenAppID }) {
                 </tbody>
             </table>
 
-            <div className={[ styles.key, 'm-hide' ].join(" ")}>
-                <span className={styles.late}>Overdue</span>
-                <span className={styles.almostLate}>Due today</span>
-            </div>
+            {
+                (ideas.length > 0 || applying.length > 0) && !loading && (
+                    <div className={[ styles.key, 'm-hide' ].join(" ")}>
+                        <span className={styles.late}>Overdue</span>
+                        <span className={styles.almostLate}>Due today</span>
+                    </div>
+                )
+            }
 
             {
                 ideas.length === 0 && applying.length === 0 && !loading && (

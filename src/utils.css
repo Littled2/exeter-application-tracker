@@ -117,8 +117,23 @@
     cursor: pointer;
 }
 
+.cal-chevron {
+    fill: var(--text-blue);
+}
+
+.cal-chevron:hover {
+    fill: var(--text-white);
+}
+
+.cal-today {
+    color: var(--text-blue);
+}
 
 
+
+.hover-text-orange:hover {
+    color: var(--text-orange);
+}
 
 
 
@@ -129,6 +144,14 @@
 .m-show-block {
     display: none !important;
 }
+
+/* Tablet responsive styles */
+@media screen and (max-width: 1024px) {
+    .t-hide {
+        display: none !important;
+    }
+}
+
 
 /* Mobile responsive styles */
 @media screen and (max-width: 800px) {

@@ -1,32 +1,24 @@
-import { useCallback, useEffect, useState } from "react"
-import { AcceptedDeclined } from "../../components/ApplicationsList/AcceptedDeclined"
-import { Tabs } from "../../components/Tabs"
+import { useState } from "react"
 import { ApplicationView } from "../../windows/ApplicationView"
 import { LocationView } from "../../windows/LocationView"
-import { NumbersOverview } from "../../windows/NumbersOverview"
+import { DeadlinesOverView } from "../../windows/DeadlinesOverView"
 import { StageBreakdown } from "../../windows/StageBreakdown"
 import styles from "./styles.module.css"
-import { Applied } from "../../components/ApplicationsList/Applied"
-import { IdeasApplying } from "../../components/ApplicationsList/IdeaApplying"
 import { TodoTasks } from "../../components/TasksList/TodoTasks"
 import { DeadlinesBreakdown } from "../../windows/DeadlinesBreakdown"
-import { usePocket } from "../../contexts/pocketContext"
-import { Login } from "../../components/forms/Login"
 import { ApplicationsTabs } from "../../windows/ApplicationsTabs"
-import { OpportunitiesTracker } from "../../components/OppourtunitiesTracker"
-import { AuthenticationWrapper } from "../AuthenticationWrapper"
 import { useActiveYear } from "../../contexts/activeYearContext"
-import { NewYears } from "../../components/forms/NewYears"
+
+import 'react-day-picker/style.css';
+import { usePocket } from "../../contexts/pocketContext"
+
 
 export function Body({ counter, setCounter }) {
-
-    const { user } = usePocket()
-
-    const { years } = useActiveYear()
 
     const [ openAppID, setOpenAppID ] = useState(null)
 
     const { activeYear } = useActiveYear()
+    const { user } = usePocket()
 
     return (
         activeYear ? (
@@ -35,15 +27,25 @@ export function Body({ counter, setCounter }) {
                 <div className={styles.applicationsTasksWrapper}>
                     <div className={styles.dataVisWrapper}>
 
-                        <LocationView />
-
-                        <StageBreakdown />
+                        {
+                            user?.locationsView && (
+                                <LocationView />
+                            )
+                        }
 
                         {
-                            !openAppID ? (
-                                <NumbersOverview />
-                            ) : (
-                                <></>
+                            user?.stagesView && (
+                                !openAppID ? (
+                                    <StageBreakdown />
+                                ) : (
+                                    <></>
+                                )
+                            )
+                        }
+
+                        {
+                            user?.deadlinesView && (
+                                <DeadlinesOverView openAppID={openAppID} setOpenAppID={setOpenAppID} />
                             )
                         }
 
@@ -68,7 +70,7 @@ export function Body({ counter, setCounter }) {
                                 <div className={styles.tasksWrapper}>
                                     {/* <b>-</b> */}
                                     <h3 className="m-show-block">Your tasks</h3>
-                                    <b className="m-hide">Track tasks for each application</b>
+                                    {/* <b className="m-hide">Track tasks for each application</b> */}
                                     <TodoTasks setOpenAppID={setOpenAppID} />
                                 </div>
                             ) : (

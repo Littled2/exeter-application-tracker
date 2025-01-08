@@ -1,0 +1,12 @@
+.deadline {
+    /* padding-left: 4px;
+    padding-right: 4px; */
+}
+
+.late {
+    background-color: var(--late-bg) !important;
+}
+
+.almostLate {
+    background-color: var(--almost-late-bg) !important;
+}
