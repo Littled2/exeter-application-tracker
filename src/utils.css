@@ -22,6 +22,10 @@
     color: var(--text-red);
 }
 
+.text-blue {
+    color: var(--text-blue);
+}
+
 .text-green {
     color: var(--text-green);
 }
@@ -54,6 +58,7 @@
     flex: 1;
 }
 
+.flex-col,
 .col {
     flex-direction: column;
 }

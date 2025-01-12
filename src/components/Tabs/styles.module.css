@@ -4,6 +4,7 @@
     clip-path: polygon(0 0, calc(100% - 6px) 0%, 100% 100%, 0% 100%);
     color: var(--text-white);
     border: none;
+    font-size: inherit;
 }
 
 .tabs {
@@ -31,10 +32,10 @@
         flex: 1;
         border-bottom: 2px solid var(--dark-grey);
         background-color: var(--dark-grey);
-        text-wrap: nowrap;
         text-overflow: ellipsis;
         overflow-x: hidden;
         padding: 16px 6px;
+        font-size: 0.9rem;
     }
     .tab.selected {
         color: unset;

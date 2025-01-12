@@ -60,6 +60,12 @@ export function AcceptedDeclined({ openAppID, setOpenAppID }) {
             return
         }
 
+        const activeElement = document.activeElement;
+
+        if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA') {
+            return
+        }
+
         let apps = [ ...accepted, ...declined ]
         let index = apps.findIndex(el => el.id === openAppID)
 

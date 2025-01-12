@@ -40,7 +40,7 @@ export function NewOrganisation({ setTrigger, setSelectedOrgID, sc }) {
 
             <br />
 
-            <button onClick={submit}>Submit</button>
+            <button className="m-submit-btn" onClick={submit}>Create</button>
 
         </form>
     )

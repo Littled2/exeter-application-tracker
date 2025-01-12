@@ -22,6 +22,9 @@
     border: none;
     color: white;
     border-right: 1px solid var(--light-grey);
+    padding: 0 6px;
+    display: flex;
+    align-items: center;
 }
 
 .locations > div > button:hover {
@@ -30,6 +33,8 @@
 
 .locations > div > span {
     padding: 4px;
+    display: flex;
+    align-items: center;
 }
 
 .add {

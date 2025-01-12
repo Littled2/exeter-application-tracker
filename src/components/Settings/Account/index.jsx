@@ -19,7 +19,7 @@ export function Account({ setTrigger }) {
             <h2>{user?.email}</h2>
             
             <div className={styles.section}>
-                    <h5 className="text-grey">Log out of your account</h5>
+                    <h5 className="text-grey">Log out of my account</h5>
                     <button onClick={() => {
                         setTrigger(false)
                         logout()

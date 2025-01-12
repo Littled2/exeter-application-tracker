@@ -9,7 +9,7 @@ styles that are usually applied to certian elements
 
 html {
     background-color: var(--bg-colour);
-    font-size: 14px;
+    font-size: 16px;
 }
 
 body {
@@ -77,4 +77,10 @@ button {
 
 table th {
     font-weight: inherit;
+}
+
+
+/* Stop the calendar title from going over the top of popups */
+.rdp-caption_label {
+    z-index: 0 !important;
 }

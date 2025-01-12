@@ -1,6 +1,11 @@
 .row {
     animation: fadeIn 100ms forwards;
+    
     opacity: 0;
+}
+
+.row:active {
+    color: var(--text-white);
 }
 
 .row:not(.selected):hover {
@@ -20,7 +25,7 @@
 }
 
 .selected {
-    /* color: var(--text-white); */
+    color: var(--text-white);
 }
 
 .selected td {

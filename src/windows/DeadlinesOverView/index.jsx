@@ -57,6 +57,12 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
         pb.collection("users").update(user.id, {
             deadlinesView: false
         })
+        .then(() => {
+            console.log("Hid deadlines card")
+         })
+         .catch(err =>{
+             console.error("Something west wrong hiding deadlines card", err)
+         })
     }
     
     return !err ? (
@@ -81,6 +87,7 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
             </div>
             <div className={styles.inner}>
                 <DayPicker
+                    style={{ maxWidth: "100%" }}
                     modifiers={modifiers}
                     modifiersStyles={{
                         highlighted: { backgroundColor: 'var(--late-bg)' },

@@ -1,5 +1,15 @@
+.message {
+    color: var(--text-red);
+}
+
 .buttons {
     display: flex;
     gap: 8px;
     padding-top: 12px;
+}
+
+@media screen and (max-width: 800px) {
+    .message {
+        font-size: 1.2rem;
+    }
 }

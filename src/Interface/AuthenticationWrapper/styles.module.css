@@ -4,13 +4,12 @@
     max-width: 600px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: var(--spacing-large);
     margin-top: 12%;
 }
 
 .logo {
-    max-height: 10rem;
-    object-fit: contain;
+    max-width: 100%;
 }
 
 .tab {

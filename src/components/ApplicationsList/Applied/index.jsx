@@ -36,7 +36,7 @@ export function Applied({ openAppID, setOpenAppID }) {
 
     const getApps = () => {
         setLoading(true)
-        pb.collection("applications").getFullList({ filter: `year = "${activeYear}" && stage = "applied"`, expand: "locations, organisation" })
+        pb.collection("applications").getFullList({ filter: `year = "${activeYear}" && stage = "applied"`, expand: "locations, organisation", sort: "deadline" })
         .then(apps => {
             setApplied(apps)
             setLoading(false)
@@ -53,6 +53,12 @@ export function Applied({ openAppID, setOpenAppID }) {
         if(!openAppID) return
 
         if(e.key !== "ArrowUp" && e.key !== "ArrowDown") {
+            return
+        }
+
+        const activeElement = document.activeElement;
+
+        if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA') {
             return
         }
 

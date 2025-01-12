@@ -78,7 +78,7 @@ export function NewLocation({ setTrigger }) {
                 </div>
             </div>
 
-            <button onClick={submit}>Submit</button>
+            <button className="m-submit-btn" onClick={submit}>Create</button>
 
         </form>
     )

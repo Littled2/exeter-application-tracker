@@ -28,6 +28,7 @@
 
 .inner {
     padding: 8px;
+    overflow-x: hidden;
 }
 
 .newTask {
@@ -59,6 +60,11 @@
     aspect-ratio: 1;
 }
 
+.link {
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+}
+
 .link:hover {
     text-decoration: underline;
 }
@@ -76,6 +82,33 @@
     background-color: rgba(100, 100, 100, 0.5);
 }
 
+.tablesWrapper {
+    display: flex;
+    gap: var(--spacing-small);
+}
+
+.stages {
+    display: flex;
+    gap: 4px;
+    justify-content: space-between;
+}
+
+.stageLbl {
+    flex: 1;
+    background-color: var(--dark-grey);
+    color: var(--text-orange);
+    text-align: center;
+    padding: 4px;
+}
+
+.stageLbl > input {
+    display: none;
+}
+
+.stageLbl.activeStage {
+    background-color: var(--light-grey);
+    color: var(--text-white);
+}
 
 @media screen and (max-width: 1024px) {
 
@@ -102,5 +135,30 @@
     .topBar button {
         width: 24pt;
         aspect-ratio: 1;
-    } 
+    }
+
+    .tablesWrapper {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .mobileTextRight {
+        text-align: right;
+    }
+
+    .documentRow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .inner {
+        font-size: 1.2rem;
+        overflow-y: auto;
+        padding-bottom: 25vh;
+    }
+
+    .stages {
+        flex-direction: column;
+    }
 }

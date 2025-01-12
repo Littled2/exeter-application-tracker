@@ -7,7 +7,7 @@
 }
 
 .bin {
-    color: var(--border-colour);
+    color: grey;
     cursor: pointer;
 }
 

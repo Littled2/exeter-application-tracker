@@ -36,7 +36,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
 
     const { pb } = usePocket()
 
-    const { setMasterCounter } = useMasterCounter()
+    const { setMasterCounter, masterCounter } = useMasterCounter()
 
 
     useEffect(() => {
@@ -75,7 +75,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
             pb.collection('applications').unsubscribe()
         }
         
-    }, [ openAppID, activeYear ])
+    }, [ openAppID, activeYear, masterCounter ])
 
 
 
@@ -109,6 +109,15 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
         }
     }, [handleKeyPress])
 
+    function handleStageChange(e) {
+        pb.collection("applications").update(application.id, { stage: e.target.value })
+        .then(() => {
+            setMasterCounter(c => c + 1)
+        })
+        .catch(err => {
+            console.error("Something went wrong whilst setting application stage", err)
+        })
+    }
 
     return (
         <section className={styles.window}>
@@ -146,16 +155,16 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                     <EditApp setTrigger={setEditAppOpen} app={application}/>
                                 </Popup>
 
-                                <div className="flex gap-s m-flex-col">
+                                <div className={styles.tablesWrapper}>
                                     <table>
                                         <tbody>
                                             <tr>
                                                 <td className="text-white">Company</td>
-                                                <td>{application?.expand?.organisation?.name}</td>
+                                                <td className={styles.mobileTextRight}>{application?.expand?.organisation?.name}</td>
                                             </tr>
                                             <tr>
                                                 <td className="text-white">Location(s)</td>
-                                                <td>
+                                                <td className={styles.mobileTextRight}>
                                                     {
                                                         application?.expand?.locations?.map((loc, i) => <span key={i}>{loc?.name}{i < application?.expand?.locations.length - 1 ? ", " : ""}</span>)
                                                     }
@@ -167,14 +176,14 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                         <tbody>
                                             <tr>
                                                 <td className="text-white">Deadline Type</td>
-                                                <td>{application?.deadlineType ? application?.deadlineType : "-"}</td>
+                                                <td className={styles.mobileTextRight}>{application?.deadlineType ? application?.deadlineType : "-"}</td>
                                             </tr>
                                             <tr>
                                                 {
                                                     application?.deadlineType === "fixed" ? (
                                                         <>
                                                             <td className="text-white">Deadline</td>
-                                                            <td>{application?.deadline ? <Deadline highlight={application?.stage === "idea" || application?.stage === "applying"} deadline={application?.deadline} /> : "-"}</td>       
+                                                            <td className={styles.mobileTextRight}>{application?.deadline ? <Deadline highlight={application?.stage === "idea" || application?.stage === "applying"} deadline={application?.deadline} /> : "-"}</td>       
                                                         </>
                                                     ) : (
                                                         <>
@@ -191,10 +200,10 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                 <div className="flex gap-s m-flex-col">
                                     <table>
                                         <tbody>
-                                            <tr>
+                                            <tr className={styles.documentRow}>
                                                 <td className="text-white">CV</td>
                                                 <td>
-                                                    <DocumentUploadDownload application={application} fileKeyName={"cv"} />
+                                                    <DocumentUploadDownload displayName={"CV"} application={application} fileKeyName={"cv"} />
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -202,14 +211,25 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
 
                                     <table>
                                         <tbody>
-                                            <tr>
+                                            <tr className={styles.documentRow}>
                                                 <td className="text-white">Cover Letter</td>
                                                 <td>
-                                                    <DocumentUploadDownload application={application} fileKeyName={"coverLetter"} />
+                                                    <DocumentUploadDownload displayName={"Cover Letter"} application={application} fileKeyName={"coverLetter"} />
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
+                                </div>
+
+                                <div className="flex gap-s flex-col">
+                                    <p className="text-white">Stage</p>
+                                    <div className={styles.stages}>
+                                        <label className={[ styles.stageLbl, application?.stage === 'idea' ? styles.activeStage : '' ].join(' ')}><input type="radio" onChange={handleStageChange} checked={application?.stage === 'idea'} name="Idea" value="idea"/><span>Idea</span></label>
+                                        <label className={[ styles.stageLbl, application?.stage === 'applying' ? styles.activeStage : '' ].join(' ')}><input type="radio" onChange={handleStageChange} checked={application?.stage === 'applying'} name="Idea" value="applying"/><span>Applying</span></label>
+                                        <label className={[ styles.stageLbl, application?.stage === 'applied' ? styles.activeStage : '' ].join(' ')}><input type="radio" onChange={handleStageChange} checked={application?.stage === 'applied'} name="Idea" value="applied"/><span>Applied</span></label>
+                                        <label className={[ styles.stageLbl, application?.stage === 'declined' ? styles.activeStage : '' ].join(' ')}><input type="radio" onChange={handleStageChange} checked={application?.stage === 'declined'} name="Idea" value="declined"/><span>Declined</span></label>
+                                        <label className={[ styles.stageLbl, application?.stage === 'accepted' ? styles.activeStage : '' ].join(' ')}><input type="radio" onChange={handleStageChange} checked={application?.stage === 'accepted'} name="Idea" value="accepted"/><span>Accepted</span></label>
+                                    </div>
                                 </div>
 
                                 {
@@ -223,7 +243,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
 
                                 <div>
                                     <div className="flex space-between">
-                                        <p className="text-white">Info</p>
+                                        <p className="text-white">Other Info</p>
                                         {/* <span className="cursor-pointer text-white" onClick={() => setEditAppOpen(true)}><BiPencil /></span> */}
                                     </div>
                                     <pre style={{fontFamily:"inherit", whiteSpace:"pre-wrap", wordWrap:"break-word", margin:"0" }}>{application?.info}</pre>

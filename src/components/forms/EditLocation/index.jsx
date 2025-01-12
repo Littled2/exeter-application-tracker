@@ -32,7 +32,8 @@ export function EditLocation({ setTrigger, location }) {
             setMasterCounter(c => c + 1)
         })
         .catch(err => {
-            console.error("Error creating organisation", err)
+            console.error("Error updating location", err)
+            console.log(err, location)
         })
     }
 
@@ -77,7 +78,7 @@ export function EditLocation({ setTrigger, location }) {
                 </div>
             </div>
 
-            <button onClick={submit}>Submit</button>
+            <button className="m-submit-btn" onClick={submit}>Submit</button>
 
         </form>
     )

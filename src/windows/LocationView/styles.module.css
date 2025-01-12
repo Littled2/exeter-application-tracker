@@ -55,6 +55,12 @@
     gap: var(--spacing-small);
 }
 
+@media screen and (max-width: 1200px) {
+    .wrapper {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 800px) {
     .wrapper {
         display: none;

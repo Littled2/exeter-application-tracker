@@ -7,6 +7,16 @@
     min-height: 60vh;
 }
 
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.row:hover {
+    background-color: var(--dark-grey);
+}
+
 .section {
     display: flex;
     flex-direction: column;

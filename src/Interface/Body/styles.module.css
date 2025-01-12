@@ -1,4 +1,6 @@
+
 .wrapper {
+    width: 100%;
     padding: var(--spacing-small) var(--spacing-medium);
     padding-top: calc(var(--header-height) + 1rem);
     padding-bottom: var(--spacing-large);
@@ -18,7 +20,7 @@
 }
 
 .dataVisWrapper {
-    height: 380px;
+    height: 400px;
     display: flex;
     gap: var(--spacing-medium);
 }
@@ -50,6 +52,10 @@
         flex-direction: column;
         gap: var(--spacing-small);
     }
+    .applicationsWrapper td {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
 }
 
 @media screen and (max-width: 800px) {
@@ -58,11 +64,10 @@
         padding-right: 8px;
         padding-bottom: 40vh;
     }
-    .wrapper td {
+    /* .wrapper td {
         padding-top: 2px;
         padding-bottom: 2px;
-        font-size: 1.2rem;
-    }
+    } */
     .applicationsTasksWrapper {
         gap: var(--spacing-large);
     }
@@ -78,6 +83,7 @@
     }
     .dataVisWrapper {
         height: unset;
+        flex-direction: column;
     }
     .tablesWrapper {
         height: unset;
@@ -86,6 +92,19 @@
     .asidePage {
         min-width: unset;
         width: unset;
+    }
+    .mobileNewAppBtn {
+        font-size: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--text-blue);
+        background-color: transparent;
+        border: none;
+        padding: 0;
+    }
+    .mobileNewAppBtn:active {
+        color: var(--text-white);
     }
 }
 

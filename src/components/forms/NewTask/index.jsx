@@ -51,7 +51,7 @@ export function NewTask({ appID, setCounter, setTrigger }) {
                 <DateInput date={deadline} setDate={setDeadline} />
             </div>
             <div>
-                <button type="submit">Create task</button>
+                <button className="m-submit-btn" type="submit">Create task</button>
             </div>
         </form>
     )

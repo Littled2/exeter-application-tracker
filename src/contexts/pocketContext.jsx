@@ -64,9 +64,9 @@ export const PocketProvider = ({ children }) => {
         return await pb.collection("users").authWithPassword(email, password);
     }, [])
     
-    const register = useCallback(async (email, password, firstName, lastName) => {
+    const register = useCallback(async (email, password) => {
       return new Promise(((res, rej) => {
-        pb.collection("users").create({ email, password, passwordConfirm: password, firstName, lastName })
+        pb.collection("users").create({ email, password, passwordConfirm: password, locationsView: true, stagesView: true, deadlinesView: true })
         .then(() => {
           login(email, password)
           .then(() => {

@@ -11,11 +11,14 @@ import { useActiveYear } from "../../contexts/activeYearContext"
 
 import 'react-day-picker/style.css';
 import { usePocket } from "../../contexts/pocketContext"
+import { BsPlus } from "react-icons/bs"
+import { useNewApplicationPopup } from "../../contexts/newApplicationPopupContext"
 
 
 export function Body({ counter, setCounter }) {
 
     const [ openAppID, setOpenAppID ] = useState(null)
+    const { setNewApplicationPopupOpen } = useNewApplicationPopup()
 
     const { activeYear } = useActiveYear()
     const { user } = usePocket()
@@ -25,6 +28,7 @@ export function Body({ counter, setCounter }) {
             <main className={[ "flex gap-m", styles.wrapper ].join(' ')}>
 
                 <div className={styles.applicationsTasksWrapper}>
+
                     <div className={styles.dataVisWrapper}>
 
                         {
@@ -61,7 +65,10 @@ export function Body({ counter, setCounter }) {
 
                     <div className={styles.tablesWrapper}>
                         <div className={styles.applicationsWrapper} style={{ height: "calc(100vh - 300px)" }}>
-                            <h3 className="m-show-block">Your Applications</h3>
+                            <div className="m-show-flex align-center space-between">
+                                <h3>Your Applications</h3>
+                                <button onClick={() => setNewApplicationPopupOpen(true)} className={styles.mobileNewAppBtn}><BsPlus /></button>
+                            </div>
                             <ApplicationsTabs setOpenAppID={setOpenAppID} openAppID={openAppID} />
                         </div>
 
@@ -70,6 +77,7 @@ export function Body({ counter, setCounter }) {
                                 <div className={styles.tasksWrapper}>
                                     {/* <b>-</b> */}
                                     <h3 className="m-show-block">Your tasks</h3>
+                                    <p className="m-show-block text-grey">Open an application to add a task</p>
                                     {/* <b className="m-hide">Track tasks for each application</b> */}
                                     <TodoTasks setOpenAppID={setOpenAppID} />
                                 </div>

@@ -10,6 +10,9 @@
 
 .loadingWrapper {
     display: flex;
+    flex-direction: column;
+    gap: var(--spacing-small);
+    text-align: center;
     height: 100vh;
     width: 100vw;
     justify-content: center;
@@ -17,6 +20,7 @@
 }
 
 .logo {
-    height: 8rem;
+    height: 6rem;
+    max-width: 60vw;
     object-fit: contain;
 }

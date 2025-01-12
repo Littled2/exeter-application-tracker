@@ -37,12 +37,12 @@ export const ActiveYearProvider = ({ children }) => {
 		})
 		.then(yrs => {
 
-		setLoading(false)
+		  setLoading(false)
 
 			setYears(yrs)
 
 			if(!activeYear && years.length > 0) {
-			setActiveYear(years[0].id)
+			  setActiveYear(years[0].id)
 			}
 
 		})
@@ -95,7 +95,7 @@ export const ActiveYearProvider = ({ children }) => {
       )
     ) : (
       <div className={styles.loadingWrapper}>
-        <img className={styles.logo} src="/exeter application tracker logo.png" alt="Exeter Application Tracker logo" />
+        <img className={styles.logo} src="/Long Logo.png" alt="Exeter Application Tracker logo" />
       </div>
     )
 }

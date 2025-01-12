@@ -50,7 +50,7 @@ export function NewTicket({ setTrigger }) {
                 )
             }
             <div>
-                <button type="submit">Submit</button>
+                <button className="m-submit-btn" type="submit">Submit</button>
             </div>
         </form>
     ) : (

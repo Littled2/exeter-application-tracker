@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import styles from "./styles.module.css"
 
-export function Tabs({ tabs, saveActiveTabAs=null }) {
+export function Tabs({ activeTab, tabs, saveActiveTabAs=null }) {
 
     const [ selected, setSelected ] = useState(
         saveActiveTabAs ? (

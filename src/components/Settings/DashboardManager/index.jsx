@@ -16,7 +16,7 @@ export function DashboardManager() {
         <div className={styles.tab}>
 
             <div className="flex space-between align-center">
-                <h5 className="text-grey">Customise your dashboard</h5>
+                <h5 className="text-grey">Customise my dashboard</h5>
             </div>
 
             <div className="flex col gap-m">

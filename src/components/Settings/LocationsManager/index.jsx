@@ -18,6 +18,7 @@ export function LocationsManager() {
     const [ newLocationOpen, setNewLocationOpen ] = useState(false)
     const [ errorFetching , setErrorFetching ] = useState(null)
     const [ locations, setLocations ] = useState([])
+    const [ errorDeleting, setErrorDeleting ] = useState(null)
 
     const { pb } = usePocket()
 
@@ -50,7 +51,7 @@ export function LocationsManager() {
                             {
                                 locations.map(location => {
                                     return (
-                                        <div className="flex space-between align-center">
+                                        <div className={styles.row}>
                                             <p>{location.name}</p>
             
                                             <div className="flex gap-s">
@@ -74,12 +75,16 @@ export function LocationsManager() {
                         {
                             toDelete && (
                                 <Confirm message={'Are you sure you want to delete the location "' + toDelete?.name + '"?'} trigger={toDelete} setTrigger={setToDelete} onConfirm={() => {
+                                        setErrorDeleting(null)
                                         pb.collection("locations").delete(toDelete?.id)
                                         .then(() => {
                                             setToDelete(null)
                                             setMasterCounter(c => c + 1)
                                         })
-                                        .catch(err => console.error("Error deleting group", err))
+                                        .catch(err => {
+                                            console.error("Error deleting group", err)
+                                            setErrorDeleting(err)
+                                        })
                                     }}
                                 />
                             )
@@ -88,6 +93,10 @@ export function LocationsManager() {
                         
                         <Popup title={"New Location"} trigger={newLocationOpen} setTrigger={setNewLocationOpen}>
                             <NewLocation setTrigger={setNewLocationOpen} />
+                        </Popup>
+
+                        <Popup title={"Cannot delete"} trigger={errorDeleting} setTrigger={setErrorDeleting}>
+                            <p className="text-red">Cannot delete this location. <br /> Please check no application's location is set to this location then try again.</p>
                         </Popup>
             
                     </>

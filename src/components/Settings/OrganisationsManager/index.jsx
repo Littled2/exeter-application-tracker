@@ -19,6 +19,7 @@ export function OrganisationsManager() {
     const [ newOrganisationOpen, setNewOrganisationOpen ] = useState(false)
     const [ errorFetching , setErrorFetching ] = useState(null)
     const [ organisations, setOrganisations ] = useState([])
+    const [ errorDeleting, setErrorDeleting ] = useState(null)
 
     const { pb } = usePocket()
 
@@ -51,7 +52,7 @@ export function OrganisationsManager() {
                             {
                                 organisations.map(organisation => {
                                     return (
-                                        <div className="flex space-between align-center">
+                                        <div className={styles.row}>
                                             <p>{organisation.name}</p>
             
                                             <div className="flex gap-s">
@@ -67,7 +68,7 @@ export function OrganisationsManager() {
                         {
                             edit && (
                                 <Popup trigger={edit} setTrigger={setEdit} title={"Edit Organisation"}>
-                                    <div className={styles.section}>
+                                    <div className={[ styles.section, 'form' ].join(' ')}>
                                         <h5>Change Organisation Name</h5>
 
 
@@ -98,12 +99,16 @@ export function OrganisationsManager() {
                         {
                             toDelete && (
                                 <Confirm message={'Are you sure you want to delete the organisation "' + toDelete?.name + '"?'} trigger={toDelete} setTrigger={setToDelete} onConfirm={() => {
+                                        setErrorDeleting(null)
                                         pb.collection("organisations").delete(toDelete?.id)
                                         .then(() => {
                                             setToDelete(null)
                                             sc(c => c + 1)
                                         })
-                                        .catch(err => console.error("Error deleting group", err))
+                                        .catch(err => {
+                                            console.error("Error deleting group", err)
+                                            setErrorDeleting(err)
+                                        })
                                     }}
                                 />
                             )
@@ -112,6 +117,10 @@ export function OrganisationsManager() {
                         
                         <Popup title={"New Organisation"} trigger={newOrganisationOpen} setTrigger={setNewOrganisationOpen}>
                             <NewOrganisation setTrigger={setNewOrganisationOpen} sc={sc} />
+                        </Popup>
+
+                        <Popup title={"Cannot delete"} trigger={errorDeleting} setTrigger={setErrorDeleting}>
+                            <p className="text-red">Cannot delete this organisation. <br /> Please check no application's organisation is set to this organisation then try again.</p>
                         </Popup>
             
                     </>

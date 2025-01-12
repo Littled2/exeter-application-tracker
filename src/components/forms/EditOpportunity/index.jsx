@@ -61,7 +61,7 @@ export function EditOpportunityForm({ opp, setTrigger }) {
             <br />
 
             <div>
-                <button type="submit">Submit</button>
+                <button className="m-submit-btn" type="submit">Submit</button>
             </div>
 
         </form>

@@ -72,7 +72,13 @@ export function LocationView() {
 
     function hideComponent() {
         pb.collection("users").update(user.id, {
-            locationView: false
+            locationsView: false
+        })
+        .then(() => {
+           console.log("Hid locations card")
+        })
+        .catch(err =>{
+            console.error("Something west wrong hiding location card", err)
         })
     }
 

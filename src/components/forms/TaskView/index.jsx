@@ -20,7 +20,7 @@ export function TaskView({ task, counter, setCounter, setTrigger }) {
         pb.collection("tasks").update(task.id, {
             "info": info,
             "deadline": deadline,
-            "complete": true,
+            "complete": complete,
             "application": task.application
         })
         .then(res => {
@@ -57,7 +57,7 @@ export function TaskView({ task, counter, setCounter, setTrigger }) {
                 </div>
             </div>
             <div>
-                <button type="submit">Save</button>
+                <button className="m-submit-btn" type="submit">Save</button>
             </div>
         </form>
     )

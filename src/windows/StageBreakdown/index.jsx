@@ -123,6 +123,12 @@ export function StageBreakdown() {
         pb.collection("users").update(user.id, {
             stagesView: false
         })
+        .then(() => {
+            console.log("Hid stages card")
+         })
+         .catch(err =>{
+             console.error("Something west wrong hiding stages card", err)
+         })
     }
     
     return (

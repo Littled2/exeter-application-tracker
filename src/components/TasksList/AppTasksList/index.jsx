@@ -7,6 +7,7 @@ import { TaskView } from "../../forms/TaskView"
 import { usePocket } from "../../../contexts/pocketContext"
 import { getDate } from "../../../helpers/dates"
 import { NewTask } from "../../forms/NewTask"
+import { Deadline } from "../../Deadline"
 
 
 export function AppTasksList({ application, counter, setCounter }) {
@@ -54,6 +55,19 @@ export function AppTasksList({ application, counter, setCounter }) {
             document.removeEventListener('keydown', handleKeyPress)
         }
     }, [handleKeyPress])
+
+    const deleteTask = (taskID) => {
+        pb.collection("tasks").delete(taskID)
+        .then(() => {
+            console.log("Task deleted")
+            setCounter(c => c + 1)
+            setSelectedTask(null)
+            setPopupOpen(false)
+        })
+        .catch(err => {
+            console.error("Error deleting task", err)
+        })
+    }
     
 
     return (
@@ -64,8 +78,8 @@ export function AppTasksList({ application, counter, setCounter }) {
                 <table>
                     <thead>
                         <tr>
-                            <th style={{ maxWidth: "15px" }}></th>
-                            <th width="70%">Task</th>
+                            <th width="5%"></th>
+                            <th>Task</th>
                             <th width="25%">Deadline</th>
                         </tr>
                     </thead>
@@ -76,18 +90,18 @@ export function AppTasksList({ application, counter, setCounter }) {
                                 todoTasks.filter(t => t.complete === false).map(task => {
                                     return (
                                         <tr
-                                        className="cursor-pointer"
-                                        key={task.taskID}
-                                        onClick={() => {
-                                            setSelectedTask(task)
-                                            setPopupOpen(true)
-                                        }}
+                                            className="cursor-pointer"
+                                            key={task.taskID}
+                                            onClick={() => {
+                                                setSelectedTask(task)
+                                                setPopupOpen(true)
+                                            }}
                                         >
                                             <td>
-                                                <input type="checkbox" checked={task?.complete} />
+                                                <input type="checkbox" defaultChecked={task?.complete} />
                                             </td>
                                             <td>{task?.info}</td>
-                                            <td>{getDate(task?.deadline)}</td>
+                                            <td><Deadline deadline={task?.deadline} /></td>
                                         </tr>
                                     )
                                 })
@@ -105,10 +119,10 @@ export function AppTasksList({ application, counter, setCounter }) {
                                             setPopupOpen(true)
                                         }} key={task.taskID}>
                                             <td>
-                                                <input type="checkbox" checked={task?.complete} />
+                                                <input type="checkbox" defaultChecked={task?.complete} />
                                             </td>
                                             <td>{task?.info}</td>
-                                            <td>{getDate(task?.deadline)}</td>
+                                            <td className={styles.deadline}><Deadline highlight={false} deadline={task?.deadline} /></td>
                                         </tr>
                                     )
                                 })
@@ -119,7 +133,7 @@ export function AppTasksList({ application, counter, setCounter }) {
                 </table>
 
 
-                <Popup title="Task View" trigger={popupOpen} setTrigger={setPopupOpen} onDelete={() => pb.collection("tasks").delete(selectedTask?.id)}>
+                <Popup title="Task View" trigger={popupOpen} setTrigger={setPopupOpen} onDelete={() => deleteTask(selectedTask?.id)}>
                     {
                         selectedTask !== null ? (
                             <TaskView task={selectedTask} setTrigger={setPopupOpen} counter={counter} setCounter={setCounter} />
@@ -131,7 +145,7 @@ export function AppTasksList({ application, counter, setCounter }) {
 
                 <div className="flex justify-center">
                     <button className={styles.newTask} onClick={() => setNewTaskOpen(true)}>
-                        Add Task
+                        + Add Task
                         <span className={styles.keyIndicators}>
                             <span>ctrl</span>
                             +

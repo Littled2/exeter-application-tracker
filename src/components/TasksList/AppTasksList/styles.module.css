@@ -5,6 +5,7 @@
     display: flex;
     gap: 6px;
 }
+
 .keyIndicators {
     display: flex;
     gap: 2px;
@@ -15,5 +16,12 @@
 .keyIndicators > span {
     padding: 2px 4px;
     border-radius: 1000px;
-    background-color: rgba(100, 100, 100, 0.5);
+    color: var(--text-orange);
+    background-color: rgba(59, 59, 59, 0.5);
+}
+
+@media screen and (max-width: 800px) {
+    .keyIndicators {
+        display: none;
+    }
 }

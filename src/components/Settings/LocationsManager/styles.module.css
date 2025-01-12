@@ -13,6 +13,17 @@
     gap: 1rem;
 }
 
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.row:hover {
+    background-color: var(--dark-grey);
+}
+
+
 .actionBtn {
     background-color: transparent;
     border: none;

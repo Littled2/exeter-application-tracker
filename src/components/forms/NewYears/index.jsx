@@ -47,7 +47,7 @@ export function NewYears({ setTrigger }) {
             </div>
 
             <div>
-                <button type="submit">Create</button>
+                <button className="m-submit-btn" type="submit">Create</button>
             </div>
 
         </form>

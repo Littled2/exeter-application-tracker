@@ -12,6 +12,7 @@ import { NewYears } from "../../components/forms/NewYears";
 import { useActiveYear } from "../../contexts/activeYearContext";
 import { useNewApplicationPopup } from "../../contexts/newApplicationPopupContext";
 import { Groups } from "../../components/Groups";
+import { BiPlus } from "react-icons/bi";
 
 export function Header() {
 
@@ -47,55 +48,66 @@ export function Header() {
     return (
         <>
             <div className={styles.header}>
-                <header className="flex gap-s align-center space-between">
+                <header>
                     {
                         user ? (
                             years.length > 0 ? (
                                 <>
 
-                                    <div className={[ "m-show-block", styles.mobileGroupsSelect ].join(" ")}>
-                                        <select onInput={e => setActiveYear(e.target.value)}>
-                                            {
-                                                years.map(year => {
-                                                    return <option key={'_dd_' + year.id} selected={activeYear === year.id} value={year.id}>{year.year}</option>
-                                                })
-                                            }
-                                        </select>
+                                    {
+                                        activeYear ? (
+                                            <div>
+                                                <button className={styles.newAppButton} onClick={() => setNewApplicationPopupOpen(true)}>
+                                                    <span>+<span className="m-hide"> New Application</span></span>
+                                                    <span className={[ styles.keyIndicators, 'windows-only' ].join(' ')}>
+                                                        <span>ctrl</span>
+                                                        +
+                                                        <span>b</span>    
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        ) : (
+                                            <span></span>
+                                        )
+                                    }
+
+                                    <div className={styles.groupSelectWrapper}>
+                                        <div className={[  styles.mobileGroupsSelect ].join(" ")}>
+                                            <select onInput={e => setActiveYear(e.target.value)}>
+                                                {
+                                                    years.map(year => {
+                                                        return <option key={'_dd_' + year.id} selected={activeYear === year.id} value={year.id}>{year.year}</option>
+                                                    })
+                                                }
+                                            </select>
+                                        </div>
                                     </div>
 
-                                    <div>
-                                        <button className={styles.newAppButton} onClick={() => setNewApplicationPopupOpen(true)}>
-                                            <span>+ New Application</span>
-                                            <span className={[ styles.keyIndicators, 'windows-only' ].join(' ')}>
-                                                <span>ctrl</span>
-                                                +
-                                                <span>b</span>    
-                                            </span>
-                                        </button>
-                                    </div>
+                                    <div className="flex gap-m align-center">
 
-                                    <div className="m-hide">
-                                        <Groups groups={years} />
-                                    </div>
+                                        {/* <div className="m-hide">
+                                            <Groups groups={years} />
+                                        </div> */}
 
-                                    <div className="flex">
-                                        <button className="m-hide" onClick={() => setNewTicketOpen(true)}>
-                                            <IoTicketOutline/>
-                                            <span>Contact support</span>
-                                        </button>
-                                        {/* <button onClick={() => setLightTheme(!lightTheme)}>
-                                            {
-                                                !lightTheme ? (
-                                                    <FiMoon />
-                                                ) : (
-                                                    <BsSun />
-                                                )
-                                            }
-                                        </button> */}
-                                        <button onClick={() => setSettingsOpen(true)}>
-                                            <BsGear />
-                                        </button>
-                                    </div>       
+                                        <div className="flex">
+                                            <button className="m-hide" onClick={() => setNewTicketOpen(true)}>
+                                                <IoTicketOutline/>
+                                                <span>Contact support</span>
+                                            </button>
+                                            {/* <button onClick={() => setLightTheme(!lightTheme)}>
+                                                {
+                                                    !lightTheme ? (
+                                                        <FiMoon />
+                                                    ) : (
+                                                        <BsSun />
+                                                    )
+                                                }
+                                            </button> */}
+                                            <button className={styles.settingsBtn} onClick={() => setSettingsOpen(true)}>
+                                                <BsGear />
+                                            </button>
+                                        </div>  
+                                    </div>     
                                 </>
                             ) : (
                                 <>

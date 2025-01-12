@@ -43,9 +43,9 @@
         height: min-content;
     }
     .mobileHeading {
-        font-size: 1.4rem;
-        font-weight: 500;
-        max-width: 100%;
+        /* font-size: 1.4rem; */
+        /* font-weight: 500; */
+        /* max-width: 100%; */
     }
     .chart {
         max-height: unset;

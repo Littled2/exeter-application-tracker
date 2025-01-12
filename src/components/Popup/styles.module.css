@@ -6,7 +6,7 @@
     bottom: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 10000;
+    z-index: 1000;
     display: flex;
     padding: 24px;
     justify-content: center;
@@ -61,8 +61,10 @@
     }
     .popup .top button {
         aspect-ratio: 1;
+        font-size: 1.1rem;
     }
     .popup .content {
         overflow-y: auto;
+        padding-bottom: 25vh;
     }
 }

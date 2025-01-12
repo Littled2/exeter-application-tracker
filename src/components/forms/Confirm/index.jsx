@@ -27,10 +27,10 @@ export function Confirm({ message, trigger, setTrigger, onConfirm }) {
 
     return (
         <Popup trigger={trigger} setTrigger={setTrigger} title={"Confirm"}>
-            <p className="accent" style={{ textAlign: "left" }}>{message}</p>
+            <p className={styles.message} style={{ textAlign: "left" }}>{message}</p>
             <div className={styles.buttons}>
-                <button style={{ backgroundColor: "var(--light-grey)", color: "white" }} onClick={() => setTrigger(false)}>Cancel</button>
-                <button onClick={confirm}>Confirm</button>
+                <button className="m-submit-btn m-submit-btn-grey" style={{ backgroundColor: "var(--light-grey)", color: "white" }} onClick={() => setTrigger(false)}>Cancel</button>
+                <button className="m-submit-btn" onClick={confirm}>Confirm</button>
             </div>
         </Popup>
     )

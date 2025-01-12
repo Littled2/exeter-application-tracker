@@ -90,7 +90,7 @@ export function GroupsManager() {
             {
                 edit && (
                     <Popup trigger={edit} setTrigger={setEdit} title={"Change Group Name"}>
-                        <div className={styles.section}>
+                        <div className={[ styles.section, 'form' ].join(' ')}>
                             <h5>Change Group Name</h5>
 
 
@@ -103,6 +103,7 @@ export function GroupsManager() {
 
                             <div>
                                 <button
+                                    className="m-submit-btn"
                                     onClick={() => {
                                         pb.collection("years").update(edit?.id, {
                                             year: edit?.year

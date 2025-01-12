@@ -48,7 +48,7 @@ export function NewApp({ setTrigger }) {
             "type": type,
             "link": link,
             "locations": locations,
-            "deadline": deadline,
+            "deadline": deadlineType === 'fixed' ? deadline : '',
             "deadlineType": deadlineType,
             "user": user?.id,
             "year": activeYear
@@ -80,7 +80,7 @@ export function NewApp({ setTrigger }) {
                 <div className="flex col">
                     <div>
                         <div>
-                            <label>Name</label>
+                            <label>Role</label>
                         </div>
                         <input ref={nameInput} type="text" required value={role} onInput={e => setRole(e.target.value)}/>
                     </div>
@@ -133,7 +133,10 @@ export function NewApp({ setTrigger }) {
                         )
                     }
                 </div>
-                <div className="flex col">
+                <div className="flex col gap-s">
+                    <div>
+                        <label className="text-white">What stage is this application at?</label>
+                    </div>
                     <div className="flex col">
                         <label className="flex align-center"><input onChange={handleStageChange} defaultChecked={true} type="radio" name="Idea" value="idea"/><span>Idea</span></label>
                         <label className="flex align-center"><input onChange={handleStageChange} defaultChecked={false} type="radio" name="Idea" value="applying"/><span>Applying</span></label>
@@ -182,7 +185,7 @@ export function NewApp({ setTrigger }) {
                 </div>
                 <div className="flex col">
                     <div>
-                        <div style={{ display:"flex", justifyContent:"space-between" }}>
+                        <div className="flex space-between">
                             <label>Location(s)</label>
                             <small className="underline cursor-pointer" onClick={() => setNewLocOpen(true)}>
                                 <BiPlus />
@@ -219,7 +222,7 @@ export function NewApp({ setTrigger }) {
                 </div>
                 
                 <div>
-                    <button type="submit">Submit</button>
+                    <button className="m-submit-btn" type="submit">Submit</button>
                 </div>
             </form>
 
@@ -227,7 +230,7 @@ export function NewApp({ setTrigger }) {
                 <NewOrganisation setSelectedOrgID={setOrgID} setTrigger={setNewOrgOpen} sc={sc} />
             </Popup>
 
-            <Popup title={"Create Organisation"} trigger={newLocOpen} setTrigger={setNewLocOpen}>
+            <Popup title={"Create Location"} trigger={newLocOpen} setTrigger={setNewLocOpen}>
                 <NewLocation setLocations={setLocations} setTrigger={setNewLocOpen} sc={sc} />
             </Popup>
         </>
