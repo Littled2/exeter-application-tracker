@@ -12,11 +12,12 @@ import {jwtDecode} from "jwt-decode";
 import ms from "ms";
 import { AuthenticationWrapper } from "../Interface/AuthenticationWrapper";
 
-// const BASE_URL = "http://127.0.0.1:8090";
-// const BASE_URL = "http://localhost:8090";
-// const BASE_URL = "http://192.168.1.169:8090";
-const BASE_URL = "http://192.168.1.196:8090";
-// const BASE_URL = "http://192.168.43.9:8090"
+
+const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+
+console.log({BASE_URL})
+
+
 
 const fiveMinutesInMs = ms("5 minutes");
 const twoMinutesInMs = ms("2 minutes");
