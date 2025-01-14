@@ -43,8 +43,7 @@ export function DocumentUploadDownload({ application, fileKeyName, displayName }
         .catch((err) => {
             console.error("Error uploading file", err)
             setUploading(false)
-            setError(true)
-            setMasterCounter(c => c + 1)
+            setError(err)
         })
 
     }, [ pb, application ])
@@ -62,7 +61,7 @@ export function DocumentUploadDownload({ application, fileKeyName, displayName }
         })
         .catch((err) => {
             console.error("Error deleting file", err)
-            setError(true)
+            setError(err)
         })
 
     }, [ pb, application ])
@@ -104,14 +103,6 @@ export function DocumentUploadDownload({ application, fileKeyName, displayName }
                                 )
                             }
 
-                            {
-                                error ? (
-                                    <span style={{ color:"red" }}>Error</span>
-                                ) : (
-                                    <></>
-                                )
-                            }
-
                             {/* <a href={pb.files.getUrl(application, application[fileKeyName], { token: fileToken })} className="underline cursor-pointer" download>Upload</a> */}
                         </>
                     ) : (
@@ -119,6 +110,10 @@ export function DocumentUploadDownload({ application, fileKeyName, displayName }
                     )
                 }
             </small>
+
+            <Popup trigger={error} setTrigger={setError}>
+                <span style={{ color:"red" }}>{error?.response?.data[fileKeyName].message}</span>
+            </Popup>
 
             <Confirm
                 trigger={confirmDelete}

@@ -16,11 +16,8 @@ export function Settings({ setTrigger }) {
             <section className={styles.wrapper}>
 
                 <Tabs
+                    saveActiveTabAs={"settings_tabs"}
                     tabs={[
-                        {
-                            name: "Account",
-                            tab: <Account setTrigger={setTrigger} />
-                        },
                         {
                             name: "Groups",
                             tab: <GroupsManager />
@@ -35,7 +32,12 @@ export function Settings({ setTrigger }) {
                         },
                         {
                             name: "Dashboard",
-                            tab: <DashboardManager />
+                            tab: <DashboardManager />,
+                            hideOnMobile: true
+                        },
+                        {
+                            name: "Account",
+                            tab: <Account setTrigger={setTrigger} />
                         }
                     ]}
                 />

@@ -28,13 +28,14 @@
 .popup .top {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 4px;
     background-color: var(--border-colour);
-    color: white;
+    color: var(--text-white);
 }
 
 .popup .top button {
-    background-color: var(--dark-grey);
+    background-color: var(--border-colour);
     display: inline-flex;
     align-items: center;
     color: var(--text-white);
@@ -56,12 +57,16 @@
     }
     .popup .top {
         font-size: 1.1rem;
+        /* padding-top: 4px;
+        padding-bottom: 4px; */
         padding-left: 0.75rem;
         padding-right: 0.75rem;
+        flex-direction: row-reverse;
+        height: var(--header-height-mobile);
     }
     .popup .top button {
         aspect-ratio: 1;
-        font-size: 1.1rem;
+        font-size: 22px;
     }
     .popup .content {
         overflow-y: auto;

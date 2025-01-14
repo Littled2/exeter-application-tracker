@@ -15,8 +15,17 @@
     overflow-x: auto;
 }
 
-.hide {
-    /* display: none; */
+
+.dueToday {
+    background-color: var(--almost-late-bg);
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.almostDue {
+    background-color: var(--upcoming-deadline-bg);
+    padding-left: 4px;
+    padding-right: 4px;
 }
 
 @media screen and (max-width: 800px) {
@@ -24,5 +33,7 @@
     .wrapper {
         /* display: none; */
         width: unset;
+        /* border: none; */
+        gap: var(--spacing-medium);
     }
 }

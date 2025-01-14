@@ -7,6 +7,7 @@ import { useActiveYear } from "../../../contexts/activeYearContext"
 import { usePocket } from "../../../contexts/pocketContext"
 import { useNewApplicationPopup } from "../../../contexts/newApplicationPopupContext"
 import { useMasterCounter } from "../../../contexts/masterCounterContext"
+import illustration from "../illustration.svg"
 
 
 export function Applied({ openAppID, setOpenAppID }) {
@@ -113,8 +114,9 @@ export function Applied({ openAppID, setOpenAppID }) {
             {
                 applied.length === 0 && !loading && (
                     <div className={styles.statusInfo}>
-                        <p>There are no applications at this stage yet</p>
-                        <button onClick={() => setNewApplicationPopupOpen(true)}>+ New Application</button>
+                        <img src={illustration} className={styles.illustration} />
+                        <small className="text-center text-grey">No applications at this stage</small>
+                        <button onClick={() => setNewApplicationPopupOpen(true)}>+ Add Application</button>
                     </div>
                 )
             }
@@ -128,6 +130,6 @@ export function Applied({ openAppID, setOpenAppID }) {
             }
         </>
     ) : (
-        <p className="text-red">Error</p>
+        <p className="text-red">Something went wrong</p>
     )
 }

@@ -4,7 +4,7 @@ import ukImage from "./UK.png"
 import styles from "./styles.module.css"
 import { useMasterCounter } from "../../../contexts/masterCounterContext"
 
-export function NewLocation({ setTrigger }) {
+export function NewLocation({ setTrigger, setLocations=null, sc=null }) {
 
     const { pb, user } = usePocket()
 
@@ -31,6 +31,12 @@ export function NewLocation({ setTrigger }) {
             console.log("Created new location", res)
             setTrigger(false)
             setMasterCounter(c => c + 1)
+            if(setLocations) {
+                setLocations(locs => [ ...locs, res.id ])
+            }
+            if(sc) {
+                sc(c => c + 1)
+            }
         })
         .catch(err => {
             console.error("Error creating organisation", err)
@@ -38,7 +44,7 @@ export function NewLocation({ setTrigger }) {
     }
 
     return (
-        <form className="form">
+        <form className="form" onSubmit={submit}>
 
             <div>
                 <label>Location name</label>
@@ -78,7 +84,7 @@ export function NewLocation({ setTrigger }) {
                 </div>
             </div>
 
-            <button className="m-submit-btn" onClick={submit}>Create</button>
+            <button className="m-submit-btn">Create</button>
 
         </form>
     )

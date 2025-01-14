@@ -55,14 +55,28 @@
     gap: var(--spacing-small);
 }
 
-@media screen and (max-width: 1200px) {
+/* @media screen and (max-width: 1200px) {
     .wrapper {
         display: none;
     }
-}
+} */
 
 @media screen and (max-width: 800px) {
     .wrapper {
+        width: 100%;
+        height: 20px;
+    }
+    .innerWrapper {
+        flex-direction: row-reverse;
+    }
+    .list {
+        max-height: 100%;
+    }
+    .image {
+        max-width: 100%;
+    }
+    .inner {
         display: none;
     }
+
 }

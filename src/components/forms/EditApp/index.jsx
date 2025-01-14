@@ -8,6 +8,7 @@ import { NewOrganisation } from "../NewOrganisation";
 import { DateInput } from "../../inputs/DateInput";
 import { useMasterCounter } from "../../../contexts/masterCounterContext";
 import { NewLocation } from "../NewLocation";
+import { AnimatedButton } from "../../AnimatedButton";
 
 export function EditApp({ app, setTrigger }) {
 
@@ -26,6 +27,7 @@ export function EditApp({ app, setTrigger }) {
     const [ newLocOpen, setNewLocOpen ] = useState(false)
 
     const [ error, setError ] = useState(null)
+    const [ processing, setProcessing ] = useState(false)
 
     const [ c, sc ] = useState(0)
 
@@ -35,6 +37,8 @@ export function EditApp({ app, setTrigger }) {
 
     function submit(e) {
         e.preventDefault()
+
+        setProcessing(true)
 
         const data = {
             "role": role,
@@ -54,11 +58,13 @@ export function EditApp({ app, setTrigger }) {
             setError(null)
             setMasterCounter(c => c + 1)
             setTrigger(false)
+            setProcessing(false)
 
         })
         .catch(err => {
             console.error("Error updating application", err)
             setError(err)
+            setProcessing(false)
         })
     }
 
@@ -72,11 +78,11 @@ export function EditApp({ app, setTrigger }) {
 
     return (
         <>
-            <form className="form flex col gap-s" onSubmit={submit}>
+            <form className="form flex col gap-m" onSubmit={submit}>
                 <div className="flex col">
                     <div>
                         <div>
-                            <label>Name</label>
+                            <label>Name<span className="text-red"> *</span></label>
                         </div>
                         <input type="text" required value={role} onInput={e => setRole(e.target.value)}/>
                     </div>
@@ -89,7 +95,7 @@ export function EditApp({ app, setTrigger }) {
                 <div className="flex col">
                     <div>
                         <div style={{ display:"flex", justifyContent:"space-between" }}>
-                            <label>Organisation</label>
+                            <label>Organisation<span className="text-red"> *</span></label>
                             <small className="underline cursor-pointer" onClick={() => setNewOrgOpen(true)}>
                                 <BiPlus />
                                 <span>Add Organisation</span>
@@ -131,14 +137,14 @@ export function EditApp({ app, setTrigger }) {
                 </div>
                 <div className="flex col gap-s">
                     <div>
-                        <label className="text-white">What stage is this application at?</label>
+                        <label className="text-orange">What stage is this application at?<span className="text-red"> *</span></label>
                     </div>
-                    <div className="flex col">
-                        <label className="flex align-center"><input onChange={handleStageChange} defaultChecked={app?.stage === 'idea'} type="radio" name="Idea" value="idea"/><span>Idea</span></label>
-                        <label className="flex align-center"><input onChange={handleStageChange} defaultChecked={app?.stage === 'applying'} type="radio" name="Idea" value="applying"/><span>Applying</span></label>
-                        <label className="flex align-center"><input onChange={handleStageChange} defaultChecked={app?.stage === 'applied'} type="radio" name="Idea" value="applied"/><span>Applied</span></label>
-                        <label className="flex align-center"><input onChange={handleStageChange} defaultChecked={app?.stage === 'accepted'} type="radio" name="Idea" value="accepted"/><span>Accepted</span></label>
-                        <label className="flex align-center"><input onChange={handleStageChange} defaultChecked={app?.stage === 'declined'} type="radio" name="Idea" value="declined"/><span>Declined</span></label>
+                    <div className="flex col gap-s" style={{ alignItems: "start" }}>
+                        <label className="flex align-center gap-s text-grey"><input onChange={handleStageChange} defaultChecked={app?.stage === 'idea'} type="radio" name="Idea" value="idea"/><span>Idea</span></label>
+                        <label className="flex align-center gap-s text-grey"><input onChange={handleStageChange} defaultChecked={app?.stage === 'applying'} type="radio" name="Idea" value="applying"/><span>Applying</span></label>
+                        <label className="flex align-center gap-s text-grey"><input onChange={handleStageChange} defaultChecked={app?.stage === 'applied'} type="radio" name="Idea" value="applied"/><span>Applied</span></label>
+                        <label className="flex align-center gap-s text-grey"><input onChange={handleStageChange} defaultChecked={app?.stage === 'accepted'} type="radio" name="Idea" value="accepted"/><span>Accepted</span></label>
+                        <label className="flex align-center gap-s text-grey"><input onChange={handleStageChange} defaultChecked={app?.stage === 'declined'} type="radio" name="Idea" value="declined"/><span>Declined</span></label>
                     </div>
                     {
                         error?.response?.data?.stage && (
@@ -217,7 +223,9 @@ export function EditApp({ app, setTrigger }) {
                 </div>
                 
                 <div>
-                    <button className="m-submit-btn" type="submit">Save</button>
+                    <AnimatedButton processing={processing} className="m-submit-btn" type="submit">
+                        Save
+                    </AnimatedButton>
                 </div>
             </form>
 

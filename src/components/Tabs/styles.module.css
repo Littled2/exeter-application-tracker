@@ -7,6 +7,10 @@
     font-size: inherit;
 }
 
+.tab:hover {
+    background-color: #7a7a7a;
+}
+
 .tabs {
     border-bottom: 1.4px solid var(--dark-grey);
     display: flex;
@@ -25,6 +29,7 @@
         padding-bottom: 6px;
         gap: 0;
         border: none;
+        flex-wrap: wrap;
     }
     .tab {
         /* font-size: 0.8rem; */
@@ -32,15 +37,21 @@
         flex: 1;
         border-bottom: 2px solid var(--dark-grey);
         background-color: var(--dark-grey);
-        text-overflow: ellipsis;
-        overflow-x: hidden;
+        /* text-overflow: ellipsis;
+        overflow-x: hidden; */
+        color: var(--text-grey);
         padding: 16px 6px;
-        font-size: 0.9rem;
+        font-size: 12px;
+    }
+    .tab:hover {
+        background-color: var(--dark-grey);
     }
     .tab.selected {
         color: unset;
         color: var(--text-white);
         background-color: var(--dark-grey);
         border-bottom: 2px solid var(--text-orange);
+        font-weight: 600;
+        /* background-color: rgba(255, 165, 0, 0.4); */
     }
 }

@@ -13,6 +13,7 @@ import { useActiveYear } from "../../contexts/activeYearContext";
 import { useNewApplicationPopup } from "../../contexts/newApplicationPopupContext";
 import { Groups } from "../../components/Groups";
 import { BiPlus } from "react-icons/bi";
+import { useMobile } from "../../contexts/mobileContext";
 
 export function Header() {
 
@@ -24,6 +25,8 @@ export function Header() {
     const [ settingsOpen, setSettingsOpen ] = useState(false)
 
     const { years, setActiveYear, activeYear } = useActiveYear()
+
+    const { isMobile, activeMobileTab } = useMobile()
 
     const handleKeyPress = useCallback(e => {
         if(e.ctrlKey && e.key === "b") {
@@ -73,15 +76,42 @@ export function Header() {
 
                                     <div className={styles.groupSelectWrapper}>
                                         <div className={[  styles.mobileGroupsSelect ].join(" ")}>
-                                            <select onInput={e => setActiveYear(e.target.value)}>
+                                            <select onInput={e => setActiveYear(e.target.value)} value={activeYear}>
                                                 {
                                                     years.map(year => {
-                                                        return <option key={'_dd_' + year.id} selected={activeYear === year.id} value={year.id}>{year.year}</option>
+                                                        return <option key={'_dd_' + year.id} value={year.id}>{year.year}</option>
                                                     })
                                                 }
                                             </select>
                                         </div>
                                     </div>
+
+                                    {
+                                        isMobile && (
+                                            <>
+                                                {
+                                                    activeMobileTab === 'deadlines' && (
+                                                        <h1 className={styles.mobilePageTitle}>Upcoming Deadlines</h1>
+                                                    )
+                                                }
+                                                {
+                                                  activeMobileTab === 'analytics' && (
+                                                        <h1 className={styles.mobilePageTitle}>Analytics</h1>
+                                                    )
+                                                }
+                                                {
+                                                    activeMobileTab === 'applications' && (
+                                                        <h1 className={styles.mobilePageTitle}>Your Applications</h1>
+                                                    )
+                                                }
+                                                {
+                                                    activeMobileTab === 'tasks' && (
+                                                        <h1 className={styles.mobilePageTitle}>Tasks</h1>
+                                                    )
+                                                }
+                                            </>
+                                        )
+                                    }
 
                                     <div className="flex gap-m align-center">
 

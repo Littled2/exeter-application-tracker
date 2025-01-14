@@ -18,6 +18,19 @@
 }
 
 .statusInfo button {
-    background-color: var(--dark-grey);
-    color: var(--text-white);
+    background-color: transparent;
+    color: var(--text-orange);
+    border: none;
+}
+
+.illustration {
+    width: 6rem;
+}
+
+
+@media screen and (max-width: 800px) {
+    .wrapper {
+        padding-left: var(--page-padding-left);
+        padding-right: var(--page-padding-right);
+    }
 }

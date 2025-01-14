@@ -1,0 +1,43 @@
+.nav {
+    background-color: var(--dark-grey);
+    z-index: 1000;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 8px;
+    user-select: none;
+    transition: bottom 0.2s;
+    height: var(--mobile-nav-tabs-height);
+}
+
+.nav.show {
+    bottom: 0;
+}
+
+.nav.hide {
+    bottom: -100%;
+}
+
+.nav .tabLink {
+    color: var(--text-grey);
+    background-color: transparent;
+    border: none;
+    /* padding: 8px 6px 12px 6px; */
+    flex: 1;
+}
+
+.nav .tabLink .icon {
+    font-size: 24px;
+}
+
+.nav .tabLink .label {
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.nav .tabLink.selected {
+    color: var(--text-orange);
+}

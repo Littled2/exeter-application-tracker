@@ -91,7 +91,7 @@ export function AppTasksList({ application, counter, setCounter }) {
                                     return (
                                         <tr
                                             className="cursor-pointer"
-                                            key={task.taskID}
+                                            key={task.id}
                                             onClick={() => {
                                                 setSelectedTask(task)
                                                 setPopupOpen(true)
@@ -117,7 +117,7 @@ export function AppTasksList({ application, counter, setCounter }) {
                                         onClick={() => {
                                             setSelectedTask(task)
                                             setPopupOpen(true)
-                                        }} key={task.taskID}>
+                                        }} key={task.id}>
                                             <td>
                                                 <input type="checkbox" defaultChecked={task?.complete} />
                                             </td>

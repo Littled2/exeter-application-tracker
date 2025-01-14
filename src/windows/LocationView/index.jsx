@@ -88,7 +88,7 @@ export function LocationView() {
             <div className="flex space-between align-center">
                 <b><small className="text-grey">Application Locations</small></b>
                 <span
-                    className="cursor-pointer text-grey hover-text-orange"
+                    className="cursor-pointer text-grey hover-text-orange m-hide"
                     data-tooltip-id="hide-location-view-tooltip"
                     data-tooltip-content="Hide location view"
                     data-tooltip-place="bottom"
@@ -110,7 +110,7 @@ export function LocationView() {
                                     Object.keys(appLocations).map((locID, i) => {
                                         return (
                                             <tr onMouseEnter={() => mouseOver(locID)} onMouseLeave={() => mouseAway()} key={locID + i}>
-                                                <th className='text-white'>{appLocations[locID].freq}</th>
+                                                <th className='text-white m-hide'>{appLocations[locID].freq}</th>
                                                 <td className={hover !== null ? ((hover === locID) ? 'text-white' : 'text-orange') : 'text-orange'}>{appLocations[locID].name}</td>
                                             </tr>
                                         )

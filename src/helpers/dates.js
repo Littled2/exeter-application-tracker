@@ -12,3 +12,16 @@ export function areSameDate(date1, date2) {
 
     return d1.getTime() === d2.getTime(); // Compare the timestamps
 };
+
+export function daysToDate(targetDate) {
+    const currentDate = new Date();
+    const target = new Date(targetDate);
+    
+    // Calculate the difference in milliseconds
+    const diffInMilliseconds = target - currentDate;
+    
+    // Convert milliseconds to days
+    const diffInDays = Math.ceil(diffInMilliseconds / (1000 * 60 * 60 * 24));
+    
+    return diffInDays === 1 ? 'Today' : `${diffInDays} day${diffInDays > 1 ? 's' : '' }`;
+}

@@ -16,38 +16,44 @@ export function Account({ setTrigger }) {
     return (
         <div className={styles.tab}>
 
-            <h2>{user?.email}</h2>
+            <div className="flex flex-col gap-s">
+                <small className="text-grey">Logged in as</small>
+                <h2 className="text-white">{user?.email}</h2>
+            </div>
             
-            <div className={styles.section}>
-                    <h5 className="text-grey">Log out of my account</h5>
+            <div className="flex m-flex-col gap-s space-between align-center">
+                <p className="text-grey">Log out of my account</p>
+                <div>
                     <button onClick={() => {
                         setTrigger(false)
                         logout()
                         clearActiveYears()
                     }}><BiLogOut /> Logout</button>
                 </div>
+            </div>
 
-                <div className={styles.section}>
-                    <h5 className="text-grey">Delete my account</h5>
+            <div className="flex m-flex-col gap-s space-between align-center">
+                <p className="text-grey">Delete my account</p>
+                <div>
                     <button className={styles.deleteBtn} onClick={() => setDeleteConfirm(true)}><BiTrash /> Delete</button>
                 </div>
+            </div>
 
-                <Popup trigger={deleteConfirm} setTrigger={setDeleteConfirm}>
-                    <div className="flex col gap-m">
-                        <h5>Are you sure you want to delete your account?</h5>
-                        <p>This action is irreversible.</p>
+            <Popup trigger={deleteConfirm} setTrigger={setDeleteConfirm}>
+                <div className="flex col gap-m">
+                    <h5 className="text-red">Are you sure you want to delete your account?</h5>
+                    <p className="text-grey">This action is irreversible.</p>
 
-                        <div className="flex gap-s">
-                            <button onClick={() => setDeleteConfirm(false)}>Cancel</button>
-                            <button onClick={async () => {
-                                await deleteUser()
-                                await logout()
-                                setTrigger(false)
-                            }} className={styles.deleteBtn}>Confirm</button>
-                        </div>
+                    <div className="flex gap-s">
+                        <button className="m-submit-btn m-submit-btn-grey" onClick={() => setDeleteConfirm(false)}>Cancel</button>
+                        <button onClick={async () => {
+                            await deleteUser()
+                            await logout()
+                            setTrigger(false)
+                        }} className="m-submit-btn m-submit-btn-red">Confirm</button>
                     </div>
-                </Popup>
-
+                </div>
+            </Popup>
 
         </div>
     )

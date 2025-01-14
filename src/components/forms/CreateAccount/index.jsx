@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react"
 import { usePocket } from "../../../contexts/pocketContext"
 import styles from "./styles.module.css"
+import { AnimatedButton } from "../../AnimatedButton"
 
 
 export function CreateAccount() {
@@ -106,15 +107,11 @@ export function CreateAccount() {
                
 
             <div>
-                <button type="submit">
-                {
-                    !processing ? (
-                        "Create Account"
-                    ) : (
-                        "Processing..."
-                    )
-                }    
-                </button>
+
+                <AnimatedButton submitting={processing} type="submit" className="m-submit-btn">
+                    Create Account
+                </AnimatedButton>
+
             </div>
 
         </form>

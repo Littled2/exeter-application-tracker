@@ -6,6 +6,7 @@ import { usePocket } from "../../../contexts/pocketContext"
 import { useActiveYear } from "../../../contexts/activeYearContext"
 import { useNewApplicationPopup } from "../../../contexts/newApplicationPopupContext"
 import { useMasterCounter } from "../../../contexts/masterCounterContext"
+import illustration from "../illustration.svg"
 
 export function IdeasApplying({ openAppID, setOpenAppID }) {
 
@@ -119,8 +120,8 @@ export function IdeasApplying({ openAppID, setOpenAppID }) {
             {
                 (ideas.length > 0 || applying.length > 0) && !loading && (
                     <div className={[ styles.key, 'm-hide' ].join(" ")}>
-                        <span className={styles.late}>Overdue</span>
-                        <span className={styles.almostLate}>Due today</span>
+                        <span className={styles.dueToday}>Due today</span>
+                        <span className={styles.almostDue}>Next 3 days</span>
                     </div>
                 )
             }
@@ -128,7 +129,8 @@ export function IdeasApplying({ openAppID, setOpenAppID }) {
             {
                 ideas.length === 0 && applying.length === 0 && !loading && (
                     <div className={styles.statusInfo}>
-                        <p>You have no applications yet</p>
+                        <img src={illustration} className={styles.illustration} />
+                        <small className="text-center text-grey">No applications at this stage</small>
                         <button onClick={() => setNewApplicationPopupOpen(true)}>+ New Application</button>
                     </div>
                 )
@@ -143,6 +145,6 @@ export function IdeasApplying({ openAppID, setOpenAppID }) {
             }
         </div>
     ) : (
-        <p style={{ color: "red" }}>Error</p>
+        <p style={{ color: "red" }}>Something went wrong</p>
     )
 }

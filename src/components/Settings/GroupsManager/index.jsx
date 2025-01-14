@@ -17,7 +17,7 @@ export function GroupsManager() {
 
     const { pb } = usePocket()
 
-    const { clearActiveYears, activeYear, setActiveYear, years } = useActiveYear()
+    const { activeYear, setActiveYear, years } = useActiveYear()
 
     const { setMasterCounter } = useMasterCounter()
 
@@ -36,11 +36,11 @@ export function GroupsManager() {
         <div className={styles.tab}>
             <div className="flex col gap-m">
                 <div className="flex space-between">
-                    <h5 className="text-grey">My Groups</h5>
-                    <button onClick={() => setNewYearOpen(true)} className={styles.reOrderButton}>+ <span className="underline">Create group</span></button>
+                    <h5 className="text-white">My Groups</h5>
+                    <button onClick={() => setNewYearOpen(true)} className={styles.newButton}>+ <span className="underline">Create group</span></button>
                 </div>
 
-                <table>
+                <table className={styles.table}>
                     {/* <thead>
                         <th>Year</th>
                         <th>Rename</th>
@@ -50,9 +50,9 @@ export function GroupsManager() {
                         {
                             years.map((yr, i) => {
                                 return (
-                                    <tr key={"account_year_" + yr.id}>
-                                        <td className={activeYear === yr.id ? styles.selectedGroup : ''} onClick={() => setActiveYear(yr.id)}>{yr.year}</td>
-                                        <td>
+                                    <tr className={activeYear === yr.id ? styles.selectedGroup : ''} key={"account_year_" + yr.id}>
+                                        <td onClick={() => setActiveYear(yr.id)}>{yr.year}</td>
+                                        <td className="m-hide">
                                             <button disabled={i === 0} className={styles.reOrderButton} onClick={() => {
                                                 let tempYrs = JSON.parse(JSON.stringify(years))
                                                 let tempEl = tempYrs[i - 1]
@@ -132,7 +132,7 @@ export function GroupsManager() {
 
             
             <Popup title={"New Group"} trigger={newYearOpen} setTrigger={setNewYearOpen}>
-                <NewYears setTrigger={setNewYearOpen} />
+                <NewYears setTrigger={setNewYearOpen} setActiveYear={setActiveYear} />
             </Popup>
 
         </div>

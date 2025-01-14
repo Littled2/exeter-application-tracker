@@ -1,12 +1,7 @@
-.deadline {
-    /* padding-left: 4px;
-    padding-right: 4px; */
+.upcomingDeadline {
+    background-color: var(--upcoming-deadline-bg) !important;
 }
 
-.late {
-    background-color: var(--late-bg) !important;
-}
-
-.almostLate {
+.today {
     background-color: var(--almost-late-bg) !important;
 }

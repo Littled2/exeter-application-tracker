@@ -17,13 +17,17 @@
     --text-blue: #187da8;
     --text-red: red;
     --text-green: green;
+    --text-grey: grey;
 
-    --late-bg: rgba(255, 0, 0, 0.471);
-    --almost-late-bg: rgba(253, 159, 82, 0.481);
+    --almost-late-bg: rgba(255, 0, 0, 0.471);
+    --upcoming-deadline-bg: rgba(253, 159, 82, 0.3);
     --deadline-passed-bg: rgba(93, 93, 93, 0.471);
 
-    --page-padding-left: 14%;
-    --page-padding-right: 14%;
+    --header-height-mobile: 50px;
+    --mobile-nav-tabs-height: 60px;
+
+    --page-padding-left: 24px;
+    --page-padding-right: 24px;
 
     --border-colour: #242424;
 
@@ -34,7 +38,15 @@
     --sans-font: Arial, 'Poppins', sans-serif;
     --mono-font: 'Roboto Mono', monospace;
 
-    --header-height: 40px;
+    --header-height: 45px;
+
+
+
+
+    /* New styling 14/01/2025 */
+    --bg-colour: #121212;
+    --dark-grey: #2b2b2b;
+
 
 }
 
@@ -138,25 +150,78 @@ select:focus {
     display: block; /* Visible only when the 'is-windows' class is added */
 }
 
+.m-submit-btn {
+    /* margin-top: var(--spacing-large); */
+    background-color: var(--text-orange);
+    color: var(--bg-colour);
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 8px 16px;
+    text-align: center;
+    border: none;
+}
+
+.m-submit-btn.m-submit-btn-grey {
+    background-color: var(--light-grey);
+    color: var(--text-white);
+}
+
+.m-submit-btn.m-submit-btn-red {
+    background-color: var(--danger);
+    color: var(--text-white);
+}
+
+
+.m-submit-btn:hover {
+    background-color: #a56c20;
+}
+
+.m-submit-btn:active {
+    color: var(--text-white);
+    background-color: #cc872d;
+}
+
+.m-submit-btn.m-submit-btn-grey:hover {
+    background-color: #4b4b4b;
+}
+
+.m-submit-btn.m-submit-btn.m-submit-btn-grey:active {
+    background-color: #676767;
+}
+
+.m-submit-btn.m-submit-btn-red:hover {
+    background-color: rgb(131, 14, 14);
+}
+
+.m-submit-btn.m-submit-btn.m-submit-btn-red:active {
+    background-color: rgb(196, 22, 22);
+}
+
+
 @media screen and (max-width: 800px) {
+    :root {
+        --page-padding-left: 12px;
+        --page-padding-right: 12px;
+    }
     .windows-only {
         display: none !important;
     }
+
+    .form input,
+    .form select,
+    .form textarea {
+        margin-top: 6px;
+        width: 100%;
+    }
+
     button {
         border: none;
     }
+
     .m-submit-btn {
         margin-top: var(--spacing-large);
-        background-color: var(--text-orange);
-        color: var(--bg-colour);
-        font-weight: 600;
         font-size: 1.2rem;
-        width: 100%;
         padding: 16px;
-        text-align: center;
-    }
-    .m-submit-btn.m-submit-btn-grey {
-        background-color: var(--light-grey);
-        color: var(--text-white);
+        width: 100%;
     }
 }

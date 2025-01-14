@@ -46,15 +46,23 @@ export function LocationsSelect({ locations, setLocations, c }) {
                     })
                 }
 
-                <select onChange={e => setLocations(l => [ ...l, e.target.value ])}>
-                    {
-                        allLocations.filter(location => !locations.some((selected) => selected.id === location.id)).map(location => {
-                            return (
-                                <option value={location.id}>{location.name}</option>
-                            )
-                        })
-                    }
-                </select>
+                {
+                    allLocations.length > 0 ? (
+                        <select onChange={e => setLocations(l => [ ...l, e.target.value ])}>
+                            {
+                                allLocations
+                                .filter(location => !locations.some((selected) => selected === location.id))
+                                .map(location => {
+                                    return (
+                                        <option key={'__' + location.id} value={location.id}>{location.name}</option>
+                                    )
+                                })
+                            }
+                        </select>
+                    ) : (
+                        <small className="text-grey">You have not added any locations. Please add one now.</small>
+                    )
+                }
             </div>
 
             {/* <div className={styles.add}>

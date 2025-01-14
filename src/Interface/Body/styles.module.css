@@ -1,9 +1,12 @@
 
 .wrapper {
     width: 100%;
-    padding: var(--spacing-small) var(--spacing-medium);
+    padding: var(--page-padding-left) var(--spacing-medium) var(--page-padding-right) var(--spacing-medium);
     padding-top: calc(var(--header-height) + 1rem);
     padding-bottom: var(--spacing-large);
+    display: flex;
+    gap: var(--spacing-medium);
+    padding-bottom: 25vh;
 }
 
 .applicationsTasksWrapper {
@@ -28,11 +31,17 @@
 .applicationsWrapper {
     flex: 1;
     min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
 }
 
 .tasksWrapper {
     width: 400px;
     font-size: 1.05rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
 }
 
 .tablesWrapper {
@@ -60,16 +69,17 @@
 
 @media screen and (max-width: 800px) {
     .wrapper {
-        padding-left: 8px;
-        padding-right: 8px;
+        padding-left: 0;
+        padding-right: 0;
         padding-bottom: 40vh;
+        padding-top: var(--header-height-mobile);
     }
     /* .wrapper td {
         padding-top: 2px;
         padding-bottom: 2px;
     } */
     .applicationsTasksWrapper {
-        gap: var(--spacing-large);
+        gap: 0;
     }
     .applicationsWrapper {
         min-width: unset;
@@ -83,28 +93,46 @@
     }
     .dataVisWrapper {
         height: unset;
-        flex-direction: column;
+        flex-direction: column-reverse;
+        padding-top: var(--spacing-medium);
+        padding-left: var(--page-padding-left);
+        padding-right: var(--page-padding-right);
     }
     .tablesWrapper {
         height: unset;
         gap: var(--spacing-large);
     }
+    .tasksWrapper {
+        padding-top: var(--spacing-medium);
+    }
     .asidePage {
         min-width: unset;
         width: unset;
     }
-    .mobileNewAppBtn {
-        font-size: 3rem;
+    .mobileNewAppBtn {        
+        --outerPadding: 24px;
+
+        position: fixed;
+        bottom: calc(var(--mobile-nav-tabs-height) + var(--outerPadding));
+        right: var(--outerPadding);
         display: flex;
         justify-content: center;
-        align-items: center;
-        color: var(--text-blue);
-        background-color: transparent;
+        font-weight: 300;
+        color: white;
+        background-color: var(--text-orange);
         border: none;
-        padding: 0;
+        border-radius: 100%;
+        font-size: 2.6rem;
+        width: 60px;
+        height: 60px;
+        z-index: 1;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border: 4px solid #906021;
     }
-    .mobileNewAppBtn:active {
-        color: var(--text-white);
+
+    .mobileNewAppBtn:active,
+    .mobileNewAppBtn:focus {
+        background-color: #906021;
     }
 }
 

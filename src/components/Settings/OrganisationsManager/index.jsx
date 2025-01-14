@@ -40,8 +40,8 @@ export function OrganisationsManager() {
         <div className={styles.tab}>
 
             <div className="flex space-between align-center">
-                <h5 className="text-grey">My Organisations</h5>
-                <button onClick={() => setNewOrganisationOpen(true)} className={styles.actionBtn}>+ <span className="underline">Create organisation</span></button>
+                <h5 className="text-white">My Organisations</h5>
+                <button onClick={() => setNewOrganisationOpen(true)} className={styles.newButton}>+ <span className="underline">Create organisation</span></button>
             </div>
 
             {
@@ -52,7 +52,7 @@ export function OrganisationsManager() {
                             {
                                 organisations.map(organisation => {
                                     return (
-                                        <div className={styles.row}>
+                                        <div className={styles.row} key={organisation?.id}>
                                             <p>{organisation.name}</p>
             
                                             <div className="flex gap-s">
@@ -120,7 +120,7 @@ export function OrganisationsManager() {
                         </Popup>
 
                         <Popup title={"Cannot delete"} trigger={errorDeleting} setTrigger={setErrorDeleting}>
-                            <p className="text-red">Cannot delete this organisation. <br /> Please check no application's organisation is set to this organisation then try again.</p>
+                            <p className="text-red">Cannot delete this organisation. <br /> <span className="text-grey">Please check no application's organisation is set to this organisation then try again.</span></p>
                         </Popup>
             
                     </>

@@ -39,8 +39,8 @@ export function LocationsManager() {
         <div className={styles.tab}>
 
             <div className="flex space-between align-center">
-                <h5 className="text-grey">My Locations</h5>
-                <button onClick={() => setNewLocationOpen(true)} className={styles.actionBtn}>+ <span className="underline">Create location</span></button>
+                <h5 className="text-white">My Locations</h5>
+                <button onClick={() => setNewLocationOpen(true)} className={styles.newButton}>+ <span className="underline">Create location</span></button>
             </div>
 
             {
@@ -51,7 +51,7 @@ export function LocationsManager() {
                             {
                                 locations.map(location => {
                                     return (
-                                        <div className={styles.row}>
+                                        <div className={styles.row} key={location?.id}>
                                             <p>{location.name}</p>
             
                                             <div className="flex gap-s">
@@ -96,7 +96,7 @@ export function LocationsManager() {
                         </Popup>
 
                         <Popup title={"Cannot delete"} trigger={errorDeleting} setTrigger={setErrorDeleting}>
-                            <p className="text-red">Cannot delete this location. <br /> Please check no application's location is set to this location then try again.</p>
+                            <p className="text-red">Cannot delete this location. <br /> <span className="text-grey">Please check no application's location is set to this location then try again.</span></p>
                         </Popup>
             
                     </>

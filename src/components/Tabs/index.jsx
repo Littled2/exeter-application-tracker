@@ -1,22 +1,26 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import styles from "./styles.module.css"
+import { useMobile } from "../../contexts/mobileContext"
 
-export function Tabs({ activeTab, tabs, saveActiveTabAs=null }) {
+export function Tabs({ tabs, saveActiveTabAs=null }) {
 
-    const [ selected, setSelected ] = useState(
-        saveActiveTabAs ? (
-            localStorage.getItem(saveActiveTabAs) ? (
-                localStorage.getItem(saveActiveTabAs)
-            ) : (
-                0
-            )
-        ) : (
-            0
-        )
-    )
+    const [ selected, setSelected ] = useState(() => {
+        if(saveActiveTabAs !== null) {
+            let saved = localStorage.getItem(saveActiveTabAs)
+            if(!saved) {
+                return 0
+            } else {
+                return JSON.parse(saved)
+            }
+        }
+    })
+
+    const { isMobile } = useMobile()
 
     useEffect(() => {
-        localStorage.setItem(saveActiveTabAs, selected)
+        if(saveActiveTabAs) {
+            localStorage.setItem(saveActiveTabAs, selected)
+        }
     }, [ selected ])
 
 
@@ -24,7 +28,7 @@ export function Tabs({ activeTab, tabs, saveActiveTabAs=null }) {
         <div>
             <div className={styles.tabs}>
                 {
-                    tabs.map((tab, i) => {
+                    tabs.filter(tab => !(isMobile && tab.hideOnMobile === true)).map((tab, i) => {
                         return (
                             <button key={i} className={[ styles.tab, selected === i ? styles.selected : ''].join(' ')} onClick={() => setSelected(i)}>
                                 {
@@ -37,7 +41,7 @@ export function Tabs({ activeTab, tabs, saveActiveTabAs=null }) {
             </div>
             <div>
                 {
-                    tabs[selected].tab
+                    tabs.filter(tab => !(isMobile && tab.hideOnMobile === true))[selected].tab
                 }
             </div>
         </div>

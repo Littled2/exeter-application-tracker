@@ -23,7 +23,7 @@ export function SelectOrganisation({ required, selected, setSelected, c }) {
 
 
     return !loading ? (
-        <>
+        organisations.length !== 0 ? (
             <div className="flex col gap-s">
                 <select value={selected} required={required} onInput={e => setSelected(e.target.value)}>
                     <option>Please select an option</option>
@@ -34,7 +34,9 @@ export function SelectOrganisation({ required, selected, setSelected, c }) {
                     }
                 </select>
             </div>
-        </>
+        ) : (
+            <small className="text-grey">You have not added any organisations. Please add one now.</small>
+        )
     ) : (
         <></>
     )

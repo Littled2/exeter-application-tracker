@@ -4,6 +4,12 @@
     background-color: var(--dark-grey);
     display: flex;
     gap: 6px;
+    background-color: var(--text-orange);
+    font-weight: 500;
+    padding: 8px 16px;
+    font-size: 1.05rem;
+    color: var(--bg-colour);
+    border: none;
 }
 
 .keyIndicators {

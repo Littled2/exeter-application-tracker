@@ -1,19 +1,21 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { usePocket } from "../../../contexts/pocketContext"
 import { useActiveYear } from "../../../contexts/activeYearContext"
+import { AnimatedButton } from "../../AnimatedButton"
 
-export function NewYears({ setTrigger }) {
+export function NewYears({ setTrigger, setActiveYear }) {
 
     const { pb, user } = usePocket()
 
     const [ year, setYear ] = useState()
-
-    const { setActiveYear } = useActiveYear()
+    const [ processing, setProcessing ] = useState(false)
 
     const inputRef = useRef()
 
     const submit = useCallback((e) => {
         e.preventDefault()
+
+        setProcessing(true)
         
         pb.collection('years').create({
             "user": user.id,
@@ -28,6 +30,12 @@ export function NewYears({ setTrigger }) {
 
             setActiveYear(year.id)
 
+            setProcessing(false)
+
+        })
+        .catch(err => {
+            console.error("Error creating new year", err)
+            setProcessing(false)
         })
 
     }, [ year, user, setActiveYear, setTrigger ])
@@ -47,7 +55,9 @@ export function NewYears({ setTrigger }) {
             </div>
 
             <div>
-                <button className="m-submit-btn" type="submit">Create</button>
+                <AnimatedButton submitting={processing} type="submit" className="m-submit-btn">
+                    Create
+                </AnimatedButton>
             </div>
 
         </form>

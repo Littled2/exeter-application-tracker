@@ -1,6 +1,9 @@
 import { useCallback, useState } from "react"
 import styles from "./styles.module.css"
 import { usePocket } from "../../../contexts/pocketContext"
+import { AnimatedButton } from "../../AnimatedButton"
+import { BsKey } from "react-icons/bs"
+import { BiKey } from "react-icons/bi"
 
 export function Login() {
 
@@ -72,15 +75,10 @@ export function Login() {
             }
 
             <div>
-                <button type="submit">
-                    {
-                        !processing ? (
-                            "Login"
-                        ) : (
-                            "Processing..."
-                        )
-                    }
-                </button>
+                <AnimatedButton submitting={processing} type="submit" className="m-submit-btn flex gap-s align-center">
+                    <BiKey />
+                    <span>Log In</span>
+                </AnimatedButton>
             </div>
 
         </form>

@@ -2,6 +2,8 @@ import { useCallback, useEffect } from "react"
 import styles from "./styles.module.css"
 import { AiOutlineClose, AiOutlineDelete } from "react-icons/ai"
 import { usePopupsContext } from "../../contexts/popupsContext"
+import { useMobile } from "../../contexts/mobileContext"
+import { BiChevronLeft } from "react-icons/bi"
 
 export function Popup({ title, children, trigger, setTrigger, onDelete }) {
     
@@ -11,6 +13,7 @@ export function Popup({ title, children, trigger, setTrigger, onDelete }) {
     useEffect(() => {
         if(trigger) {
             setPopups(p => [ ...p, setTrigger ])
+            window.history.pushState({ custom: true }, '', window.location.href)
         } else {
             setPopups(prev => prev.filter(item => item !== setTrigger))
         }
@@ -31,6 +34,8 @@ export function Popup({ title, children, trigger, setTrigger, onDelete }) {
         }
       }, [])
 
+      const { isMobile } = useMobile()
+
     return trigger ? (
         <div className={styles.wrapper}>
             <div className={styles.popup}>
@@ -47,7 +52,13 @@ export function Popup({ title, children, trigger, setTrigger, onDelete }) {
                             )
                         }
                         <button onClick={() => setTrigger(false)}>
-                            <AiOutlineClose />
+                            {
+                                !isMobile ? (
+                                    <AiOutlineClose />
+                                ) : (
+                                    <BiChevronLeft />
+                                )
+                            }
                         </button>
                     </div>
                 </div>

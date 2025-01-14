@@ -1,12 +1,18 @@
 .wrapper {
     display: flex;
     gap: var(--spacing-small);
+    height: 100%;
 }
 
 .chart {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.chart canvas {
     max-height: 250px;
-    /* overflow: hidden; */
-    /* width: 100%; */
 }
 
 .barChartWrapper {
@@ -25,10 +31,21 @@
     gap: var(--spacing-small);
 }
 
+.inner {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .labels {
     display: flex;
     gap: var(--spacing-small);
     justify-content: center;
+}
+
+.illustration {
+    width: 80%;
 }
 
 @media screen and (max-width: 1024px) {
@@ -47,9 +64,11 @@
         /* font-weight: 500; */
         /* max-width: 100%; */
     }
+    .wrapper {
+        height: 100%;
+    }
     .chart {
-        max-height: unset;
-        max-width: 90vw;
+        height: 100%;
     }
     .labels {
         flex-wrap: wrap;

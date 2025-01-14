@@ -55,7 +55,10 @@ export function TodoTasks({ setOpenAppID }) {
                                     <table>
                                         <thead>
                                             <th>Task</th>
-                                            <th width="40%">Deadline</th>
+                                            <th width="35%">
+                                                <span className="m-hide">Deadline</span>
+                                                <span className="m-show-block">Due</span>    
+                                            </th>
                                         </thead>
                                         <tbody>
                                             <TableSection name={"TODO"} amount={todoTasks.length}>
@@ -64,7 +67,7 @@ export function TodoTasks({ setOpenAppID }) {
                                                         return (
                                                             <tr
                                                                 className="cursor-pointer"
-                                                                key={'_' + task.taskID}
+                                                                key={'_' + task.id}
                                                                 onClick={() => setOpenAppID(task.application)}
                                                             >
                                                                 <td>{task?.info}</td>
@@ -86,7 +89,10 @@ export function TodoTasks({ setOpenAppID }) {
                                     <table>
                                         <thead>
                                             <th>Task</th>
-                                            <th width="40%">Deadline</th>
+                                            <th width="35%">
+                                                <span className="m-hide">Deadline</span>
+                                                <span className="m-show-block">Due</span>
+                                            </th>
                                         </thead>
                                         <tbody>
                                             <TableSection name={"Complete"} amount={completeTasks.length}>
@@ -95,7 +101,7 @@ export function TodoTasks({ setOpenAppID }) {
                                                         return (
                                                             <tr
                                                                 className="cursor-pointer"
-                                                                key={'__' + task.taskID}
+                                                                key={'__' + task.id}
                                                                 onClick={() => setOpenAppID(task.application)}
                                                             >
                                                                 <td>{task?.info}</td>

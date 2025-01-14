@@ -11,6 +11,7 @@ import { Tooltip } from "react-tooltip"
 import { Confirm } from "../../components/forms/Confirm/index.jsx"
 import { BsEye } from "react-icons/bs"
 
+
 export function DeadlinesOverView({ openAppID, setOpenAppID }) {
 
     const { user, pb } = usePocket()
@@ -30,8 +31,13 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
         .then(res => {
             setErr(null)
             setUpcomingDeadlines(res)
+            const today = new Date()
+            today.setHours(0, 0, 0, 0);
             setModifiers({
-                highlighted: res.map(doc => new Date(doc.deadline)),
+                pastDeadlines: res.filter(doc => new Date(doc?.deadline) < today).map(day => new Date(day.deadline)),
+                dueMoreThanThreeDays: res.filter(doc => (new Date(doc?.deadline) - today) > 3 * 24 * 60 * 60 * 1000).map(day => new Date(day.deadline)),
+                dueThreeDays: res.filter(doc => (new Date(doc?.deadline) - today) <= 3 * 24 * 60 * 60 * 1000 && (new Date(doc?.deadline) - today) > 24 * 60 * 60 * 1000).map(day => new Date(day.deadline)),
+                dueToday: res.filter(doc => areSameDate(new Date(), new Date(doc?.deadline))).map(day => new Date(day.deadline))
             })
         })
         .catch(err => {
@@ -42,7 +48,7 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
     
 
     const handleDayClick = (day, modifiers) => {
-        if (modifiers.highlighted) {
+        if (modifiers.pastDeadlines || modifiers.dueMoreThanThreeDays || modifiers.dueThreeDays || modifiers.dueToday) {
 
             let applications = upcomingDeadlines.filter(doc => areSameDate(new Date(doc.deadline), day))
 
@@ -67,7 +73,7 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
     
     return !err ? (
         <div className={[ styles.wrapper, openAppID ? styles.hide : '' ].join(' ')}>
-            <div className="flex space-between align-center">
+            <div className="flex space-between align-center m-hide">
                 <b><small className="text-grey">Application Deadlines</small></b>
 
                 <span
@@ -85,20 +91,34 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
                 <Confirm trigger={hideConfirmOpen} setTrigger={setHideConfirmOpen} onConfirm={hideComponent} message={"Are you sure you want to hide this component? You can always un-hide it in Settings > Dashboard menu"} />
 
             </div>
+
             <div className={styles.inner}>
                 <DayPicker
                     style={{ maxWidth: "100%" }}
                     modifiers={modifiers}
+                    // captionLayout="dropdown-months"
                     modifiersStyles={{
-                        highlighted: { backgroundColor: 'var(--late-bg)' },
+                        pastDeadlines: { backgroundColor: "var(--deadline-passed-bg)" },
+                        dueMoreThanThreeDays: { backgroundColor: "var(--deadline-passed-bg)" },
+                        dueThreeDays: { backgroundColor: "var(--upcoming-deadline-bg)" },
+                        dueToday: { backgroundColor: "var(--almost-late-bg)" }
                     }}
                     classNames={{
-                        today: "cal-today",
+                        today: "text-orange",
                         chevron: "cal-chevron"
+                    }}
+                    styles={{
+                        root: { color: 'var(--text-grey)' }
                     }}
                     onDayClick={handleDayClick}
                 />
             </div>
+
+            <div className="m-show-flex gap-s justify-center">
+                <span className={styles.dueToday}>Due today</span>
+                <span className={styles.almostDue}>Next 3 days</span>
+            </div>
+
         </div>
     ) : (
         <p style={{color:"red"}}>Error</p>

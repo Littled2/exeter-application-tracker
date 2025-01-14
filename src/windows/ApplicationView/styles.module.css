@@ -110,6 +110,18 @@
     color: var(--text-white);
 }
 
+.stageSelect {
+    padding: 6px;
+    background-color: transparent;
+    border: 2px solid var(--dark-grey);
+    color: var(--text-orange);
+}
+
+.stageSelect option {
+    background-color: var(--dark-grey);
+    color: var(--text-grey);
+}
+
 @media screen and (max-width: 1024px) {
 
     .window {
@@ -130,11 +142,14 @@
 
     .topBar {
         font-size: 1.1rem;
+        height: var(--header-height-mobile);
+        flex-direction: row-reverse;
     }
 
     .topBar button {
         width: 24pt;
         aspect-ratio: 1;
+        font-size: 22px;
     }
 
     .tablesWrapper {
@@ -153,7 +168,7 @@
     }
 
     .inner {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         overflow-y: auto;
         padding-bottom: 25vh;
     }

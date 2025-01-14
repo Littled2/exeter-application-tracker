@@ -31,7 +31,7 @@
 }
 
 .text-grey {
-    color: grey;
+    color: var(--text-grey);
 }
 
 .header-row {

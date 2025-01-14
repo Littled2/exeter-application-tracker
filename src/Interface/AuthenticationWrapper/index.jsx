@@ -8,14 +8,14 @@ export function AuthenticationWrapper() {
     return(
         <div className={styles.wrapper}>
 
-            <img className={styles.logo} src="/Long Logo.png" alt="Logo" />
+            <img className={styles.logo} src="/logo-no-bg.png" alt="Logo" />
 
-            <Tabs tabs={[
+            <Tabs saveActiveTabAs={"auth_tabs"} tabs={[
                 {
-                    name: "Login",
+                    name: "Log in",
                     tab: (
                         <div className={styles.tab}>
-                            <h3>Login to the application tracker</h3>
+                            <h3 className="text-white">Log in to the application tracker</h3>
 
                             <Login />
                         </div>
@@ -25,7 +25,7 @@ export function AuthenticationWrapper() {
                     name: "Create Account",
                     tab: (
                         <div className={styles.tab}>
-                            <h3>Create an account to use the application tracker</h3>
+                            <h3 className="text-white">Create an account to use the application tracker</h3>
 
                             <CreateAccount />
                         </div>

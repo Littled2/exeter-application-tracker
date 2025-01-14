@@ -45,8 +45,7 @@ export const PocketProvider = ({ children }) => {
 
     useEffect(() => {
 
-      if(!user) {
-        pb.collection("users").unsubscribe()
+      if(!user || !token) {
         return
       }
 
@@ -99,8 +98,12 @@ export const PocketProvider = ({ children }) => {
       }))
     }, [])
 
-    const logout = useCallback(() => {
+    const logout = useCallback(async () => {
+        pb.collection("users").unsubscribe()
+        await pb.realtime.unsubscribeByPrefix("");
         pb.authStore.clear()
+        setUser(null)
+        setToken(null)
     }, [])
 
 

@@ -24,6 +24,13 @@
 }
 
 
+.newButton {
+    color: var(--text-orange);
+    background-color: transparent;
+    border: none;
+}
+
+
 .actionBtn {
     background-color: transparent;
     border: none;

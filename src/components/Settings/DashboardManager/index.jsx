@@ -16,10 +16,10 @@ export function DashboardManager() {
         <div className={styles.tab}>
 
             <div className="flex space-between align-center">
-                <h5 className="text-grey">Customise my dashboard</h5>
+                <h5 className="text-white">Customise my dashboard</h5>
             </div>
 
-            <div className="flex col gap-m">
+            <div className="flex col gap-m text-grey">
                 <label className="flex gap-s align-center">
                     <input onInput={e => setDashboardView("locationsView", e.target.checked)} defaultChecked={user?.locationsView} type="checkbox" />
                     <span>Show locations card</span>

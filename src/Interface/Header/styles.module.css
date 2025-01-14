@@ -12,6 +12,8 @@
     gap: var(--spacing-small);
     align-items: center;
     justify-content: space-between;
+    padding-left: var(--page-padding-left);
+    padding-right: var(--page-padding-right);
 }
 
 .header button {
@@ -49,8 +51,8 @@
 .keyIndicators > span {
     padding: 2px 4px;
     border-radius: 1000px;
-    color: var(--text-orange);
-    background-color: rgba(59, 59, 59, 0.5);
+    color: var(--text-bg);
+    background-color: rgba(59, 59, 59, 0.6);
 }
 
 .mobileGroupsSelect {
@@ -74,14 +76,33 @@
     background-color: var(--text-orange);
 }
 
+.newAppButton {
+    background-color: var(--text-orange);
+    color: var(--bg-colour);
+    /* font-weight: 600; */
+    padding: 0 16px;
+    border: none;
+    border: 2px solid #906021;
+}
+
+.newAppButton:hover {
+    background-color: #906021;
+}
+
+.newAppButton:active {
+    background-color: #d7953e;
+}
+
 @media screen and (max-width: 800px) {
 
     .header {
         font-size: 1.1rem;
+        height: var(--header-height-mobile);
     }
 
     .header header {
         gap: 0;
+        height: var(--header-height-mobile);
     }
     
     .newAppButton {        
@@ -117,8 +138,16 @@
         font-size: 1.1rem;
     }
 
+    .mobilePageTitle {
+        font-size: 1.2em;
+        font-weight: 500;
+        color: var(--text-white);
+        flex: 1;
+    }
+
     .groupSelectWrapper {
         flex: 1;
+        display: none;
     }
 
     .settingsBtn {

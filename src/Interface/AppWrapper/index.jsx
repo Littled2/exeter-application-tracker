@@ -8,6 +8,8 @@ import { ActiveYearProvider } from "../../contexts/activeYearContext.jsx";
 import { NewApplicationPopupContextProvider } from "../../contexts/newApplicationPopupContext.jsx";
 import { PopupContextProvider } from "../../contexts/popupsContext.jsx";
 import { MasterCounterContextProvider } from "../../contexts/masterCounterContext.jsx";
+import { MobileNavTabs } from "../MobileNavTabs/index.jsx";
+import { MobileContextProvider } from "../../contexts/mobileContext.jsx";
 
 ChartJS.register(ArcElement, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
@@ -32,18 +34,22 @@ export function AppWrapper() {
     }, [])
 
     return (
-      <MasterCounterContextProvider>
-        <PocketProvider>
-          <PopupContextProvider>
-            <ActiveYearProvider>
-              <NewApplicationPopupContextProvider>
-                  <Header />
+      <MobileContextProvider>
+        <MasterCounterContextProvider>
+          <PocketProvider>
+            <PopupContextProvider>
+              <ActiveYearProvider>
+                <NewApplicationPopupContextProvider>
+                    <Header />
 
-                  <Body counter={counter} setCounter={setCounter} />
-              </NewApplicationPopupContextProvider>
-            </ActiveYearProvider>
-          </PopupContextProvider>
-        </PocketProvider>
-      </MasterCounterContextProvider>
+                    <Body counter={counter} setCounter={setCounter} />
+
+                    <MobileNavTabs />
+                </NewApplicationPopupContextProvider>
+              </ActiveYearProvider>
+            </PopupContextProvider>
+          </PocketProvider>
+        </MasterCounterContextProvider>
+      </MobileContextProvider>
     )
 }

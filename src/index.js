@@ -9,7 +9,7 @@ import { AppWrapper } from './Interface/AppWrapper';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <AppWrapper />
-  </React.StrictMode>
+  // </React.StrictMode>
 )

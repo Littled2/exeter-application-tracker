@@ -8,10 +8,11 @@ import { usePocket } from "../../contexts/pocketContext"
 import { DocumentUploadDownload } from "./DocumentUploadDownload"
 import { useActiveYear } from "../../contexts/activeYearContext"
 import { Confirm } from "../../components/forms/Confirm"
-import { BiPencil } from "react-icons/bi"
+import { BiChevronLeft, BiPencil } from "react-icons/bi"
 import { usePopupsContext } from "../../contexts/popupsContext"
 import { useMasterCounter } from "../../contexts/masterCounterContext"
 import { Deadline } from "../../components/Deadline"
+import { useMobile } from "../../contexts/mobileContext"
 
 export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }) {
 
@@ -20,6 +21,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
     useEffect(() => {
         if(openAppID) {
             setPopups(p => [ ...p, setOpenAppID ])
+            window.history.pushState({ custom: true }, '', window.location.href)
         } else {
             setPopups(prev => prev.filter(item => item !== setOpenAppID))
         }
@@ -37,6 +39,10 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
     const { pb } = usePocket()
 
     const { setMasterCounter, masterCounter } = useMasterCounter()
+
+    const { isMobile } = useMobile()
+
+    const [ uploadCVReminder, setUploadCVReminder ] = useState(false)
 
 
     useEffect(() => {
@@ -110,6 +116,9 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
     }, [handleKeyPress])
 
     function handleStageChange(e) {
+        if((application.stage === 'idea' || application.stage === 'applying') && e.target.value === 'applied') {
+            setUploadCVReminder(true)
+        }
         pb.collection("applications").update(application.id, { stage: e.target.value })
         .then(() => {
             setMasterCounter(c => c + 1)
@@ -133,7 +142,13 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                 </div>
 
                 <button className={styles.close} onClick={() => setOpenAppID(null)}>
-                    <AiOutlineClose />
+                    {
+                        !isMobile ? (
+                            <AiOutlineClose />
+                        ) : (
+                            <BiChevronLeft />
+                        )
+                    }
                 </button>
             </div>
 
@@ -141,7 +156,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                 {
                     !err ? (
                         !loading ? (
-                            <div className="flex col gap-s">
+                            <div className="flex col gap-m">
 
                                 <div>
                                     <h4 className="text-white flex align-center space-between gap-s">
@@ -166,7 +181,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                                 <td className="text-white">Location(s)</td>
                                                 <td className={styles.mobileTextRight}>
                                                     {
-                                                        application?.expand?.locations?.map((loc, i) => <span key={i}>{loc?.name}{i < application?.expand?.locations.length - 1 ? ", " : ""}</span>)
+                                                        application?.expand?.locations?.map((loc, i) => <span key={"____" + loc?.id}>{loc?.name}{i < application?.expand?.locations.length - 1 ? ", " : ""}</span>)
                                                     }
                                                 </td>
                                             </tr>
@@ -222,13 +237,15 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                 </div>
 
                                 <div className="flex gap-s flex-col">
-                                    <p className="text-white">Stage</p>
+                                    <p className="text-white">Application Stage</p>
                                     <div className={styles.stages}>
-                                        <label className={[ styles.stageLbl, application?.stage === 'idea' ? styles.activeStage : '' ].join(' ')}><input type="radio" onChange={handleStageChange} checked={application?.stage === 'idea'} name="Idea" value="idea"/><span>Idea</span></label>
-                                        <label className={[ styles.stageLbl, application?.stage === 'applying' ? styles.activeStage : '' ].join(' ')}><input type="radio" onChange={handleStageChange} checked={application?.stage === 'applying'} name="Idea" value="applying"/><span>Applying</span></label>
-                                        <label className={[ styles.stageLbl, application?.stage === 'applied' ? styles.activeStage : '' ].join(' ')}><input type="radio" onChange={handleStageChange} checked={application?.stage === 'applied'} name="Idea" value="applied"/><span>Applied</span></label>
-                                        <label className={[ styles.stageLbl, application?.stage === 'declined' ? styles.activeStage : '' ].join(' ')}><input type="radio" onChange={handleStageChange} checked={application?.stage === 'declined'} name="Idea" value="declined"/><span>Declined</span></label>
-                                        <label className={[ styles.stageLbl, application?.stage === 'accepted' ? styles.activeStage : '' ].join(' ')}><input type="radio" onChange={handleStageChange} checked={application?.stage === 'accepted'} name="Idea" value="accepted"/><span>Accepted</span></label>
+                                        <select value={application?.stage} onChange={handleStageChange} className={styles.stageSelect}>
+                                            <option value="idea">Idea</option>
+                                            <option value="applying">Applying</option>
+                                            <option value="applied">Applied</option>
+                                            <option value="declined">Accepted</option>
+                                            <option value="accepted">Decline</option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -270,6 +287,14 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                 }
 
             </div>
+
+            <Popup trigger={uploadCVReminder} setTrigger={setUploadCVReminder}>
+                <div className="flex flex-col gap-m">
+                    <h3 className="text-white">Have you uploaded your CV?</h3>
+                    <p className="text-grey">If you have adapted your CV for this application or written a cover letter, make sure to save it here to track what {application?.expand?.organisation?.name} received.</p>
+                    <button className="m-submit-btn" onClick={() => setUploadCVReminder(false)}>OK</button>
+                </div>
+            </Popup>
 
             <Confirm message={"Are you sure you want to delete this application?"} trigger={confirmOpen} setTrigger={setConfirmOpen} onConfirm={deleteApplication} />
 

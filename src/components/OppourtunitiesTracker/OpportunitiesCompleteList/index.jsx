@@ -39,7 +39,7 @@ export function OpportunitiesCompleteList({ setOpenID }) {
                 {
                     opportunities.map(opp => {
                         return (
-                            <tr onClick={() => setOpenID(opp.id)}>
+                            <tr key={opp?.id} onClick={() => setOpenID(opp.id)}>
                                 <td className="cursor-pointer">{opp?.name}</td>
                                 {/* <td className="cursor-pointer">{opp?.info}</td> */}
                             </tr>

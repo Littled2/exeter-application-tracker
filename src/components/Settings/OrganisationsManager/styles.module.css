@@ -29,6 +29,12 @@
     color: var(--text-white);
 }
 
+.newButton {
+    color: var(--text-orange);
+    background-color: transparent;
+    border: none;
+}
+
 .actionBtn:not(:disabled):hover {
     color: var(--text-orange);
 }

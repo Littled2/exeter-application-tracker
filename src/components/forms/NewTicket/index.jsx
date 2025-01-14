@@ -34,7 +34,7 @@ export function NewTicket({ setTrigger }) {
     return !success ? (
         <form className="form flex col gap-s" onSubmit={submit}>
 
-            <p>Found a bug, or want a feature? Create an engineering ticket.</p>
+            <p className="text-white">Found a bug, or want a feature? Create an engineering ticket.</p>
 
             <div>
                 <div>

@@ -37,12 +37,12 @@ export const ActiveYearProvider = ({ children }) => {
 		})
 		.then(yrs => {
 
-		  setLoading(false)
+		  	setLoading(false)
 
 			setYears(yrs)
 
-			if(!activeYear && years.length > 0) {
-			  setActiveYear(years[0].id)
+			if((!activeYear || !yrs.some(yr => activeYear === yr.id)) && yrs.length > 0) {
+			  	setActiveYear(yrs[0].id)
 			}
 
 		})
@@ -51,7 +51,7 @@ export const ActiveYearProvider = ({ children }) => {
 			setLoading(false)
 		})
 
-		pb.collection('years').subscribe('*', (change) => {
+		pb.collection('years').subscribe('*', () => {
 
 			pb.collection("years").getFullList({
 				sort: "order"
@@ -61,7 +61,7 @@ export const ActiveYearProvider = ({ children }) => {
 				setYears(yrs)
 
 				if(!activeYear && yrs.length > 0) {
-				setActiveYear(yrs[0].id)
+				  	setActiveYear(yrs[0].id)
 				}
 			})
 			.catch(err => console.error("Error getting years", err))
@@ -73,29 +73,29 @@ export const ActiveYearProvider = ({ children }) => {
     }, [ activeYear, user, masterCounter ])
 
     const clearActiveYears = useCallback(() => {
-      setYears([])
+      	setYears([])
     }, [years])
 
     return !loading ? (
-      years.length > 0 ? (
-        <ActiveYearContext.Provider
-          value={{ activeYear, setActiveYear, years, clearActiveYears }}
-        >
-          {children}
-        </ActiveYearContext.Provider>
-      ) : (
-        <div className={styles.noYearsWrapper}>
+      	years.length > 0 ? (
+			<ActiveYearContext.Provider
+				value={{ activeYear, setActiveYear, years, clearActiveYears }}
+			>
+					{children}
+			</ActiveYearContext.Provider>
+     	 ) : (
+			<div className={styles.noYearsWrapper}>
 
-          <h3>Your applications are grouped into 'groups' that you create.</h3>
-          <p>Create one now to begin tracking you applications.</p>
+				<h3 className="text-white">Your applications are organised into groups that you create.</h3>
+				<p className="text-grey">Create one now to begin tracking you applications.</p>
 
-          <NewYears />
+				<NewYears setActiveYear={setActiveYear} />
 
-        </div>
-      )
+			</div>
+     	 )
     ) : (
       <div className={styles.loadingWrapper}>
-        <img className={styles.logo} src="/Long Logo.png" alt="Exeter Application Tracker logo" />
+        	<img className={styles.logo} src="/Long Logo.png" alt="Exeter Application Tracker logo" />
       </div>
     )
 }

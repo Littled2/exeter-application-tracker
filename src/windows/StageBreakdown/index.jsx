@@ -8,6 +8,7 @@ import { useMasterCounter } from "../../contexts/masterCounterContext";
 import { BsEye } from "react-icons/bs";
 import { Tooltip } from "react-tooltip";
 import { Confirm } from "../../components/forms/Confirm";
+import illustration from "./illustration.svg"
 
 
 
@@ -17,12 +18,13 @@ const barChartOptions = {
             display: false
         }
     },
+    maintainAspectRatio: false,
     responsive: true,
     scales: {
         x: {
             stacked: true,
             ticks: {
-                color: '#d28827'
+                color: 'grey'
             }
         },
         y: {
@@ -172,7 +174,7 @@ export function StageBreakdown() {
                         <b className={styles.mobileHeading}><small className="text-grey">Applications by Stage</small></b>
 
                         <span
-                            className="cursor-pointer text-grey hover-text-orange"
+                            className="cursor-pointer text-grey hover-text-orange m-hide"
                             data-tooltip-id="hide-stages-view-tooltip"
                             data-tooltip-content="Hide stages view"
                             data-tooltip-place="bottom"
@@ -192,7 +194,9 @@ export function StageBreakdown() {
                                 <Bar options={barChartOptions} data={barChartData} />
                             </div>
                         ) : (
-                            <></>
+                            <div className={styles.inner}>
+                                <img src={illustration} className={styles.illustration} alt="Little men building a graph illustration" />
+                            </div>
                         )
                     }
                 </div>

@@ -17,14 +17,14 @@
     align-items: center;
 }
 
-.late {
-    background-color: var(--late-bg);
+.dueToday {
+    background-color: var(--almost-late-bg);
     padding-left: 4px;
     padding-right: 4px;
 }
 
-.almostLate {
-    background-color: var(--almost-late-bg);
+.almostDue {
+    background-color: var(--upcoming-deadline-bg);
     padding-left: 4px;
     padding-right: 4px;
 }
@@ -39,6 +39,18 @@
 }
 
 .statusInfo button {
-    background-color: var(--dark-grey);
-    color: var(--text-white);
+    background-color: transparent;
+    color: var(--text-orange);
+    border: none;
+}
+
+.illustration {
+    width: 6rem;
+}
+
+@media screen and (max-width: 800px) {
+    .wrapper {
+        padding-left: var(--page-padding-left);
+        padding-right: var(--page-padding-right);
+    }
 }
