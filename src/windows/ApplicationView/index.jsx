@@ -243,8 +243,8 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                             <option value="idea">Idea</option>
                                             <option value="applying">Applying</option>
                                             <option value="applied">Applied</option>
-                                            <option value="declined">Accepted</option>
-                                            <option value="accepted">Decline</option>
+                                            <option value="accepted">Accepted</option>
+                                            <option value="declined">Decline</option>
                                         </select>
                                     </div>
                                 </div>
