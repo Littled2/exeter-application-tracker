@@ -18,6 +18,11 @@ export const PopupContextProvider = ({ children }) => {
     const { activeMobileTab } = useMobile()
 
 
+    const openPopup = useCallback((setTrigger) => {
+		setPopups(p => [ ...p, setTrigger ])
+		window.history.pushState({ popup: true }, '', window.location.href)
+    }, [ setPopups ])
+
     const closeTopPopup = useCallback(() => {
             
         if(popups.length === 0) {
@@ -29,6 +34,8 @@ export const PopupContextProvider = ({ children }) => {
 
         // Remove the last element from the array
         setPopups(prev => prev.slice(0, -1))
+
+		window.history.back()
 
     }, [ popups, setPopups ])
 
@@ -57,7 +64,7 @@ export const PopupContextProvider = ({ children }) => {
             event.preventDefault()
             // Trigger your custom function or prevent back navigation
             console.log('Back navigation prevented because popups is not empty!')
-            // window.history.pushState(null, '', window.location.href)
+            window.history.pushState(null, '', window.location.href)
 
             closeTopPopup()
           } else {
@@ -69,8 +76,6 @@ export const PopupContextProvider = ({ children }) => {
           handleBackNavigation(event)
         };
     
-        // Push a dummy state and set up the listener
-        window.history.pushState({ custom: true }, '', window.location.href)
         window.addEventListener('popstate', onPopState)
     
         // Cleanup the event listener on component unmount
@@ -93,11 +98,11 @@ export const PopupContextProvider = ({ children }) => {
 
     return (
         <PopupContext.Provider
-          value={{ popups, setPopups, closeTopPopup }}
+          	value={{ popups, setPopups, openPopup, closeTopPopup }}
         >
-          {children}
+          	{children}
         </PopupContext.Provider>
-      )
+    )
 }
 
 

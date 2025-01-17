@@ -8,7 +8,7 @@ export function AuthenticationWrapper() {
     return(
         <div className={styles.wrapper}>
 
-            <img className={styles.logo} src="/logo-no-bg.png" alt="Logo" />
+            <img className={styles.logo} src="/logo-large-no-bg.png" alt="Logo" />
 
             <Tabs saveActiveTabAs={"auth_tabs"} tabs={[
                 {

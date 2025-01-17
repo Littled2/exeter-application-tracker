@@ -29,6 +29,12 @@
     padding-right: 4px;
 }
 
+.passed {
+    background-color: var(--deadline-passed-bg);
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
 .statusInfo {
     padding: 45px;
     display: flex;

@@ -5,3 +5,9 @@
 .today {
     background-color: var(--almost-late-bg) !important;
 }
+
+.passed {
+    background-color: var(--deadline-passed-bg);
+    padding-left: 4px;
+    padding-right: 4px;
+}

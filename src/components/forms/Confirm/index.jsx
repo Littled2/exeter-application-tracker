@@ -5,7 +5,7 @@ import { usePopupsContext } from "../../../contexts/popupsContext";
 
 export function Confirm({ message, trigger, setTrigger, onConfirm }) {
 
-    const { setPopups } = usePopupsContext()
+    const { setPopups, openPopup } = usePopupsContext()
 
     const confirm = () => {
         if(onConfirm) {
@@ -18,7 +18,7 @@ export function Confirm({ message, trigger, setTrigger, onConfirm }) {
     // Control the popups context
     useEffect(() => {
         if(trigger) {
-            setPopups(p => [ ...p, setTrigger ])
+            openPopup(setTrigger)
         } else {
             setPopups(prev => prev.filter(item => item !== setTrigger))
         }

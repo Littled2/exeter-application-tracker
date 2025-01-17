@@ -7,13 +7,12 @@ import { BiChevronLeft } from "react-icons/bi"
 
 export function Popup({ title, children, trigger, setTrigger, onDelete }) {
     
-    const { setPopups } = usePopupsContext()
+    const { setPopups, openPopup } = usePopupsContext()
 
     // Control the popups context
     useEffect(() => {
         if(trigger) {
-            setPopups(p => [ ...p, setTrigger ])
-            window.history.pushState({ custom: true }, '', window.location.href)
+            openPopup(setTrigger)
         } else {
             setPopups(prev => prev.filter(item => item !== setTrigger))
         }

@@ -95,7 +95,7 @@ export const ActiveYearProvider = ({ children }) => {
      	 )
     ) : (
       <div className={styles.loadingWrapper}>
-        	<img className={styles.logo} src="/logo-no-bg.png" alt="Exeter Application Tracker logo" />
+        	<img className={styles.logo} src="/logo-large-no-bg.png" alt="Exeter Application Tracker logo" />
       </div>
     )
 }

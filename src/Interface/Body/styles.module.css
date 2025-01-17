@@ -1,7 +1,6 @@
-
 .wrapper {
     width: 100%;
-    padding: var(--page-padding-left) var(--spacing-medium) var(--page-padding-right) var(--spacing-medium);
+    padding: var(--page-padding-left) 0 var(--page-padding-right) var(--spacing-medium);
     padding-top: calc(var(--header-height) + 1rem);
     padding-bottom: var(--spacing-large);
     display: flex;

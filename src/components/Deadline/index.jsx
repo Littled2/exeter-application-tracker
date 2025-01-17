@@ -18,28 +18,37 @@ export function Deadline({ deadline, highlight=true }) {
     }
 
     return (
-        // If the deadline is in more than 3 days or if it has passed, don't highlight
-        DAYS_TO_DEADLINE > 3 || DAYS_TO_DEADLINE < 0 ? (
-            <span>
+        // If the deadline has passed
+        DAYS_TO_DEADLINE < 0 ? (
+            <span className={styles.passed}>
                 {
                     getDate(deadline)
                 }
             </span>
         ) : (
-            // Deadline is today
-            DAYS_TO_DEADLINE === 0 ? (
-                <span className={styles.today}>
+            // If the deadline is in more than 3 days
+            DAYS_TO_DEADLINE > 3 ? (
+                <span>
                     {
                         getDate(deadline)
                     }
                 </span>
             ) : (
-                // Deadline is in the next three days
-                <spa className={styles.upcomingDeadline}>
-                    {
-                        getDate(deadline)
-                    }
-                </spa>
+                // Deadline is today
+                DAYS_TO_DEADLINE === 0 ? (
+                    <span className={styles.today}>
+                        {
+                            getDate(deadline)
+                        }
+                    </span>
+                ) : (
+                    // Deadline is in the next three days
+                    <spa className={styles.upcomingDeadline}>
+                        {
+                            getDate(deadline)
+                        }
+                    </spa>
+                )
             )
         )
     )

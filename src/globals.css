@@ -198,6 +198,7 @@ select:focus {
 }
 
 
+
 @media screen and (max-width: 800px) {
     :root {
         --page-padding-left: 12px;

@@ -122,6 +122,7 @@ export function IdeasApplying({ openAppID, setOpenAppID }) {
                     <div className={[ styles.key, 'm-hide' ].join(" ")}>
                         <span className={styles.dueToday}>Due today</span>
                         <span className={styles.almostDue}>Next 3 days</span>
+                        <span className={styles.passed}>Passed</span>
                     </div>
                 )
             }

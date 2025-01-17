@@ -16,12 +16,11 @@ import { useMobile } from "../../contexts/mobileContext"
 
 export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }) {
 
-    const { setPopups } = usePopupsContext()
+    const { setPopups, openPopup } = usePopupsContext()
 
     useEffect(() => {
         if(openAppID) {
-            setPopups(p => [ ...p, setOpenAppID ])
-            window.history.pushState({ custom: true }, '', window.location.href)
+            openPopup(setOpenAppID)
         } else {
             setPopups(prev => prev.filter(item => item !== setOpenAppID))
         }

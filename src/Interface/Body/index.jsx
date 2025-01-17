@@ -31,7 +31,6 @@ export function Body({ counter, setCounter }) {
     return (
         activeYear ? (
             <main className={styles.wrapper}>
-
                 <div className={styles.applicationsTasksWrapper}>
 
                     {

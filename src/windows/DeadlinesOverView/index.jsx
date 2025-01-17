@@ -114,9 +114,10 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
                 />
             </div>
 
-            <div className="m-show-flex gap-s justify-center">
+            <div className="flex gap-s justify-center">
                 <span className={styles.dueToday}>Due today</span>
                 <span className={styles.almostDue}>Next 3 days</span>
+                <span className={styles.passed}>Passed</span>
             </div>
 
         </div>

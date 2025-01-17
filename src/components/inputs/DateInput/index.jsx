@@ -14,6 +14,6 @@ export function DateInput({ date, setDate }) {
     }, [ dateValue ])
 
     return (
-        <input type="date" value={dateValue} onChange={e => setDateValue(e.target.value)} />
+        <input type="date" value={dateValue} onClick={e => e.target.click()} onChange={e => setDateValue(e.target.value)} />
     )
 }
