@@ -56,29 +56,17 @@ export function TableRows({ items, openAppID, setOpenAppID, showType=true, showD
                                     <></>
                                 )
                             }
-                            {
+                            {/* {
                                 showDeadlineType ? (
                                     <td className="m-hide">
-                                        {/* {
-                                            item?.deadlineType ? (
-                                                item.deadlineType  === "fixed" ? (
-                                                    "F"
-                                                ) : (
-                                                    "R"
-                                                )
-                                            ) : (
-                                                <></>
-                                            )
-                                        } */}
                                         {
-                                            // item?.deadlineType.substring(0, 1).toUpperCase()
                                             item?.deadlineType
                                         }
                                     </td>
                                 ) : (
                                     <></>
                                 )
-                            }
+                            } */}
                         </tr>
                     )
                 })   

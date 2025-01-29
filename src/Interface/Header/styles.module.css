@@ -4,7 +4,9 @@
     top: 0;
     left: 0;
     z-index: 100;
-    border-bottom: 1.5px solid black;
+    font-size: 0.95rem;
+    /* border-bottom: 1.5px solid black; */
+    box-shadow: rgba(0, 0, 0, 0.4) 1.95px 1.95px 2.6px;
 }
 
 .header header {
@@ -23,6 +25,12 @@
     gap: 4px;
 }
 
+.buttons {
+    flex: 1;
+    display: flex;
+    justify-content: left;
+}
+
 .years {
     display: flex;
     gap: 2px;
@@ -31,10 +39,10 @@
 }
 
 .years > button {
-    /* font-size: 0.8rem; */
     background-color: transparent;
     color: whitesmoke;
     padding: 6px;
+    font-size: inherit;
 }
 
 .selected {
@@ -52,7 +60,7 @@
     padding: 2px 4px;
     border-radius: 1000px;
     color: var(--text-bg);
-    background-color: rgba(59, 59, 59, 0.6);
+    background-color: rgba(59, 59, 59, 0.25);
 }
 
 .mobileGroupsSelect {
@@ -62,9 +70,14 @@
 .mobileGroupsSelect select {
     background-color: transparent;
     color: var(--text-white);
-    font-size: 1rem;
     padding: 4px;
     height: 100%;
+    border-radius: calc(var(--radius) / 2);
+}
+
+.mobileGroupsSelect select:hover,
+.mobileGroupsSelect select:focus {
+    background-color: var(--light-grey);
 }
 
 .mobileGroupsSelect option {
@@ -76,11 +89,16 @@
     background-color: var(--text-orange);
 }
 
+.newAppButtonWrapper {
+    flex: 1;
+    display: flex;
+    justify-content: right;
+}
+
 .newAppButton {
     background-color: var(--text-orange);
     color: var(--bg-colour);
     /* font-weight: 600; */
-    padding: 0 16px;
     border: none;
     border: 2px solid #906021;
 }
@@ -93,16 +111,41 @@
     background-color: #d7953e;
 }
 
+.groupSelectWrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.groupSelectWrapper select {
+    border: none;
+}
+
+.mobileGroupsSelect {
+    display: flex;
+    justify-content: center;
+}
+
 @media screen and (max-width: 800px) {
 
     .header {
         font-size: 1.1rem;
         height: var(--header-height-mobile);
+        /* box-shadow: none; */
     }
 
     .header header {
         gap: 0;
         height: var(--header-height-mobile);
+        flex-direction: row-reverse;
+    }
+
+    .buttons {
+        flex: none;
+    }
+
+    .newAppButtonWrapper {
+        flex: none;
     }
     
     .newAppButton {        
@@ -148,10 +191,5 @@
     .groupSelectWrapper {
         flex: 1;
         display: none;
-    }
-
-    .settingsBtn {
-        border: none;
-        font-size: 1.1rem;
     }
 }

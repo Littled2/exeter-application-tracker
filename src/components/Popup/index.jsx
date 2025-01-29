@@ -18,21 +18,6 @@ export function Popup({ title, children, trigger, setTrigger, onDelete }) {
         }
     }, [ trigger ])
 
-    useEffect(() => {
-        const handlePopState = () => {
-          setTrigger(false)
-          window.history.pushState(null, document.title, window.location.href)
-        };
-    
-        // Add event listener for back navigation
-        window.addEventListener("popstate", handlePopState);
-    
-        // Cleanup event listener on component unmount
-        return () => {
-          window.removeEventListener("popstate", handlePopState);
-        }
-      }, [])
-
       const { isMobile } = useMobile()
 
     return trigger ? (
@@ -45,12 +30,12 @@ export function Popup({ title, children, trigger, setTrigger, onDelete }) {
                     <div className="flex gap-s">
                         {
                             onDelete && (
-                                <button onClick={onDelete}>
+                                <button className="simple-btn" onClick={onDelete}>
                                     <AiOutlineDelete />
                                 </button>
                             )
                         }
-                        <button onClick={() => setTrigger(false)}>
+                        <button className="simple-btn" onClick={() => setTrigger(false)}>
                             {
                                 !isMobile ? (
                                     <AiOutlineClose />

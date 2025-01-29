@@ -18,6 +18,11 @@
     gap: 2px;
 }
 
+.tabs button {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
 .tab.selected {
     background-color: var(--light-grey-selected);
     color: black;
@@ -31,6 +36,10 @@
         border: none;
         flex-wrap: wrap;
     }
+    .tabs button {
+        border-radius: 0;
+    }
+    
     .tab {
         /* font-size: 0.8rem; */
         clip-path: none;

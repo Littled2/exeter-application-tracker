@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
+import TimeAgo from 'react-timeago'
 import { TableSection } from "../../TableSection"
 import { usePocket } from "../../../contexts/pocketContext"
 import { getDate } from "../../../helpers/dates"
 import { useActiveYear } from "../../../contexts/activeYearContext"
 import { Deadline } from "../../Deadline"
 import { Tabs } from "../../Tabs"
+import styles from "./styles.module.css"
 
 export function TodoTasks({ setOpenAppID }) {
 
@@ -54,8 +56,8 @@ export function TodoTasks({ setOpenAppID }) {
                                 tab: (
                                     <table>
                                         <thead>
-                                            <th>Task</th>
-                                            <th width="35%">
+                                            <th className="m-page-padding-left">Task</th>
+                                            <th className="m-page-padding-right" width="35%">
                                                 <span className="m-hide">Deadline</span>
                                                 <span className="m-show-block">Due</span>    
                                             </th>
@@ -70,9 +72,12 @@ export function TodoTasks({ setOpenAppID }) {
                                                                 key={'_' + task.id}
                                                                 onClick={() => setOpenAppID(task.application)}
                                                             >
-                                                                <td>{task?.info}</td>
-                                                                <td>
+                                                                <td className="m-page-padding-left">{task?.info}</td>
+                                                                <td className="m-page-padding-right flex flex-col" style={{ verticalAlign: "top" }}>
                                                                     <Deadline deadline={task?.deadline} />
+                                                                    <small className={styles.timeAgo}>
+                                                                        <TimeAgo date={task?.deadline} />
+                                                                    </small>
                                                                 </td>
                                                             </tr>
                                                         )

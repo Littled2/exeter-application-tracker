@@ -4,6 +4,7 @@
     gap: var(--spacing-small);
     padding: var(--spacing-small);
     border: 1.2px solid var(--border-colour);
+    border-radius: var(--radius);
     width: fit-content;
     flex-direction: column;
 }

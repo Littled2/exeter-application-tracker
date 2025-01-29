@@ -13,6 +13,7 @@ import { usePopupsContext } from "../../contexts/popupsContext"
 import { useMasterCounter } from "../../contexts/masterCounterContext"
 import { Deadline } from "../../components/Deadline"
 import { useMobile } from "../../contexts/mobileContext"
+import { EditAppInfo } from "../../components/forms/EditAppInfo"
 
 export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }) {
 
@@ -32,6 +33,10 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
 
     const [ editAppOpen, setEditAppOpen ] = useState()
     const [ confirmOpen, setConfirmOpen ] = useState(false)
+    const [ editInfoOpen, setEditInfoOpen ] = useState(false)
+
+    const [ closing, setClosing ] = useState(false)
+    const [ opening, setOpening ] = useState(true)
 
     const { activeYear } = useActiveYear()
 
@@ -43,6 +48,12 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
 
     const [ uploadCVReminder, setUploadCVReminder ] = useState(false)
 
+
+    useEffect(() => {
+        setTimeout(() => {
+            setOpening(false)
+        }, 500);
+    }, [])
 
     useEffect(() => {
 
@@ -128,19 +139,27 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
     }
 
     return (
-        <section className={styles.window}>
+        <section className={[ styles.window, opening ? styles.enter : '', closing ? styles.exit : '' ].join(' ')}>
             <div className={styles.topBar}>
 
                 <div className="flex">
                     <button className={styles.close} onClick={() => setConfirmOpen(true)}>
                         <AiOutlineDelete />
                     </button>
-                    <button className={styles.close} onClick={() => setEditAppOpen(true)}>
+                    {/* <button className={styles.close} onClick={() => setEditAppOpen(true)}>
                         <AiOutlineEdit />
-                    </button>
+                    </button> */}
                 </div>
 
-                <button className={styles.close} onClick={() => setOpenAppID(null)}>
+                <button
+                    className={styles.close}
+                    onClick={() => {
+                        setClosing(true)
+                        setTimeout(() => {
+                            setOpenAppID(null)
+                        }, 500);
+                    }}
+                >
                     {
                         !isMobile ? (
                             <AiOutlineClose />
@@ -158,27 +177,30 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                             <div className="flex col gap-m">
 
                                 <div>
-                                    <h4 className="text-white flex align-center space-between gap-s">
-                                        {application?.role}
-                                        <span className="cursor-pointer hover-text-orange" onClick={() => setEditAppOpen(true)}><BiPencil /></span>
-                                    </h4>
-                                    <hr/>
+                                    <div className="text-white flex align-center space-between gap-s">
+                                        <div className="flex flex-col">
+                                            <h4>{application?.expand?.organisation?.name}</h4>
+                                            <p className="text-grey">{application?.role}</p>
+                                        </div>
+                                        <h4 className="cursor-pointer hover-text-orange text-white" onClick={() => setEditAppOpen(true)}><BiPencil /></h4>
+                                    </div>
+                                    <hr className={styles.hr}/>
                                 </div>
 
                                 <Popup title={"Edit Application"} trigger={editAppOpen} setTrigger={setEditAppOpen}>
                                     <EditApp setTrigger={setEditAppOpen} app={application}/>
                                 </Popup>
 
-                                <div className={styles.tablesWrapper}>
+                                <div className="flex gap-m m-flex-col m-gap-0">
                                     <table>
                                         <tbody>
-                                            <tr>
+                                            {/* <tr>
                                                 <td className="text-white">Company</td>
                                                 <td className={styles.mobileTextRight}>{application?.expand?.organisation?.name}</td>
-                                            </tr>
+                                            </tr> */}
                                             <tr>
-                                                <td className="text-white">Location(s)</td>
-                                                <td className={styles.mobileTextRight}>
+                                                <td className="text-white" style={{ verticalAlign: "top" }}>Location(s)</td>
+                                                <td className="text-right">
                                                     {
                                                         application?.expand?.locations?.map((loc, i) => <span key={"____" + loc?.id}>{loc?.name}{i < application?.expand?.locations.length - 1 ? ", " : ""}</span>)
                                                     }
@@ -188,16 +210,16 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                     </table>
                                     <table>
                                         <tbody>
-                                            <tr>
+                                            {/* <tr>
                                                 <td className="text-white">Deadline Type</td>
                                                 <td className={styles.mobileTextRight}>{application?.deadlineType ? application?.deadlineType : "-"}</td>
-                                            </tr>
+                                            </tr> */}
                                             <tr>
                                                 {
                                                     application?.deadlineType === "fixed" ? (
                                                         <>
                                                             <td className="text-white">Deadline</td>
-                                                            <td className={styles.mobileTextRight}>{application?.deadline ? <Deadline highlight={application?.stage === "idea" || application?.stage === "applying"} deadline={application?.deadline} /> : "-"}</td>       
+                                                            <td className="text-right">{application?.deadline ? <Deadline highlight={application?.stage === "idea" || application?.stage === "applying"} deadline={application?.deadline} /> : "-"}</td>       
                                                         </>
                                                     ) : (
                                                         <>
@@ -211,7 +233,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                     </table>
                                 </div>
 
-                                <div className="flex gap-s m-flex-col">
+                                <div className="flex gap-m m-flex-col">
                                     <table>
                                         <tbody>
                                             <tr className={styles.documentRow}>
@@ -259,8 +281,8 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
 
                                 <div>
                                     <div className="flex space-between">
-                                        <p className="text-white">Other Info</p>
-                                        {/* <span className="cursor-pointer text-white" onClick={() => setEditAppOpen(true)}><BiPencil /></span> */}
+                                        <p className="text-white">Notes</p>
+                                        <span className="cursor-pointer text-grey" onClick={() => setEditInfoOpen(true)}><BiPencil /></span>
                                     </div>
                                     <pre style={{fontFamily:"inherit", whiteSpace:"pre-wrap", wordWrap:"break-word", margin:"0" }}>{application?.info}</pre>
                                 </div>
@@ -268,7 +290,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                 <div>
                                     <div>
                                         <h4 className="text-white">Tasks</h4>
-                                        <hr/>
+                                        {/* <hr/> */}
                                     </div>
 
                                     <AppTasksList counter={counter} setCounter={setCounter} application={application} />
@@ -286,6 +308,10 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                 }
 
             </div>
+
+            <Popup title={"Other Info"} trigger={editInfoOpen} setTrigger={setEditInfoOpen}>
+                <EditAppInfo app={application} appID={openAppID} setTrigger={setEditInfoOpen} />
+            </Popup>
 
             <Popup trigger={uploadCVReminder} setTrigger={setUploadCVReminder}>
                 <div className="flex flex-col gap-m">

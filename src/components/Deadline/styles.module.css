@@ -6,8 +6,8 @@
     background-color: var(--almost-late-bg) !important;
 }
 
-.passed {
-    background-color: var(--deadline-passed-bg);
+.upcoming {
+    background-color: var(--deadline-upcoming-bg);
     padding-left: 4px;
     padding-right: 4px;
 }

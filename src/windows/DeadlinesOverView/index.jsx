@@ -10,6 +10,7 @@ import 'react-day-picker/style.css';
 import { Tooltip } from "react-tooltip"
 import { Confirm } from "../../components/forms/Confirm/index.jsx"
 import { BsEye } from "react-icons/bs"
+import { useMobile } from "../../contexts/mobileContext.jsx"
 
 
 export function DeadlinesOverView({ openAppID, setOpenAppID }) {
@@ -17,6 +18,7 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
     const { user, pb } = usePocket()
     const { masterCounter } = useMasterCounter()
     const { activeYear } = useActiveYear()
+    const { isMobile } = useMobile()
     const [ err, setErr ] = useState(null)
     const [ modifiers, setModifiers ] = useState()
     const [ upcomingDeadlines, setUpcomingDeadlines ] = useState([])
@@ -111,13 +113,14 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
                         root: { color: 'var(--text-grey)' }
                     }}
                     onDayClick={handleDayClick}
+                    captionLayout={isMobile ? "dropdown" : "label"}
                 />
             </div>
 
             <div className="flex gap-s justify-center">
                 <span className={styles.dueToday}>Due today</span>
                 <span className={styles.almostDue}>Next 3 days</span>
-                <span className={styles.passed}>Passed</span>
+                <span className={styles.upcoming}>Upcoming</span>
             </div>
 
         </div>

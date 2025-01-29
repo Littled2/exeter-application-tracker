@@ -35,7 +35,7 @@ export const PopupContextProvider = ({ children }) => {
         // Remove the last element from the array
         setPopups(prev => prev.slice(0, -1))
 
-		window.history.back()
+		    window.history.back()
 
     }, [ popups, setPopups ])
 
@@ -56,6 +56,21 @@ export const PopupContextProvider = ({ children }) => {
             document.removeEventListener('keydown', handleKeyPress)
         }
     }, [handleKeyPress])
+
+	useEffect(() => {
+        const handlePopState = () => {
+            console.log("State popped")
+        	//   window.history.pushState(null, document.title, window.location.href)
+        };
+    
+        // Add event listener for back navigation
+        window.addEventListener("popstate", handlePopState);
+    
+        // Cleanup event listener on component unmount
+        return () => {
+          window.removeEventListener("popstate", handlePopState);
+        }
+      }, [])
 
 
     useEffect(() => {

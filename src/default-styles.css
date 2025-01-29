@@ -75,6 +75,18 @@ button {
     padding: 5px;
 }
 
+select,
+input,
+textarea,
+button {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+select {
+    cursor: pointer;
+}
+
 table th {
     font-weight: inherit;
 }

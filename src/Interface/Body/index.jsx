@@ -38,12 +38,19 @@ export function Body({ counter, setCounter }) {
 
                             <div className={styles.dataVisWrapper}>
 
-                                
-
-
                                 {
-                                    ((!isMobile && user?.locationsView) || (isMobile && activeMobileTab === 'analytics')) && (
-                                        <LocationView />
+                                    ((!isMobile && user?.deadlinesView) || (isMobile && activeMobileTab === 'deadlines')) && (
+                                        <>
+                                            {
+                                                isMobile && (
+                                                    <UpcomingDeadlines setOpenAppID={setOpenAppID} />
+                                                )
+                                            }
+
+                                            <h3 className="m-show-block text-grey lin">Next Deadlines</h3>
+
+                                            <DeadlinesOverView openAppID={openAppID} setOpenAppID={setOpenAppID} />
+                                        </>
                                     )
                                 }
         
@@ -56,20 +63,10 @@ export function Body({ counter, setCounter }) {
                                         )
                                     )
                                 }
-                                
+
                                 {
-                                    ((!isMobile && user?.deadlinesView) || (isMobile && activeMobileTab === 'deadlines')) && (
-                                        <>
-                                            {
-                                                isMobile && (
-                                                    <UpcomingDeadlines setOpenAppID={setOpenAppID} />
-                                                )
-                                            }
-
-                                            <h3 className="m-show-block text-grey">Next Deadlines</h3>
-
-                                            <DeadlinesOverView openAppID={openAppID} setOpenAppID={setOpenAppID} />
-                                        </>
+                                    ((!isMobile && user?.locationsView) || (isMobile && activeMobileTab === 'analytics')) && (
+                                        <LocationView />
                                     )
                                 }
         
@@ -99,7 +96,7 @@ export function Body({ counter, setCounter }) {
                                             )
                                         }
 
-                                        <h3 className="text-grey m-hide">Your applications</h3>
+                                        <h3 className="text-grey m-hide line-height-1">Your Applications</h3>
 
                                         <ApplicationsTabs setOpenAppID={setOpenAppID} openAppID={openAppID} />
                                     </div>
@@ -112,8 +109,8 @@ export function Body({ counter, setCounter }) {
                                     <div className={styles.tasksWrapper}>
                                         {/* <b>-</b> */}
                                         {/* <h3 className="m-show-block">Tasks</h3> */}
-                                        <p className="m-show-block text-grey">Open an application to add a task</p>
-                                        <h3 className="text-grey m-hide">Tasks</h3>
+                                        {/* <p className="m-show-block text-grey">Open an application to add a task</p> */}
+                                        <h3 className="text-grey m-hide line-height-1">Tasks</h3>
                                         {/* <b className="m-hide">Track tasks for each application</b> */}
                                         <TodoTasks setOpenAppID={setOpenAppID} />
                                     </div>

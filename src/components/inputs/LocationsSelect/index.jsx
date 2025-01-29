@@ -49,6 +49,7 @@ export function LocationsSelect({ locations, setLocations, c }) {
                 {
                     allLocations.length > 0 ? (
                         <select onChange={e => setLocations(l => [ ...l, e.target.value ])}>
+                            <option disabled value="">Optionally select location(s)</option>
                             {
                                 allLocations
                                 .filter(location => !locations.some((selected) => selected === location.id))

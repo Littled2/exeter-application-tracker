@@ -2,6 +2,8 @@
     flex: 1;
     padding: var(--spacing-small);
     border: 1.2px solid var(--border-colour);
+    border-radius: var(--radius);
+    border-radius: var(--radius);
     width: 200px;
     display: flex;
     flex-direction: column;
@@ -29,10 +31,16 @@
 }
 
 
-.passed {
-    background-color: var(--deadline-passed-bg);
+.upcoming {
+    background-color: var(--deadline-upcoming-bg);
     padding-left: 4px;
     padding-right: 4px;
+}
+
+.dueToday,
+.almostDue,
+.upcoming {
+    font-size: 0.9rem;
 }
 
 @media screen and (max-width: 800px) {

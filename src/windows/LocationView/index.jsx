@@ -10,11 +10,6 @@ import { Tooltip } from 'react-tooltip'
 
 
 
-
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 export function LocationView() {
 
     const { pb, user } = usePocket()
@@ -82,6 +77,15 @@ export function LocationView() {
         })
     }
 
+    const topLocations = Object.keys(appLocations)
+        .sort((a, b) => appLocations[b].freq - appLocations[a].freq)
+        .slice(0, 5)
+
+    const otherFreq = Object.keys(appLocations)
+        .filter(locID => !topLocations.includes(locID))
+        .reduce((sum, locID) => sum + appLocations[locID].freq, 0)
+
+
 
     return (
         <div className={styles.wrapper}>
@@ -107,14 +111,30 @@ export function LocationView() {
                         <table style={{ fontSize: "0.8rem" }} ref={table}>
                             <tbody>
                                 {
-                                    Object.keys(appLocations).map((locID, i) => {
+                                    topLocations.length === 5 && otherFreq.length !== 0 && (
+                                        <tr>
+                                            <td style={{ paddingBottom: "5px" }} colSpan={2} className="text-white">Top 5 locations</td>
+                                        </tr>
+                                    )
+                                }
+                                {
+                                    topLocations
+                                    .map((locID, i) => {
                                         return (
                                             <tr onMouseEnter={() => mouseOver(locID)} onMouseLeave={() => mouseAway()} key={locID + i}>
-                                                <th className='text-white m-hide'>{appLocations[locID].freq}</th>
-                                                <td className={hover !== null ? ((hover === locID) ? 'text-white' : 'text-orange') : 'text-orange'}>{appLocations[locID].name}</td>
+                                                <td style={{ paddingRight: "5px" }} className='text-orange m-hide text-right'>{appLocations[locID].freq}</td>
+                                                <td className={hover !== null ? ((hover === locID) ? 'text-white' : 'text-grey') : 'text-grey'}>{appLocations[locID].name}</td>
                                             </tr>
                                         )
                                     })
+                                }
+                                {
+                                    otherFreq > 0 && (
+                                        <tr>
+                                            <td style={{ paddingRight: "5px" }} className='text-orange m-hide text-right'>{otherFreq}</td>
+                                            <td className='text-grey'>Other</td>
+                                        </tr>
+                                    )
                                 }
                             </tbody>
                         </table>
@@ -132,16 +152,24 @@ export function LocationView() {
                                 let sizePX = (loc.freq * 2) + 2
 
                                 return (
-                                    <div key={i} className={styles.dot} style={{
-                                        width: `${sizePX}px`,
-                                        height: `${sizePX}px`,
-                                        left: `${loc.distX}%`,
-                                        top: `${loc.distY}%`,
-                                        transform: `translateY(calc(-${sizePX}px / 2)) translateX(calc(-${sizePX}px / 2))`
-                                    }}
-                                    onMouseEnter={() => mouseOver(loc.id)}
-                                    onMouseLeave={() => mouseAway()}
-                                    ></div>
+                                    <div
+                                        key={i}
+                                        className={styles.dot}
+                                        style={{
+                                            width: `${sizePX}px`,
+                                            height: `${sizePX}px`,
+                                            left: `${loc.distX}%`,
+                                            top: `${loc.distY}%`,
+                                            transform: `translateY(calc(-${sizePX}px / 2)) translateX(calc(-${sizePX}px / 2))`
+                                        }}
+                                        // onMouseEnter={() => mouseOver(loc.id)}
+                                        // onMouseLeave={() => mouseAway()}
+                                        data-tooltip-id={`location-${locID}-tooltip`}
+                                        data-tooltip-content={`${loc?.name} (${appLocations[locID].freq})`}
+                                        data-tooltip-place="bottom"
+                                    >
+                                        <Tooltip id={`location-${locID}-tooltip`} />
+                                    </div>
                                 )
                             })
                         }

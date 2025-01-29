@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Popup } from "../../components/Popup";
 import { NewApp } from "../../components/forms/NewApp";
-import { IoTicketOutline } from "react-icons/io5"
+import { IoHeadsetOutline, IoHelpOutline, IoSearchOutline, IoTicketOutline } from "react-icons/io5"
 import { NewTicket } from "../../components/forms/NewTicket";
 import { FiMoon } from "react-icons/fi"
 import { BsGear, BsPerson, BsSun } from "react-icons/bs"
@@ -14,6 +14,7 @@ import { useNewApplicationPopup } from "../../contexts/newApplicationPopupContex
 import { Groups } from "../../components/Groups";
 import { BiPlus } from "react-icons/bi";
 import { useMobile } from "../../contexts/mobileContext";
+import { Tooltip } from "react-tooltip";
 
 export function Header() {
 
@@ -56,23 +57,41 @@ export function Header() {
                         user ? (
                             years.length > 0 ? (
                                 <>
+                                    <div className={styles.buttons}>
 
-                                    {
-                                        activeYear ? (
-                                            <div>
-                                                <button className={styles.newAppButton} onClick={() => setNewApplicationPopupOpen(true)}>
-                                                    <span>+<span className="m-hide"> New Application</span></span>
-                                                    <span className={[ styles.keyIndicators, 'windows-only' ].join(' ')}>
-                                                        <span>ctrl</span>
-                                                        +
-                                                        <span>b</span>    
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        ) : (
-                                            <span></span>
-                                        )
-                                    }
+                                        {/* <div className="m-hide">
+                                            <Groups groups={years} />
+                                        </div> */}
+
+                                        <div className="flex gap-s">
+
+                                            <button
+                                                className="simple-btn"
+                                                onClick={() => setSettingsOpen(true)}
+                                                data-tooltip-id="open-settings-tooltip"
+                                                data-tooltip-content="Settings"
+                                                data-tooltip-place="bottom"
+                                            >
+                                                <BsGear />
+                                            </button>
+
+                                            <Tooltip id="open-settings-tooltip" />
+
+                                            <button
+                                                className="m-hide simple-btn"
+                                                onClick={() => setNewTicketOpen(true)}
+                                                data-tooltip-id="contact-support-tooltip"
+                                                data-tooltip-content="Contact support / Suggest feature"
+                                                data-tooltip-place="bottom"
+                                            >
+                                                {/* <IoTicketOutline/> */}
+                                                <IoHelpOutline />
+                                            </button>
+
+                                            <Tooltip id="contact-support-tooltip" />
+
+                                        </div>  
+                                    </div>     
 
                                     <div className={styles.groupSelectWrapper}>
                                         <div className={[  styles.mobileGroupsSelect ].join(" ")}>
@@ -113,36 +132,27 @@ export function Header() {
                                         )
                                     }
 
-                                    <div className="flex gap-m align-center">
-
-                                        {/* <div className="m-hide">
-                                            <Groups groups={years} />
-                                        </div> */}
-
-                                        <div className="flex">
-                                            <button className="m-hide" onClick={() => setNewTicketOpen(true)}>
-                                                <IoTicketOutline/>
-                                                <span>Contact support</span>
-                                            </button>
-                                            {/* <button onClick={() => setLightTheme(!lightTheme)}>
-                                                {
-                                                    !lightTheme ? (
-                                                        <FiMoon />
-                                                    ) : (
-                                                        <BsSun />
-                                                    )
-                                                }
-                                            </button> */}
-                                            <button className={styles.settingsBtn} onClick={() => setSettingsOpen(true)}>
-                                                <BsGear />
-                                            </button>
-                                        </div>  
-                                    </div>     
+                                    {
+                                        activeYear ? (
+                                            <div className={styles.newAppButtonWrapper}>
+                                                <button className={styles.newAppButton} onClick={() => setNewApplicationPopupOpen(true)}>
+                                                    <span>+<span className="m-hide"> New Application</span></span>
+                                                    <span className={[ styles.keyIndicators, 'windows-only' ].join(' ')}>
+                                                        <span>ctrl</span>
+                                                        +
+                                                        <span>b</span>    
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        ) : (
+                                            <span></span>
+                                        )
+                                    }
                                 </>
                             ) : (
                                 <>
                                     <br />
-                                    <button onClick={() => setSettingsOpen(true)}>
+                                    <button className="simple-btn" onClick={() => setSettingsOpen(true)}>
                                         <BsGear />
                                     </button>
                                 </>
