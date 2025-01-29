@@ -1,5 +1,6 @@
 export function getDate(dateString) {
-    return (new Date(dateString)).toLocaleString().slice(0, 10).replace(/\//g, "-")
+    return new Date(dateString).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).replace(',', '')
+    // return (new Date(dateString)).toLocaleString().slice(0, 10).replace(/\//g, "-")
 }
 
 export function areSameDate(date1, date2) {

@@ -195,7 +195,8 @@ export function StageBreakdown() {
                             </div>
                         ) : (
                             <div className={styles.inner}>
-                                <img src={illustration} className={styles.illustration} alt="Little men building a graph illustration" />
+                                {/* <img src={illustration} className={styles.illustration} alt="Little men building a graph illustration" /> */}
+                                <small className="text-grey">Loading...</small>
                             </div>
                         )
                     }

@@ -68,7 +68,7 @@ export function DocumentUploadDownload({ application, fileKeyName, displayName }
 
     return (
         <>
-            <small className="flex gap-s">
+            <small className="flex gap-s justify-end">
                 {
                     fileToken ? (
                         <>
@@ -96,7 +96,7 @@ export function DocumentUploadDownload({ application, fileKeyName, displayName }
                                             <input style={{ display:"none" }} hidden type="file"  onChange={e => uploadFile(e.target.files[0])} accept=".doc,.docx,.pdf,.txt,.rtf,.odt,.ods,.odp,.wps,.wpd,.html,.htm,.xml,.xps,.tex,.md,.csv,.tsv,.xls,.xlsx,.ppt,.pptx,.pub,.one,.pages,.numbers,.key,.epub,.mobi,.djvu,.json,.yaml,.yml,.ini,.log,.cfg,.conf"/>    
                                         </label>
                                     ) : (
-                                        <small>Uploading...</small>
+                                        <small className="text-grey">Uploading...</small>
                                     )
                                 ) : (
                                     <span style={{ fontSize: "1.2rem" }} className={styles.bin} onClick={() => setConfirmDelete(true)}><BiTrash/></span>

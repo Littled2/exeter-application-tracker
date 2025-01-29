@@ -101,7 +101,7 @@ export function IdeasApplying({ openAppID, setOpenAppID }) {
                         <th>Name</th>
                         <th className="t-hide" width="6%">Type</th>
                         <th className="m-hide" width="10%">Deadline</th>
-                        <th className="m-hide" width="20%">Deadline Type</th>
+                        {/* <th className="m-hide" width="20%">Deadline Type</th> */}
                     </tr>
                 </thead>
                 <tbody>

@@ -140,11 +140,41 @@ export function EditApp({ app, setTrigger }) {
                         <label className="text-orange">What stage is this application at?<span className="text-red"> *</span></label>
                     </div>
                     <div className="flex col gap-s" style={{ alignItems: "start" }}>
-                        <label className="flex align-center gap-s text-grey"><input onChange={handleStageChange} defaultChecked={app?.stage === 'idea'} type="radio" name="Idea" value="idea"/><span>Idea</span></label>
-                        <label className="flex align-center gap-s text-grey"><input onChange={handleStageChange} defaultChecked={app?.stage === 'applying'} type="radio" name="Idea" value="applying"/><span>Applying</span></label>
-                        <label className="flex align-center gap-s text-grey"><input onChange={handleStageChange} defaultChecked={app?.stage === 'applied'} type="radio" name="Idea" value="applied"/><span>Applied</span></label>
-                        <label className="flex align-center gap-s text-grey"><input onChange={handleStageChange} defaultChecked={app?.stage === 'accepted'} type="radio" name="Idea" value="accepted"/><span>Accepted</span></label>
-                        <label className="flex align-center gap-s text-grey"><input onChange={handleStageChange} defaultChecked={app?.stage === 'declined'} type="radio" name="Idea" value="declined"/><span>Declined</span></label>
+                        <label className="flex align-center gap-s text-grey">
+                            <input onChange={handleStageChange} defaultChecked={app?.stage === 'idea'} type="radio" name="Idea" value="idea" style={{ width: "16px", height: "16px" }}/>
+                            <div className="flex flex-col">
+                                <span className="text-white">Idea</span>
+                                <small>Something you might apply to</small>
+                            </div>
+                        </label>
+                        <label className="flex align-center gap-s text-grey">
+                            <input onChange={handleStageChange} defaultChecked={app?.stage === 'applying'} type="radio" name="Idea" value="applying" style={{ width: "16px", height: "16px" }}/>
+                            <div className="flex flex-col">
+                                <span className="text-white">Applying</span>
+                                <small>In the process of applying</small>
+                            </div>
+                        </label>
+                        <label className="flex align-center gap-s text-grey">
+                            <input onChange={handleStageChange} defaultChecked={app?.stage === 'applied'} type="radio" name="Idea" value="applied" style={{ width: "16px", height: "16px" }}/>
+                            <div className="flex flex-col">
+                                <span className="text-white">Applied</span>
+                                <small>Application has been sent</small>
+                            </div>
+                        </label>
+                        <label className="flex align-center gap-s text-grey">
+                            <input onChange={handleStageChange} defaultChecked={app?.stage === 'accepted'} type="radio" name="Idea" value="accepted" style={{ width: "16px", height: "16px" }}/>
+                            <div className="flex flex-col">
+                                <span className="text-white">Accepted</span>
+                                <small>Successful application</small>
+                            </div>
+                        </label>
+                        <label className="flex align-center gap-s text-grey">
+                            <input onChange={handleStageChange} defaultChecked={app?.stage === 'declined'} type="radio" name="Idea" value="declined" style={{ width: "16px", height: "16px" }}/>
+                            <div className="flex flex-col">
+                                <span className="text-white">Declined</span>
+                                <small>Unsuccessful application</small>
+                            </div>
+                        </label>
                     </div>
                     {
                         error?.response?.data?.stage && (

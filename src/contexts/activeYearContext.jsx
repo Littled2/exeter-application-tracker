@@ -10,6 +10,9 @@ import styles from "./activeYearContext.module.css"
 import { usePocket } from "./pocketContext"
 import { NewYears } from "../components/forms/NewYears"
 import { useMasterCounter } from "../contexts/masterCounterContext"
+import { BiArrowBack, BiLogOut } from "react-icons/bi"
+import { IoLogOutOutline } from "react-icons/io5"
+import { Tooltip } from "react-tooltip"
 
 const ActiveYearContext = createContext({})
 
@@ -21,7 +24,7 @@ export const ActiveYearProvider = ({ children }) => {
 
     const [ loading, setLoading ] = useState(true)
 
-    const { pb, user } = usePocket()
+    const { pb, user, logout } = usePocket()
 	const { masterCounter } = useMasterCounter()
 
     useEffect(() => {
@@ -36,6 +39,8 @@ export const ActiveYearProvider = ({ children }) => {
 			sort: "order,created"
 		})
 		.then(yrs => {
+
+			console.log(yrs)
 
 		  	setLoading(false)
 
@@ -84,13 +89,30 @@ export const ActiveYearProvider = ({ children }) => {
 					{children}
 			</ActiveYearContext.Provider>
      	 ) : (
-			<div className={styles.noYearsWrapper}>
+			<div className={styles.wrapper}>
 
-				<h3 className="text-white">Your applications are organised into groups that you create.</h3>
-				<p className="text-grey">Create one now to begin tracking you applications.</p>
+				<button
+					className={[ styles.logOut, "simple-btn" ].join(" ")}
+					data-tooltip-id="active-year-log-out-tooltip"
+					data-tooltip-content="Log out"
+					data-tooltip-place="bottom"
+					onClick={() => {
+						logout()
+					}}
+				>		
+					<IoLogOutOutline />
+				</button>
 
-				<NewYears setActiveYear={setActiveYear} />
+				<Tooltip id="active-year-log-out-tooltip" />
 
+				<div className={styles.noYearsWrapper}>
+
+					<h3 className="text-white">Your applications are organised into groups that you create.</h3>
+					<p className="text-grey">Create one now to begin tracking you applications.</p>
+
+					<NewYears setActiveYear={setActiveYear} />
+
+				</div>
 			</div>
      	 )
     ) : (

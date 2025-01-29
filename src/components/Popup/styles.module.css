@@ -21,6 +21,7 @@
     max-height: 85vh;
     background-color: var(--bg-colour);
     border: 2px solid var(--border-colour);
+    border-radius: var(--radius);
     display: flex;
     flex-direction: column;
 }
@@ -29,7 +30,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 4px;
+    padding: calc(var(--spacing-small) / 2) var(--spacing-small);
     background-color: var(--border-colour);
     color: var(--text-white);
 }
@@ -40,8 +41,11 @@
     align-items: center;
     color: var(--text-white);
 }
+.popup .top button:hover {
+    background-color: var(--light-grey);
+}
 .popup .content {
-    padding: 0.75rem;
+    padding: var(--spacing-small);
     overflow-y: auto;
 }
 

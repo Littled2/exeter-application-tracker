@@ -83,12 +83,15 @@ export function NewApp({ setTrigger }) {
     return (
         <>
             <form className="form flex col gap-m" onSubmit={submit}>
+
+                <small className="text-grey">Fields marked with <span className="text-red">*</span> are required</small>
+
                 <div className="flex col">
                     <div>
                         <div>
                             <label>Role<span className="text-red"> *</span></label>
                         </div>
-                        <input ref={nameInput} type="text" required value={role} onInput={e => setRole(e.target.value)}/>
+                        <input ref={nameInput} type="text" required value={role} onInput={e => setRole(e.target.value)} placeholder="Eg. Summer Intern" />
                     </div>
                     {
                         error?.response?.data?.role && (
@@ -144,11 +147,41 @@ export function NewApp({ setTrigger }) {
                         <label className="text-orange">What stage is this application at?<span className="text-red"> *</span></label>
                     </div>
                     <div className="flex col gap-s" style={{ alignItems: "start" }}>
-                        <label className="flex align-center gap-s text-grey"><input onChange={handleStageChange} defaultChecked={true} type="radio" name="Idea" value="idea"/><span>Idea</span></label>
-                        <label className="flex align-center gap-s text-grey"><input onChange={handleStageChange} defaultChecked={false} type="radio" name="Idea" value="applying"/><span>Applying</span></label>
-                        <label className="flex align-center gap-s text-grey"><input onChange={handleStageChange} defaultChecked={false} type="radio" name="Idea" value="applied"/><span>Applied</span></label>
-                        <label className="flex align-center gap-s text-grey"><input onChange={handleStageChange} defaultChecked={false} type="radio" name="Idea" value="accepted"/><span>Accepted</span></label>
-                        <label className="flex align-center gap-s text-grey"><input onChange={handleStageChange} defaultChecked={false} type="radio" name="Idea" value="declined"/><span>Declined</span></label>
+                        <label className="flex align-center gap-s text-grey">
+                            <input onChange={handleStageChange} defaultChecked={true} type="radio" name="Idea" value="idea" style={{ width: "16px", height: "16px" }}/>
+                            <div className="flex flex-col">
+                                <span className="text-white">Idea</span>
+                                <small>Something you might apply to</small>
+                            </div>
+                        </label>
+                        <label className="flex align-center gap-s text-grey">
+                            <input onChange={handleStageChange} defaultChecked={false} type="radio" name="Idea" value="applying" style={{ width: "16px", height: "16px" }}/>
+                            <div className="flex flex-col">
+                                <span className="text-white">Applying</span>
+                                <small>In the process of applying</small>
+                            </div>
+                        </label>
+                        <label className="flex align-center gap-s text-grey">
+                            <input onChange={handleStageChange} defaultChecked={false} type="radio" name="Idea" value="applied" style={{ width: "16px", height: "16px" }}/>
+                            <div className="flex flex-col">
+                                <span className="text-white">Applied</span>
+                                <small>Application has been sent</small>
+                            </div>
+                        </label>
+                        <label className="flex align-center gap-s text-grey">
+                            <input onChange={handleStageChange} defaultChecked={false} type="radio" name="Idea" value="accepted" style={{ width: "16px", height: "16px" }}/>
+                            <div className="flex flex-col">
+                                <span className="text-white">Accepted</span>
+                                <small>Successful application</small>
+                            </div>
+                        </label>
+                        <label className="flex align-center gap-s text-grey">
+                            <input onChange={handleStageChange} defaultChecked={false} type="radio" name="Idea" value="declined" style={{ width: "16px", height: "16px" }}/>
+                            <div className="flex flex-col">
+                                <span className="text-white">Declined</span>
+                                <small>Unsuccessful application</small>
+                            </div>
+                        </label>
                     </div>
                     {
                         error?.response?.data?.stage && (
@@ -160,12 +193,16 @@ export function NewApp({ setTrigger }) {
                     <div className="flex gap-s">
                         <div>
                             <div>
-                                <label>Deadline Type</label>
+                                <label>Deadline?</label>
                             </div>
-                            <select value={deadlineType} onInput={e => setDeadlineType(e.target.value)}>
+                            {/* <select value={deadlineType} onInput={e => setDeadlineType(e.target.value)}>
                                 <option value="rolling">Rolling</option>
                                 <option value="fixed">Fixed</option>
                                 <option value="none">None</option>
+                            </select> */}
+                             <select value={deadlineType} onInput={e => setDeadlineType(e.target.value)}>
+                                <option value={true}>Yes</option>
+                                <option value={false}>No</option>
                             </select>
                         </div>
                         <div>

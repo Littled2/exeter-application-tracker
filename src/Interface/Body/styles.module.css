@@ -1,7 +1,7 @@
 .wrapper {
     width: 100%;
-    padding: var(--page-padding-left) 0 var(--page-padding-right) var(--spacing-medium);
-    padding-top: calc(var(--header-height) + 1rem);
+    padding: 0 var(--page-padding-left) 25vh var(--page-padding-right);
+    padding-top: calc(var(--header-height) + var(--spacing-medium));
     padding-bottom: var(--spacing-large);
     display: flex;
     gap: var(--spacing-medium);
@@ -59,6 +59,7 @@
         display: flex;
         flex-direction: column;
         gap: var(--spacing-small);
+        padding-top: 0;
     }
     .applicationsWrapper td {
         padding-top: 12px;
@@ -102,7 +103,7 @@
         gap: var(--spacing-large);
     }
     .tasksWrapper {
-        padding-top: var(--spacing-medium);
+        padding-top: 0;
     }
     .asidePage {
         min-width: unset;

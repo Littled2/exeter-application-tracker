@@ -4,6 +4,7 @@
     gap: 4px;
     align-items: center;
     text-decoration: underline;
+    color: var(--text-blue);
 }
 
 .bin {
