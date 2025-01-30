@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { ApplicationView } from "../../windows/ApplicationView"
 import { LocationView } from "../../windows/LocationView"
 import { DeadlinesOverView } from "../../windows/DeadlinesOverView"
 import { StageBreakdown } from "../../windows/StageBreakdown"
 import styles from "./styles.module.css"
-import { TodoTasks } from "../../components/TasksList/TodoTasks"
-import { DeadlinesBreakdown } from "../../windows/DeadlinesBreakdown"
 import { ApplicationsTabs } from "../../windows/ApplicationsTabs"
 import { useActiveYear } from "../../contexts/activeYearContext"
 
@@ -14,8 +12,8 @@ import { usePocket } from "../../contexts/pocketContext"
 import { BsPlus } from "react-icons/bs"
 import { useNewApplicationPopup } from "../../contexts/newApplicationPopupContext"
 import { useMobile } from "../../contexts/mobileContext"
-import { usePopupsContext } from "../../contexts/popupsContext"
 import { UpcomingDeadlines } from "../../windows/UpcomingDeadlines"
+import { TasksWrapper } from "../TasksWrapper"
 
 
 export function Body({ counter, setCounter }) {
@@ -47,7 +45,7 @@ export function Body({ counter, setCounter }) {
                                                 )
                                             }
 
-                                            <h3 className="m-show-block text-grey lin">Next Deadlines</h3>
+                                            <h3 className="m-show-block text-white">Next Deadlines</h3>
 
                                             <DeadlinesOverView openAppID={openAppID} setOpenAppID={setOpenAppID} />
                                         </>
@@ -106,14 +104,7 @@ export function Body({ counter, setCounter }) {
 
                             {
                                 ((!isMobile && !openAppID) || (isMobile && activeMobileTab === 'tasks')) ? (
-                                    <div className={styles.tasksWrapper}>
-                                        {/* <b>-</b> */}
-                                        {/* <h3 className="m-show-block">Tasks</h3> */}
-                                        {/* <p className="m-show-block text-grey">Open an application to add a task</p> */}
-                                        <h3 className="text-grey m-hide line-height-1">Tasks</h3>
-                                        {/* <b className="m-hide">Track tasks for each application</b> */}
-                                        <TodoTasks setOpenAppID={setOpenAppID} />
-                                    </div>
+                                    <TasksWrapper setOpenAppID={setOpenAppID} />
                                 ) : (
                                     <></>
                                 )

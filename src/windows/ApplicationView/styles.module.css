@@ -11,11 +11,11 @@
 }
 
 .window.enter {
-    animation: slideIn 0.5s forwards;
+    animation: slideIn var(--popup-enter-exit-time) forwards;
 }
 
 .window.exit {
-    animation: slideOut 0.5s forwards;
+    animation: slideOut var(--popup-enter-exit-time) forwards;
 }
 
 .hr {
@@ -41,7 +41,7 @@
 }
 
 .inner {
-    padding: var(--spacing-small);
+    padding: var(--page-padding-left);
     overflow-x: hidden;
 }
 
@@ -71,6 +71,16 @@
 
 .link:hover {
     text-decoration: underline;
+}
+
+.info:hover {
+    outline: 2px dashed var(--border-colour);
+    border-radius: calc(var(--spacing-small) / 3);
+    cursor: text;
+}
+
+.info:active {
+    outline: 2px dashed var(--light-grey);
 }
 
 .keyIndicators {
@@ -114,6 +124,12 @@
     background-color: transparent;
     border: 2px solid var(--dark-grey);
     color: var(--text-orange);
+    border-radius: calc(var(--spacing-small) / 2);
+}
+
+.stageSelect:hover,
+.stageSelect:focus {
+    background-color: var(--light-grey);
 }
 
 .stageSelect option {

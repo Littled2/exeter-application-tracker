@@ -71,6 +71,14 @@
     gap: var(--spacing-small);
 }
 
+.gap-m {
+    gap: var(--spacing-medium);
+}
+
+.gap-l {
+    gap: var(--spacing-large);
+}
+
 .justify-center {
     justify-content: center;
 }
@@ -95,8 +103,8 @@
     align-items: center;
 }
 
-.gap-m {
-    gap: var(--spacing-medium);
+.align-start {
+    align-items: start;
 }
 
 .border-radius {
@@ -152,14 +160,6 @@
     color: var(--text-orange);
 }
 
-.m-page-padding-left {
-    padding-left: var(--page-padding-left);
-}
-
-.m-page-padding-right {
-    padding-right: var(--page-padding-right);
-}
-
 
 
 
@@ -202,5 +202,11 @@
     }
     .m-gap-0 {
         gap: 0 !important;
+    }
+    .m-page-padding-left {
+        padding-left: var(--page-padding-left);
+    }
+    .m-page-padding-right {
+        padding-right: var(--page-padding-right);
     }
 }

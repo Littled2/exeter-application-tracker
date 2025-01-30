@@ -94,7 +94,7 @@ export function Header() {
                                     </div>     
 
                                     <div className={styles.groupSelectWrapper}>
-                                        <div className={[  styles.mobileGroupsSelect ].join(" ")}>
+                                        <div className={styles.groupSelect}>
                                             <select onInput={e => setActiveYear(e.target.value)} value={activeYear}>
                                                 {
                                                     years.map(year => {
@@ -104,10 +104,11 @@ export function Header() {
                                             </select>
                                         </div>
                                     </div>
+                                    
 
                                     {
                                         isMobile && (
-                                            <>
+                                            <div className="flex-1 flex flex-col align-start justify-center">
                                                 {
                                                     activeMobileTab === 'deadlines' && (
                                                         <h1 className={styles.mobilePageTitle}>Upcoming Deadlines</h1>
@@ -128,7 +129,19 @@ export function Header() {
                                                         <h1 className={styles.mobilePageTitle}>Tasks</h1>
                                                     )
                                                 }
-                                            </>
+
+                                                <div className={styles.mobileGroupSelectWrapper}>
+                                                    <div className={styles.groupSelect}>
+                                                        <select onInput={e => setActiveYear(e.target.value)} value={activeYear}>
+                                                            {
+                                                                years.map(year => {
+                                                                    return <option key={'_dd_' + year.id} value={year.id}>{year.year}</option>
+                                                                })
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         )
                                     }
 

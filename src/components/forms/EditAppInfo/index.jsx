@@ -33,7 +33,7 @@ export function EditAppInfo({ appID, app, setTrigger }) {
 
             <div className="flex flex-col gap-s">
                 <label>Notes</label>
-                <textarea rows={30} value={info} onInput={e => setInfo(e.target.value)}></textarea>
+                <textarea rows={15} value={info} onInput={e => setInfo(e.target.value)}></textarea>
             </div>
 
             {

@@ -63,11 +63,11 @@
     background-color: rgba(59, 59, 59, 0.25);
 }
 
-.mobileGroupsSelect {
+.groupSelect {
     flex: 1;
 }
 
-.mobileGroupsSelect select {
+.groupSelect select {
     background-color: transparent;
     color: var(--text-white);
     padding: 4px;
@@ -75,17 +75,17 @@
     border-radius: calc(var(--radius) / 2);
 }
 
-.mobileGroupsSelect select:hover,
-.mobileGroupsSelect select:focus {
+.groupSelect select:hover,
+.groupSelect select:focus {
     background-color: var(--light-grey);
 }
 
-.mobileGroupsSelect option {
+.groupSelect option {
     background-color: var(--dark-grey);
     color: var(--text-white);
 }
 
-.mobileGroupsSelect option:checked {
+.groupSelect option:checked {
     background-color: var(--text-orange);
 }
 
@@ -111,17 +111,19 @@
     background-color: #d7953e;
 }
 
-.groupSelectWrapper {
+.groupSelectWrapper
+.mobileGroupSelectWrapper {
     flex: 1;
     display: flex;
     justify-content: center;
 }
 
-.groupSelectWrapper select {
+.groupSelectWrapper select,
+.mobileGroupSelectWrapper select {
     border: none;
 }
 
-.mobileGroupsSelect {
+.groupSelect {
     display: flex;
     justify-content: center;
 }
@@ -175,14 +177,14 @@
         background-color: #906021;
     }
 
-    .mobileGroupsSelect select {
+    .groupSelect select {
         border: none;
         padding-left: 0;
         font-size: 1.1rem;
     }
 
     .mobilePageTitle {
-        font-size: 1.2em;
+        font-size: 1em;
         font-weight: 500;
         color: var(--text-white);
         flex: 1;
@@ -191,5 +193,11 @@
     .groupSelectWrapper {
         flex: 1;
         display: none;
+    }
+
+    .mobileGroupSelectWrapper select {
+        font-size: 0.7rem;
+        padding: 0;
+        color: var(--text-grey);
     }
 }

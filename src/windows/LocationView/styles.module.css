@@ -65,19 +65,21 @@
 @media screen and (max-width: 800px) {
     .wrapper {
         width: 100%;
-        height: 20px;
+        /* height: 20px; */
     }
     .innerWrapper {
-        flex-direction: row-reverse;
+        flex-direction: column-reverse;
     }
     .list {
         max-height: 100%;
+        display: flex;
+        justify-content: center;
     }
     .image {
         max-width: 100%;
     }
     .inner {
-        display: none;
+        /* display: none; */
     }
 
 }

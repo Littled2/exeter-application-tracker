@@ -58,7 +58,7 @@
 @media screen and (max-width: 800px) {
     .outer {
         display: flex;
-        height: min-content;
+        height: 12rem;
     }
     .mobileHeading {
         /* font-size: 1.4rem; */

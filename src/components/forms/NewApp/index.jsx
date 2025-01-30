@@ -171,14 +171,14 @@ export function NewApp({ setTrigger }) {
                         <label className="flex align-center gap-s text-grey">
                             <input onChange={handleStageChange} defaultChecked={false} type="radio" name="Idea" value="accepted" style={{ width: "16px", height: "16px" }}/>
                             <div className="flex flex-col">
-                                <span className="text-white">Accepted</span>
+                                <span className="text-green">Accepted</span>
                                 <small>Successful application</small>
                             </div>
                         </label>
                         <label className="flex align-center gap-s text-grey">
                             <input onChange={handleStageChange} defaultChecked={false} type="radio" name="Idea" value="declined" style={{ width: "16px", height: "16px" }}/>
                             <div className="flex flex-col">
-                                <span className="text-white">Declined</span>
+                                <span className="text-red">Declined</span>
                                 <small>Unsuccessful application</small>
                             </div>
                         </label>
