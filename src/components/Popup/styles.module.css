@@ -24,6 +24,7 @@
     border-radius: var(--radius);
     display: flex;
     flex-direction: column;
+    animation: slideIn var(--popup-enter-exit-time);
 }
 
 .popup .top {
@@ -49,6 +50,20 @@
     overflow-y: auto;
 }
 
+
+@keyframes slideIn {
+    from {
+        transform: translateY(5%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+
 @media screen and (max-width: 800px) {
     .wrapper {
         padding: 0;
@@ -58,6 +73,7 @@
         height: 100vh;
         max-width: unset;
         max-height: unset;
+        animation: none;
     }
     .popup .top {
         font-size: 1.1rem;

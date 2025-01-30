@@ -5,7 +5,12 @@ export function DateInput({ date, setDate }) {
     const [ dateValue, setDateValue ] = useState("")
 
     useEffect(() => {
-        let parts = date.toLocaleString().slice(0, 10).split("/")
+        let parts
+        if(!date) {
+            parts = (new Date()).toLocaleString().slice(0, 10).split("/")
+        } else {
+            parts = date.toLocaleString().slice(0, 10).split("/")
+        }
         setDateValue(parts[2] + "-" + parts[1] + "-" + parts[0])
     }, [])
 

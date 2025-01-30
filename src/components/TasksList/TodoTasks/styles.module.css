@@ -2,3 +2,32 @@
     font-size: 0.7rem;
     color: var(--text-grey);
 }
+
+.checkbox {
+    font-size: 0.9rem;
+}
+
+.statusInfo {
+    padding: 45px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
+    align-items: center;
+    justify-content: center;
+}
+
+.statusInfo button {
+    background-color: transparent;
+    color: var(--text-orange);
+    border: none;
+}
+
+.illustration {
+    width: 6rem;
+}
+
+@media screen and (max-width: 1024px) {
+    .checkbox {
+        font-size: 30px;
+    }
+}

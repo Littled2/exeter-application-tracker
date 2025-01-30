@@ -98,8 +98,8 @@ export function AcceptedDeclined({ openAppID, setOpenAppID }) {
             <table className={styles.wrapper}>
                 <thead className="m-hide">
                     <tr>
-                        <th width="12%">Company</th>
-                        <th>Name</th>
+                        <th width="12%">Organisation</th>
+                        <th>Role</th>
                         <th className="t-hide" width="6%">Type</th>
                         <th className="m-hide" width="10%">Deadline</th>
                         {/* <th className="m-hide" width="20%">Deadline Type</th> */}
@@ -123,7 +123,7 @@ export function AcceptedDeclined({ openAppID, setOpenAppID }) {
                     <div className={styles.statusInfo}>
                         <img src={illustration} className={styles.illustration} />
                         <small className="text-center text-grey">No applications at this stage</small>
-                        <button onClick={() => setNewApplicationPopupOpen(true)}>+ Add Application</button>
+                        <button className="m-hide" onClick={() => setNewApplicationPopupOpen(true)}>+ Add Application</button>
                     </div>
                 )
             }

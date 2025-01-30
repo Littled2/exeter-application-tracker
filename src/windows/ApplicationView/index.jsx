@@ -13,7 +13,52 @@ import { usePopupsContext } from "../../contexts/popupsContext"
 import { useMasterCounter } from "../../contexts/masterCounterContext"
 import { Deadline } from "../../components/Deadline"
 import { useMobile } from "../../contexts/mobileContext"
+import confetti from "canvas-confetti";
 import { EditAppInfo } from "../../components/forms/EditAppInfo"
+
+
+
+function fire(particleRatio, opts) {
+
+    let count = 200;
+    let defaults = {
+    origin: { y: 0.7 }
+    };
+
+    confetti({
+      ...defaults,
+      ...opts,
+      particleCount: Math.floor(count * particleRatio)
+    });
+}
+
+function celebrate() {
+    fire(0.25, {
+        spread: 26,
+        startVelocity: 55,
+    })
+    fire(0.2, {
+        spread: 60,
+    })
+    fire(0.35, {
+        spread: 100,
+        decay: 0.91,
+        scalar: 0.8
+    })
+    fire(0.1, {
+        spread: 120,
+        startVelocity: 25,
+        decay: 0.92,
+        scalar: 1.2
+    })
+    fire(0.1, {
+        spread: 120,
+        startVelocity: 45,
+    })
+}
+
+
+
 
 export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }) {
 
@@ -48,11 +93,10 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
 
     const [ uploadCVReminder, setUploadCVReminder ] = useState(false)
 
-
     useEffect(() => {
         setTimeout(() => {
             setOpening(false)
-        }, 500);
+        }, 300);
     }, [])
 
     useEffect(() => {
@@ -126,9 +170,17 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
     }, [handleKeyPress])
 
     function handleStageChange(e) {
+
+        // Show upload CV reminder when finished applying
         if((application.stage === 'idea' || application.stage === 'applying') && e.target.value === 'applied') {
             setUploadCVReminder(true)
         }
+
+        // Show confetti when a user gets accepted
+        if((application.stage === 'idea' || application.stage === 'applying' || application.stage === 'applied') && e.target.value === 'accepted') {
+            celebrate()
+        }
+
         pb.collection("applications").update(application.id, { stage: e.target.value })
         .then(() => {
             setMasterCounter(c => c + 1)
@@ -264,8 +316,8 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                             <option value="idea">Idea</option>
                                             <option value="applying">Applying</option>
                                             <option value="applied">Applied</option>
-                                            <option value="accepted">Accepted</option>
-                                            <option value="declined">Decline</option>
+                                            <option style={{ color: "var(--text-green)" }} value="accepted">Accepted</option>
+                                            <option style={{ color: "var(--text-red)" }} value="declined">Declined</option>
                                         </select>
                                     </div>
                                 </div>
@@ -280,24 +332,35 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                 }
 
                                 <div>
-                                    <div className="flex space-between">
+                                    <div className="flex gap-s align-center">
                                         <p className="text-white">Notes</p>
-                                        <span className="cursor-pointer text-grey" onClick={() => setEditInfoOpen(true)}><BiPencil /></span>
+                                        {
+                                            <span
+                                                style={{ fontSize: "0.9rem" }}
+                                                className="cursor-pointer text-grey simple-btn"
+                                                onClick={() => setEditInfoOpen(true)}
+                                            >
+                                                <BiPencil />
+                                            </span>
+                                        }
                                     </div>
-                                    <pre style={{fontFamily:"inherit", whiteSpace:"pre-wrap", wordWrap:"break-word", margin:"0" }}>{application?.info}</pre>
+                                    <pre
+                                        className={styles.info}
+                                        style={{fontFamily:"inherit", whiteSpace:"pre-wrap", wordWrap:"break-word", margin:"0" }}
+                                        onClick={() => setEditInfoOpen(true)}
+                                    >{application?.info}</pre>
                                 </div>
 
-                                <div>
+                                {/* <div>
                                     <div>
-                                        <h4 className="text-white">Tasks</h4>
-                                        {/* <hr/> */}
+                                        <h4 className="text-grey">Tasks</h4>
                                     </div>
 
                                     <AppTasksList counter={counter} setCounter={setCounter} application={application} />
 
-                                </div>
+                                </div> */}
 
-                                </div>
+                            </div>
                         ) : (
                             <p className="text-center text-grey">Loading...</p>
                         )    
@@ -309,14 +372,39 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
 
             </div>
 
-            <Popup title={"Other Info"} trigger={editInfoOpen} setTrigger={setEditInfoOpen}>
+            <Popup title={"Edit notes"} trigger={editInfoOpen} setTrigger={setEditInfoOpen}>
                 <EditAppInfo app={application} appID={openAppID} setTrigger={setEditInfoOpen} />
             </Popup>
 
             <Popup trigger={uploadCVReminder} setTrigger={setUploadCVReminder}>
                 <div className="flex flex-col gap-m">
                     <h3 className="text-white">Have you uploaded your CV?</h3>
-                    <p className="text-grey">If you have adapted your CV for this application or written a cover letter, make sure to save it here to track what {application?.expand?.organisation?.name} received.</p>
+                    <p className="text-grey">Save the version of your CV and/or cover letter that you sent to {application?.expand?.organisation?.name}.</p>
+
+                    <div className="flex gap-l m-flex-col">
+                        <table>
+                            <tbody>
+                                <tr className={styles.documentRow}>
+                                    <td className="text-white">CV</td>
+                                    <td>
+                                        <DocumentUploadDownload displayName={"CV"} application={application} fileKeyName={"cv"} />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table>
+                            <tbody>
+                                <tr className={styles.documentRow}>
+                                    <td className="text-white">Cover Letter</td>
+                                    <td>
+                                        <DocumentUploadDownload displayName={"Cover Letter"} application={application} fileKeyName={"coverLetter"} />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
                     <button className="m-submit-btn" onClick={() => setUploadCVReminder(false)}>OK</button>
                 </div>
             </Popup>

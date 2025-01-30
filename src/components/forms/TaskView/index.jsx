@@ -1,16 +1,14 @@
 import { useRef, useState } from "react"
 import { usePocket } from "../../../contexts/pocketContext"
 import { DateInput } from "../../inputs/DateInput"
+import { IoCalendarOutline, IoClose } from "react-icons/io5"
 
 export function TaskView({ task, counter, setCounter, setTrigger }) {
-
-    const taskRef = useRef()
-    const deadlineRef = useRef()
-    const completeRef = useRef()
 
     const [ info, setInfo ] = useState(task.info)
     const [ deadline, setDeadline ] = useState(new Date(task.deadline))
     const [ complete, setComplete ] = useState(task.complete)
+    const [ detailsOpen, setDetailsOpen ] = useState(Boolean(task?.deadline))
 
     const { pb } = usePocket()
 
@@ -35,22 +33,45 @@ export function TaskView({ task, counter, setCounter, setTrigger }) {
     }
 
     return (
-        <form className="form flex col gap-s" onSubmit={submit}>
+        <form className="form flex col gap-m" onSubmit={submit}>
             <div>
                 <div>
                     <label>Task</label>
                 </div>
                 <input type="text" value={info} onChange={e => setInfo(e.target.value)} />
             </div>
+            <p onClick={() => setDetailsOpen(!detailsOpen)} type="button" className="flex gap-s align-center cursor-pointer">
+                {
+                    !detailsOpen ? (
+                        <>
+                            <span className="text-blue">Add deadline</span>
+                            <span className="text-blue flex align-center">
+                                <IoCalendarOutline />
+                            </span>
+                        </>
+                    ) : (
+                        <>
+                            <span className="text-blue flex align-center">
+                                <IoClose />
+                            </span>
+                            <span onClick={() => setDeadline(null)} className="text-blue">Cancel deadline</span>
+                        </>
+                    )
+                }
+            </p>
+            {
+                detailsOpen && (
+                    <div>
+                        <div>
+                            <label>Deadline</label>
+                        </div>
+                        <DateInput date={deadline} setDate={setDeadline} />
+                    </div>
+                )
+            }
             <div>
-                <div>
-                    <label>Deadline</label>
-                </div>
-                <DateInput date={deadline} setDate={setDeadline} />
-            </div>
-            <div>
-                <div>
-                    <label className="flex align-center">
+                <div className="flex justify-center">
+                    <label className="flex gap-s align-center">
                         <input checked={complete} onChange={e => setComplete(e.target.checked)} type="checkbox"/>
                         <span>Complete</span>
                     </label>

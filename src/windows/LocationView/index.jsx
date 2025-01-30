@@ -122,7 +122,7 @@ export function LocationView() {
                                     .map((locID, i) => {
                                         return (
                                             <tr onMouseEnter={() => mouseOver(locID)} onMouseLeave={() => mouseAway()} key={locID + i}>
-                                                <td style={{ paddingRight: "5px" }} className='text-orange m-hide text-right'>{appLocations[locID].freq}</td>
+                                                <td style={{ paddingRight: "5px" }} className='text-orange text-right'>{appLocations[locID].freq}</td>
                                                 <td className={hover !== null ? ((hover === locID) ? 'text-white' : 'text-grey') : 'text-grey'}>{appLocations[locID].name}</td>
                                             </tr>
                                         )
@@ -131,7 +131,7 @@ export function LocationView() {
                                 {
                                     otherFreq > 0 && (
                                         <tr>
-                                            <td style={{ paddingRight: "5px" }} className='text-orange m-hide text-right'>{otherFreq}</td>
+                                            <td style={{ paddingRight: "5px" }} className='text-orange text-right'>{otherFreq}</td>
                                             <td className='text-grey'>Other</td>
                                         </tr>
                                     )

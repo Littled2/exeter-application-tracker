@@ -75,12 +75,12 @@ export function AppTasksList({ application, counter, setCounter }) {
 
             <div className="flex col gap-s">
                                             
-                <table>
+                <table style={{ tableLayout: "fixed" }}>
                     <thead>
                         <tr>
-                            <th width="5%"></th>
+                            <th width="30px"></th>
                             <th>Task</th>
-                            <th width="25%">Deadline</th>
+                            <th width="25%">Due</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -113,11 +113,12 @@ export function AppTasksList({ application, counter, setCounter }) {
                                 completeTasks.filter(t => t.complete === true).map(task => {
                                     return (
                                         <tr
-                                        className="cursor-pointer"
-                                        onClick={() => {
-                                            setSelectedTask(task)
-                                            setPopupOpen(true)
-                                        }} key={task.id}>
+                                            className="cursor-pointer"
+                                            onClick={() => {
+                                                setSelectedTask(task)
+                                                setPopupOpen(true)
+                                            }} key={task.id}
+                                        >
                                             <td>
                                                 <input type="checkbox" defaultChecked={task?.complete} />
                                             </td>

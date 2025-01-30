@@ -1,11 +1,15 @@
 import { useEffect, useRef, useState } from "react"
 import { usePocket } from "../../../contexts/pocketContext"
 import { DateInput } from "../../inputs/DateInput"
+import { IoCalendarOutline } from "react-icons/io5"
+import { useActiveYear } from "../../../contexts/activeYearContext"
 
-export function NewTask({ appID, setCounter, setTrigger }) {
+export function NewTask({ appID=null, setCounter, setTrigger }) {
 
     const [ info, setInfo ] = useState()
-    const [ deadline, setDeadline ] = useState(new Date())
+    const [ deadline, setDeadline ] = useState(null)
+    const [ detailsOpen, setDetailsOpen ] = useState(false)
+    const { activeYear } = useActiveYear()
 
     const { pb, user } = usePocket()
 
@@ -15,14 +19,20 @@ export function NewTask({ appID, setCounter, setTrigger }) {
     function submit(e) {
         e.preventDefault()
 
-        pb.collection("tasks").create({
+        let newTask = {
             "info": info,
             "deadline": deadline,
             "user": user.id,
-            "complete": false,
-            "application": appID
-        })
-        .then(res => {
+            "year": activeYear,
+            "complete": false
+        }
+
+        if(appID) {
+            newTask["application"] = appID
+        }
+
+        pb.collection("tasks").create(newTask)
+        .then(() => {
             setCounter(c => c + 1)
             setTrigger(false)
         })
@@ -37,19 +47,37 @@ export function NewTask({ appID, setCounter, setTrigger }) {
     }, [])
 
     return (
-        <form className="form flex col gap-s" onSubmit={(e) => submit(e)}>
+        <form className="form flex col gap-m" onSubmit={(e) => submit(e)}>
             <div>
                 <div>
                     <label>Task</label>
                 </div>
                 <input placeholder="Eg. Request reference from tutor" ref={taskInput} type="text" value={info} onChange={e => setInfo(e.target.value)} required />
             </div>
-            <div>
-                <div>
-                    <label>Deadline</label>
-                </div>
-                <DateInput date={deadline} setDate={setDeadline} />
-            </div>
+            <p onClick={() => setDetailsOpen(!detailsOpen)} type="button" className="flex gap-s align-center cursor-pointer">
+                {
+                    !detailsOpen ? (
+                        <>
+                            <span className="text-blue">Add deadline</span>
+                            <span className="text-blue flex align-center">
+                                <IoCalendarOutline />
+                            </span>
+                        </>
+                    ) : (
+                        <span onClick={() => setDeadline(null)} className="text-blue">Cancel deadline</span>
+                    )
+                }
+            </p>
+            {
+                detailsOpen && (
+                    <div>
+                        <div>
+                            <label>Deadline</label>
+                        </div>
+                        <DateInput date={deadline} setDate={setDeadline} />
+                    </div>
+                )
+            }
             <div>
                 <button className="m-submit-btn" type="submit">Create task</button>
             </div>
