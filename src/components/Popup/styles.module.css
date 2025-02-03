@@ -84,6 +84,9 @@
         flex-direction: row-reverse;
         height: var(--header-height-mobile);
     }
+    .popup .top > div {
+        flex-direction: row-reverse;
+    }
     .popup .top button {
         aspect-ratio: 1;
         font-size: 22px;

@@ -18,9 +18,9 @@ export function Confirm({ message, trigger, setTrigger, onConfirm }) {
     // Control the popups context
     useEffect(() => {
         if(trigger) {
-            openPopup(setTrigger)
+            openPopup(setTrigger, new Date().getTime().toString())
         } else {
-            setPopups(prev => prev.filter(item => item !== setTrigger))
+            // setPopups(prev => prev.filter(item => item !== setTrigger))
         }
     }, [ trigger ])
 

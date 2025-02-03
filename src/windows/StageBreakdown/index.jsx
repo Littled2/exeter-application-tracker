@@ -8,7 +8,7 @@ import { useMasterCounter } from "../../contexts/masterCounterContext";
 import { BsEye } from "react-icons/bs";
 import { Tooltip } from "react-tooltip";
 import { Confirm } from "../../components/forms/Confirm";
-import illustration from "./illustration.svg"
+import { useMobile } from "../../contexts/mobileContext";
 
 
 
@@ -16,6 +16,9 @@ const barChartOptions = {
     plugins: {
         legend: {
             display: false
+        },
+        tooltip: {
+            backgroundColor: 'rgba(35, 35, 35, 0.95)'
         }
     },
     maintainAspectRatio: false,
@@ -25,6 +28,9 @@ const barChartOptions = {
             stacked: true,
             ticks: {
                 color: 'grey'
+            },
+            grid: {
+                color: "#121212"
             }
         },
         y: {
@@ -35,7 +41,10 @@ const barChartOptions = {
                         return value;
                     }
                 }
-            }
+            },
+            grid: {
+                color: "#121212"
+            },
         },
     }
 }
@@ -58,7 +67,19 @@ export function StageBreakdown() {
     const { user, pb } = usePocket()
 
     const { activeYear } = useActiveYear()
+    const { isMobile } = useMobile()
 
+    function ensureBaselineValue(value) {
+        if(value === 0) {
+            if(!isMobile) {
+                return 0.01
+            }
+
+            return 0.04
+        }
+
+        return value
+    }
     
 
     useEffect(() => {
@@ -88,28 +109,28 @@ export function StageBreakdown() {
                 labels: [ "Idea", "Applying", "Applied", "Accepted", "Declined" ],
                 datasets: [
                     {
-                        label: 'Idea Stage',
-                        data: [ freq.idea, 0, 0, 0, 0],
+                        label: 'Idea stage',
+                        data: [ ensureBaselineValue(freq.idea), 0, 0, 0, 0 ],
                         backgroundColor: 'coral',
                     },
                     {
-                        label: 'Applying Stage',
-                        data: [ 0, freq.applying, 0, 0, 0],
+                        label: 'Applying stage',
+                        data: [ 0, ensureBaselineValue(freq.applying), 0, 0, 0 ],
                         backgroundColor: '#bcb067',
                     },
                     {
-                        label: 'Applied Stage',
-                        data: [ 0, 0, freq.applied, 0, 0],
+                        label: 'Applied stage',
+                        data: [ 0, 0, ensureBaselineValue(freq.applied), 0, 0 ],
                         backgroundColor: 'lightblue',
                     },
                     {
-                        label: 'Accepted Stage',
-                        data: [ 0, 0, 0, freq.accepted, 0],
+                        label: 'Accepted stage',
+                        data: [ 0, 0, 0, ensureBaselineValue(freq.accepted), 0 ],
                         backgroundColor: '#00a522',
                     },
                     {
-                        label: 'Declined Stage',
-                        data: [ 0, 0, 0, 0, freq.declined],
+                        label: 'Declined stage',
+                        data: [ 0, 0, 0, 0, ensureBaselineValue(freq.declined) ],
                         backgroundColor: '#8b0b20',
                     }
                 ]
@@ -170,8 +191,8 @@ export function StageBreakdown() {
                     </div>
                 </div> */}
                 <div className={styles.barChartWrapper}>
-                    <div className="flex space-between align-center">
-                        <b className={styles.mobileHeading}><small className="text-grey">Applications by Stage</small></b>
+                    <div className="flex space-between align-center m-justify-center">
+                        <b className={styles.mobileHeading}><small className="text-grey">Your Applications by Stage</small></b>
 
                         <span
                             className="cursor-pointer text-grey hover-text-orange m-hide"

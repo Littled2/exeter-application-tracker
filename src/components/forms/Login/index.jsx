@@ -75,7 +75,7 @@ export function Login() {
             }
 
             <div>
-                <AnimatedButton submitting={processing} type="submit" className="m-submit-btn flex gap-s align-center">
+                <AnimatedButton submitting={processing} type="submit" className="m-submit-btn flex gap-s align-center justify-center">
                     <BiKey />
                     <span>Log In</span>
                 </AnimatedButton>

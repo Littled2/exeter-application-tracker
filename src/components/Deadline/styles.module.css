@@ -1,13 +1,15 @@
-.upcomingDeadline {
+/* .upcomingDeadline {
     background-color: var(--upcoming-deadline-bg) !important;
-}
+} */
 
-.today {
-    background-color: var(--almost-late-bg) !important;
+.missed {
+    background-color: var(--missed-deadline-bg) !important;
+    padding-left: 4px;
+    padding-right: 4px;
 }
 
 .upcoming {
-    background-color: var(--deadline-upcoming-bg);
+    background-color: var(--upcoming-deadline-bg);
     padding-left: 4px;
     padding-right: 4px;
 }

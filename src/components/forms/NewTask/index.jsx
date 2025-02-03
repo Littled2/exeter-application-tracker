@@ -52,7 +52,7 @@ export function NewTask({ appID=null, setCounter, setTrigger }) {
                 <div>
                     <label>Task</label>
                 </div>
-                <input placeholder="Eg. Request reference from tutor" ref={taskInput} type="text" value={info} onChange={e => setInfo(e.target.value)} required />
+                <textarea placeholder="Eg. Request reference from tutor" ref={taskInput} type="text" value={info} onChange={e => setInfo(e.target.value)} required></textarea>
             </div>
             <p onClick={() => setDetailsOpen(!detailsOpen)} type="button" className="flex gap-s align-center cursor-pointer">
                 {

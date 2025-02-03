@@ -1,0 +1,10 @@
+.infoCircle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-grey);
+}
+
+.infoCircle:hover {
+    color: var(--text-white);
+}

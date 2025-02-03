@@ -89,8 +89,8 @@ export function LocationView() {
 
     return (
         <div className={styles.wrapper}>
-            <div className="flex space-between align-center">
-                <b><small className="text-grey">Application Locations</small></b>
+            <div className="flex space-between align-center m-justify-center">
+                <b><small className="text-grey">Where You Are Applying</small></b>
                 <span
                     className="cursor-pointer text-grey hover-text-orange m-hide"
                     data-tooltip-id="hide-location-view-tooltip"

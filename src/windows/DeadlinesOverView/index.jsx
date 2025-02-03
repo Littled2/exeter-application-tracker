@@ -36,10 +36,12 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
             const today = new Date()
             today.setHours(0, 0, 0, 0);
             setModifiers({
-                pastDeadlines: res.filter(doc => new Date(doc?.deadline) < today).map(day => new Date(day.deadline)),
-                dueMoreThanThreeDays: res.filter(doc => (new Date(doc?.deadline) - today) > 3 * 24 * 60 * 60 * 1000).map(day => new Date(day.deadline)),
-                dueThreeDays: res.filter(doc => (new Date(doc?.deadline) - today) <= 3 * 24 * 60 * 60 * 1000 && (new Date(doc?.deadline) - today) > 24 * 60 * 60 * 1000).map(day => new Date(day.deadline)),
-                dueToday: res.filter(doc => areSameDate(new Date(), new Date(doc?.deadline))).map(day => new Date(day.deadline))
+                missedDeadlines: res.filter(doc => new Date(doc?.deadline) < today && (doc.stage === "idea" || doc.stage === "applying")).map(day => new Date(day.deadline)),
+                pastDeadlines: res.filter(doc => new Date(doc?.deadline) < today && (doc.stage === "applied" || doc.stage === "accepted" || doc.stage === "declined") ).map(day => new Date(day.deadline)),
+                futureDeadlines: res.filter(doc => new Date(doc?.deadline) >= today).map(doc => new Date(doc.deadline))
+                // dueMoreThanThreeDays: res.filter(doc => (new Date(doc?.deadline) - today) > 3 * 24 * 60 * 60 * 1000).map(day => new Date(day.deadline)),
+                // dueThreeDays: res.filter(doc => (new Date(doc?.deadline) - today) <= 3 * 24 * 60 * 60 * 1000 && (new Date(doc?.deadline) - today) > 24 * 60 * 60 * 1000).map(day => new Date(day.deadline)),
+                // dueToday: res.filter(doc => areSameDate(new Date(), new Date(doc?.deadline))).map(day => new Date(day.deadline))
             })
         })
         .catch(err => {
@@ -50,7 +52,7 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
     
 
     const handleDayClick = (day, modifiers) => {
-        if (modifiers.pastDeadlines || modifiers.dueMoreThanThreeDays || modifiers.dueThreeDays || modifiers.dueToday) {
+        if (modifiers.missedDeadlines || modifiers.pastDeadlines || modifiers.futureDeadlines) {
 
             let applications = upcomingDeadlines.filter(doc => areSameDate(new Date(doc.deadline), day))
 
@@ -76,7 +78,7 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
     return !err ? (
         <div className={[ styles.wrapper, openAppID ? styles.hide : '' ].join(' ')}>
             <div className="flex space-between align-center m-hide">
-                <b><small className="text-grey">Application Deadlines</small></b>
+                <b><small className="text-grey">Upcoming Deadlines</small></b>
 
                 <span
                     className="cursor-pointer text-grey hover-text-orange"
@@ -100,10 +102,9 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
                     modifiers={modifiers}
                     // captionLayout="dropdown-months"
                     modifiersStyles={{
-                        pastDeadlines: { backgroundColor: "var(--deadline-passed-bg)" },
-                        dueMoreThanThreeDays: { backgroundColor: "var(--deadline-passed-bg)" },
-                        dueThreeDays: { backgroundColor: "var(--upcoming-deadline-bg)" },
-                        dueToday: { backgroundColor: "var(--almost-late-bg)" }
+                        missedDeadlines: { backgroundColor: "var(--missed-deadline-bg)" },
+                        pastDeadlines: { backgroundColor: "var(--passed-deadline-bg)" },
+                        futureDeadlines: { backgroundColor: "var(--upcoming-deadline-bg)" }
                     }}
                     classNames={{
                         today: "text-orange",
@@ -118,8 +119,8 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
             </div>
 
             <div className="flex gap-s justify-center">
-                <span className={styles.dueToday}>Due today</span>
-                <span className={styles.almostDue}>Next 3 days</span>
+                <span className={styles.past}>Past</span>
+                <span className={styles.missed}>Missed</span>
                 <span className={styles.upcoming}>Upcoming</span>
             </div>
 

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import styles from "./styles.module.css"
 import { useMobile } from "../../contexts/mobileContext"
 
-export function Tabs({ tabs, saveActiveTabAs=null }) {
+export function Tabs({ tabs, mobileTop, saveActiveTabAs=null }) {
 
     const [ selected, setSelected ] = useState(() => {
         if(saveActiveTabAs !== null) {
@@ -26,7 +26,7 @@ export function Tabs({ tabs, saveActiveTabAs=null }) {
 
     return (
         <div>
-            <div className={styles.tabs}>
+            <div className={[ styles.tabs, mobileTop ? styles.sticky : '' ].join(" ")} style={{ top: mobileTop }}>
                 {
                     tabs.filter(tab => !(isMobile && tab.hideOnMobile === true)).map((tab, i) => {
                         return (

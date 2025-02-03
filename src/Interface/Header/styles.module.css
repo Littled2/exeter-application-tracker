@@ -31,6 +31,10 @@
     justify-content: left;
 }
 
+.logo {
+    height: calc(var(--header-height) / 1.75);
+}
+
 .years {
     display: flex;
     gap: 2px;
@@ -140,6 +144,10 @@
         gap: 0;
         height: var(--header-height-mobile);
         flex-direction: row-reverse;
+    }
+
+    .logo {
+        display: none;
     }
 
     .buttons {

@@ -3,9 +3,11 @@
     border: 2px solid var(--border-colour);
     display: flex;
     flex-direction: column;
-    /* position: fixed;
+    position: fixed;
     top: calc(var(--header-height) + var(--spacing-medium));
-    width: 100%; */
+    width: 100%;
+    height: calc(100vh - (var(--header-height) + (var(--spacing-medium))));
+    width: var(--aside-window-width);
     border-radius: var(--radius);
     overflow: hidden;
 }
@@ -43,6 +45,7 @@
 .inner {
     padding: var(--page-padding-left);
     overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .newTask {

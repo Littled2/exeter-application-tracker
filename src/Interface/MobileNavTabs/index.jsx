@@ -75,12 +75,12 @@ export function MobileNavTabs() {
                 <p className={styles.label}>Tasks</p>
             </button>
 
-            <button onClick={() => setActiveMobileTab('analytics')} className={[ styles.tabLink, activeMobileTab === 'analytics' ? styles.selected : '' ].join(' ')}>
+            {/* <button onClick={() => setActiveMobileTab('analytics')} className={[ styles.tabLink, activeMobileTab === 'analytics' ? styles.selected : '' ].join(' ')}>
                 <div className={styles.icon}>
                     <IoBarChartOutline />
                 </div>
                 <p className={styles.label}>Analytics</p>
-            </button>
+            </button> */}
 
         </nav>
     )

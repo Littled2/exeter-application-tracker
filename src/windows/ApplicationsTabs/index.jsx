@@ -59,7 +59,7 @@ export function ApplicationsTabs({ setOpenAppID, openAppID }) {
     }, [ activeYear, masterCounter ])
 
     return (
-        <Tabs saveActiveTabAs={'application_tabs'} tabs={[
+        <Tabs mobileTop={"var(--header-height)"} saveActiveTabAs={'application_tabs'} tabs={[
             {
                 name: `Idea / Applying ${ideaApplying ? `(${ideaApplying})` : ""}`,
                 tab: <IdeasApplying openAppID={openAppID} setOpenAppID={setOpenAppID} />

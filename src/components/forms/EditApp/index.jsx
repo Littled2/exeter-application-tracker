@@ -125,7 +125,7 @@ export function EditApp({ app, setTrigger }) {
                 <div className="flex col">
                     <div>
                         <div>
-                            <label>Other Info</label>
+                            <label>Notes</label>
                         </div>
                         <textarea value={info} onInput={e => setInfo(e.target.value)}></textarea>
                     </div>
@@ -238,10 +238,10 @@ export function EditApp({ app, setTrigger }) {
                             <label>Application Type</label>
                         </div>
                         <select required value={type} onInput={e => setType(e.target.value)}>
-                            <option>Please Select</option>
-                            <option value="placement">Placement</option>
+                            <option disabled>Please Select</option>
                             <option value="internship">Internship</option>
-                            <option value="masters">Masters</option>
+                            <option value="placement">Placement</option>
+                            <option value="grad-scheme">Placement</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
@@ -251,12 +251,10 @@ export function EditApp({ app, setTrigger }) {
                         )
                     }
                 </div>
-                
-                <div>
-                    <AnimatedButton processing={processing} className="m-submit-btn" type="submit">
-                        Save
-                    </AnimatedButton>
-                </div>
+            
+                <AnimatedButton processing={processing} className="m-submit-btn" type="submit">
+                    Save
+                </AnimatedButton>
             </form>
 
             <Popup title={"Create Organisation"} trigger={newOrgOpen} setTrigger={setNewOrgOpen}>

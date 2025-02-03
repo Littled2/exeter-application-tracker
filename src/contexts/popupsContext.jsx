@@ -18,12 +18,14 @@ export const PopupContextProvider = ({ children }) => {
     const { activeMobileTab } = useMobile()
 
 
-    const openPopup = useCallback((setTrigger) => {
-		setPopups(p => [ ...p, setTrigger ])
-		window.history.pushState({ popup: true }, '', window.location.href)
+    const openPopup = useCallback((setTrigger, id) => {
+      setPopups(p => [ ...p, setTrigger ])
+      window.history.pushState(null, '', window.location.pathname + "?id=" + id)
     }, [ setPopups ])
 
     const closeTopPopup = useCallback(() => {
+
+      console.log("Closing top popup")
             
         if(popups.length === 0) {
             return
@@ -33,9 +35,7 @@ export const PopupContextProvider = ({ children }) => {
         setTrigger(false)
 
         // Remove the last element from the array
-        setPopups(prev => prev.slice(0, -1))
-
-		    window.history.back()
+        // setPopups(prev => prev.slice(0, -1))
 
     }, [ popups, setPopups ])
 
@@ -55,50 +55,32 @@ export const PopupContextProvider = ({ children }) => {
         return () => {
             document.removeEventListener('keydown', handleKeyPress)
         }
-    }, [handleKeyPress])
+    }, [ handleKeyPress ])
 
-	useEffect(() => {
-        const handlePopState = () => {
-            console.log("State popped")
-        	//   window.history.pushState(null, document.title, window.location.href)
-        };
-    
-        // Add event listener for back navigation
-        window.addEventListener("popstate", handlePopState);
-    
-        // Cleanup event listener on component unmount
-        return () => {
-          window.removeEventListener("popstate", handlePopState);
-        }
-      }, [])
 
+    const handleBackNavigation = useCallback((event) => {
+      console.log("BACK PRESSED", { popups })
+      if (popups.length > 0) {
+        event.preventDefault()
+        // Trigger your custom function or prevent back navigation
+        console.log('Back navigation prevented because popups is not empty!')
+
+        closeTopPopup()
+      } else {
+        console.log('Back navigation allowed because popups is empty!')
+      }
+    }, [ popups, closeTopPopup ])
 
     useEffect(() => {
-        const handleBackNavigation = (event) => {
-          if (popups.length > 0) {
-            event.preventDefault()
-            // Trigger your custom function or prevent back navigation
-            console.log('Back navigation prevented because popups is not empty!')
-            window.history.pushState(null, '', window.location.href)
 
-            closeTopPopup()
-          } else {
-            console.log('Back navigation allowed because popups is empty!')
-          }
-        };
-    
-        const onPopState = (event) => {
-          handleBackNavigation(event)
-        };
-    
-        window.addEventListener('popstate', onPopState)
+        window.addEventListener('popstate', handleBackNavigation)
     
         // Cleanup the event listener on component unmount
         return () => {
-          window.removeEventListener('popstate', onPopState)
+          window.removeEventListener('popstate', handleBackNavigation)
         }
 
-    }, [ popups ]);
+    }, []);
     
 
     useEffect(() => {

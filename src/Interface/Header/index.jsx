@@ -65,7 +65,9 @@ export function Header() {
 
                                         <div className="flex gap-s">
 
-                                            <button
+                                            <img className={styles.logo} src="/logo-large-no-bg.png" alt="Exeter Application Tracker Logo" />
+
+                                            {/* <button
                                                 className="simple-btn"
                                                 onClick={() => setSettingsOpen(true)}
                                                 data-tooltip-id="open-settings-tooltip"
@@ -84,25 +86,53 @@ export function Header() {
                                                 data-tooltip-content="Contact support / Suggest feature"
                                                 data-tooltip-place="bottom"
                                             >
-                                                {/* <IoTicketOutline/> */}
                                                 <IoHelpOutline />
                                             </button>
 
-                                            <Tooltip id="contact-support-tooltip" />
+                                            <Tooltip id="contact-support-tooltip" /> */}
 
                                         </div>  
                                     </div>     
 
-                                    <div className={styles.groupSelectWrapper}>
-                                        <div className={styles.groupSelect}>
-                                            <select onInput={e => setActiveYear(e.target.value)} value={activeYear}>
-                                                {
-                                                    years.map(year => {
-                                                        return <option key={'_dd_' + year.id} value={year.id}>{year.year}</option>
-                                                    })
-                                                }
-                                            </select>
+                                    <div className="flex gap-s align-center">
+
+                                        <div className={styles.groupSelectWrapper}>
+                                            <div className={styles.groupSelect}>
+                                                <select onInput={e => setActiveYear(e.target.value)} value={activeYear}>
+                                                    {
+                                                        years.map(year => {
+                                                            return <option key={'_dd_' + year.id} value={year.id}>{year.year}</option>
+                                                        })
+                                                    }
+                                                </select>
+                                            </div>
                                         </div>
+
+                                        <button
+                                            className="simple-btn"
+                                            onClick={() => setSettingsOpen(true)}
+                                            data-tooltip-id="open-settings-tooltip"
+                                            data-tooltip-content="Settings"
+                                            data-tooltip-place="bottom"
+                                        >
+                                            <BsGear />
+                                        </button>
+
+                                        <Tooltip id="open-settings-tooltip" />
+
+                                        <button
+                                            className="m-hide simple-btn"
+                                            onClick={() => setNewTicketOpen(true)}
+                                            data-tooltip-id="contact-support-tooltip"
+                                            data-tooltip-content="Contact support / Suggest feature"
+                                            data-tooltip-place="bottom"
+                                        >
+                                            {/* <IoTicketOutline/> */}
+                                            <IoHelpOutline />
+                                        </button>
+
+                                        <Tooltip id="contact-support-tooltip" />
+
                                     </div>
                                     
 

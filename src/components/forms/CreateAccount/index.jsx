@@ -67,7 +67,7 @@ export function CreateAccount() {
             </div>
 
             <div>
-                <label className="flex gap-s align-center">
+                <label className="flex gap-s">
                     <input type="checkbox" required />
                     <span>I agree to the <a className="text-orange underline" href="#">Terms & Conditions</a> and <a className="text-orange underline" href="#">Privacy Policy</a></span>
                 </label>
