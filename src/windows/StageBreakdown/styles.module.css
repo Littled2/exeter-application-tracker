@@ -58,12 +58,14 @@
 @media screen and (max-width: 800px) {
     .outer {
         display: flex;
-        height: 12rem;
+        height: 16rem;
+        width: 85vw;
     }
     .mobileHeading {
         /* font-size: 1.4rem; */
         /* font-weight: 500; */
         /* max-width: 100%; */
+        text-align: center;
     }
     .wrapper {
         height: 100%;

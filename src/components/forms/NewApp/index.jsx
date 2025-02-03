@@ -11,6 +11,7 @@ import { Popup } from "../../Popup";
 import { NewLocation } from "../NewLocation";
 import { useMasterCounter } from "../../../contexts/masterCounterContext";
 import { AnimatedButton } from "../../AnimatedButton";
+import { InputInformation } from "../../InputInformation";
 
 export function NewApp({ setTrigger }) {
 
@@ -88,8 +89,9 @@ export function NewApp({ setTrigger }) {
 
                 <div className="flex col">
                     <div>
-                        <div>
-                            <label>Role<span className="text-red"> *</span></label>
+                        <div className="flex gap-s align-center">
+                            <label>Role title<span className="text-red"> *</span></label>
+                            <InputInformation id={"roleName"} text={"The job title of the role you are applying to. Eg. Summer Intern"} />
                         </div>
                         <input ref={nameInput} type="text" required value={role} onInput={e => setRole(e.target.value)} placeholder="Eg. Summer Intern" />
                     </div>
@@ -132,7 +134,7 @@ export function NewApp({ setTrigger }) {
                 <div className="flex col">
                     <div>
                         <div>
-                            <label>Other Info</label>
+                            <label>Notes</label>
                         </div>
                         <textarea value={info} onInput={e => setInfo(e.target.value)}></textarea>
                     </div>
@@ -195,15 +197,15 @@ export function NewApp({ setTrigger }) {
                             <div>
                                 <label>Deadline?</label>
                             </div>
-                            {/* <select value={deadlineType} onInput={e => setDeadlineType(e.target.value)}>
+                            <select value={deadlineType} onInput={e => setDeadlineType(e.target.value)}>
                                 <option value="rolling">Rolling</option>
                                 <option value="fixed">Fixed</option>
                                 <option value="none">None</option>
-                            </select> */}
-                             <select value={deadlineType} onInput={e => setDeadlineType(e.target.value)}>
+                            </select>
+                             {/* <select value={deadlineType} onInput={e => setDeadlineType(e.target.value)}>
                                 <option value={true}>Yes</option>
                                 <option value={false}>No</option>
-                            </select>
+                            </select> */}
                         </div>
                         <div>
                             {
@@ -229,7 +231,10 @@ export function NewApp({ setTrigger }) {
                 <div className="flex col">
                     <div>
                         <div className="flex space-between">
-                            <label>Location(s)</label>
+                            <div className="flex gap-s align-center">
+                                <label>Location(s)</label>
+                                <InputInformation id={"location"} text={"Select location(s) you are applying to"} />
+                            </div>
                             <small className="underline cursor-pointer" onClick={() => setNewLocOpen(true)}>
                                 <BiPlus />
                                 <span>New Location</span>
@@ -250,10 +255,10 @@ export function NewApp({ setTrigger }) {
                             <label>Application Type</label>
                         </div>
                         <select required value={type} onInput={e => setType(e.target.value)}>
-                            <option>Please Select</option>
-                            <option value="placement">Placement</option>
+                            <option disabled>Please Select</option>
                             <option value="internship">Internship</option>
-                            <option value="masters">Masters</option>
+                            <option value="placement">Placement</option>
+                            <option value="grad-scheme">Placement</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
@@ -263,12 +268,11 @@ export function NewApp({ setTrigger }) {
                         )
                     }
                 </div>
-                
-                <div>
-                    <AnimatedButton processing={processing} className="m-submit-btn" type="submit">
-                        Submit
-                    </AnimatedButton>
-                </div>
+
+                <AnimatedButton processing={processing} className="m-submit-btn" type="submit">
+                    Submit
+                </AnimatedButton>                
+
             </form>
 
             <Popup title={"Create Organisation"} trigger={newOrgOpen} setTrigger={setNewOrgOpen}>

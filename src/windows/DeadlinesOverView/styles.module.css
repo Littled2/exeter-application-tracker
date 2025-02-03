@@ -17,28 +17,26 @@
     overflow-x: auto;
 }
 
-
-.dueToday {
-    background-color: var(--almost-late-bg);
+.past {
+    background-color: var(--passed-deadline-bg);
     padding-left: 4px;
     padding-right: 4px;
 }
 
-.almostDue {
+.missed {
+    background-color: var(--missed-deadline-bg) !important;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.upcoming {
     background-color: var(--upcoming-deadline-bg);
     padding-left: 4px;
     padding-right: 4px;
 }
 
-
-.upcoming {
-    background-color: var(--deadline-upcoming-bg);
-    padding-left: 4px;
-    padding-right: 4px;
-}
-
-.dueToday,
-.almostDue,
+.past,
+.missed,
 .upcoming {
     font-size: 0.9rem;
 }

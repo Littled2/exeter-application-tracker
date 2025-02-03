@@ -16,13 +16,22 @@ export function areSameDate(date1, date2) {
 
 export function daysToDate(targetDate) {
     const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0); // Normalize to midnight
     const target = new Date(targetDate);
+    target.setHours(0, 0, 0, 0); // Normalize to midnight
     
     // Calculate the difference in milliseconds
     const diffInMilliseconds = target - currentDate;
     
     // Convert milliseconds to days
-    const diffInDays = Math.ceil(diffInMilliseconds / (1000 * 60 * 60 * 24));
-    
-    return diffInDays === 1 ? 'Today' : `${diffInDays} day${diffInDays > 1 ? 's' : '' }`;
+    const diffInDays = diffInMilliseconds / (1000 * 60 * 60 * 24);
+
+    if (diffInDays === 0) {
+        return 'Today';
+    } else if (diffInDays > 0) {
+        return `${Math.floor(diffInDays)} day${Math.floor(diffInDays) > 1 ? 's' : ''}`;
+    } else {
+        return `${Math.abs(Math.ceil(diffInDays))} day${Math.abs(Math.ceil(diffInDays)) > 1 ? 's' : ''} ago`;
+    }
 }
+

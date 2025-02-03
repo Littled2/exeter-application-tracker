@@ -14,6 +14,7 @@ import { useNewApplicationPopup } from "../../contexts/newApplicationPopupContex
 import { useMobile } from "../../contexts/mobileContext"
 import { UpcomingDeadlines } from "../../windows/UpcomingDeadlines"
 import { TasksWrapper } from "../TasksWrapper"
+import { InputInformation } from "../../components/InputInformation"
 
 
 export function Body({ counter, setCounter }) {
@@ -32,9 +33,10 @@ export function Body({ counter, setCounter }) {
                 <div className={styles.applicationsTasksWrapper}>
 
                     {
-                        !(isMobile && activeMobileTab !== 'analytics' && activeMobileTab !== 'deadlines') && (
+                        // If mobile device and user is viewing the applications or analytics page
+                        !(isMobile && activeMobileTab !== 'applications' && activeMobileTab !== 'analytics' && activeMobileTab !== "deadlines") && (
 
-                            <div className={styles.dataVisWrapper}>
+                            <div className={[ styles.dataVisWrapper, (isMobile && activeMobileTab === "deadlines") ? styles.mobileDeadlinesViewActive : '' ].join(" ")}>
 
                                 {
                                     ((!isMobile && user?.deadlinesView) || (isMobile && activeMobileTab === 'deadlines')) && (
@@ -53,7 +55,7 @@ export function Body({ counter, setCounter }) {
                                 }
         
                                 {
-                                    ((!isMobile && user?.stagesView) || (isMobile && activeMobileTab === 'analytics')) && (
+                                    ((!isMobile && user?.stagesView) || (isMobile && (activeMobileTab === 'applications' || activeMobileTab === 'analytics'))) && (
                                         !openAppID ? (
                                             <StageBreakdown />
                                         ) : (
@@ -63,7 +65,7 @@ export function Body({ counter, setCounter }) {
                                 }
 
                                 {
-                                    ((!isMobile && user?.locationsView) || (isMobile && activeMobileTab === 'analytics')) && (
+                                    ((!isMobile && user?.locationsView) || (isMobile && (activeMobileTab === 'applications' || activeMobileTab === 'analytics'))) && (
                                         <LocationView />
                                     )
                                 }
@@ -94,7 +96,15 @@ export function Body({ counter, setCounter }) {
                                             )
                                         }
 
-                                        <h3 className="text-grey m-hide line-height-1">Your Applications</h3>
+                                        <h3 className="text-grey line-height-1 flex gap-s align-center m-justify-center">
+                                            {
+                                                !isMobile && (
+                                                    <InputInformation id={"YourApplications"} text={"Track applications to internships, jobs, and placements"} />       
+                                                )
+                                            }
+                                            <span>Your Applications</span>
+                                            <button onClick={() => setNewApplicationPopupOpen(true)} style={{ padding: "0" }} className={[ "text-orange simple-btn", styles.newAppBtn ].join(" ")}>+</button>
+                                        </h3>
 
                                         <ApplicationsTabs setOpenAppID={setOpenAppID} openAppID={openAppID} />
                                     </div>

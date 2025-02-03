@@ -2,6 +2,8 @@ import { useRef, useState } from "react"
 import { usePocket } from "../../../contexts/pocketContext"
 import { DateInput } from "../../inputs/DateInput"
 import { IoCalendarOutline, IoClose } from "react-icons/io5"
+import { Popup } from "../../Popup"
+import { Confirm } from "../Confirm"
 
 export function TaskView({ task, counter, setCounter, setTrigger }) {
 
@@ -9,6 +11,7 @@ export function TaskView({ task, counter, setCounter, setTrigger }) {
     const [ deadline, setDeadline ] = useState(new Date(task.deadline))
     const [ complete, setComplete ] = useState(task.complete)
     const [ detailsOpen, setDetailsOpen ] = useState(Boolean(task?.deadline))
+    const [ deleteOpen, setDeleteOpen ] = useState(false)
 
     const { pb } = usePocket()
 
@@ -38,7 +41,7 @@ export function TaskView({ task, counter, setCounter, setTrigger }) {
                 <div>
                     <label>Task</label>
                 </div>
-                <input type="text" value={info} onChange={e => setInfo(e.target.value)} />
+                <textarea type="text" value={info} onChange={e => setInfo(e.target.value)}></textarea>
             </div>
             <p onClick={() => setDetailsOpen(!detailsOpen)} type="button" className="flex gap-s align-center cursor-pointer">
                 {

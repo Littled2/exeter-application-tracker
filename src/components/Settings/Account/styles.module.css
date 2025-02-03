@@ -12,3 +12,13 @@
     flex-direction: column;
     gap: 1rem;
 }
+
+.logOutBtn {
+    background-color: var(--text-orange);
+    color: var(--text-white);
+}
+
+.deleteBtn {
+    background-color: var(--text-red);
+    color: var(--text-white);
+}

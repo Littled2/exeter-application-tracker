@@ -19,9 +19,9 @@
     --text-green: green;
     --text-grey: grey;
 
-    --almost-late-bg: rgba(255, 0, 0, 0.471);
+    --missed-deadline-bg: rgba(255, 0, 0, 0.471);
     --upcoming-deadline-bg: rgba(253, 159, 82, 0.3);
-    --deadline-upcoming-bg: rgba(93, 93, 93, 0.471);
+    --passed-deadline-bg: rgba(93, 93, 93, 0.471);
 
     --radius: 8px;
 
@@ -41,6 +41,7 @@
     --mono-font: 'Roboto Mono', monospace;
 
     --header-height: 45px;
+    --aside-window-width: 40vw;
 
     --popup-enter-exit-time: 0.3s;
 

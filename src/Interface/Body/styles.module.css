@@ -18,7 +18,7 @@
 
 .asidePage {
     min-width: 500px;
-    width: 40%;
+    width: var(--aside-window-width);
 }
 
 .dataVisWrapper {
@@ -39,6 +39,15 @@
     display: flex;
     gap: var(--spacing-medium);
     /* height: calc(100vh - 300px); */
+}
+
+.newAppBtn {
+    width: 1em;
+    height: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
 }
 
 
@@ -76,7 +85,7 @@
         min-width: unset;
         display: flex;
         flex-direction: column;
-        gap: var(--spacing-small);
+        gap: var(--spacing-medium);
     }
     .applicationsWrapper > h3,
     .tasksWrapper > h3 {
@@ -84,10 +93,19 @@
     }
     .dataVisWrapper {
         height: unset;
-        flex-direction: column;
+        flex-direction: row;
+        overflow-x: auto;
         padding-top: var(--spacing-medium);
         padding-left: var(--page-padding-left);
         padding-right: var(--page-padding-right);
+        padding-bottom: var(--spacing-medium);
+        scrollbar-width: none;
+    }
+    .dataVisWrapper::-webkit-scrollbar {
+        display: none;
+    }
+    .mobileDeadlinesViewActive {
+        flex-direction: column;
     }
     .tablesWrapper {
         height: unset;

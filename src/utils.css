@@ -193,6 +193,9 @@
     .m-width-100 {
         width: 100%;
     }
+    .m-justify-center {
+        justify-content: center;
+    }
     .button {
         width: unset;
     }

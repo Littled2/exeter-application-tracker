@@ -24,7 +24,7 @@ export function Account({ setTrigger }) {
             <div className="flex m-flex-col gap-s space-between align-center">
                 <p className="text-grey">Log out of my account</p>
                 <div>
-                    <button onClick={() => {
+                    <button className={styles.logOutBtn} onClick={() => {
                         setTrigger(false)
                         logout()
                         clearActiveYears()

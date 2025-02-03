@@ -15,6 +15,8 @@ import { Deadline } from "../../components/Deadline"
 import { useMobile } from "../../contexts/mobileContext"
 import confetti from "canvas-confetti";
 import { EditAppInfo } from "../../components/forms/EditAppInfo"
+import { FiEdit } from "react-icons/fi"
+import { InputInformation } from "../../components/InputInformation"
 
 
 
@@ -66,9 +68,9 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
 
     useEffect(() => {
         if(openAppID) {
-            openPopup(setOpenAppID)
+            openPopup(setOpenAppID, new Date().getTime().toString())
         } else {
-            setPopups(prev => prev.filter(item => item !== setOpenAppID))
+            // setPopups(prev => prev.filter(item => item !== setOpenAppID))
         }
     }, [ openAppID ])
 
@@ -198,9 +200,9 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                     <button className={styles.close} onClick={() => setConfirmOpen(true)}>
                         <AiOutlineDelete />
                     </button>
-                    {/* <button className={styles.close} onClick={() => setEditAppOpen(true)}>
-                        <AiOutlineEdit />
-                    </button> */}
+                    <button className={styles.close} onClick={() => setEditAppOpen(true)}>
+                        <FiEdit />
+                    </button>
                 </div>
 
                 <button
@@ -234,7 +236,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                             <h4>{application?.expand?.organisation?.name}</h4>
                                             <p className="text-grey">{application?.role}</p>
                                         </div>
-                                        <h4 className="cursor-pointer hover-text-orange text-white" onClick={() => setEditAppOpen(true)}><BiPencil /></h4>
+                                        <h4 className="cursor-pointer hover-text-orange text-white" onClick={() => setEditAppOpen(true)}><FiEdit /></h4>
                                     </div>
                                     <hr className={styles.hr}/>
                                 </div>
@@ -310,7 +312,10 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                 </div>
 
                                 <div className="flex gap-s flex-col">
-                                    <p className="text-white">Application Stage</p>
+                                    <div className="flex gap-s align-center">
+                                        <p className="text-white">Application Stage</p>
+                                        <InputInformation id={"quickAppStage"} place="bottom" text={"Indicates the current stage of your application process"} />
+                                    </div>
                                     <div className={styles.stages}>
                                         <select value={application?.stage} onChange={handleStageChange} className={styles.stageSelect}>
                                             <option value="idea">Idea</option>

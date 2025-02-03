@@ -120,9 +120,8 @@ export function IdeasApplying({ openAppID, setOpenAppID }) {
             {
                 (ideas.length > 0 || applying.length > 0) && !loading && (
                     <div className={[ styles.key, 'm-hide' ].join(" ")}>
-                        <span className={styles.dueToday}>Due today</span>
-                        <span className={styles.almostDue}>Next 3 days</span>
-                        <span className={styles.passed}>Passed</span>
+                        <span className={styles.missed}>Missed</span>
+                        <span className={styles.upcoming}>Upcoming</span>
                     </div>
                 )
             }
@@ -131,6 +130,7 @@ export function IdeasApplying({ openAppID, setOpenAppID }) {
                 ideas.length === 0 && applying.length === 0 && !loading && (
                     <div className={styles.statusInfo}>
                         <img src={illustration} className={styles.illustration} />
+                        <small className="text-center text-grey">Track your applications to internships, jobs, and placements</small>
                         <small className="text-center text-grey">No applications at this stage</small>
                         <button className="m-hide" onClick={() => setNewApplicationPopupOpen(true)}>+ New Application</button>
                     </div>

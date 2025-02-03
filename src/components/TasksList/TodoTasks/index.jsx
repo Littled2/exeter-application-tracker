@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react"
-import TimeAgo from 'react-timeago'
 import { TableSection } from "../../TableSection"
 import { usePocket } from "../../../contexts/pocketContext"
-import { getDate } from "../../../helpers/dates"
+import { daysToDate, getDate } from "../../../helpers/dates"
 import { useActiveYear } from "../../../contexts/activeYearContext"
 import { Deadline } from "../../Deadline"
 import { Tabs } from "../../Tabs"
@@ -49,7 +48,7 @@ export function TodoTasks({ setOpenAppID, tasks, setOpenTask, counter, setCounte
                     name: todoTasks.length > 0 ? `Incomplete (${todoTasks.length})` : "Incomplete",
                     tab: (
                         <>
-                            <table style={{ tableLayout: "fixed" }}>
+                            <table style={{ tableLayout: "fixed" }} className={styles.table}>
                                 <thead className="m-hide">
                                     <th width={"30px"}></th>
                                     <th>Task</th>
@@ -63,10 +62,10 @@ export function TodoTasks({ setOpenAppID, tasks, setOpenTask, counter, setCounte
                                             todoTasks.map(task => {
                                                 return (
                                                     <tr
-                                                        className="cursor-pointer m-flex m-flex-col"
+                                                        className="cursor-pointer m-flex"
                                                         key={'_' + task.id}
                                                     >
-                                                        <td className="flex align-center">
+                                                        <td className="flex m-page-padding-left">
                                                             <input
                                                                 defaultChecked={task?.complete}
                                                                 className={styles.checkbox}
@@ -79,14 +78,16 @@ export function TodoTasks({ setOpenAppID, tasks, setOpenTask, counter, setCounte
 
                                                             <Tooltip id={"task-complete-tooltip_" + task?.id} />
                                                         </td>
-                                                        <td style={{ verticalAlign: "top" }} onClick={() => setOpenTask(task)} className="m-page-padding-left">{task?.info}</td>
-                                                        <td style={{ verticalAlign: "top" }} onClick={() => setOpenTask(task)} className="m-page-padding-right flex flex-col">
+                                                        <td style={{ verticalAlign: "top" }} className={styles.taskInfo} onClick={() => setOpenTask(task)}>{task?.info}</td>
+                                                        <td style={{ verticalAlign: "top" }} onClick={() => setOpenTask(task)} className={styles.deadline}>
                                                             {
                                                                 task?.deadline && (
                                                                     <>
-                                                                        <Deadline deadline={task?.deadline} />
+                                                                        <p>
+                                                                            <Deadline deadline={task?.deadline} />
+                                                                        </p>
                                                                         <small className={styles.timeAgo}>
-                                                                            <TimeAgo date={task?.deadline} />
+                                                                            {daysToDate(task?.deadline)}
                                                                         </small>       
                                                                     </>
                                                                 )
@@ -104,6 +105,7 @@ export function TodoTasks({ setOpenAppID, tasks, setOpenTask, counter, setCounte
                                 todoTasks.length === 0 && (
                                     <div className={styles.statusInfo}>
                                         <img className={styles.illustration} src={illustration} alt="" />
+                                        <small className="text-grey text-center">Track tasks that you need to do for your applications here</small>
                                         <small className="text-grey">No incomplete tasks</small>
                                         <p onClick={() => setNewTaskOpen(true)} className="text-center cursor-pointer text-blue">+ Add Task</p>
                                     </div>
@@ -116,7 +118,7 @@ export function TodoTasks({ setOpenAppID, tasks, setOpenTask, counter, setCounte
                     name: completeTasks.length > 0 ? `Complete (${completeTasks.length})` : "Complete",
                     tab: (
                         <>
-                            <table style={{ tableLayout: "fixed" }}>
+                            <table style={{ tableLayout: "fixed" }} className={styles.table}>
                                 <thead className="m-hide">
                                     <th width={"30px"}></th>
                                     <th>Task</th>
@@ -130,11 +132,10 @@ export function TodoTasks({ setOpenAppID, tasks, setOpenTask, counter, setCounte
                                             completeTasks.map(task => {
                                                 return (
                                                     <tr
-                                                        className="cursor-pointer"
+                                                        className="cursor-pointer m-flex"
                                                         key={'__' + task.id}
-                                                        onClick={() => setOpenAppID(task.application)}
                                                     >
-                                                        <td className="flex align-center">
+                                                        <td className="flex m-page-padding-left">
                                                             <input
                                                                 defaultChecked={task?.complete}
                                                                 className={styles.checkbox}
@@ -147,14 +148,14 @@ export function TodoTasks({ setOpenAppID, tasks, setOpenTask, counter, setCounte
 
                                                             <Tooltip id={"task-incomplete-tooltip_" + task?.id} />
                                                         </td>
-                                                        <td style={{ verticalAlign: "top" }} onClick={() => setOpenTask(task)} className="m-page-padding-left">{task?.info}</td>
-                                                        <td style={{ verticalAlign: "top" }} onClick={() => setOpenTask(task)} className="m-page-padding-right flex flex-col">
+                                                        <td style={{ verticalAlign: "top" }} className={styles.taskInfo} onClick={() => setOpenTask(task)}>{task?.info}</td>
+                                                        <td style={{ verticalAlign: "top" }} onClick={() => setOpenTask(task)} className={styles.deadline}>
                                                             {
                                                                 task?.deadline && (
                                                                     <>
                                                                         <Deadline highlight={false} deadline={task?.deadline} />
                                                                         <small className={styles.timeAgo}>
-                                                                            <TimeAgo date={task?.deadline} />
+                                                                            {daysToDate(task?.deadline)}
                                                                         </small>       
                                                                     </>
                                                                 )

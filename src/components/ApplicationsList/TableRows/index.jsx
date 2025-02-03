@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { getDate } from "../../../helpers/dates"
+import { daysToDate, getDate } from "../../../helpers/dates"
 import styles from "./styles.module.css"
 import { Deadline } from "../../Deadline"
 
@@ -22,10 +22,32 @@ export function TableRows({ items, openAppID, setOpenAppID, showType=true, showD
                                 showType ? (
                                     <td className="t-hide">
                                         {
-                                            item?.type ? (
+                                            item?.type === "internship" && (
+                                                "Intern"
+                                            )
+                                        }
+                                        {
+                                            item?.type === "placement" && (
+                                                "Plcmt"
+                                            )
+                                        }
+                                        {
+                                            item?.type === "grad-scheme" && (
+                                                "Grad"
+                                            )
+                                        }
+                                                                                {
+                                            item?.type === "Other" && (
+                                                "Other"
+                                            )
+                                        }
+                                        {
+                                            item?.type !== "internship"
+                                            && item?.type !== "placement"
+                                            && item?.type !== "masters"
+                                            && item?.type !== "grad-scheme"
+                                            && item?.type !== "other" && (
                                                 item.type.substring(0, 1).toUpperCase()
-                                            ) : (
-                                                <>-</>
                                             )
                                         }
                                     </td>
@@ -45,7 +67,7 @@ export function TableRows({ items, openAppID, setOpenAppID, showType=true, showD
                                                         {
                                                             getDate(item?.deadline)
                                                         }
-                                                    </span> 
+                                                    </span>
                                                 )
                                             ) : (
                                                 <></>
