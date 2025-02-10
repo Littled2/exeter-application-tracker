@@ -81,6 +81,7 @@ export function OrganisationsManager() {
 
                                         <div>
                                             <button
+                                                className="m-submit-btn"
                                                 onClick={() => {
                                                     pb.collection("organisations").update(edit?.id, {
                                                         name: edit?.name

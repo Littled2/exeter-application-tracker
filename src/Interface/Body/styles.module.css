@@ -105,7 +105,8 @@
         display: none;
     }
     .mobileDeadlinesViewActive {
-        flex-direction: column;
+        flex-direction: column-reverse;
+        gap: var(--spacing-large);
     }
     .tablesWrapper {
         height: unset;

@@ -46,3 +46,26 @@
         opacity: 1;
     }
 }
+
+@media screen and (max-width: 800px) {
+    .row {
+        display: flex;
+        justify-content: space-between;
+    }
+    .org {
+        max-width: unset;
+        flex: 1;
+    }
+    .org > small {
+        max-width: 50vw;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    .dln {
+        /* display: none; */
+        font-size: 0.9rem;
+    }
+    .hasDeadline .org {
+        max-width: 40vw;
+    }
+}

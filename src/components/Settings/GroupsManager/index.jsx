@@ -6,7 +6,7 @@ import { useActiveYear } from "../../../contexts/activeYearContext"
 import { useMasterCounter } from "../../../contexts/masterCounterContext"
 import { BiDownArrow, BiEdit, BiUpArrow } from "react-icons/bi"
 import { usePocket } from "../../../contexts/pocketContext"
-import { BsTrash } from "react-icons/bs"
+import { BsPencil, BsTrash } from "react-icons/bs"
 import { NewYears } from "../../forms/NewYears"
 
 export function GroupsManager() {
@@ -73,7 +73,7 @@ export function GroupsManager() {
                                             </button>
                                         </td>
                                         <td>
-                                            <button className={styles.reOrderButton} onClick={() => setEdit(yr)}><BiEdit /></button>
+                                            <button className={styles.reOrderButton} onClick={() => setEdit(yr)}><BsPencil /></button>
                                         </td>
                                         <td>
                                             <button className={styles.reOrderButton} onClick={() => setToDelete(yr)}><BsTrash /></button>

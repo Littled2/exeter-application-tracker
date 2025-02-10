@@ -45,8 +45,9 @@
 
     .wrapper {
         /* display: none; */
+        padding: 0;
         width: unset;
-        /* border: none; */
+        border: none;
         gap: var(--spacing-medium);
     }
 }

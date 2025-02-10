@@ -24,7 +24,7 @@ function fire(particleRatio, opts) {
 
     let count = 200;
     let defaults = {
-    origin: { y: 0.7 }
+        origin: { y: 0.7 }
     };
 
     confetti({
@@ -96,9 +96,13 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
     const [ uploadCVReminder, setUploadCVReminder ] = useState(false)
 
     useEffect(() => {
-        setTimeout(() => {
-            setOpening(false)
-        }, 300);
+        if(!isMobile) {
+            setTimeout(() => {
+                setOpening(false)
+            }, 300);
+        } else {
+            setOpening(true)
+        }
     }, [])
 
     useEffect(() => {
@@ -153,23 +157,23 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
         })
     }, [ pb, openAppID ])
 
-    const handleKeyPress = useCallback(e => {
-        if(e.key === "Delete") {
-            e.preventDefault()
-            e.stopPropagation()
-            setConfirmOpen(true)
-        }
-    }, [ setConfirmOpen ])
+    // const handleKeyPress = useCallback(e => {
+    //     if(e.key === "Delete") {
+    //         e.preventDefault()
+    //         e.stopPropagation()
+    //         setConfirmOpen(true)
+    //     }
+    // }, [ setConfirmOpen ])
 
-    useEffect(() => {
-        // attach the event listener
-        document.addEventListener('keydown', handleKeyPress)
+    // useEffect(() => {
+    //     // attach the event listener
+    //     document.addEventListener('keydown', handleKeyPress)
 
-        // remove the event listener
-        return () => {
-            document.removeEventListener('keydown', handleKeyPress)
-        }
-    }, [handleKeyPress])
+    //     // remove the event listener
+    //     return () => {
+    //         document.removeEventListener('keydown', handleKeyPress)
+    //     }
+    // }, [handleKeyPress])
 
     function handleStageChange(e) {
 
@@ -196,7 +200,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
         <section className={[ styles.window, opening ? styles.enter : '', closing ? styles.exit : '' ].join(' ')}>
             <div className={styles.topBar}>
 
-                <div className="flex">
+                <div className="flex gap-s">
                     <button className={styles.close} onClick={() => setConfirmOpen(true)}>
                         <AiOutlineDelete />
                     </button>
@@ -209,9 +213,13 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                     className={styles.close}
                     onClick={() => {
                         setClosing(true)
-                        setTimeout(() => {
+                        if(!isMobile) {
+                            setTimeout(() => {
+                                setOpenAppID(null)
+                            }, 300)
+                        } else {
                             setOpenAppID(null)
-                        }, 500);
+                        }
                     }}
                 >
                     {
@@ -232,11 +240,11 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
 
                                 <div>
                                     <div className="text-white flex align-center space-between gap-s">
-                                        <div className="flex flex-col">
+                                        <div className={styles.top}>
                                             <h4>{application?.expand?.organisation?.name}</h4>
                                             <p className="text-grey">{application?.role}</p>
                                         </div>
-                                        <h4 className="cursor-pointer hover-text-orange text-white" onClick={() => setEditAppOpen(true)}><FiEdit /></h4>
+                                        {/* <h4 className="cursor-pointer hover-text-orange text-white" onClick={() => setEditAppOpen(true)}><FiEdit /></h4> */}
                                     </div>
                                     <hr className={styles.hr}/>
                                 </div>
@@ -331,7 +339,9 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                     application?.link && (
                                         <div>
                                             <p className="text-white">Link</p>
-                                            <a className={styles.link} rel="noreferrer" target="_blank" href={application?.link}>{application?.link}</a>
+                                            <a className={styles.link} rel="noreferrer" target="_blank" href={application?.link}>
+                                                {new URL(application?.link).hostname}
+                                            </a>
                                         </div>
                                     )
                                 }

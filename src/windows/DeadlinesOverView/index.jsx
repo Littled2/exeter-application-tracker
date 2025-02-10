@@ -28,7 +28,7 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
     useEffect(() => {
 
         pb.collection("upcomingDeadlines").getFullList({
-            filter: `group = '${activeYear}'`
+            filter: `year = '${activeYear}'`
         })
         .then(res => {
             setErr(null)

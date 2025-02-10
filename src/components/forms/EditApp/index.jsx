@@ -96,10 +96,10 @@ export function EditApp({ app, setTrigger }) {
                     <div>
                         <div style={{ display:"flex", justifyContent:"space-between" }}>
                             <label>Organisation<span className="text-red"> *</span></label>
-                            <small className="underline cursor-pointer" onClick={() => setNewOrgOpen(true)}>
+                            {/* <small className="underline cursor-pointer" onClick={() => setNewOrgOpen(true)}>
                                 <BiPlus />
                                 <span>Add Organisation</span>
-                            </small>
+                            </small> */}
                         </div>
                         <SelectOrganisation required selected={orgID} setSelected={setOrgID} c={c} />
                     </div>
@@ -158,7 +158,7 @@ export function EditApp({ app, setTrigger }) {
                             <input onChange={handleStageChange} defaultChecked={app?.stage === 'applied'} type="radio" name="Idea" value="applied" style={{ width: "16px", height: "16px" }}/>
                             <div className="flex flex-col">
                                 <span className="text-white">Applied</span>
-                                <small>Application has been sent</small>
+                                <small>Application has been submitted</small>
                             </div>
                         </label>
                         <label className="flex align-center gap-s text-grey">
@@ -232,7 +232,7 @@ export function EditApp({ app, setTrigger }) {
                         )
                     }
                 </div>
-                <div className="flex col">
+                {/* <div className="flex col">
                     <div>
                         <div>
                             <label>Application Type</label>
@@ -250,16 +250,16 @@ export function EditApp({ app, setTrigger }) {
                             <p className="text-red">{error?.response?.data?.type?.message}</p>
                         )
                     }
-                </div>
+                </div> */}
             
                 <AnimatedButton processing={processing} className="m-submit-btn" type="submit">
                     Save
                 </AnimatedButton>
             </form>
 
-            <Popup title={"Create Organisation"} trigger={newOrgOpen} setTrigger={setNewOrgOpen}>
+            {/* <Popup title={"Create Organisation"} trigger={newOrgOpen} setTrigger={setNewOrgOpen}>
                 <NewOrganisation setSelectedOrgID={setOrgID} setTrigger={setNewOrgOpen} sc={sc} />
-            </Popup>
+            </Popup> */}
 
             <Popup title={"Create Location"} trigger={newLocOpen} setTrigger={setNewLocOpen}>
                 <NewLocation setLocations={setLocations} setTrigger={setNewLocOpen} sc={sc} />

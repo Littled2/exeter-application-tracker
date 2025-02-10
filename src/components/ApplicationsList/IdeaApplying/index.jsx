@@ -97,13 +97,14 @@ export function IdeasApplying({ openAppID, setOpenAppID }) {
             <table>
                 <thead className="m-hide">
                     <tr>
-                        <th width="12%">Organisation</th>
+                        <th width="22%">Organisation</th>
                         <th>Role</th>
-                        <th className="t-hide" width="6%">Type</th>
+                        {/* <th className="t-hide" width="6%">Type</th> */}
                         <th className="m-hide" width="10%">Deadline</th>
                         {/* <th className="m-hide" width="20%">Deadline Type</th> */}
                     </tr>
                 </thead>
+
                 <tbody>
 
                     <TableSection name="Ideas" amount={ideas.length}>
@@ -132,7 +133,7 @@ export function IdeasApplying({ openAppID, setOpenAppID }) {
                         <img src={illustration} className={styles.illustration} />
                         <small className="text-center text-grey">Track your applications to internships, jobs, and placements</small>
                         <small className="text-center text-grey">No applications at this stage</small>
-                        <button className="m-hide" onClick={() => setNewApplicationPopupOpen(true)}>+ New Application</button>
+                        <button onClick={() => setNewApplicationPopupOpen(true)}>+ New Application</button>
                     </div>
                 )
             }

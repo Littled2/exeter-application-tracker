@@ -1,14 +1,14 @@
 {
-  "short_name": "Application Tracker",
-  "name": "Application Tracker",
+  "short_name": "Exeter Application Tracker",
+  "name": "Exeter Application Tracker",
   "icons": [
     {
-      "src": "logo512.png",
+      "src": "logo-no-bg.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo512.png",
+      "src": "logo-no-bg.png",
       "type": "image/png",
       "sizes": "512x512"
     }
@@ -16,5 +16,5 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#d28827",
-  "background_color": "#000000"
+  "background_color": "#151515"
 }

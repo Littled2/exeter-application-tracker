@@ -17,14 +17,21 @@ export function UpcomingDeadlines({ setOpenAppID }) {
 
     useEffect(() => {
 
+        // const currentDate = new Date();
+        // const tenDaysLater = new Date();
+        // tenDaysLater.setDate(currentDate.getDate() + 10);
+
         const currentDate = new Date();
+        const todayISO = currentDate.toISOString().split('T')[0]; // Get only YYYY-MM-DD
         const tenDaysLater = new Date();
         tenDaysLater.setDate(currentDate.getDate() + 10);
+        const tenDaysLaterISO = tenDaysLater.toISOString().split('T')[0]; // Get only YYYY-MM-DD
 
         setLoading(true)
 
         pb.collection("applications").getFullList({
-            filter: `(stage='idea' || stage='applying') && deadline >= '${currentDate.toISOString()}' && deadline <= '${tenDaysLater.toISOString()}'`,
+            // filter: `(stage='idea' || stage='applying') && deadline >= '${currentDate.toISOString()}' && deadline <= '${tenDaysLater.toISOString()}' && year = '${activeYear}'`,
+            filter: `(stage='idea' || stage='applying') && deadline >= '${todayISO}' && deadline <= '${tenDaysLaterISO}' && year = '${activeYear}'`,
             sort: 'deadline',
             expand: "organisation"
         })
@@ -47,7 +54,11 @@ export function UpcomingDeadlines({ setOpenAppID }) {
                             // setActiveMobileTab("applications")
                             setOpenAppID(app?.id)
                         }}>
-                            <p>{app?.expand?.organisation?.name}</p>
+                            <div>
+                                <p>{app?.expand?.organisation?.name}</p>
+                                <small className="text-grey">{app?.role}</small>
+                            </div>
+
                             <div className="flex flex-col">
                                 <p><Deadline deadline={app?.deadline} /></p>
                                 <small className="text-grey">{daysToDate(app?.deadline)}</small>

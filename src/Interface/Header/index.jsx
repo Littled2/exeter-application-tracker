@@ -96,6 +96,8 @@ export function Header() {
 
                                     <div className="flex gap-s align-center">
 
+                                        <span className="text-grey m-hide">Group:</span>
+
                                         <div className={styles.groupSelectWrapper}>
                                             <div className={styles.groupSelect}>
                                                 <select onInput={e => setActiveYear(e.target.value)} value={activeYear}>
