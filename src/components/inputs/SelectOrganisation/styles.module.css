@@ -1,55 +1,3 @@
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.locations {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-.locations > div {
-    display: flex;
-    border: 1px solid var(--light-grey);
-    background-color: var(--dark-grey);
-}
-
-.locations > div > button {
-    padding: 2px;
-    background-color: transparent;
-    border: none;
-    color: white;
-    border-right: 1px solid var(--light-grey);
-    padding: 0 6px;
-    display: flex;
-    align-items: center;
-}
-
-.locations > div > button:hover {
-    background-color: var(--light-grey);
-}
-
-.locations > div > span {
-    padding: 4px;
-    display: flex;
-    align-items: center;
-}
-
-.add {
-    display: flex;
-    gap: 0.75rem;
-}
-
-
-
-
-
-
-
-
-
 .inputWrapper {
     background-color: rgb(232, 232, 232);
     font-size: 1rem;
@@ -65,6 +13,7 @@
 
 .inputWrapper input {
     padding: 0;
+    margin: 0;
 }
 
 .inputWrapper:focus-within {
@@ -119,10 +68,9 @@
 }
 
 @media screen and (max-width: 800px) {
-    /* .inputWrapper input {
+    .inputWrapper {
         margin-top: 6px;
-        width: 100%;
         font-size: 1.1rem;
         padding: 10px;
-    } */
+    }
 }

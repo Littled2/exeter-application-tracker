@@ -12,10 +12,14 @@ import { NewLocation } from "../NewLocation";
 import { useMasterCounter } from "../../../contexts/masterCounterContext";
 import { AnimatedButton } from "../../AnimatedButton";
 import { InputInformation } from "../../InputInformation";
+import { useMobile } from "../../../contexts/mobileContext";
+import { IoCloseOutline } from "react-icons/io5";
 
 export function NewApp({ setTrigger }) {
 
     const { setMasterCounter } = useMasterCounter()
+
+    const [ linkOpen, setLinkOpen ] = useState(false)
 
     const [ orgID, setOrgID ] = useState('')
     const [ role, setRole ] = useState('')
@@ -38,6 +42,8 @@ export function NewApp({ setTrigger }) {
     const [ c, sc ] = useState(0)
 
     const { pb, user } = usePocket()
+
+    const { isMobile } = useMobile()
 
 
     function submit(e) {
@@ -83,7 +89,7 @@ export function NewApp({ setTrigger }) {
 
     return (
         <>
-            <form className="form flex col gap-m" onSubmit={submit}>
+            <form className="form flex col gap-m m-gap-l" onSubmit={submit}>
 
                 <small className="text-grey">Fields marked with <span className="text-red">*</span> are required</small>
 
@@ -105,12 +111,12 @@ export function NewApp({ setTrigger }) {
                     <div>
                         <div style={{ display:"flex", justifyContent:"space-between" }}>
                             <label>Organisation<span className="text-red"> *</span></label>
-                            <small className="underline cursor-pointer" onClick={() => setNewOrgOpen(true)}>
+                            {/* <small className="underline cursor-pointer" onClick={() => setNewOrgOpen(true)}>
                                 <BiPlus />
                                 <span>Add Organisation</span>
-                            </small>
+                            </small> */}
                         </div>
-                        <SelectOrganisation required selected={orgID} setSelected={setOrgID} c={c} />
+                        <SelectOrganisation selected={orgID} setSelected={setOrgID} c={c} sc={sc} />
                     </div>
                     {
                         error?.response?.data?.organisation && (
@@ -118,32 +124,61 @@ export function NewApp({ setTrigger }) {
                         )
                     }
                 </div>
-                <div className="flex col">
-                    <div>
-                        <div>
-                            <label>Link</label>
+                {
+                    !linkOpen ? (
+                        <div
+                            onClick={() => {
+                                setLinkOpen(true)
+                            }}
+                        >
+                            <p className="text-blue cursor-pointer"><span className="text-grey">https:// </span>Add link to webpage</p>
                         </div>
-                        <input placeholder="https://" style={{ width:"100%" }} value={link} onInput={e => setLink(e.target.value)}></input>
-                    </div>
-                    {
-                        error?.response?.data?.link && (
-                            <p className="text-red">{error?.response?.data?.link?.message}</p>
-                        )
-                    }
-                </div>
-                <div className="flex col">
-                    <div>
-                        <div>
-                            <label>Notes</label>
+                    ) : (
+                        <div
+                            onClick={() => {
+                                setLinkOpen(false)
+                            }}
+                            className="flex align-center gap-s text-blue cursor-pointer"
+                        >
+                            <IoCloseOutline />
+                            <p>Remove link</p>
                         </div>
-                        <textarea value={info} onInput={e => setInfo(e.target.value)}></textarea>
-                    </div>
-                    {
-                        error?.response?.data?.info && (
-                            <p className="text-red">{error?.response?.data?.info?.message}</p>
-                        )
-                    }
-                </div>
+                    )
+                }
+                {
+                    linkOpen && (
+                        <div className="flex col">
+                            <div>
+                                <div>
+                                    <label>Link</label>
+                                </div>
+                                <input placeholder="https://" style={{ width:"100%" }} value={link} onInput={e => setLink(e.target.value)}></input>
+                            </div>
+                            {
+                                error?.response?.data?.link && (
+                                    <p className="text-red">{error?.response?.data?.link?.message}</p>
+                                )
+                            }
+                        </div>
+                    )
+                }
+                {
+                    !isMobile && (
+                        <div className="flex col">
+                            <div>
+                                <div>
+                                    <label>Notes</label>
+                                </div>
+                                <textarea value={info} onInput={e => setInfo(e.target.value)}></textarea>
+                            </div>
+                            {
+                                error?.response?.data?.info && (
+                                    <p className="text-red">{error?.response?.data?.info?.message}</p>
+                                )
+                            }
+                        </div>
+                    )
+                }
                 <div className="flex col gap-s">
                     <div>
                         <label className="text-orange">What stage is this application at?<span className="text-red"> *</span></label>
@@ -167,7 +202,7 @@ export function NewApp({ setTrigger }) {
                             <input onChange={handleStageChange} defaultChecked={false} type="radio" name="Idea" value="applied" style={{ width: "16px", height: "16px" }}/>
                             <div className="flex flex-col">
                                 <span className="text-white">Applied</span>
-                                <small>Application has been sent</small>
+                                <small>Application has been submitted</small>
                             </div>
                         </label>
                         <label className="flex align-center gap-s text-grey">
@@ -195,7 +230,7 @@ export function NewApp({ setTrigger }) {
                     <div className="flex gap-s">
                         <div>
                             <div>
-                                <label>Deadline?</label>
+                                <label>Deadline type</label>
                             </div>
                             <select value={deadlineType} onInput={e => setDeadlineType(e.target.value)}>
                                 <option value="rolling">Rolling</option>
@@ -249,7 +284,7 @@ export function NewApp({ setTrigger }) {
                     }
                 </div>
 
-                <div className="flex col">
+                {/* <div className="flex col">
                     <div>
                         <div>
                             <label>Application Type</label>
@@ -267,7 +302,7 @@ export function NewApp({ setTrigger }) {
                             <p className="text-red">{error?.response?.data?.type?.message}</p>
                         )
                     }
-                </div>
+                </div> */}
 
                 <AnimatedButton processing={processing} className="m-submit-btn" type="submit">
                     Submit

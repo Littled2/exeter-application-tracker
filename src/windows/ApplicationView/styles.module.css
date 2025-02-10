@@ -42,6 +42,16 @@
     height: 1.85rem;
 }
 
+.top {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-small);
+}
+
+.top p {
+    line-height: 1.4;
+}
+
 .inner {
     padding: var(--page-padding-left);
     overflow-x: hidden;

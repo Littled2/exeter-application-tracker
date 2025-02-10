@@ -41,7 +41,7 @@ export function Tabs({ tabs, mobileTop, saveActiveTabAs=null }) {
             </div>
             <div>
                 {
-                    tabs.filter(tab => !(isMobile && tab.hideOnMobile === true))[selected].tab
+                    tabs.filter(tab => !(isMobile && tab.hideOnMobile === true))[selected]?.tab
                 }
             </div>
         </div>

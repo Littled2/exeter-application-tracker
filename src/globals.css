@@ -131,7 +131,8 @@ table th {
 }
 
 .form input[type=text] {
-    width: 400px;
+    /* width: 400px; */
+    width: 100%;
 }
 
 .form textarea {
@@ -226,6 +227,8 @@ button {
     .form textarea {
         margin-top: 6px;
         width: 100%;
+        font-size: 1.1rem;
+        padding: 10px;
     }
 
     .m-submit-btn {

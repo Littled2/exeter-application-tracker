@@ -59,4 +59,9 @@
         padding-left: var(--page-padding-left);
         padding-right: var(--page-padding-right);
     }
+    .wrapper tbody {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-small);   
+    }
 }

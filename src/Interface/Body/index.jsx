@@ -43,11 +43,13 @@ export function Body({ counter, setCounter }) {
                                         <>
                                             {
                                                 isMobile && (
-                                                    <UpcomingDeadlines setOpenAppID={setOpenAppID} />
+                                                    <div className="m-show-flex flex-col gap-s">
+                                                        <h4 className="text-white">Next 10 days</h4>
+
+                                                        <UpcomingDeadlines setOpenAppID={setOpenAppID} />
+                                                    </div>
                                                 )
                                             }
-
-                                            <h3 className="m-show-block text-white">Next Deadlines</h3>
 
                                             <DeadlinesOverView openAppID={openAppID} setOpenAppID={setOpenAppID} />
                                         </>

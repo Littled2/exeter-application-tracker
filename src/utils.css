@@ -206,6 +206,9 @@
     .m-gap-0 {
         gap: 0 !important;
     }
+    .m-gap-l {
+        gap: var(--spacing-large) !important;
+    }
     .m-page-padding-left {
         padding-left: var(--page-padding-left);
     }

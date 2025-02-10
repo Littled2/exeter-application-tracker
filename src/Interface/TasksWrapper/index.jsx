@@ -5,7 +5,7 @@ import { NewTask } from "../../components/forms/NewTask"
 import { TaskView } from "../../components/forms/TaskView"
 import { Popup } from "../../components/Popup"
 import { TodoTasks } from "../../components/TasksList/TodoTasks"
-import { IoCheckbox, IoCheckboxOutline } from "react-icons/io5"
+import { IoAddCircleOutline, IoCheckbox, IoCheckboxOutline, IoSquareOutline } from "react-icons/io5"
 import { useActiveYear } from "../../contexts/activeYearContext"
 import { InputInformation } from "../../components/InputInformation"
 import { Confirm } from "../../components/forms/Confirm"
@@ -68,7 +68,7 @@ export function TasksWrapper({ setOpenAppID }) {
             <Confirm trigger={deleteOpen} setTrigger={setDeleteOpen} message={"Are you sure you want to delete this task?"} onConfirm={() => deleteTask(openTask?.id)}></Confirm>
 
             <button onClick={() => setNewTaskOpen(true)} className={styles.newTaskButtonMobile}>
-                <IoCheckboxOutline />
+                <IoAddCircleOutline />
             </button>
         </div>
     )
