@@ -75,8 +75,10 @@
     }
     .list {
         max-height: 100%;
-        display: flex;
-        justify-content: center;
+    }
+    .list td {
+        padding-top: 2px;
+        padding-bottom: 2px;
     }
     .image {
         max-width: 100%;

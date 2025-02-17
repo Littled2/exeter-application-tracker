@@ -206,6 +206,6 @@
     .mobileGroupSelectWrapper select {
         font-size: 0.7rem;
         padding: 0;
-        color: var(--text-grey);
+        color: var(--text-blue);
     }
 }

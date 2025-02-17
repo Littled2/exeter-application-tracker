@@ -25,7 +25,7 @@ export function NewApp({ setTrigger }) {
     const [ role, setRole ] = useState('')
     const [ link, setLink ] = useState('')
     const [ info, setInfo ] = useState('')
-    const [ deadlineType, setDeadlineType ] = useState('fixed')
+    const [ deadlineType, setDeadlineType ] = useState('none')
     const [ deadline, setDeadline ] = useState(new Date())
     const [ locations, setLocations ] = useState([])
     const [ type, setType ] = useState('internship')
@@ -85,7 +85,11 @@ export function NewApp({ setTrigger }) {
 
     const nameInput = useRef()
 
-    useEffect(() => nameInput.current.focus(), [])
+    useEffect(() => {
+        if(!isMobile) {
+            nameInput.current.focus()
+        }
+    }, [])
 
     return (
         <>
@@ -131,7 +135,7 @@ export function NewApp({ setTrigger }) {
                                 setLinkOpen(true)
                             }}
                         >
-                            <p className="text-blue cursor-pointer"><span className="text-grey">https:// </span>Add link to webpage</p>
+                            <p className="text-blue cursor-pointer">Add link to webpage</p>
                         </div>
                     ) : (
                         <div
@@ -141,7 +145,7 @@ export function NewApp({ setTrigger }) {
                             className="flex align-center gap-s text-blue cursor-pointer"
                         >
                             <IoCloseOutline />
-                            <p>Remove link</p>
+                            <p>Cancel link</p>
                         </div>
                     )
                 }
@@ -270,12 +274,12 @@ export function NewApp({ setTrigger }) {
                                 <label>Location(s)</label>
                                 <InputInformation id={"location"} text={"Select location(s) you are applying to"} />
                             </div>
-                            <small className="underline cursor-pointer" onClick={() => setNewLocOpen(true)}>
+                            <small className="underline cursor-pointer text-blue" onClick={() => setNewLocOpen(true)}>
                                 <BiPlus />
                                 <span>New Location</span>
                             </small>
                         </div>
-                        <LocationsSelect locations={locations} setLocations={setLocations} c={c} />
+                        <LocationsSelect locations={locations} setLocations={setLocations} setNewLocationOpen={setNewLocOpen} c={c} />
                     </div>
                     {
                         error?.response?.data?.locations && (

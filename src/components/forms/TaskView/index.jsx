@@ -39,7 +39,7 @@ export function TaskView({ task, counter, setCounter, setTrigger }) {
         <form className="form flex col gap-m" onSubmit={submit}>
             <div>
                 <div>
-                    <label>Task</label>
+                    <label>Task Description</label>
                 </div>
                 <textarea type="text" value={info} onChange={e => setInfo(e.target.value)}></textarea>
             </div>

@@ -118,6 +118,10 @@ table th {
     font-weight: inherit;
 }
 
+option {
+    background-color: var(--dark-grey);
+    color: var(--text-white);
+}
 
 /* Stop the calendar title from going over the top of popups */
 .rdp-caption_label {

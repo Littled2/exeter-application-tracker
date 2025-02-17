@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { TableSection } from "../../TableSection"
 import { usePocket } from "../../../contexts/pocketContext"
-import { daysToDate, getDate } from "../../../helpers/dates"
+import { daysToDate } from "../../../helpers/dates"
 import { useActiveYear } from "../../../contexts/activeYearContext"
 import { Deadline } from "../../Deadline"
 import { Tabs } from "../../Tabs"
@@ -70,7 +70,10 @@ export function TodoTasks({ setOpenAppID, tasks, setOpenTask, counter, setCounte
                                                                 defaultChecked={task?.complete}
                                                                 className={styles.checkbox}
                                                                 type="checkbox"
-                                                                onInput={e => setTaskComplete(task?.id, e.target.checked)}
+                                                                onInput={e => {
+                                                                    setTaskComplete(task?.id, e.target.checked)
+                                                                    // e.target.classList.add(styles.justChecked)
+                                                                }}
                                                                 data-tooltip-id={"task-complete-tooltip_" + task?.id}
                                                                 data-tooltip-content="Mark as complete"
                                                                 data-tooltip-place="left"

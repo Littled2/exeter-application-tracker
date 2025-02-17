@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { usePocket } from "../../../contexts/pocketContext"
+import { useMobile } from "../../../contexts/mobileContext"
 
 export function NewTicket({ setTrigger }) {
 
@@ -8,6 +9,7 @@ export function NewTicket({ setTrigger }) {
     const { pb, user } = usePocket()
     const [ err, setErr ] = useState(false)
     const [ success, setSuccess ] = useState(false)
+    const { isMobile } = useMobile()
 
     const submit = useCallback(e => {
         e.preventDefault()
@@ -28,7 +30,9 @@ export function NewTicket({ setTrigger }) {
     }, [ pb, user, err, success ])
 
     useEffect(() => {
-        ticketRef.current.focus()
+        if(!isMobile) {
+            ticketRef.current.focus()
+        }
     }, [])
 
     return !success ? (

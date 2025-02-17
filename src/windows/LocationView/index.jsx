@@ -32,13 +32,15 @@ export function LocationView() {
 
             let map = {}
 
+            console.log(items)
+
             items.forEach(item => {
 
                 if(!("expand" in item)) {
                     return
                 }
 
-                item.expand.locations.forEach(loc => {
+                item.expand?.locations?.forEach(loc => {
                     if(loc.id in map) {
                         map[loc.id].freq += 1
                     } else {
@@ -149,7 +151,8 @@ export function LocationView() {
 
                                 if(hover !== null && hover !== locID) return
                                 
-                                let sizePX = (loc.freq * 2) + 2
+                                // Calculate the size. Cap at 20px
+                                let sizePX = Math.min((loc.freq * 2) + 2, 20)
 
                                 return (
                                     <div

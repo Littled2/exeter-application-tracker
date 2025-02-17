@@ -10,13 +10,22 @@
     gap: 6px;
 }
 
-.locations > div {
+.currentLocation {
     display: flex;
-    border: 1px solid var(--light-grey);
+    background-color: var(--dark-grey);
+    color: var(--text-white);
+    border-radius: var(--input-radius);
+}
+
+.locations .select {
     background-color: var(--dark-grey);
 }
 
-.locations > div > button {
+.textInput {
+    margin: 0 !important;
+}
+
+.currentLocation > button {
     padding: 2px;
     background-color: transparent;
     border: none;
@@ -27,11 +36,11 @@
     align-items: center;
 }
 
-.locations > div > button:hover {
+.currentLocation > button:hover {
     background-color: var(--light-grey);
 }
 
-.locations > div > span {
+.currentLocation > span {
     padding: 4px;
     display: flex;
     align-items: center;
@@ -51,20 +60,22 @@
 
 
 .inputWrapper {
-    background-color: rgb(232, 232, 232);
-    font-size: 1rem;
+    background-color: var(--input-bg);
+    border-radius: var(--input-radius);
+    border: 1px solid var(--input-border);
     font-family: inherit;
-    padding: 4px;
-    border: none;
+    padding: var(--input-padding);
     max-width: 100%;
-    padding: 6px;
-    font-size: 1rem;
     display: flex;
     align-items: center;
+    color: white;
 }
 
 .inputWrapper input {
     padding: 0;
+    background-color: transparent;
+    border: none;
+    color: inherit;
 }
 
 .inputWrapper:focus-within {
@@ -85,13 +96,13 @@
     align-items: center;
     padding-left: 8px;
     padding-right: 8px;
-    color: black;
+    color: white;
 }
 
 .select {
     display: flex;
     flex-direction: column;
-    background-color: var(--dark-grey);
+    /* background-color: var(--dark-grey); */
     max-height: 14rem;
     overflow-y: auto;
     z-index: 1200;
@@ -104,6 +115,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: transparent;
+    color: white;
 }
 
 .item {

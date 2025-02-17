@@ -40,7 +40,7 @@ export const ActiveYearProvider = ({ children }) => {
 		})
 		.then(yrs => {
 
-			console.log(yrs)
+			console.log({yrs})
 
 		  	setLoading(false)
 
