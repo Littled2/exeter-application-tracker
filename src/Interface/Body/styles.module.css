@@ -95,10 +95,10 @@
         height: unset;
         flex-direction: row;
         overflow-x: auto;
-        padding-top: var(--spacing-medium);
-        padding-left: var(--page-padding-left);
-        padding-right: var(--page-padding-right);
-        padding-bottom: var(--spacing-medium);
+        padding-top: var(--spacing-large);
+        padding-left: calc(var(--page-padding-left) * 2);
+        padding-right: calc(var(--page-padding-right) * 2);
+        padding-bottom: var(--spacing-large);
         scrollbar-width: none;
     }
     .dataVisWrapper::-webkit-scrollbar {

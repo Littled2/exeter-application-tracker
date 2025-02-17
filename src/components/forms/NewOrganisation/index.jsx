@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { usePocket } from "../../../contexts/pocketContext"
+import { useMobile } from "../../../contexts/mobileContext"
 
 export function NewOrganisation({ setTrigger, setSelectedOrgID, sc }) {
 
@@ -25,8 +26,13 @@ export function NewOrganisation({ setTrigger, setSelectedOrgID, sc }) {
     }
 
     const newInput = useRef()
+    const { isMobile } = useMobile()
 
-    useEffect(() => newInput.current.focus(), [])
+    useEffect(() => {
+        if(!isMobile) {
+            newInput.current.focus()
+        }
+    }, [])
 
     return (
         <form className="form">

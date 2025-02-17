@@ -3,6 +3,7 @@ import { usePocket } from "../../../contexts/pocketContext"
 import { DateInput } from "../../inputs/DateInput"
 import { IoCalendarOutline } from "react-icons/io5"
 import { useActiveYear } from "../../../contexts/activeYearContext"
+import { useMobile } from "../../../contexts/mobileContext"
 
 export function NewTask({ appID=null, setCounter, setTrigger }) {
 
@@ -10,6 +11,7 @@ export function NewTask({ appID=null, setCounter, setTrigger }) {
     const [ deadline, setDeadline ] = useState(null)
     const [ detailsOpen, setDetailsOpen ] = useState(false)
     const { activeYear } = useActiveYear()
+    const { isMobile } = useMobile()
 
     const { pb, user } = usePocket()
 
@@ -43,14 +45,16 @@ export function NewTask({ appID=null, setCounter, setTrigger }) {
     }
 
     useEffect(() => {
-        taskInput.current.focus()
+        if(!isMobile) {
+            taskInput.current.focus()
+        }
     }, [])
 
     return (
         <form className="form flex col gap-m" onSubmit={(e) => submit(e)}>
             <div>
                 <div>
-                    <label>Task</label>
+                    <label>Task Description</label>
                 </div>
                 <textarea placeholder="Eg. Request reference from tutor" ref={taskInput} type="text" value={info} onChange={e => setInfo(e.target.value)} required></textarea>
             </div>

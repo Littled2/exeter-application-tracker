@@ -219,12 +219,12 @@ export function EditApp({ app, setTrigger }) {
                     <div>
                         <div className="flex space-between">
                             <label>Location(s)</label>
-                            <small className="underline cursor-pointer" onClick={() => setNewLocOpen(true)}>
+                            <small className="underline cursor-pointer text-blue" onClick={() => setNewLocOpen(true)}>
                                 <BiPlus />
                                 <span>New Location</span>
                             </small>
                         </div>
-                        <LocationsSelect locations={locations} setLocations={setLocations} c={c} />
+                        <LocationsSelect locations={locations} setLocations={setLocations} setNewLocationOpen={setNewLocOpen} c={c} />
                     </div>
                     {
                         error?.response?.data?.locations && (
@@ -252,7 +252,7 @@ export function EditApp({ app, setTrigger }) {
                     }
                 </div> */}
             
-                <AnimatedButton processing={processing} className="m-submit-btn" type="submit">
+                <AnimatedButton processing={processing} className="m-submit-btn popup-btm" type="submit">
                     Save
                 </AnimatedButton>
             </form>

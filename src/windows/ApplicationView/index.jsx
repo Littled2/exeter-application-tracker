@@ -17,6 +17,7 @@ import confetti from "canvas-confetti";
 import { EditAppInfo } from "../../components/forms/EditAppInfo"
 import { FiEdit } from "react-icons/fi"
 import { InputInformation } from "../../components/InputInformation"
+import { IoLocationOutline } from "react-icons/io5"
 
 
 
@@ -144,6 +145,15 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
     }, [ openAppID, activeYear, masterCounter ])
 
 
+    const getHostname = (link) => {
+        try {
+            return (new URL(link)).hostname
+        } catch (error) {
+            return "Invalid link"
+        }
+    }
+
+
 
     const deleteApplication = useCallback(() => {
         pb.collection('applications').delete(openAppID)
@@ -261,22 +271,6 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                                 <td className={styles.mobileTextRight}>{application?.expand?.organisation?.name}</td>
                                             </tr> */}
                                             <tr>
-                                                <td className="text-white" style={{ verticalAlign: "top" }}>Location(s)</td>
-                                                <td className="text-right">
-                                                    {
-                                                        application?.expand?.locations?.map((loc, i) => <span key={"____" + loc?.id}>{loc?.name}{i < application?.expand?.locations.length - 1 ? ", " : ""}</span>)
-                                                    }
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <table>
-                                        <tbody>
-                                            {/* <tr>
-                                                <td className="text-white">Deadline Type</td>
-                                                <td className={styles.mobileTextRight}>{application?.deadlineType ? application?.deadlineType : "-"}</td>
-                                            </tr> */}
-                                            <tr>
                                                 {
                                                     application?.deadlineType === "fixed" ? (
                                                         <>
@@ -291,6 +285,41 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                                     )
                                                 }
                                             </tr>
+                                        </tbody>
+                                    </table>
+                                    <table>
+                                        <tbody>
+                                            {/* <tr>
+                                                <td className="text-white">Deadline Type</td>
+                                                <td className={styles.mobileTextRight}>{application?.deadlineType ? application?.deadlineType : "-"}</td>
+                                            </tr> */}
+
+                                                    <tr>
+                                                        <td className="text-white" style={{ verticalAlign: "top" }}>Location(s)</td>
+                                                        <td className="text-right">
+                                                            {
+                                                                application?.expand?.locations?.map((loc, i) => <span key={"____" + loc?.id}>{loc?.name}{i < application?.expand?.locations.length - 1 ? ", " : ""}</span>)
+                                                            }
+                                                            {
+                                                                !application?.expand?.locations?.length && (
+                                                                    <span className="text-blue flex align-center"><IoLocationOutline /> Add location</span>
+                                                                )
+                                                            }
+                                                        </td>
+                                                    </tr>
+
+                                            {
+                                                application?.expand?.locations?.length && (
+                                                    <tr>
+                                                        <td className="text-white" style={{ verticalAlign: "top" }}>Location(s)</td>
+                                                        <td className="text-right">
+                                                            {
+                                                                application?.expand?.locations?.map((loc, i) => <span key={"____" + loc?.id}>{loc?.name}{i < application?.expand?.locations.length - 1 ? ", " : ""}</span>)
+                                                            }
+                                                        </td>
+                                                    </tr>
+                                                )
+                                            }
                                         </tbody>
                                     </table>
                                 </div>
@@ -340,7 +369,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                         <div>
                                             <p className="text-white">Link</p>
                                             <a className={styles.link} rel="noreferrer" target="_blank" href={application?.link}>
-                                                {new URL(application?.link).hostname}
+                                                {getHostname(application?.link)}
                                             </a>
                                         </div>
                                     )
@@ -377,7 +406,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
 
                             </div>
                         ) : (
-                            <p className="text-center text-grey">Loading...</p>
+                            <div className={styles.loadingWrapper}>Loading...</div>
                         )    
                     ) : (
                         <p className="text-red">Error</p>

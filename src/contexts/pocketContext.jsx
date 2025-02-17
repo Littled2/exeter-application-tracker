@@ -36,7 +36,7 @@ export const PocketProvider = ({ children }) => {
 
 
     useEffect(() => {
-      
+
       return pb.authStore.onChange((token, model) => {
         setToken(token)
         setUser(model)
@@ -105,6 +105,17 @@ export const PocketProvider = ({ children }) => {
         pb.authStore.clear()
         setUser(null)
         setToken(null)
+        
+        // Clear cookies
+        document.cookie.split(";").forEach(cookie => {
+            document.cookie = cookie.replace(/^ +/, "").replace(/=.*/, "=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/");
+        });
+
+        // Clear local storage
+        localStorage.clear();
+
+        // Clear session storage
+        sessionStorage.clear();
     }, [])
 
 

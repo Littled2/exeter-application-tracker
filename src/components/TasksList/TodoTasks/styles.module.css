@@ -11,6 +11,14 @@
     font-size: 0.9rem;
 }
 
+.justChecked {
+    animation: justCheckedCheckbox 0.4s forwards;
+}
+
+@keyframes justCheckedCheckbox {
+    
+}
+
 .statusInfo {
     padding: 45px;
     display: flex;

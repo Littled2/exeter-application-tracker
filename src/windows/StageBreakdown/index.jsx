@@ -31,7 +31,7 @@ const barChartOptions = {
             },
             grid: {
                 color: "#121212"
-            }
+            },
         },
         y: {
             stacked: true,
@@ -58,6 +58,8 @@ export function StageBreakdown() {
 
     const { masterCounter } = useMasterCounter()
     
+    const [ barChartOptionsState, setBarChartOptionsState ] = useState(barChartOptions)
+
     const [ amounts, setAmounts ] = useState([ 0, 0, 0, 0, 0 ])
     const [ err, setErr ] = useState(false)
 
@@ -80,6 +82,22 @@ export function StageBreakdown() {
 
         return value
     }
+
+    useEffect(() => {
+        if(isMobile) {
+            setBarChartOptionsState(opts => {
+                opts.scales.x.grid.color = "#242424"
+                opts.scales.y.grid.color = "#242424"
+                return opts
+            })
+        } else {
+            setBarChartOptionsState(opts => {
+                opts.scales.x.grid.color = "#121212"
+                opts.scales.y.grid.color = "#121212"
+                return opts
+            })
+        }
+    }, [ isMobile ])
     
 
     useEffect(() => {
@@ -212,7 +230,7 @@ export function StageBreakdown() {
                     {
                         barChartData ? (
                             <div className={styles.chart}>
-                                <Bar options={barChartOptions} data={barChartData} />
+                                <Bar options={barChartOptionsState} data={barChartData} />
                             </div>
                         ) : (
                             <div className={styles.inner}>

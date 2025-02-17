@@ -42,7 +42,7 @@ export function EditAppInfo({ appID, app, setTrigger }) {
                 )
             }
 
-            <AnimatedButton submitting={submitting} className="m-submit-btn" type="submit">Save</AnimatedButton>
+            <AnimatedButton submitting={submitting} className="m-submit-btn popup-btm" type="submit">Save</AnimatedButton>
 
         </form>
     )

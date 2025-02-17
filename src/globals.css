@@ -28,6 +28,11 @@
     --header-height-mobile: 50px;
     --mobile-nav-tabs-height: 60px;
 
+    --input-padding: 10px;
+    --input-bg: rgba(255, 255, 255, 0.1);
+    --input-border: rgba(255, 255, 255, 0.3);
+    --input-radius: calc(var(--radius) / 2);
+
     --page-padding-left: 24px;
     --page-padding-right: 24px;
 
@@ -109,24 +114,19 @@ table th {
 
 
 
-
-
-
-
-
 /* Form Styles */
 
 .form input,
 .form select,
 .form textarea {
-    background-color: rgb(232, 232, 232);
-    /* border-radius: calc(var(--radius) / 2); */
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: #fff;
+    border-radius: var(--input-radius);
     font-size: 1rem;
     font-family: inherit;
-    padding: 4px;
-    border: none;
+    padding: var(--input-padding);
     max-width: 100%;
-    padding: 6px;
     font-size: 1rem;
 }
 
@@ -144,7 +144,7 @@ table th {
 input:focus,
 textarea:focus,
 select:focus {
-    outline: 2px solid var(--text-orange);
+    outline: 2px solid var(--text-blue);
 }
 
 .windows-only {
@@ -200,6 +200,11 @@ select:focus {
 
 .m-submit-btn.m-submit-btn.m-submit-btn-red:active {
     background-color: rgb(196, 22, 22);
+}
+
+.popup-btm {
+    position: sticky;
+    bottom: 0;
 }
 
 

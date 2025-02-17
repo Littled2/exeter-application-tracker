@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import { usePocket } from "../../../contexts/pocketContext"
 import { useActiveYear } from "../../../contexts/activeYearContext"
 import { AnimatedButton } from "../../AnimatedButton"
+import { useMobile } from "../../../contexts/mobileContext"
 
 export function NewYears({ setTrigger, setActiveYear }) {
 
@@ -9,6 +10,7 @@ export function NewYears({ setTrigger, setActiveYear }) {
 
     const [ year, setYear ] = useState()
     const [ processing, setProcessing ] = useState(false)
+    const { isMobile } = useMobile()
 
     const inputRef = useRef()
 
@@ -41,7 +43,9 @@ export function NewYears({ setTrigger, setActiveYear }) {
     }, [ year, user, setActiveYear, setTrigger ])
 
     useEffect(() => {
-        inputRef.current.focus()
+        if(!isMobile) {
+            inputRef.current.focus()   
+        }
     }, [])
 
     return (

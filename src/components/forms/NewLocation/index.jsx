@@ -3,6 +3,7 @@ import { usePocket } from "../../../contexts/pocketContext"
 import ukImage from "./UK.png"
 import styles from "./styles.module.css"
 import { useMasterCounter } from "../../../contexts/masterCounterContext"
+import { useMobile } from "../../../contexts/mobileContext"
 
 export function NewLocation({ setTrigger, setLocations=null, sc=null }) {
 
@@ -16,8 +17,13 @@ export function NewLocation({ setTrigger, setLocations=null, sc=null }) {
     const newInput = useRef()
 
     const { setMasterCounter } = useMasterCounter()
+    const { isMobile } = useMobile()
 
-    useEffect(() => newInput.current.focus(), [])
+    useEffect(() => {
+        if(!isMobile) {
+            newInput.current.focus()
+        }
+    }, [])
 
     const submit = e => {
         e.preventDefault()

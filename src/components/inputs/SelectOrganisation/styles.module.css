@@ -1,19 +1,20 @@
 .inputWrapper {
-    background-color: rgb(232, 232, 232);
-    font-size: 1rem;
+    background-color: var(--input-bg);
+    border-radius: var(--input-radius);
+    border: 1px solid var(--input-border);
     font-family: inherit;
-    padding: 4px;
-    border: none;
+    padding: var(--input-padding);
     max-width: 100%;
-    padding: 6px;
-    font-size: 1rem;
     display: flex;
     align-items: center;
+    color: white;
 }
 
 .inputWrapper input {
     padding: 0;
-    margin: 0;
+    background-color: transparent;
+    border: none;
+    color: inherit;
 }
 
 .inputWrapper:focus-within {
@@ -22,6 +23,7 @@
 
 .textInput {
     flex: 1;
+    margin: 0 !important;
 }
 
 .textInput:focus {
@@ -34,7 +36,7 @@
     align-items: center;
     padding-left: 8px;
     padding-right: 8px;
-    color: black;
+    color: white;
 }
 
 .select {
@@ -53,6 +55,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: transparent;
+    color: white;
 }
 
 .item {
