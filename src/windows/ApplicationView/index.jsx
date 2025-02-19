@@ -189,7 +189,14 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
 
         // Show upload CV reminder when finished applying
         if((application.stage === 'idea' || application.stage === 'applying') && e.target.value === 'applied') {
-            setUploadCVReminder(true)
+
+            const lastShownAt = localStorage.getItem("uploadCVReminderLastShown")
+
+            // If last shown in prev 5 mins, don't show again
+            if(lastShownAt > 1000 * 60 * 5) {
+                setUploadCVReminder(true)
+                localStorage.setItem("uploadCVReminderLastShown", new Date().getTime())
+            }
         }
 
         // Show confetti when a user gets accepted
@@ -197,6 +204,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
             celebrate()
         }
 
+        // Update the record
         pb.collection("applications").update(application.id, { stage: e.target.value })
         .then(() => {
             setMasterCounter(c => c + 1)
