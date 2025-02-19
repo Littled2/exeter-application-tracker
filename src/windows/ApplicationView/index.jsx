@@ -224,6 +224,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
             celebrate()
         }
 
+        // Update the record
         pb.collection("applications").update(application.id, { stage: e.target.value })
         .then(() => {
             setMasterCounter(c => c + 1)
