@@ -7,6 +7,7 @@ import { useActiveYear } from "../../../contexts/activeYearContext"
 import { useNewApplicationPopup } from "../../../contexts/newApplicationPopupContext"
 import { useMasterCounter } from "../../../contexts/masterCounterContext"
 import illustration from "../illustration.svg"
+import { indexDB } from "../../db"
 
 export function IdeasApplying({ openAppID, setOpenAppID }) {
 
@@ -20,27 +21,51 @@ export function IdeasApplying({ openAppID, setOpenAppID }) {
     const { activeYear } = useActiveYear()
     const { masterCounter } = useMasterCounter()
 
-    const { pb } = usePocket()
+    const { pb, isOffline } = usePocket()
 
     const [ err, setErr ] = useState(false)
 
     useEffect(() => {
 
-        getApps()
+        if(!isOffline) {
 
-        pb.collection('applications').subscribe('*', getApps)
+            getApps()
+            pb.collection('applications').subscribe('*', getApps)
 
-        return () => pb.collection('applications').unsubscribe()
+            return () => pb.collection('applications').unsubscribe()
+
+        } else {
+
+            // If offline, fetch from database
+            indexDB.applications.where('stage').equals('idea').toArray().then(setIdeas)
+            indexDB.applications.where('stage').equals('applying').toArray().then(setApplying)
+        }
 
     }, [ masterCounter, activeYear ])
 
     const getApps = () => {
         setLoading(true)
         pb.collection("applications").getFullList({ filter: `year = "${activeYear}" && (stage = "idea" || stage = "applying")`, expand: "locations, organisation", sort: "deadline" })
-        .then(apps => {
+        .then(async apps => {
             setIdeas(apps.filter(app => app.stage === "idea"))
             setApplying(apps.filter(app => app.stage === "applying"))
             setLoading(false)
+
+            try {
+                // Remove all idea and applying applications from indexDB
+                await indexDB.applications.where('stage').equals('applying').delete()
+                await indexDB.applications.where('stage').equals('idea').delete()
+
+                apps.forEach(async app => {
+                    await indexDB.applications.add(app)
+                })
+
+                // Add all fetched applications to indexDB
+                // indexDB.applications.bulkAdd(apps)
+            } catch (err) {
+                console.error("Error adding applications to indexDB", err)
+            }
+
         })
         .catch(error => {
             console.error("Error getting applications", error)

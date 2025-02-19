@@ -79,7 +79,7 @@
 }
 
 .inputWrapper:focus-within {
-    outline: 2px solid var(--text-orange);
+    outline: 2px solid var(--text-blue);
 }
 
 .textInput {
@@ -132,10 +132,7 @@
 }
 
 @media screen and (max-width: 800px) {
-    /* .inputWrapper input {
+    .inputWrapper {
         margin-top: 6px;
-        width: 100%;
-        font-size: 1.1rem;
-        padding: 10px;
-    } */
+    }
 }

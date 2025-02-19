@@ -274,13 +274,13 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                                 {
                                                     application?.deadlineType === "fixed" ? (
                                                         <>
-                                                            <td className="text-white">Deadline</td>
-                                                            <td className="text-right">{application?.deadline ? <Deadline highlight={application?.stage === "idea" || application?.stage === "applying"} deadline={application?.deadline} /> : "-"}</td>       
+                                                            <td className="text-white" style={{ alignContent: "baseline" }}>Deadline</td>
+                                                            <td className="text-right" style={{ alignContent: "baseline" }}>{application?.deadline ? <Deadline highlight={application?.stage === "idea" || application?.stage === "applying"} deadline={application?.deadline} /> : "-"}</td>
                                                         </>
                                                     ) : (
                                                         <>
-                                                            <td><br /></td>
-                                                            <td><br /></td>
+                                                            <td className="text-white" style={{ alignContent: "baseline" }}>Deadline</td>
+                                                            <td className="text-right text-grey" style={{ alignContent: "baseline" }}>{application?.deadlineType}</td>
                                                         </>
                                                     )
                                                 }
@@ -294,32 +294,23 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                                 <td className={styles.mobileTextRight}>{application?.deadlineType ? application?.deadlineType : "-"}</td>
                                             </tr> */}
 
-                                                    <tr>
-                                                        <td className="text-white" style={{ verticalAlign: "top" }}>Location(s)</td>
-                                                        <td className="text-right">
-                                                            {
-                                                                application?.expand?.locations?.map((loc, i) => <span key={"____" + loc?.id}>{loc?.name}{i < application?.expand?.locations.length - 1 ? ", " : ""}</span>)
-                                                            }
-                                                            {
-                                                                !application?.expand?.locations?.length && (
-                                                                    <span className="text-blue flex align-center"><IoLocationOutline /> Add location</span>
-                                                                )
-                                                            }
-                                                        </td>
-                                                    </tr>
+                                            <tr>
+                                                <td className="text-white" style={{ verticalAlign: "top" }}>Location(s)</td>
+                                                <td className="text-right">
+                                                    {
+                                                        application?.expand?.locations?.map((loc, i) => <span key={"____" + loc?.id}>{loc?.name}{i < application?.expand?.locations.length - 1 ? ", " : ""}</span>)
+                                                    }
+                                                    {
+                                                        !application?.expand?.locations?.length && (
+                                                            <small onClick={() => setEditAppOpen(true)} style={{ gap: "5px" }} className="justify-right text-blue flex align-center cursor-pointer">
+                                                                <IoLocationOutline />
+                                                                <span>Add location</span>
+                                                            </small>
+                                                        )
+                                                    }
+                                                </td>
+                                            </tr>
 
-                                            {
-                                                application?.expand?.locations?.length && (
-                                                    <tr>
-                                                        <td className="text-white" style={{ verticalAlign: "top" }}>Location(s)</td>
-                                                        <td className="text-right">
-                                                            {
-                                                                application?.expand?.locations?.map((loc, i) => <span key={"____" + loc?.id}>{loc?.name}{i < application?.expand?.locations.length - 1 ? ", " : ""}</span>)
-                                                            }
-                                                        </td>
-                                                    </tr>
-                                                )
-                                            }
                                         </tbody>
                                     </table>
                                 </div>
@@ -348,7 +339,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                     </table>
                                 </div>
 
-                                <div className="flex gap-s flex-col">
+                                <div className="flex flex-col">
                                     <div className="flex gap-s align-center">
                                         <p className="text-white">Application Stage</p>
                                         <InputInformation id={"quickAppStage"} place="bottom" text={"Indicates the current stage of your application process"} />

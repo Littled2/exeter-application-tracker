@@ -58,12 +58,13 @@ export function EditApp({ app, setTrigger }) {
             setError(null)
             setMasterCounter(c => c + 1)
             setTrigger(false)
-            setProcessing(false)
 
         })
         .catch(err => {
             console.error("Error updating application", err)
             setError(err)
+        })
+        .finally(() => {
             setProcessing(false)
         })
     }
@@ -252,7 +253,11 @@ export function EditApp({ app, setTrigger }) {
                     }
                 </div> */}
             
-                <AnimatedButton processing={processing} className="m-submit-btn popup-btm" type="submit">
+                <AnimatedButton
+                    submitting={processing}
+                    className="m-submit-btn popup-btm"
+                    type="submit"
+                >
                     Save
                 </AnimatedButton>
             </form>
