@@ -31,6 +31,7 @@
     --input-padding: 10px;
     --input-bg: rgba(255, 255, 255, 0.1);
     --input-border: rgba(255, 255, 255, 0.3);
+    --input-border: var(--border-colour);
     --input-radius: calc(var(--radius) / 2);
 
     --page-padding-left: 24px;
