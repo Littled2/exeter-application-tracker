@@ -18,6 +18,9 @@ import { EditAppInfo } from "../../components/forms/EditAppInfo"
 import { FiEdit } from "react-icons/fi"
 import { InputInformation } from "../../components/InputInformation"
 import { IoLocationOutline } from "react-icons/io5"
+import { indexDB } from "../../components/db"
+import useOnlineStatus from "../../hooks/useOnlineStatus"
+import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
 
 
 
@@ -87,6 +90,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
     const [ opening, setOpening ] = useState(true)
 
     const { activeYear } = useActiveYear()
+    const isOnline = useOnlineStatus()
 
     const { pb } = usePocket()
 
@@ -112,31 +116,46 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
 
         setLoading(true)
 
+        // Fetch the application
+        if(isOnline) {
 
-        pb.collection("applications").getOne(openAppID, { expand:"locations, organisation" })
-        .then(app => {
+            // Fetch the record
+            pb.collection("applications").getOne(openAppID, { expand:"locations, organisation" })
+            .then(app => {
+    
+                // If the year has changed, close the tab
+                if(activeYear !== app.year) {
+                    setOpenAppID(null)
+                }
+    
+                setApplication(app)
+                setCounter(c => c + 1)
+            })
+            .catch(err => {
+                console.error("Error getting application", err)
+                setErr(true)
+            })
+            .finally(() => {
+                setLoading(false)
+            })
+    
+            // Subscribe to changes
+            pb.collection("applications").subscribe("*", e => {
+                setApplication(e.record)
+            }, { expand:"locations, organisation" })
 
-            // If the year has changed, close the tab
-            if(activeYear !== app.year) {
-                setOpenAppID(null)
-            }
+        } else {
 
-            setApplication(app)
-            setCounter(c => c + 1)
-            setLoading(false)
-        })
-        .catch(err => {
-            console.error("Error getting application", err)
-            setErr(true)
-            setLoading(false)
-        })
+            // If offline, fetch the application from indexDB
+            indexDB.applications.get(openAppID)
+            .then(setApplication)
+            .catch(err => {
+                console.error("Error getting application from indexDB", err)
+                setErr(true)
+            })
+            .finally(() => setLoading(false))
 
-
-
-        pb.collection("applications").subscribe("*", e => {
-            console.log("LIVE Changes", e)
-            setApplication(e.record)
-        }, { expand:"locations, organisation" })
+        }
 
         return () => {
             pb.collection('applications').unsubscribe()
@@ -189,7 +208,15 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
 
         // Show upload CV reminder when finished applying
         if((application.stage === 'idea' || application.stage === 'applying') && e.target.value === 'applied') {
-            setUploadCVReminder(true)
+
+            const lastReminder = localStorage.getItem("lastRemindedAboutFileUpload")
+
+            // If user was reminded within the last 5 minutes, do not remind again
+            if(!lastReminder || (new Date().getTime() - lastReminder) > (1000 * 60 * 5)) {
+                setUploadCVReminder(true)
+            }
+
+            localStorage.setItem("lastRemindedAboutFileUpload", new Date().getTime())
         }
 
         // Show confetti when a user gets accepted
@@ -210,14 +237,23 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
         <section className={[ styles.window, opening ? styles.enter : '', closing ? styles.exit : '' ].join(' ')}>
             <div className={styles.topBar}>
 
-                <div className="flex gap-s">
-                    <button className={styles.close} onClick={() => setConfirmOpen(true)}>
-                        <AiOutlineDelete />
-                    </button>
-                    <button className={styles.close} onClick={() => setEditAppOpen(true)}>
-                        <FiEdit />
-                    </button>
-                </div>
+                {
+                    isOnline ? (
+                        <div className="flex gap-s">
+                            <button className={styles.close} onClick={() => setConfirmOpen(true)}>
+                                <AiOutlineDelete />
+                            </button>
+                            <button className={styles.close} onClick={() => setEditAppOpen(true)}>
+                                <FiEdit />
+                            </button>
+                        </div>
+                    ) : (
+                        <div className="flex align-center gap-s">
+                            <MdSignalWifiConnectedNoInternet0 />
+                            <small>You are offline</small>
+                        </div>
+                    )
+                }
 
                 <button
                     className={styles.close}
@@ -345,13 +381,22 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                         <InputInformation id={"quickAppStage"} place="bottom" text={"Indicates the current stage of your application process"} />
                                     </div>
                                     <div className={styles.stages}>
-                                        <select value={application?.stage} onChange={handleStageChange} className={styles.stageSelect}>
-                                            <option value="idea">Idea</option>
-                                            <option value="applying">Applying</option>
-                                            <option value="applied">Applied</option>
-                                            <option style={{ color: "var(--text-green)" }} value="accepted">Accepted</option>
-                                            <option style={{ color: "var(--text-red)" }} value="declined">Declined</option>
-                                        </select>
+                                        {
+                                            isOnline ? (
+                                                <select value={application?.stage} onChange={handleStageChange} className={styles.stageSelect}>
+                                                    <option value="idea">Idea</option>
+                                                    <option value="applying">Applying</option>
+                                                    <option value="applied">Applied</option>
+                                                    <option style={{ color: "var(--text-green)" }} value="accepted">Accepted</option>
+                                                    <option style={{ color: "var(--text-red)" }} value="declined">Declined</option>
+                                                </select>
+                                            ) : (
+                                                <div className="flex gap-s align-center">
+                                                <p className="text-orange">{application?.stage}</p>
+                                                    <InputInformation id={"stageApplicationProcess"} place="bottom" text={"Cannot make changes. Device is offline."} />
+                                                </div>
+                                            )
+                                        }
                                     </div>
                                 </div>
 
