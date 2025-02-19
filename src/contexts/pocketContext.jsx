@@ -33,11 +33,12 @@ export const PocketProvider = ({ children }) => {
     
     const [token, setToken] = useState(pb.authStore.token)
     const [user, setUser] = useState(pb.authStore.model)
+    const [ isOffline, setIsOffline ] = useState(false)
 
 
     useEffect(() => {
 
-      return pb.authStore.onChange((token, model) => {
+      pb.authStore.onChange((token, model) => {
         setToken(token)
         setUser(model)
       })
@@ -53,6 +54,14 @@ export const PocketProvider = ({ children }) => {
       pb.collection("users").subscribe(user.id, e => {
         console.log("User record changed", user)
         setUser(e.record)
+        setIsOffline(false)
+      })
+      .catch(err => {
+        console.error("Error initialising realtime subscription to user data", err)
+        setUser(null)
+
+        // Detects if the device is offline
+        setIsOffline(true) 
       })
 
       return () => pb.collection("users").unsubscribe()
@@ -136,7 +145,7 @@ export const PocketProvider = ({ children }) => {
 
     return (
         <PocketContext.Provider
-          value={{ register, login, logout, deleteUser, user, token, pb }}
+          value={{ register, login, logout, deleteUser, user, token, pb, isOffline }}
         >
           {
             user ? (

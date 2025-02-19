@@ -93,6 +93,6 @@
     }
     .popup .content {
         overflow-y: auto;
-        padding-bottom: 25vh;
+        padding-bottom: calc(var(--mobile-nav-tabs-height) + 8px);
     }
 }
