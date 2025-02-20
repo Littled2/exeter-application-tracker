@@ -32,7 +32,8 @@ export const PocketProvider = ({ children }) => {
     const pb = useMemo(() => new PocketBase(BASE_URL), [])
     
     const [token, setToken] = useState(pb.authStore.token)
-    const [user, setUser] = useState(pb.authStore.model)
+    // const [user, setUser] = useState(pb.authStore.model)
+    const [user, setUser] = useState({ id: "TEST" })
 
 
     useEffect(() => {
@@ -50,10 +51,14 @@ export const PocketProvider = ({ children }) => {
         return
       }
 
-      pb.collection("users").subscribe(user.id, e => {
-        console.log("User record changed", user)
-        setUser(e.record)
-      })
+      try {
+        pb.collection("users").subscribe(user.id, e => {
+          console.log("User record changed", user)
+          setUser(e.record)
+        }) 
+      } catch (error) {
+        console.log("Error getting user realtime connection", error)
+      }
 
       return () => pb.collection("users").unsubscribe()
 
