@@ -1,4 +1,4 @@
-![Application tracker dashboard](./public/logo-large-no-bg.png)
+![Application tracker dashboard](./public/Logo Long.png)
 
 
 The ultimate dashboard for tracking applications to jobs, internships and placements. Designed for studnets who are applying to multiple schemes, stay on top of your applications, store documents and never miss a deadline.
