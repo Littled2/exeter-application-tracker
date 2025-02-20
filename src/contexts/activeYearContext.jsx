@@ -31,6 +31,8 @@ export const ActiveYearProvider = ({ children }) => {
 
 		if(!user) return
 
+		console.log("aCTIVE yEAR", {user})
+
 		if(activeYear) {
 			localStorage.setItem("activeYear", activeYear)
 		}
