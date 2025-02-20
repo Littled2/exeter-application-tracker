@@ -1,10 +1,13 @@
-![Application tracker dashboard](./public/logo-no-bg.png)
+![Application tracker dashboard](./public/logo-large-no-bg.png)
 
 
-Designed for students who are applying for multiple schemes. Track your applications to internships and placements, store versions of your CV and never miss a deadline.
+The ultimate dashboard for tracking applications to jobs, internships and placements. Designed for studnets who are applying to multiple schemes, stay on top of your applications, store documents and never miss a deadline.
+
+<br>
 
 ### Use the application live at [exeter-tracker.com](http://#)
 
+<br>
 
 ![Application tracker dashboard](./public/dashboard.png)
 
