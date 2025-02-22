@@ -19,9 +19,17 @@ export const PopupContextProvider = ({ children }) => {
 
 
     const openPopup = useCallback((setTrigger, id) => {
+
+      window.history.pushState({ data: new Date().getTime() }, "", "/?time=" + new Date().getTime())
+
       setPopups(p => [ ...p, setTrigger ])
-      window.history.pushState(null, '', window.location.pathname + "?id=" + id)
+
     }, [ setPopups ])
+
+    // Used when a popup has already been closed
+    const closedPopup = useCallback(() => {
+
+    }, [])
 
     const closeTopPopup = useCallback(() => {
 
@@ -59,16 +67,7 @@ export const PopupContextProvider = ({ children }) => {
 
 
     const handleBackNavigation = useCallback((event) => {
-      console.log("BACK PRESSED", { popups })
-      if (popups.length > 0) {
-        event.preventDefault()
-        // Trigger your custom function or prevent back navigation
-        console.log('Back navigation prevented because popups is not empty!')
 
-        closeTopPopup()
-      } else {
-        console.log('Back navigation allowed because popups is empty!')
-      }
     }, [ popups, closeTopPopup ])
 
     useEffect(() => {

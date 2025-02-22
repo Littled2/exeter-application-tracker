@@ -8,6 +8,8 @@ import { usePocket } from "../../../contexts/pocketContext"
 import { useNewApplicationPopup } from "../../../contexts/newApplicationPopupContext"
 import { useMasterCounter } from "../../../contexts/masterCounterContext"
 import illustration from "../illustration.svg"
+import useOnlineStatus from "../../../hooks/useOnlineStatus"
+import { indexDB } from "../../db"
 
 
 export function Applied({ openAppID, setOpenAppID }) {
@@ -22,31 +24,62 @@ export function Applied({ openAppID, setOpenAppID }) {
 
     const { activeYear } = useActiveYear()
     const { masterCounter } = useMasterCounter()
+    const isOnline = useOnlineStatus()
 
     const { pb } = usePocket()
 
     useEffect(() => {
         
-        getApps()
+        if(isOnline) {
 
-        pb.collection('applications').subscribe('*', getApps)
+            getApps()
+            pb.collection('applications').subscribe('*', getApps)
 
-        return () => pb.collection('applications').unsubscribe()
+            return () => pb.collection('applications').unsubscribe()
 
+        } else {
+
+            // If offline, fetch from database
+            indexDB.applications.where('stage').equals('applied').toArray().then(setApplied)
+        }
+        
     }, [ masterCounter, activeYear])
 
-    const getApps = () => {
+    const getApps = async () => {
+
         setLoading(true)
-        pb.collection("applications").getFullList({ filter: `year = "${activeYear}" && stage = "applied"`, expand: "locations, organisation", sort: "deadline" })
-        .then(apps => {
+
+        try {
+
+            const apps = await pb.collection("applications").getFullList({
+                filter: `year = "${activeYear}" && stage = "applied"`,
+                expand: "locations, organisation",
+                sort: "deadline"
+            })
+
             setApplied(apps)
-            setLoading(false)
-        })
-        .catch(error => {
+
+            try {
+                // Remove all idea and applying applications from indexDB
+                await indexDB.applications.where('stage').equals('applied').delete()
+
+                for (let i = 0; i < apps.length; i++) {
+                    await indexDB.applications.add(apps[i])                    
+                }
+
+                // Add all fetched applications to indexDB
+                // indexDB.applications.bulkAdd(apps)
+            } catch (err) {
+                console.error("Error adding applications to indexDB", err)
+            }
+
+        } catch (error) {
             console.error("Error getting applications", error)
             setErr(true)
-            setLoading(false)
-        })
+        }
+
+        setLoading(false)
+
     }
 
     const handleKeyPress = useCallback(e => {

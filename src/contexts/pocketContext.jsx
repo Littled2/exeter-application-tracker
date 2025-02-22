@@ -38,7 +38,7 @@ export const PocketProvider = ({ children }) => {
 
     useEffect(() => {
 
-      return pb.authStore.onChange((token, model) => {
+      pb.authStore.onChange((token, model) => {
         setToken(token)
         setUser(model)
       })
@@ -51,14 +51,14 @@ export const PocketProvider = ({ children }) => {
         return
       }
 
-      try {
-        pb.collection("users").subscribe(user.id, e => {
-          console.log("User record changed", user)
-          setUser(e.record)
-        }) 
-      } catch (error) {
-        console.log("Error getting user realtime connection", error)
-      }
+      pb.collection("users").subscribe(user.id, e => {
+        console.log("User record changed", user)
+        setUser(e.record)
+      })
+      .catch(err => {
+        console.error("Error initialising realtime subscription to user data", err)
+        setUser(null)
+      })
 
       return () => pb.collection("users").unsubscribe()
 

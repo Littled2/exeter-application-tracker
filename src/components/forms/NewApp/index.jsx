@@ -13,7 +13,7 @@ import { useMasterCounter } from "../../../contexts/masterCounterContext";
 import { AnimatedButton } from "../../AnimatedButton";
 import { InputInformation } from "../../InputInformation";
 import { useMobile } from "../../../contexts/mobileContext";
-import { IoCloseOutline } from "react-icons/io5";
+import { IoAddOutline, IoCloseOutline } from "react-icons/io5";
 
 export function NewApp({ setTrigger }) {
 
@@ -135,7 +135,10 @@ export function NewApp({ setTrigger }) {
                                 setLinkOpen(true)
                             }}
                         >
-                            <p className="text-blue cursor-pointer">Add link to webpage</p>
+                            <p className="text-blue cursor-pointer flex gap-s align-center">
+                                <IoAddOutline />
+                                <span>Include link to webpage</span>
+                            </p>
                         </div>
                     ) : (
                         <div
@@ -145,7 +148,7 @@ export function NewApp({ setTrigger }) {
                             className="flex align-center gap-s text-blue cursor-pointer"
                         >
                             <IoCloseOutline />
-                            <p>Cancel link</p>
+                            <p>Remove link</p>
                         </div>
                     )
                 }

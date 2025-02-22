@@ -35,7 +35,7 @@ export function Login() {
                 setIncorrect(true)
                 setProcessing(false)
             } else {
-                setErr(err?.response?.message)
+                setErr(err?.message)
                 setProcessing(false)
             }
         })

@@ -73,7 +73,10 @@ export const ActiveYearProvider = ({ children }) => {
 			})
 			.catch(err => console.error("Error getting years", err))
 
-		});
+		})
+		.catch(err => {
+			console.error("Error initialising realtime subscription to years", err)
+		})
 
 		return () => pb.collection('years').unsubscribe()
 

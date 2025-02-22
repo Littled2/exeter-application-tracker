@@ -108,7 +108,7 @@ export function TodoTasks({ setOpenAppID, tasks, setOpenTask, counter, setCounte
                                 todoTasks.length === 0 && (
                                     <div className={styles.statusInfo}>
                                         <img className={styles.illustration} src={illustration} alt="" />
-                                        <small className="text-grey text-center">Track tasks that you need to do for your applications here</small>
+                                        <small className="text-grey text-center">Track tasks you need to do for your applications</small>
                                         <small className="text-grey">No incomplete tasks</small>
                                         <p onClick={() => setNewTaskOpen(true)} className="text-center cursor-pointer text-blue">+ Add Task</p>
                                     </div>

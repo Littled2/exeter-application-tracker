@@ -4,9 +4,11 @@ import styles from "./styles.module.css"
 import { Deadline } from "../../Deadline"
 
 export function TableRows({ items, openAppID, setOpenAppID, showType=true, showDeadline=false, showDeadlineType=false }) {
+    
     useEffect(() => {
         items.map(item => console.log(item?.deadline))
     }, [])
+
     return (
         <>
             {
@@ -21,7 +23,10 @@ export function TableRows({ items, openAppID, setOpenAppID, showType=true, showD
 
                                 <small className="m-show-block text-grey">{item?.role}</small>
                             </td>
-                            <td className={["m-hide", styles.role ].join(" ")} onClick={() => setOpenAppID(item.id)}>{item?.role}</td>
+                            <td
+                                className={["m-hide", styles.role ].join(" ")}
+                                onClick={() => setOpenAppID(item.id)}
+                            >{item?.role}</td>
                             {/* {
                                 showType ? (
                                     <td className="t-hide">
