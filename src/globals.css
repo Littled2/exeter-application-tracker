@@ -167,6 +167,11 @@ select:focus {
     border: none;
 }
 
+.m-submit-btn:disabled {
+    background-color: var(--dark-grey);
+    color: var(--light-grey); 
+}
+
 .m-submit-btn.m-submit-btn-grey {
     background-color: var(--light-grey);
     color: var(--text-white);

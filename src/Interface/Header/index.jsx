@@ -15,6 +15,9 @@ import { Groups } from "../../components/Groups";
 import { BiPlus } from "react-icons/bi";
 import { useMobile } from "../../contexts/mobileContext";
 import { Tooltip } from "react-tooltip";
+import useOnlineStatus from "../../hooks/useOnlineStatus";
+import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
+
 
 export function Header() {
 
@@ -28,6 +31,7 @@ export function Header() {
     const { years, setActiveYear, activeYear } = useActiveYear()
 
     const { isMobile, activeMobileTab } = useMobile()
+    const isOnline = useOnlineStatus()
 
     const handleKeyPress = useCallback(e => {
         if(e.ctrlKey && e.key === "b") {
@@ -179,16 +183,27 @@ export function Header() {
 
                                     {
                                         activeYear ? (
-                                            <div className={styles.newAppButtonWrapper}>
-                                                <button className={styles.newAppButton} onClick={() => setNewApplicationPopupOpen(true)}>
-                                                    <span>+<span className="m-hide"> New Application</span></span>
-                                                    <span className={[ styles.keyIndicators, 'windows-only' ].join(' ')}>
-                                                        <span>ctrl</span>
-                                                        +
-                                                        <span>b</span>    
-                                                    </span>
-                                                </button>
-                                            </div>
+                                            <>
+                                                {
+                                                    isOnline ? (
+                                                        <div className={styles.newAppButtonWrapper}>
+                                                            <button className={styles.newAppButton} onClick={() => setNewApplicationPopupOpen(true)}>
+                                                                <span>+<span className="m-hide"> New Application</span></span>
+                                                                <span className={[ styles.keyIndicators, 'windows-only' ].join(' ')}>
+                                                                    <span>ctrl</span>
+                                                                    +
+                                                                    <span>b</span>    
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    ) : (
+                                                        <div className="flex-1 justify-right flex align-center gap-s">
+                                                            <MdSignalWifiConnectedNoInternet0 />
+                                                            <p>You are offline</p>
+                                                        </div>
+                                                    )
+                                                }
+                                            </>
                                         ) : (
                                             <span></span>
                                         )

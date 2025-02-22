@@ -18,6 +18,9 @@ import { EditAppInfo } from "../../components/forms/EditAppInfo"
 import { FiEdit } from "react-icons/fi"
 import { InputInformation } from "../../components/InputInformation"
 import { IoLocationOutline } from "react-icons/io5"
+import { indexDB } from "../../components/db"
+import useOnlineStatus from "../../hooks/useOnlineStatus"
+import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
 
 
 
@@ -87,6 +90,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
     const [ opening, setOpening ] = useState(true)
 
     const { activeYear } = useActiveYear()
+    const isOnline = useOnlineStatus()
 
     const { pb } = usePocket()
 
@@ -112,31 +116,46 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
 
         setLoading(true)
 
+        // Fetch the application
+        if(isOnline) {
 
-        pb.collection("applications").getOne(openAppID, { expand:"locations, organisation" })
-        .then(app => {
+            // Fetch the record
+            pb.collection("applications").getOne(openAppID, { expand:"locations, organisation" })
+            .then(app => {
+    
+                // If the year has changed, close the tab
+                if(activeYear !== app.year) {
+                    setOpenAppID(null)
+                }
+    
+                setApplication(app)
+                setCounter(c => c + 1)
+            })
+            .catch(err => {
+                console.error("Error getting application", err)
+                setErr(true)
+            })
+            .finally(() => {
+                setLoading(false)
+            })
+    
+            // Subscribe to changes
+            pb.collection("applications").subscribe("*", e => {
+                setApplication(e.record)
+            }, { expand:"locations, organisation" })
 
-            // If the year has changed, close the tab
-            if(activeYear !== app.year) {
-                setOpenAppID(null)
-            }
+        } else {
 
-            setApplication(app)
-            setCounter(c => c + 1)
-            setLoading(false)
-        })
-        .catch(err => {
-            console.error("Error getting application", err)
-            setErr(true)
-            setLoading(false)
-        })
+            // If offline, fetch the application from indexDB
+            indexDB.applications.get(openAppID)
+            .then(setApplication)
+            .catch(err => {
+                console.error("Error getting application from indexDB", err)
+                setErr(true)
+            })
+            .finally(() => setLoading(false))
 
-
-
-        pb.collection("applications").subscribe("*", e => {
-            console.log("LIVE Changes", e)
-            setApplication(e.record)
-        }, { expand:"locations, organisation" })
+        }
 
         return () => {
             pb.collection('applications').unsubscribe()
@@ -190,13 +209,14 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
         // Show upload CV reminder when finished applying
         if((application.stage === 'idea' || application.stage === 'applying') && e.target.value === 'applied') {
 
-            const lastShownAt = localStorage.getItem("uploadCVReminderLastShown")
+            const lastReminder = localStorage.getItem("lastRemindedAboutFileUpload")
 
-            // If last shown in prev 5 mins, don't show again
-            if(lastShownAt > 1000 * 60 * 5) {
+            // If user was reminded within the last 5 minutes, do not remind again
+            if(!lastReminder || (new Date().getTime() - lastReminder) > (1000 * 60 * 5)) {
                 setUploadCVReminder(true)
-                localStorage.setItem("uploadCVReminderLastShown", new Date().getTime())
             }
+
+            localStorage.setItem("lastRemindedAboutFileUpload", new Date().getTime())
         }
 
         // Show confetti when a user gets accepted
@@ -218,14 +238,23 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
         <section className={[ styles.window, opening ? styles.enter : '', closing ? styles.exit : '' ].join(' ')}>
             <div className={styles.topBar}>
 
-                <div className="flex gap-s">
-                    <button className={styles.close} onClick={() => setConfirmOpen(true)}>
-                        <AiOutlineDelete />
-                    </button>
-                    <button className={styles.close} onClick={() => setEditAppOpen(true)}>
-                        <FiEdit />
-                    </button>
-                </div>
+                {
+                    isOnline ? (
+                        <div className="flex gap-s">
+                            <button className={styles.close} onClick={() => setConfirmOpen(true)}>
+                                <AiOutlineDelete />
+                            </button>
+                            <button className={styles.close} onClick={() => setEditAppOpen(true)}>
+                                <FiEdit />
+                            </button>
+                        </div>
+                    ) : (
+                        <div className="flex align-center gap-s">
+                            <MdSignalWifiConnectedNoInternet0 />
+                            <small>You are offline</small>
+                        </div>
+                    )
+                }
 
                 <button
                     className={styles.close}
@@ -282,13 +311,13 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                                 {
                                                     application?.deadlineType === "fixed" ? (
                                                         <>
-                                                            <td className="text-white">Deadline</td>
-                                                            <td className="text-right">{application?.deadline ? <Deadline highlight={application?.stage === "idea" || application?.stage === "applying"} deadline={application?.deadline} /> : "-"}</td>       
+                                                            <td className="text-white" style={{ alignContent: "baseline" }}>Deadline</td>
+                                                            <td className="text-right" style={{ alignContent: "baseline" }}>{application?.deadline ? <Deadline highlight={application?.stage === "idea" || application?.stage === "applying"} deadline={application?.deadline} /> : "-"}</td>
                                                         </>
                                                     ) : (
                                                         <>
-                                                            <td><br /></td>
-                                                            <td><br /></td>
+                                                            <td className="text-white" style={{ alignContent: "baseline" }}>Deadline</td>
+                                                            <td className="text-right text-grey" style={{ alignContent: "baseline" }}>{application?.deadlineType}</td>
                                                         </>
                                                     )
                                                 }
@@ -302,32 +331,23 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                                 <td className={styles.mobileTextRight}>{application?.deadlineType ? application?.deadlineType : "-"}</td>
                                             </tr> */}
 
-                                                    <tr>
-                                                        <td className="text-white" style={{ verticalAlign: "top" }}>Location(s)</td>
-                                                        <td className="text-right">
-                                                            {
-                                                                application?.expand?.locations?.map((loc, i) => <span key={"____" + loc?.id}>{loc?.name}{i < application?.expand?.locations.length - 1 ? ", " : ""}</span>)
-                                                            }
-                                                            {
-                                                                !application?.expand?.locations?.length && (
-                                                                    <span className="text-blue flex align-center"><IoLocationOutline /> Add location</span>
-                                                                )
-                                                            }
-                                                        </td>
-                                                    </tr>
+                                            <tr>
+                                                <td className="text-white" style={{ verticalAlign: "top" }}>Location(s)</td>
+                                                <td className="text-right">
+                                                    {
+                                                        application?.expand?.locations?.map((loc, i) => <span key={"____" + loc?.id}>{loc?.name}{i < application?.expand?.locations.length - 1 ? ", " : ""}</span>)
+                                                    }
+                                                    {
+                                                        !application?.expand?.locations?.length && (
+                                                            <small onClick={() => setEditAppOpen(true)} style={{ gap: "5px" }} className="justify-right text-blue flex align-center cursor-pointer">
+                                                                <IoLocationOutline />
+                                                                <span>Add location</span>
+                                                            </small>
+                                                        )
+                                                    }
+                                                </td>
+                                            </tr>
 
-                                            {
-                                                application?.expand?.locations?.length && (
-                                                    <tr>
-                                                        <td className="text-white" style={{ verticalAlign: "top" }}>Location(s)</td>
-                                                        <td className="text-right">
-                                                            {
-                                                                application?.expand?.locations?.map((loc, i) => <span key={"____" + loc?.id}>{loc?.name}{i < application?.expand?.locations.length - 1 ? ", " : ""}</span>)
-                                                            }
-                                                        </td>
-                                                    </tr>
-                                                )
-                                            }
                                         </tbody>
                                     </table>
                                 </div>
@@ -356,19 +376,28 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                     </table>
                                 </div>
 
-                                <div className="flex gap-s flex-col">
+                                <div className="flex flex-col">
                                     <div className="flex gap-s align-center">
                                         <p className="text-white">Application Stage</p>
                                         <InputInformation id={"quickAppStage"} place="bottom" text={"Indicates the current stage of your application process"} />
                                     </div>
                                     <div className={styles.stages}>
-                                        <select value={application?.stage} onChange={handleStageChange} className={styles.stageSelect}>
-                                            <option value="idea">Idea</option>
-                                            <option value="applying">Applying</option>
-                                            <option value="applied">Applied</option>
-                                            <option style={{ color: "var(--text-green)" }} value="accepted">Accepted</option>
-                                            <option style={{ color: "var(--text-red)" }} value="declined">Declined</option>
-                                        </select>
+                                        {
+                                            isOnline ? (
+                                                <select value={application?.stage} onChange={handleStageChange} className={styles.stageSelect}>
+                                                    <option value="idea">Idea</option>
+                                                    <option value="applying">Applying</option>
+                                                    <option value="applied">Applied</option>
+                                                    <option style={{ color: "var(--text-green)" }} value="accepted">Accepted</option>
+                                                    <option style={{ color: "var(--text-red)" }} value="declined">Declined</option>
+                                                </select>
+                                            ) : (
+                                                <div className="flex gap-s align-center">
+                                                <p className="text-orange">{application?.stage}</p>
+                                                    <InputInformation id={"stageApplicationProcess"} place="bottom" text={"Cannot make changes. Device is offline."} />
+                                                </div>
+                                            )
+                                        }
                                     </div>
                                 </div>
 
