@@ -8,6 +8,7 @@ import { BiDownArrow, BiEdit, BiUpArrow } from "react-icons/bi"
 import { usePocket } from "../../../contexts/pocketContext"
 import { BsPencil, BsTrash } from "react-icons/bs"
 import { NewYears } from "../../forms/NewYears"
+import { useOpenApp } from "../../../contexts/openAppContext"
 
 export function GroupsManager() {
 
@@ -20,6 +21,8 @@ export function GroupsManager() {
     const { activeYear, setActiveYear, years } = useActiveYear()
 
     const { setMasterCounter } = useMasterCounter()
+
+    const { setOpenAppID } = useOpenApp()
 
 
     const updateOrder = useCallback(async tempYears => {
@@ -123,6 +126,7 @@ export function GroupsManager() {
                             .then(() => {
                                 setToDelete(null)
                                 setMasterCounter(c => c + 1)
+                                setOpenAppID(null)
                             })
                             .catch(err => console.error("Error deleting group", err))
                         }}

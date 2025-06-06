@@ -8,6 +8,13 @@ import { BsEye } from "react-icons/bs";
 import { Confirm } from "../../components/forms/Confirm";
 import { Tooltip } from 'react-tooltip'
 
+function long_to_percentage(coord) {
+
+}
+
+function lat_to_percentage(coord) {
+    
+}
 
 
 export function LocationView() {
@@ -31,8 +38,6 @@ export function LocationView() {
         .then(items => {
 
             let map = {}
-
-            console.log(items)
 
             items.forEach(item => {
 
@@ -161,8 +166,10 @@ export function LocationView() {
                                         style={{
                                             width: `${sizePX}px`,
                                             height: `${sizePX}px`,
-                                            left: `${loc.distX}%`,
-                                            top: `${loc.distY}%`,
+                                            // left: `${(8.930208 - Math.abs(loc.long)) * 8.515}%`, // - long - If there are coordinates, use them first!!!
+                                            // top: `${(59.055 - loc.lat) * 11.37}%`, // - lat
+                                            left: `${loc.distX}%`, // - long - If there are coordinates, use them first!!!
+                                            top: `${loc.distY}%`, // - lat
                                             transform: `translateY(calc(-${sizePX}px / 2)) translateX(calc(-${sizePX}px / 2))`
                                         }}
                                         // onMouseEnter={() => mouseOver(loc.id)}

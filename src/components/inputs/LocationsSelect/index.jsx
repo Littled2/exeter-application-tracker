@@ -45,7 +45,7 @@ export function LocationsSelect({ locations, setLocations, setNewLocationOpen, c
     }, [])
 
     useEffect(() => {
-        pb.collection("locations").getFullList({ sort: "name"})
+        pb.collection("locations").getList(1, 25, { sort: "name"})
         .then(locs => setAllLocations(locs))
         .catch(err => console.error("Error getting locations", err))
     }, [c])
@@ -67,7 +67,6 @@ export function LocationsSelect({ locations, setLocations, setNewLocationOpen, c
             
         })
         .then(locs => {
-            console.log(locs)
             setAllLocations(locs?.items || [])
         })
         .catch(err => console.error("Error getting locations", err))
@@ -135,7 +134,7 @@ export function LocationsSelect({ locations, setLocations, setNewLocationOpen, c
                                     if(isMobile) e.target.scrollIntoView({ behavior: "smooth", block: "start" })
                                 }}
                                 type="text"
-                                placeholder="Select Location"
+                                placeholder="Start typing location"
                                 value={name}
                                 onInput={e => {
                                     setName(e.target.value)

@@ -5,7 +5,7 @@ import { usePopupsContext } from "../../contexts/popupsContext"
 import { useMobile } from "../../contexts/mobileContext"
 import { BiChevronLeft } from "react-icons/bi"
 
-export function Popup({ title, children, trigger, setTrigger, onDelete }) {
+export function Popup({ title, children, trigger, setTrigger, onDelete, size="normal", padding=true }) {
     
     const { setPopups, openPopup } = usePopupsContext()
     const [ disableClickOut, setDisableClickOut ] = useState(false)
@@ -13,11 +13,12 @@ export function Popup({ title, children, trigger, setTrigger, onDelete }) {
 
     const { isMobile } = useMobile()
     const wrapperRef = useRef()
+    const popupID = useRef(new Date().getTime())
 
     // Control the popups context
     useEffect(() => {
         if(trigger) {
-            openPopup(setTrigger, new Date().getTime().toString())
+            openPopup(setTrigger, popupID.current)
         } else {
             // setPopups(prev => prev.filter(item => item !== setTrigger))
         }
@@ -26,10 +27,11 @@ export function Popup({ title, children, trigger, setTrigger, onDelete }) {
 
     return trigger ? (
         <div
-            className={styles.wrapper}
+            id={popupID.current}
+            className={[ styles.wrapper, size === "large" ? styles.large : '' ].join(" ")}
             ref={wrapperRef}
             onMouseUp={e => {
-                console.log(e.target === wrapperRef.current, !disableClickOut)
+                // console.log(e.target === wrapperRef.current, !disableClickOut)
                 if(e.target === wrapperRef.current && !disableClickOut) {
                     setTrigger(false)
                 }
@@ -72,7 +74,10 @@ export function Popup({ title, children, trigger, setTrigger, onDelete }) {
                     </div>
                 </div>
 
-                <div className={styles.content}>
+                <div
+                    style={padding === false ? { padding: "0" } : {}}
+                    className={styles.content}
+                >
                     {children}
                 </div>
 

@@ -14,6 +14,11 @@
     background-color: rgba(0, 0, 0, 0.6);
 }
 
+.wrapper.large > .popup {
+    width: 800px;
+    height: 100%;
+}
+
 .popup {
     width: 600px;
     max-width: min(800px, 90vw);
@@ -45,9 +50,14 @@
 .popup .top button:hover {
     background-color: var(--light-grey);
 }
+
 .popup .content {
     padding: var(--spacing-small);
     overflow-y: auto;
+}
+
+.large .content {
+    height: 100%;
 }
 
 

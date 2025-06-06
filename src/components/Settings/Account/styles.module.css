@@ -1,5 +1,5 @@
 .tab {
-    border: 1px solid var(--border-colour);
+    border-left: 1px solid var(--border-colour);
     padding: var(--spacing-medium);
     display: flex;
     flex-direction: column;
@@ -21,4 +21,11 @@
 .deleteBtn {
     background-color: var(--text-red);
     color: var(--text-white);
+}
+
+@media screen and (max-width: 800px) {
+    .tab {
+        border-left: none;
+        padding: 0;
+    }
 }

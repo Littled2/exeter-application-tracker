@@ -54,15 +54,11 @@ export function SelectOrganisation({ selected, setSelected, c, sc }) {
 
     }, [c, name])
 
-    useEffect(() => {
-        console.log("Selected:", { selected })
-    }, [selected])
-
     const handleClickOutside = useCallback((event) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
             setDdOpen(false);
 
-            console.log("Clicked outside", { selectedRef: selectedRef.current })
+            // console.log("Clicked outside", { selectedRef: selectedRef.current })
 
             // If the text inputted has not been made into an organisation, scrap it
             if (!selectedRef.current) {
@@ -112,7 +108,7 @@ export function SelectOrganisation({ selected, setSelected, c, sc }) {
                         if(isMobile) e.target.scrollIntoView({ behavior: "smooth", block: "start" })
                     }}
                     type="text"
-                    placeholder="Select organisation"
+                    placeholder="Start typing organisation"
                     value={name}
                     onInput={e => {
                         setName(e.target.value)

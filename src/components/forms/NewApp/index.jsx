@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { SelectOrganisation } from "../../inputs/SelectOrganisation";
-import styles from "./styles.module.css"
 import { usePocket } from "../../../contexts/pocketContext";
 import { useActiveYear } from "../../../contexts/activeYearContext";
 import { BiPlus } from "react-icons/bi";
@@ -14,6 +13,7 @@ import { AnimatedButton } from "../../AnimatedButton";
 import { InputInformation } from "../../InputInformation";
 import { useMobile } from "../../../contexts/mobileContext";
 import { IoAddOutline, IoCloseOutline } from "react-icons/io5";
+import { useOpenApp } from "../../../contexts/openAppContext";
 
 export function NewApp({ setTrigger }) {
 
@@ -45,6 +45,8 @@ export function NewApp({ setTrigger }) {
 
     const { isMobile } = useMobile()
 
+    const { setOpenAppID } = useOpenApp()
+
 
     function submit(e) {
         e.preventDefault()
@@ -66,11 +68,12 @@ export function NewApp({ setTrigger }) {
         }
 
         pb.collection('applications').create(data)
-        .then(() => {
+        .then(response => {
             setError(null)
             setTrigger(false)
             setProcessing(false)
             setMasterCounter(prev => prev + 1)
+            setOpenAppID(response?.id)
         })
         .catch(err => {
             console.error("Error updating application", err)
@@ -134,6 +137,7 @@ export function NewApp({ setTrigger }) {
                             onClick={() => {
                                 setLinkOpen(true)
                             }}
+                            className="no-select"
                         >
                             <p className="text-blue cursor-pointer flex gap-s align-center">
                                 <IoAddOutline />
@@ -145,7 +149,7 @@ export function NewApp({ setTrigger }) {
                             onClick={() => {
                                 setLinkOpen(false)
                             }}
-                            className="flex align-center gap-s text-blue cursor-pointer"
+                            className="flex align-center gap-s text-blue cursor-pointer no-select"
                         >
                             <IoCloseOutline />
                             <p>Remove link</p>
@@ -311,7 +315,7 @@ export function NewApp({ setTrigger }) {
                     }
                 </div> */}
 
-                <AnimatedButton processing={processing} className="m-submit-btn" type="submit">
+                <AnimatedButton submitting={processing} className="m-submit-btn" type="submit">
                     Submit
                 </AnimatedButton>                
 

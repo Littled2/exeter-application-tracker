@@ -4,10 +4,6 @@ import styles from "./styles.module.css"
 import { Deadline } from "../../Deadline"
 
 export function TableRows({ items, openAppID, setOpenAppID, showType=true, showDeadline=false, showDeadlineType=false }) {
-    
-    useEffect(() => {
-        items.map(item => console.log(item?.deadline))
-    }, [])
 
     return (
         <>

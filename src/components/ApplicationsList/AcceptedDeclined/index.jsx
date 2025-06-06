@@ -66,6 +66,12 @@ export function AcceptedDeclined({ openAppID, setOpenAppID }) {
                 sort: "deadline"
             })
 
+            apps.sort((a, b) => {
+                if (!a.deadline) return 1
+                if (!b.deadline) return -1
+                return new Date(b.deadline) - new Date(a.deadline)
+            })
+
             setAccepted(apps.filter(app => app.stage === "accepted"))
             setDeclined(apps.filter(app => app.stage === "declined"))
 
