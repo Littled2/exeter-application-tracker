@@ -20,30 +20,35 @@ export const PopupContextProvider = ({ children }) => {
 
     const openPopup = useCallback((setTrigger, id) => {
 
-      window.history.pushState({ data: new Date().getTime() }, "", "/?time=" + new Date().getTime())
+      window.history.pushState({ data: id }, "", "/?time=" + id)
 
-      setPopups(p => [ ...p, setTrigger ])
+      setPopups(p => [ ...p, { trigger: setTrigger, id } ])
 
     }, [ setPopups ])
 
-    // Used when a popup has already been closed
-    const closedPopup = useCallback(() => {
-
-    }, [])
 
     const closeTopPopup = useCallback(() => {
-
-      console.log("Closing top popup")
             
         if(popups.length === 0) {
             return
         }
 
-        const setTrigger = popups[popups.length - 1]
-        setTrigger(false)
+        const top = popups[popups.length - 1]
+        console.log("Closing top popup", top)
+        top.trigger(false)
+
+        // Close using the popup element's id
+        const popupEl = document.getElementById(top.id)
+        if(popupEl) {
+            popupEl.remove()
+        }
 
         // Remove the last element from the array
-        // setPopups(prev => prev.slice(0, -1))
+        setPopups(prev => {
+            let temp = prev
+            temp.slice(0, -1)
+            return temp
+        })
 
     }, [ popups, setPopups ])
 
@@ -67,6 +72,15 @@ export const PopupContextProvider = ({ children }) => {
 
 
     const handleBackNavigation = useCallback((event) => {
+
+        console.log("back", {event})
+
+        if(popups.length === 0) {
+            return
+        }
+
+        closeTopPopup()
+        
 
     }, [ popups, closeTopPopup ])
 

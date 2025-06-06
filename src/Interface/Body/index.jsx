@@ -15,22 +15,37 @@ import { useMobile } from "../../contexts/mobileContext"
 import { UpcomingDeadlines } from "../../windows/UpcomingDeadlines"
 import { TasksWrapper } from "../TasksWrapper"
 import { InputInformation } from "../../components/InputInformation"
+import { Notifications } from "../../components/Notifications"
+import { Popup } from "../../components/Popup"
+import { YourRecap } from "../../components/YourRecap"
+import { useRecapPopupContext } from "../../contexts/recapPopupContext"
+import { useOpenApp } from "../../contexts/openAppContext"
+
 
 
 export function Body({ counter, setCounter }) {
 
-    const [ openAppID, setOpenAppID ] = useState(null)
+    const { openAppID, setOpenAppID } = useOpenApp()
+
     const { setNewApplicationPopupOpen } = useNewApplicationPopup()
 
     const { activeYear } = useActiveYear()
     const { user } = usePocket()
     const { isMobile, activeMobileTab } = useMobile()
-    
+    const { recapPopupOpen, setRecapPopupOpen } = useRecapPopupContext()
 
     return (
         activeYear ? (
             <main className={styles.wrapper}>
+
+                <Popup trigger={recapPopupOpen} setTrigger={setRecapPopupOpen} size="large" padding={false}>
+                    <YourRecap />
+                </Popup>
+
                 <div className={styles.applicationsTasksWrapper}>
+                    
+                    {/* Display notifications to the user */}
+                    <Notifications />
 
                     {
                         // If mobile device and user is viewing the applications or analytics page
@@ -44,7 +59,7 @@ export function Body({ counter, setCounter }) {
                                             {
                                                 isMobile && (
                                                     <div className="m-show-flex flex-col gap-s">
-                                                        <h4 className="text-white">Next 10 days</h4>
+                                                        <h4 className="text-white">Next 7 days</h4>
 
                                                         <UpcomingDeadlines setOpenAppID={setOpenAppID} />
                                                     </div>

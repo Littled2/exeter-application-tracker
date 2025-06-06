@@ -1,0 +1,55 @@
+/* .wrapper {
+  border: 15px solid;
+  border-image: linear-gradient(45deg, #f3ec78, #af4261) 1;
+  animation: borderAnimation 5s linear infinite;
+}
+
+@keyframes borderAnimation {
+  0% {
+    border-image-source: linear-gradient(45deg, #f3ec78, #af4261);
+  }
+  100% {
+    border-image-source: linear-gradient(405deg, #f3ec78, #af4261);
+  }
+} */
+
+.wrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-large);
+    height: 100%;
+    background-image: url(/public/recap-bg.svg);
+    background-size: cover;
+    padding: var(--spacing-medium);
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.top .logo {
+    height: 2rem;
+    object-fit: contain;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.subtitle {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--text-white);
+}
+
+.figure {
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--text-orange);
+}

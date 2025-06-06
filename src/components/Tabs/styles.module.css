@@ -67,4 +67,7 @@
         font-weight: 600;
         /* background-color: rgba(255, 165, 0, 0.4); */
     }
+    .mobilePadding {
+        padding: var(--spacing-small);
+    }
 }

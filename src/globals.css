@@ -29,7 +29,7 @@
     --mobile-nav-tabs-height: 60px;
 
     --input-padding: 10px;
-    --input-bg: rgba(255, 255, 255, 0.2);
+    --input-bg: rgba(188, 188, 188, 0.2);
     --input-border: rgba(255, 255, 255, 0.3);
     --input-border: var(--border-colour);
     --input-radius: calc(var(--radius) / 2);

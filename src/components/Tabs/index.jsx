@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import styles from "./styles.module.css"
 import { useMobile } from "../../contexts/mobileContext"
 
-export function Tabs({ tabs, mobileTop, saveActiveTabAs=null }) {
+export function Tabs({ tabs, mobileTop, saveActiveTabAs=null, mobilePadding=false }) {
 
     const [ selected, setSelected ] = useState(() => {
         if(saveActiveTabAs !== null) {
@@ -39,7 +39,7 @@ export function Tabs({ tabs, mobileTop, saveActiveTabAs=null }) {
                     })
                 }
             </div>
-            <div>
+            <div className={isMobile && mobilePadding ? styles.mobilePadding : ''}>
                 {
                     tabs.filter(tab => !(isMobile && tab.hideOnMobile === true))[selected]?.tab
                 }

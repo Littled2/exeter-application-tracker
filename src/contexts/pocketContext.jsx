@@ -31,9 +31,8 @@ export const PocketProvider = ({ children }) => {
 
     const pb = useMemo(() => new PocketBase(BASE_URL), [])
     
-    const [token, setToken] = useState(pb.authStore.token)
-    // const [user, setUser] = useState(pb.authStore.model)
-    const [user, setUser] = useState({ id: "TEST" })
+    const [ token, setToken ] = useState(pb.authStore.token)
+    const [ user, setUser ] = useState(pb.authStore.model)
 
 
     useEffect(() => {

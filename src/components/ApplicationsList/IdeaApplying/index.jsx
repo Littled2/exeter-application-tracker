@@ -56,6 +56,12 @@ export function IdeasApplying({ openAppID, setOpenAppID }) {
                 expand: "locations, organisation",
                 sort: "deadline"
             })
+
+            apps.sort((a, b) => {
+                if (!a.deadline) return 1
+                if (!b.deadline) return -1
+                return new Date(b.deadline) - new Date(a.deadline)
+            })
     
             setIdeas(apps.filter(app => app.stage === "idea"))
             setApplying(apps.filter(app => app.stage === "applying"))

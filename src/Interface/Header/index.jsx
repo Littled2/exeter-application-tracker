@@ -71,6 +71,7 @@ export function Header() {
 
                                             <img className={styles.logo} src="/logo-large-no-bg.png" alt="Exeter Application Tracker Logo" />
 
+
                                             {/* <button
                                                 className="simple-btn"
                                                 onClick={() => setSettingsOpen(true)}
@@ -228,7 +229,7 @@ export function Header() {
                 <NewTicket setTrigger={setNewTicketOpen} />
             </Popup>
 
-            <Popup title={"Settings"} trigger={settingsOpen} setTrigger={setSettingsOpen}>
+            <Popup title={"Settings"} trigger={settingsOpen} setTrigger={setSettingsOpen} size="large" padding={false}>
                 <Settings setTrigger={setSettingsOpen} />
             </Popup>
 

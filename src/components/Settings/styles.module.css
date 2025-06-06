@@ -1,7 +1,7 @@
 .wrapper {
     display: flex;
-    flex-direction: column;
-    gap: 3rem;
+    /* flex-direction: column; */
+    gap: var(--spacing-medium);
     padding: 1rem;
 }
 
@@ -11,7 +11,32 @@
     gap: 1rem;
 }
 
+.nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav button {
+    background-color: transparent;
+    color: var(--text-grey);
+    text-align: left;
+    padding: 8px;
+}
+
+.nav button:hover {
+    background-color: var(--dark-grey);
+    color: var(--text-white);
+}
+
+.nav button.selected {
+    background-color: var(--text-orange);
+    color: black;
+}
+
 @media screen and (max-width: 800px) {
+    .nav {
+        width: 100%;
+    }
     .wrapper {
         padding: 0;
     }

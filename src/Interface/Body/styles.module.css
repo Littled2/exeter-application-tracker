@@ -1,3 +1,14 @@
+@keyframes notificationEnter {
+    from {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 .wrapper {
     width: 100%;
     padding: 0 var(--page-padding-left) 25vh var(--page-padding-right);

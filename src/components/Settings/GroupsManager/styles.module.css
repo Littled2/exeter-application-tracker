@@ -1,5 +1,5 @@
 .tab {
-    border: 1px solid var(--border-colour);
+    border-left: 1px solid var(--border-colour);
     padding: var(--spacing-medium);
     display: flex;
     flex-direction: column;
@@ -19,7 +19,7 @@
 
 .selectedGroup {
     background-color: var(--dark-grey);
-    outline: 1px solid var(--text-orange);
+    outline: 1px solid var(--text-blue);
     color: var(--text-orange);
 }
 
@@ -30,7 +30,8 @@
 }
 
 .newButton {
-    color: var(--text-orange);
+    color: var(--text-blue);
+    text-align: right;
     background-color: transparent;
     border: none;
 }
@@ -50,5 +51,10 @@
         padding-bottom: 8px;
         padding-left: 4px;
         padding-right: 4px;
+    }
+
+    .tab {
+        border-left: none;
+        padding: 0;
     }
 }

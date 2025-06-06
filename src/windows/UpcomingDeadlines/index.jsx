@@ -17,21 +17,16 @@ export function UpcomingDeadlines({ setOpenAppID }) {
 
     useEffect(() => {
 
-        // const currentDate = new Date();
-        // const tenDaysLater = new Date();
-        // tenDaysLater.setDate(currentDate.getDate() + 10);
-
         const currentDate = new Date();
         const todayISO = currentDate.toISOString().split('T')[0]; // Get only YYYY-MM-DD
-        const tenDaysLater = new Date();
-        tenDaysLater.setDate(currentDate.getDate() + 10);
-        const tenDaysLaterISO = tenDaysLater.toISOString().split('T')[0]; // Get only YYYY-MM-DD
+        const sevenDaysLater = new Date();
+        sevenDaysLater.setDate(currentDate.getDate() + 7);
 
         setLoading(true)
 
         pb.collection("applications").getFullList({
             // filter: `(stage='idea' || stage='applying') && deadline >= '${currentDate.toISOString()}' && deadline <= '${tenDaysLater.toISOString()}' && year = '${activeYear}'`,
-            filter: `(stage='idea' || stage='applying') && deadline >= '${todayISO}' && deadline <= '${tenDaysLaterISO}' && year = '${activeYear}'`,
+            filter: `(stage='idea' || stage='applying') && deadline >= '${todayISO}' && deadline <= '${sevenDaysLater}' && year = '${activeYear}'`,
             sort: 'deadline',
             expand: "organisation"
         })

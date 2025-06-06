@@ -1,5 +1,5 @@
 .tab {
-    border: 1px solid var(--border-colour);
+    border-left: 1px solid var(--border-colour);
     padding: var(--spacing-medium);
     display: flex;
     flex-direction: column;
@@ -25,7 +25,8 @@
 
 
 .newButton {
-    color: var(--text-orange);
+    color: var(--text-blue);
+    text-align: right;
     background-color: transparent;
     border: none;
 }
@@ -44,4 +45,11 @@
 .actionBtn:disabled {
     color: var(--dark-grey);
     cursor: not-allowed;
+}
+
+@media screen and (max-width: 800px) {
+    .tab {
+        border-left: none;
+        padding: 0;
+    }
 }
