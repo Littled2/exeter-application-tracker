@@ -9,6 +9,7 @@ import { OrganisationsManager } from "./OrganisationsManager"
 import styles from "./styles.module.css"
 import { useMobile } from "../../contexts/mobileContext"
 import { useRecapPopupContext } from "../../contexts/recapPopupContext"
+import { useTutorial } from "../../contexts/tutorialContext"
 
 
 export function Settings({ setTrigger }) {
@@ -19,6 +20,8 @@ export function Settings({ setTrigger }) {
 
     const { setRecapPopupOpen } = useRecapPopupContext()
 
+    const { startTutorial } = useTutorial()
+
     return !isMobile ? (
         <>
         
@@ -28,8 +31,9 @@ export function Settings({ setTrigger }) {
                     <button className={tab === 0 && styles.selected} onClick={() => setTab(0)}>Groups</button>
                     <button className={tab === 1 && styles.selected} onClick={() => setTab(1)}>Locations</button>
                     <button className={tab === 2 && styles.selected} onClick={() => setTab(2)}>Organisations</button>
-                    <button className={tab === 3 && styles.selected} onClick={() => setTab(3)}>Dashboard</button>
+                    <button className={tab === 3 && styles.selected} onClick={() => setTab(3)}>Appearance</button>
                     <button className={tab === 4 && styles.selected} onClick={() => setTab(4)}>Account</button>
+                    <button onClick={() => { setTrigger(false); startTutorial() }}>Tutorial</button>
                     <button onClick={() => setRecapPopupOpen(true)}>Your Recap 🥳</button>
                 </div>
                 

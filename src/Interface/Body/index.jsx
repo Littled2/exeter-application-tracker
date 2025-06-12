@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { ApplicationView } from "../../windows/ApplicationView"
 import { LocationView } from "../../windows/LocationView"
-import { DeadlinesOverView } from "../../windows/DeadlinesOverView"
 import { StageBreakdown } from "../../windows/StageBreakdown"
 import styles from "./styles.module.css"
 import { ApplicationsTabs } from "../../windows/ApplicationsTabs"
@@ -20,6 +19,7 @@ import { Popup } from "../../components/Popup"
 import { YourRecap } from "../../components/YourRecap"
 import { useRecapPopupContext } from "../../contexts/recapPopupContext"
 import { useOpenApp } from "../../contexts/openAppContext"
+import { DeadlinesOverView } from "../../windows/DeadlinesBreakdown/DeadlinesOverView"
 
 
 
@@ -105,7 +105,7 @@ export function Body({ counter, setCounter }) {
 
                             {
                                 (!isMobile || (isMobile && activeMobileTab === 'applications')) && (
-                                    <div className={styles.applicationsWrapper} style={{ height: "calc(100vh - 300px)" }}>
+                                    <div id={"tutorial-step-1"} className={styles.applicationsWrapper} style={{ height: "calc(100vh - 300px)" }}>
 
                                         {
                                             isMobile && (

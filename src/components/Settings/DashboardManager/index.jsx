@@ -1,10 +1,13 @@
 import { useCallback } from "react"
 import { usePocket } from "../../../contexts/pocketContext"
 import styles from "./styles.module.css"
+import { useTheme } from "../../../contexts/themeContext"
 
 export function DashboardManager() {
 
     const { pb, user } = usePocket()
+
+    const { theme, updateTheme } = useTheme()
 
     const setDashboardView = useCallback(async (key, value) => {
         pb.collection("users").update(user.id, {
@@ -16,7 +19,23 @@ export function DashboardManager() {
         <div className={styles.tab}>
 
             <div className="flex space-between align-center">
-                <h5 className="text-white">Customise my dashboard</h5>
+                <h5 className="text-white">Customise</h5>
+            </div>
+            
+            <div className="form">
+                <label className="flex gap-s align-center">
+                    <p className="text-grey">Select your theme</p>
+                    <select
+                        onChange={e => {
+                            updateTheme(e.target.value)
+                        }}
+                        value={theme}
+                    >
+                        <option value="dark_theme">Dark</option>
+                        <option value="light_theme">Light</option>
+                    </select>
+
+                </label>
             </div>
 
             <div className="flex col gap-m text-grey">
@@ -35,6 +54,7 @@ export function DashboardManager() {
                     <span>Show deadlines card</span>
                 </label>
             </div>
+            
         </div>
     )
 }

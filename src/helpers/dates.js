@@ -29,7 +29,7 @@ export function daysToDate(targetDate) {
     if (diffInDays === 0) {
         return 'Today';
     } else if (diffInDays > 0) {
-        return `${Math.floor(diffInDays)} day${Math.floor(diffInDays) > 1 ? 's' : ''}`;
+        return `${Math.floor(diffInDays)} day${Math.floor(diffInDays) > 1 ? 's' : ''} ago`;
     } else {
         return `${Math.abs(Math.ceil(diffInDays))} day${Math.abs(Math.ceil(diffInDays)) > 1 ? 's' : ''} ago`;
     }

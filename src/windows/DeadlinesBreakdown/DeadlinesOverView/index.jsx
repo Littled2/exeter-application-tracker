@@ -1,16 +1,18 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import styles from "./styles.module.css"
-import { useActiveYear } from "../../contexts/activeYearContext"
-import { usePocket } from "../../contexts/pocketContext"
-import { useMasterCounter } from "../../contexts/masterCounterContext"
+import { useActiveYear } from "../../../contexts/activeYearContext.jsx"
+import { usePocket } from "../../../contexts/pocketContext.jsx"
+import { useMasterCounter } from "../../../contexts/masterCounterContext.jsx"
 import { DayPicker } from "react-day-picker"
-import { areSameDate } from "../../helpers/dates.js"
+import { areSameDate } from "../../../helpers/dates.js"
 
 import 'react-day-picker/style.css';
 import { Tooltip } from "react-tooltip"
-import { Confirm } from "../../components/forms/Confirm/index.jsx"
+import { Confirm } from "../../../components/forms/Confirm/index.jsx"
 import { BsEye } from "react-icons/bs"
-import { useMobile } from "../../contexts/mobileContext.jsx"
+import { useMobile } from "../../../contexts/mobileContext.jsx"
+import { IoCalendar, IoCheckmark } from "react-icons/io5"
+import { Popup } from "../../../components/Popup/index.jsx"
 
 
 export function DeadlinesOverView({ openAppID, setOpenAppID }) {
@@ -23,6 +25,18 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
     const [ modifiers, setModifiers ] = useState()
     const [ upcomingDeadlines, setUpcomingDeadlines ] = useState([])
     const [ hideConfirmOpen, setHideConfirmOpen ] = useState(false)
+    const [ addToCalOpen, setAddToCalOpen ] = useState(false)
+
+    const [ copied, setCopied ] = useState(false)
+    const calLink= useRef(process.env.REACT_APP_BACKEND_URL + "/cal/" + user?.id)
+
+    useEffect(() => {
+        if(copied) {
+            setTimeout(() => {
+                setCopied(false)
+            }, 2000)
+        }
+    }, [ copied ])
 
 
     useEffect(() => {
@@ -123,6 +137,51 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
                 <span className={styles.missed}>Missed</span>
                 <span className={styles.upcoming}>Upcoming</span>
             </div>
+            
+            <small onClick={() => setAddToCalOpen(true)} className="flex align-center gap-s text-blue cursor-pointer">
+                <IoCalendar />
+                <span>Sync with calendar</span>
+            </small>
+
+            <Popup title={"Sync with personal calendar"} trigger={addToCalOpen} setTrigger={setAddToCalOpen}>
+                <div className="flex flex-col gap-m form">
+                    <h4 className="text-white">Add deadlines to personal calendar</h4>
+
+                    <ol className="text-grey" style={{ paddingLeft: "1.5rem", lineHeight: "1.6" }}>
+                        <li>Open your preferred calendar app (Google Calendar, Apple Calendar, Outlook, etc.).</li>
+                        <li>Look for an option to Add Calendar by URL or Subscribe to Calendar.</li>
+                        <li>Paste the copied link into the field provided and confirm.</li>
+                        <li>Your calendar will automatically stay updated with any new deadlines we add.</li>
+                    </ol>
+
+                    <div className="flex">
+                        <input value={calLink.current} type="text" readOnly={true} />
+                        <button
+                            className="m-submit-btn"
+                            style={{
+                                backgroundColor: copied ? 'var(--text-green)' : '',
+                                color: copied ? 'white' : ''
+                            }}
+                            onClick={() =>{
+                                navigator.clipboard.writeText(calLink.current)
+                                .then(() => {
+                                    setCopied(true)
+                                })
+                            }}
+                        >
+                            {
+                                !copied ? (
+                                    "Copy"
+                                ) : (
+                                    <IoCheckmark />
+                                )
+                            }
+                        </button>
+                    </div>
+
+                    <p className="text-grey">Once copied, follow the steps above to subscribe using your calendar app.</p>
+                </div>
+            </Popup>
 
         </div>
     ) : (

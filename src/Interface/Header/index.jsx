@@ -1,18 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
 import { Popup } from "../../components/Popup";
-import { NewApp } from "../../components/forms/NewApp";
-import { IoHeadsetOutline, IoHelpOutline, IoSearchOutline, IoTicketOutline } from "react-icons/io5"
+import { TbHeadset } from "react-icons/tb"
 import { NewTicket } from "../../components/forms/NewTicket";
-import { FiMoon } from "react-icons/fi"
-import { BsGear, BsPerson, BsSun } from "react-icons/bs"
+import { BsGear } from "react-icons/bs"
 import { Settings } from "../../components/Settings";
 import styles from "./styles.module.css"
 import { usePocket } from "../../contexts/pocketContext";
-import { NewYears } from "../../components/forms/NewYears";
 import { useActiveYear } from "../../contexts/activeYearContext";
 import { useNewApplicationPopup } from "../../contexts/newApplicationPopupContext";
-import { Groups } from "../../components/Groups";
-import { BiPlus } from "react-icons/bi";
 import { useMobile } from "../../contexts/mobileContext";
 import { Tooltip } from "react-tooltip";
 import useOnlineStatus from "../../hooks/useOnlineStatus";
@@ -23,7 +18,7 @@ export function Header() {
 
     const { pb, user } = usePocket()
 
-    const { newApplicationPopupOpen, setNewApplicationPopupOpen} = useNewApplicationPopup()
+    const { setNewApplicationPopupOpen} = useNewApplicationPopup()
 
     const [ newTicketOpen, setNewTicketOpen ] = useState(false)
     const [ settingsOpen, setSettingsOpen ] = useState(false)
@@ -135,7 +130,9 @@ export function Header() {
                                             data-tooltip-place="bottom"
                                         >
                                             {/* <IoTicketOutline/> */}
-                                            <IoHelpOutline />
+                                            {/* <IoHelpOutline /> */}
+                                            {/* <PiHeadsetDuotone  /> */}
+                                            <TbHeadset />
                                         </button>
 
                                         <Tooltip id="contact-support-tooltip" />
@@ -188,7 +185,7 @@ export function Header() {
                                                 {
                                                     isOnline ? (
                                                         <div className={styles.newAppButtonWrapper}>
-                                                            <button className={styles.newAppButton} onClick={() => setNewApplicationPopupOpen(true)}>
+                                                            <button id={"tutorial-step-3"} className={styles.newAppButton} onClick={() => setNewApplicationPopupOpen(true)}>
                                                                 <span>+<span className="m-hide"> New Application</span></span>
                                                                 <span className={[ styles.keyIndicators, 'windows-only' ].join(' ')}>
                                                                     <span>ctrl</span>

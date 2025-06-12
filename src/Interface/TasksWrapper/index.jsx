@@ -45,7 +45,7 @@ export function TasksWrapper({ setOpenAppID }) {
 
     
     return (
-        <div className={styles.tasksWrapper}>
+        <div id={"tutorial-step-2"} className={styles.tasksWrapper}>
             {/* <b>-</b> */}
             {/* <h3 className="m-show-block">Tasks</h3> */}
             {/* <p className="m-show-block text-grey">Open an application to add a task</p> */}

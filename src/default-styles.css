@@ -96,7 +96,7 @@ input[type=checkbox] {
 }
 input[type="checkbox"]:checked::before {
     content: "✔";
-    color: var(--text-white);
+    color: white;
     font-size: 0.9em;
     text-align: center;
     position: absolute;

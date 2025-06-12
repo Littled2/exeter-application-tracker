@@ -11,8 +11,10 @@ import { MasterCounterContextProvider } from "../../contexts/masterCounterContex
 import { MobileNavTabs } from "../MobileNavTabs/index.jsx";
 import { MobileContextProvider } from "../../contexts/mobileContext.jsx";
 import { NotificationsContextProvider } from "../../contexts/notificationsContext.jsx";
-import { RecapPopupContextProvider } from "../../contexts/recapPopupContext.jsx";
+import { TutorialContextProvider } from "../../contexts/tutorialContext.jsx";
 import { OpenAppContextProvider } from "../../contexts/openAppContext.jsx";
+import { RecapPopupContextProvider } from "../../contexts/recapPopupContext.jsx";
+import { ThemeContextProvider } from "../../contexts/themeContext.jsx";
 
 ChartJS.register(ArcElement, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
@@ -46,11 +48,17 @@ export function AppWrapper() {
                   <NewApplicationPopupContextProvider>
                     <NotificationsContextProvider>
                       <RecapPopupContextProvider>
-                          <Header />
+                        <TutorialContextProvider>
+                          <ThemeContextProvider>
 
-                          <Body counter={counter} setCounter={setCounter} />
+                            <Header />
 
-                          <MobileNavTabs />
+                            <Body counter={counter} setCounter={setCounter} />
+
+                            <MobileNavTabs />
+
+                          </ThemeContextProvider>
+                        </TutorialContextProvider>
                       </RecapPopupContextProvider>
                     </NotificationsContextProvider>
                   </NewApplicationPopupContextProvider>

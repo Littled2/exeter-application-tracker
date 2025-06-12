@@ -12,10 +12,6 @@ export const OpenAppContextProvider = ({ children }) => {
 
     const [ openAppID, setOpenAppID ] = useState(null)
 
-    useEffect(()=>{
-      console.log({openAppID})
-    }, [openAppID])
-
     return (
         <OpenAppContext.Provider
           value={{ openAppID, setOpenAppID }}
