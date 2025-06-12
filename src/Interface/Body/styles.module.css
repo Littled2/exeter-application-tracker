@@ -33,7 +33,7 @@
 }
 
 .dataVisWrapper {
-    height: 400px;
+    height: 420px;
     display: flex;
     gap: var(--spacing-medium);
 }

@@ -1,62 +1,8 @@
-@keyframes notificationEnter {
-    from {
-        opacity: 0;
-        transform: translateY(-100%);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .notifications {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-small);
 }
-
-.notifications .notification {
-    background-color: var(--text-grey);
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-small);
-    border-radius: var(--radius);
-    text-align: center;
-    color: var(--bg-colour);
-    user-select: none;
-    animation: notificationEnter 1s forwards;
-}
-
-.notifications .notification .close {
-    display: flex;
-    padding: var(--spacing-small);
-    cursor: pointer;
-}
-
-.notifications .notification .close:hover {
-    background-color: rgba(0, 0, 0, 0.35);
-}
-
-.notifications .notification .close:active {
-    color: var(--text-white);
-}
-
-
-.notifications .notification .textContent {
-    flex: 1;
-    justify-content: center;
-    text-align: center;
-    padding-left: var(--spacing-small);
-    padding-right: var(--spacing-small);
-    padding-top: calc(var(--spacing-small) / 2);
-    padding-bottom: calc(var(--spacing-small) / 2);
-}
-
-.notifications .notification.important {
-    color: var(--bg-colour);
-    background-color: var(--text-orange);
-}
-
 
 @media screen and (max-width: 800px) {
     .notifications {

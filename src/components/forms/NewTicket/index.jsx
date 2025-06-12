@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { usePocket } from "../../../contexts/pocketContext"
 import { useMobile } from "../../../contexts/mobileContext"
+import { AnimatedButton } from "../../AnimatedButton"
 
 export function NewTicket({ setTrigger }) {
 
@@ -10,11 +11,13 @@ export function NewTicket({ setTrigger }) {
     const [ err, setErr ] = useState(false)
     const [ success, setSuccess ] = useState(false)
     const { isMobile } = useMobile()
+    const [ submitting, setSubmitting ] = useState(false)
 
     const submit = useCallback(e => {
         e.preventDefault()
 
         setErr(false)
+        setSubmitting(true)
 
         pb.collection('tickets').create({
             "user": user.id,
@@ -26,6 +29,9 @@ export function NewTicket({ setTrigger }) {
         .catch(err => {
             console.error("Error creating ticket", err)
             setErr(true)
+        })
+        .finally(() => {
+            setSubmitting(false)
         })
     }, [ pb, user, err, success ])
 
@@ -54,7 +60,7 @@ export function NewTicket({ setTrigger }) {
                 )
             }
             <div>
-                <button className="m-submit-btn" type="submit">Submit</button>
+                <AnimatedButton submitting={submitting} className="m-submit-btn" type="submit">Submit</AnimatedButton>
             </div>
         </form>
     ) : (
