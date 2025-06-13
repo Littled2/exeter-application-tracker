@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  backend:
+    build: ./backend
+    container_name: backend
+    volumes:
+      - ./backend/pb_data:/pb/pb_data
+    expose:
+      - 8080
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
