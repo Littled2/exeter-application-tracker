@@ -13,7 +13,7 @@ onRecordAfterCreateSuccess((e) => {
 
     try {
 
-        const { send_notification } = require(`${__hooks}/notifications/notifications.js`)
+        const { send_notification } = require(`${__hooks}/helpers/notifications.js`)
         
         const ACTIVE_YEAR = e.record.get("year")
 

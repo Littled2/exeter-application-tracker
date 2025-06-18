@@ -1,8 +1,9 @@
+
 function load_env_vars() {
     const LINE = /.../gm
-    let envStr = String.fromCharCode(...$os.readFile(__hooks + "/.env"))
+    let envStr = String.fromCharCode(...$os.readFile(__hooks + "/../.env"))
 
-      const lines = envStr.split('\n');
+    const lines = envStr.split('\n');
     
     for (let line of lines) {
         // Remove comments and trim whitespace

@@ -3,19 +3,16 @@ migrate((app) => {
   const collection = app.findCollectionByNameOrId("_pb_users_auth_")
 
   // add field
-  collection.fields.addAt(11, new Field({
-    "autogeneratePattern": "",
+  collection.fields.addAt(12, new Field({
     "hidden": false,
-    "id": "text2437250416",
-    "max": 0,
-    "min": 0,
-    "name": "calendarToken",
-    "pattern": "",
+    "id": "date1146737672",
+    "max": "",
+    "min": "",
+    "name": "calendarLastRequested",
     "presentable": false,
-    "primaryKey": false,
     "required": false,
     "system": false,
-    "type": "text"
+    "type": "date"
   }))
 
   return app.save(collection)
@@ -23,7 +20,7 @@ migrate((app) => {
   const collection = app.findCollectionByNameOrId("_pb_users_auth_")
 
   // remove field
-  collection.fields.removeById("text2437250416")
+  collection.fields.removeById("date1146737672")
 
   return app.save(collection)
 })

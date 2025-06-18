@@ -10,6 +10,7 @@ import styles from "./styles.module.css"
 import { useMobile } from "../../contexts/mobileContext"
 import { useRecapPopupContext } from "../../contexts/recapPopupContext"
 import { useTutorial } from "../../contexts/tutorialContext"
+import { CalendarManager } from "./CalendarManager"
 
 
 export function Settings({ setTrigger }) {
@@ -33,6 +34,7 @@ export function Settings({ setTrigger }) {
                     <button className={tab === 2 && styles.selected} onClick={() => setTab(2)}>Organisations</button>
                     <button className={tab === 3 && styles.selected} onClick={() => setTab(3)}>Appearance</button>
                     <button className={tab === 4 && styles.selected} onClick={() => setTab(4)}>Account</button>
+                    <button className={tab === 5 && styles.selected} onClick={() => setTab(5)}>Calendar</button>
                     <button onClick={() => { setTrigger(false); startTutorial() }}>Tutorial</button>
                     <button onClick={() => setRecapPopupOpen(true)}>Your Recap 🥳</button>
                 </div>
@@ -66,10 +68,17 @@ export function Settings({ setTrigger }) {
                             </div>    
                         )
                     }
-                                        {
+                    {
                         tab === 4 && (
                             <div className="flex flex-col gap-m">
                                 <Account setTrigger={setTrigger} />
+                            </div>
+                        )
+                    }
+                    {
+                        tab === 5 && (
+                            <div className="flex flex-col gap-m">
+                                <CalendarManager />
                             </div>
                         )
                     }

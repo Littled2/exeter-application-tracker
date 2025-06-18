@@ -42,6 +42,11 @@
     font-size: 0.9rem;
 }
 
+.tabInner {
+    padding: var(--spacing-small);
+    border: 2px solid var(--border-colour);
+}
+
 @media screen and (max-width: 800px) {
 
     .wrapper {
