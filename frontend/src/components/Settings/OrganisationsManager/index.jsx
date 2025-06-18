@@ -20,18 +20,23 @@ export function OrganisationsManager() {
     const [ errorFetching , setErrorFetching ] = useState(null)
     const [ organisations, setOrganisations ] = useState([])
     const [ errorDeleting, setErrorDeleting ] = useState(null)
+    const [ loading, setLoading ] = useState(true)
 
-    const { pb } = usePocket()
+    const { pb, user } = usePocket()
 
     const [ c, sc ] = useState(0)
 
     useEffect(() => {
-        pb.collection("organisations").getFullList({ sort: "name" })
+        setLoading(true)
+        pb.collection("organisations").getFullList({ sort: "name", filter: `user = '${user?.id}'` })
         .then(locs => {
             setOrganisations(locs)
         })
         .catch(err => {
             setErrorFetching(err)
+        })
+        .finally(() => {
+            setLoading(false)
         })
     }, [ c ])
 
@@ -49,6 +54,11 @@ export function OrganisationsManager() {
                     <>
 
                         <div className="flex col gap-s">
+                            {
+                                loading && (
+                                    <small className="text-grey text-center">Loading...</small>
+                                )
+                            }
                             {
                                 organisations.map(organisation => {
                                     return (

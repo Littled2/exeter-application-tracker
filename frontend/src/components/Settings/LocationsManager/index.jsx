@@ -19,18 +19,23 @@ export function LocationsManager() {
     const [ errorFetching , setErrorFetching ] = useState(null)
     const [ locations, setLocations ] = useState([])
     const [ errorDeleting, setErrorDeleting ] = useState(null)
+    const [ loading, setLoading ] = useState(true)
 
-    const { pb } = usePocket()
+    const { pb, user } = usePocket()
 
     const { masterCounter, setMasterCounter } = useMasterCounter()
 
     useEffect(() => {
-        pb.collection("locations").getFullList({ sort: "name" })
+        setLoading(true)
+        pb.collection("locations").getFullList({ sort: "name", filter: `user = '${user?.id}'` })
         .then(locs => {
             setLocations(locs)
         })
         .catch(err => {
             setErrorFetching(err)
+        })
+        .finally(() => {
+            setLoading(false)
         })
     }, [ masterCounter ])
 
@@ -48,6 +53,11 @@ export function LocationsManager() {
                     <>
 
                         <div className="flex col gap-s">
+                            {
+                                loading && (
+                                    <small className="text-grey text-center">Loading...</small>
+                                )
+                            }
                             {
                                 locations.map(location => {
                                     return (

@@ -12,6 +12,8 @@ export function Tabs({ tabs, mobileTop, saveActiveTabAs=null, mobilePadding=fals
             } else {
                 return JSON.parse(saved)
             }
+        } else {
+            return 0
         }
     })
 

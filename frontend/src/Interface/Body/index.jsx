@@ -49,7 +49,11 @@ export function Body({ counter, setCounter }) {
 
                     {
                         // If mobile device and user is viewing the applications or analytics page
-                        !(isMobile && activeMobileTab !== 'applications' && activeMobileTab !== 'analytics' && activeMobileTab !== "deadlines") && (
+                        // OR if not mobile and user has hidden all analytics views
+                        (
+                            !(isMobile && activeMobileTab !== 'applications' && activeMobileTab !== 'analytics' && activeMobileTab !== "deadlines")
+                            && !(!isMobile && !user?.deadlinesView && !user?.stagesView && !user?.locationsView)
+                        ) && (
 
                             <div className={[ styles.dataVisWrapper, (isMobile && activeMobileTab === "deadlines") ? styles.mobileDeadlinesViewActive : '' ].join(" ")}>
 

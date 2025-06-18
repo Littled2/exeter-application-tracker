@@ -13,6 +13,10 @@ import { BsEye } from "react-icons/bs"
 import { useMobile } from "../../../contexts/mobileContext.jsx"
 import { IoCalendar, IoCheckmark } from "react-icons/io5"
 import { Popup } from "../../../components/Popup/index.jsx"
+import { Tabs } from "../../../components/Tabs/index.jsx"
+import { CopyText } from "../../../components/CopyText/index.jsx"
+import { useCallback } from "react"
+import { CalendarManager } from "../../../components/Settings/CalendarManager/index.jsx"
 
 
 export function DeadlinesOverView({ openAppID, setOpenAppID }) {
@@ -26,17 +30,6 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
     const [ upcomingDeadlines, setUpcomingDeadlines ] = useState([])
     const [ hideConfirmOpen, setHideConfirmOpen ] = useState(false)
     const [ addToCalOpen, setAddToCalOpen ] = useState(false)
-
-    const [ copied, setCopied ] = useState(false)
-    const calLink= useRef(process.env.REACT_APP_BACKEND_URL + "/cal/" + user?.id)
-
-    useEffect(() => {
-        if(copied) {
-            setTimeout(() => {
-                setCopied(false)
-            }, 2000)
-        }
-    }, [ copied ])
 
 
     useEffect(() => {
@@ -138,49 +131,17 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
                 <span className={styles.upcoming}>Upcoming</span>
             </div>
             
-            <small onClick={() => setAddToCalOpen(true)} className="flex align-center gap-s text-blue cursor-pointer">
-                <IoCalendar />
-                <span>Sync with calendar</span>
-            </small>
+            {
+                (!user?.calendarLastRequested || (new Date() - new Date(user?.calendarLastRequested) > 7 * 24 * 60 * 60 * 1000)) && (
+                    <small onClick={() => setAddToCalOpen(true)} className="flex align-center gap-s text-blue cursor-pointer">
+                        <IoCalendar />
+                        <span>Sync with personal calendar</span>
+                    </small>
+                )
+            }
 
             <Popup title={"Sync with personal calendar"} trigger={addToCalOpen} setTrigger={setAddToCalOpen}>
-                <div className="flex flex-col gap-m form">
-                    <h4 className="text-white">Add deadlines to personal calendar</h4>
-
-                    <ol className="text-grey" style={{ paddingLeft: "1.5rem", lineHeight: "1.6" }}>
-                        <li>Open your preferred calendar app (Google Calendar, Apple Calendar, Outlook, etc.).</li>
-                        <li>Look for an option to Add Calendar by URL or Subscribe to Calendar.</li>
-                        <li>Paste the copied link into the field provided and confirm.</li>
-                        <li>Your calendar will automatically stay updated with any new deadlines we add.</li>
-                    </ol>
-
-                    <div className="flex">
-                        <input value={calLink.current} type="text" readOnly={true} />
-                        <button
-                            className="m-submit-btn"
-                            style={{
-                                backgroundColor: copied ? 'var(--text-green)' : '',
-                                color: copied ? 'white' : ''
-                            }}
-                            onClick={() =>{
-                                navigator.clipboard.writeText(calLink.current)
-                                .then(() => {
-                                    setCopied(true)
-                                })
-                            }}
-                        >
-                            {
-                                !copied ? (
-                                    "Copy"
-                                ) : (
-                                    <IoCheckmark />
-                                )
-                            }
-                        </button>
-                    </div>
-
-                    <p className="text-grey">Once copied, follow the steps above to subscribe using your calendar app.</p>
-                </div>
+                <CalendarManager />
             </Popup>
 
         </div>
