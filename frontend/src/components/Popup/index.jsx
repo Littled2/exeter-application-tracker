@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import styles from "./styles.module.css"
 import { AiOutlineClose, AiOutlineDelete } from "react-icons/ai"
 import { usePopupsContext } from "../../contexts/popupsContext"

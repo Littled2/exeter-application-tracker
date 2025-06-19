@@ -4,7 +4,6 @@ import { usePocket } from "../../../contexts/pocketContext";
 import { LocationsSelect } from "../../inputs/LocationsSelect";
 import { BiPlus } from "react-icons/bi";
 import { Popup } from "../../Popup";
-import { NewOrganisation } from "../NewOrganisation";
 import { DateInput } from "../../inputs/DateInput";
 import { useMasterCounter } from "../../../contexts/masterCounterContext";
 import { NewLocation } from "../NewLocation";

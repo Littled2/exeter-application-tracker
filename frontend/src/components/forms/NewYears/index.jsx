@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { usePocket } from "../../../contexts/pocketContext"
-import { useActiveYear } from "../../../contexts/activeYearContext"
 import { AnimatedButton } from "../../AnimatedButton"
 import { useMobile } from "../../../contexts/mobileContext"
 

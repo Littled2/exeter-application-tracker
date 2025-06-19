@@ -8,14 +8,6 @@ import { BsEye } from "react-icons/bs";
 import { Confirm } from "../../components/forms/Confirm";
 import { Tooltip } from 'react-tooltip'
 
-function long_to_percentage(coord) {
-
-}
-
-function lat_to_percentage(coord) {
-    
-}
-
 
 export function LocationView() {
 

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import styles from "./styles.module.css"
 import { useActiveYear } from "../../../contexts/activeYearContext.jsx"
 import { usePocket } from "../../../contexts/pocketContext.jsx"
@@ -6,16 +6,13 @@ import { useMasterCounter } from "../../../contexts/masterCounterContext.jsx"
 import { DayPicker } from "react-day-picker"
 import { areSameDate } from "../../../helpers/dates.js"
 
-import 'react-day-picker/style.css';
+import 'react-day-picker/style.css'
 import { Tooltip } from "react-tooltip"
 import { Confirm } from "../../../components/forms/Confirm/index.jsx"
 import { BsEye } from "react-icons/bs"
 import { useMobile } from "../../../contexts/mobileContext.jsx"
-import { IoCalendar, IoCheckmark } from "react-icons/io5"
+import { IoCalendar } from "react-icons/io5"
 import { Popup } from "../../../components/Popup/index.jsx"
-import { Tabs } from "../../../components/Tabs/index.jsx"
-import { CopyText } from "../../../components/CopyText/index.jsx"
-import { useCallback } from "react"
 import { CalendarManager } from "../../../components/Settings/CalendarManager/index.jsx"
 
 

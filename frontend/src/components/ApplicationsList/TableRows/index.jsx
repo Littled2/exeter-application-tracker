@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { daysToDate, getDate } from "../../../helpers/dates"
 import styles from "./styles.module.css"
 import { Deadline } from "../../Deadline"

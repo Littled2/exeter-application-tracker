@@ -1,7 +1,7 @@
-import styles from "./styles.module.css"
+import styles from "./styles.module.css";
 
 import { useEffect, useState } from "react";
-import { Bar, Pie } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import { usePocket } from "../../contexts/pocketContext";
 import { useActiveYear } from "../../contexts/activeYearContext";
 import { useMasterCounter } from "../../contexts/masterCounterContext";

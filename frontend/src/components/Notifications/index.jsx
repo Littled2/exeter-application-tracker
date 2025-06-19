@@ -1,8 +1,7 @@
-import styles from "./styles.module.css"
-import { useNotifications } from "../../contexts/notificationsContext"
+import styles from "./styles.module.css";
+import { useNotifications } from "../../contexts/notificationsContext";
 import { Notification } from "./Notification";
 import { usePocket } from "../../contexts/pocketContext";
-import { useCallback } from "react";
 
 export function Notifications() {
 

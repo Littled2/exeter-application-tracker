@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react"
 import { usePocket } from "../../../contexts/pocketContext"
-import { BiFile, BiFileBlank, BiTrash, BiUpload } from "react-icons/bi"
+import { BiFileBlank, BiTrash, BiUpload } from "react-icons/bi"
 import { Popup } from "../../../components/Popup"
 import styles from "./styles.module.css"
 import { Confirm } from "../../../components/forms/Confirm"
