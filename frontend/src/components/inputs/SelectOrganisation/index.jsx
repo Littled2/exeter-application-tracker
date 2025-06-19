@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { usePocket } from "../../../contexts/pocketContext"
 import styles from "./styles.module.css"
-import { IoCloseOutline, IoSearchCircleOutline, IoSearchOutline } from "react-icons/io5"
+import { IoCloseOutline, IoSearchOutline } from "react-icons/io5"
 import { useMobile } from "../../../contexts/mobileContext"
 
 export function SelectOrganisation({ selected, setSelected, c, sc }) {

@@ -1,10 +1,8 @@
-import { BiCalendar, BiCheckboxChecked, BiListOl } from "react-icons/bi"
-import styles from "./styles.module.css"
-import { BsGraphUp } from "react-icons/bs"
-import { useMobile } from "../../contexts/mobileContext"
+import styles from "./styles.module.css";
+import { useMobile } from "../../contexts/mobileContext";
 import { useEffect, useState } from "react";
 import { usePopupsContext } from "../../contexts/popupsContext";
-import { IoBarChartOutline, IoCalendarOutline, IoCheckboxOutline, IoDocumentsOutline } from "react-icons/io5";
+import { IoCalendarOutline, IoCheckboxOutline, IoDocumentsOutline } from "react-icons/io5";
 
 
 function useScrollDirection(buffer = 5) {

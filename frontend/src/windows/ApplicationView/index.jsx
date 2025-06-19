@@ -2,8 +2,7 @@ import { useCallback, useEffect, useState } from "react"
 import styles from "./styles.module.css"
 import { Popup } from "../../components/Popup"
 import { EditApp } from "../../components/forms/EditApp"
-import { AppTasksList } from "../../components/TasksList/AppTasksList"
-import { AiOutlineClose, AiOutlineDelete, AiOutlineEdit } from "react-icons/ai"
+import { AiOutlineClose, AiOutlineDelete } from "react-icons/ai"
 import { usePocket } from "../../contexts/pocketContext"
 import { DocumentUploadDownload } from "./DocumentUploadDownload"
 import { useActiveYear } from "../../contexts/activeYearContext"
@@ -13,55 +12,15 @@ import { usePopupsContext } from "../../contexts/popupsContext"
 import { useMasterCounter } from "../../contexts/masterCounterContext"
 import { Deadline } from "../../components/Deadline"
 import { useMobile } from "../../contexts/mobileContext"
-import confetti from "canvas-confetti";
 import { EditAppInfo } from "../../components/forms/EditAppInfo"
 import { FiEdit } from "react-icons/fi"
 import { InputInformation } from "../../components/InputInformation"
 import { IoLocationOutline } from "react-icons/io5"
 import { indexDB } from "../../components/db"
 import useOnlineStatus from "../../hooks/useOnlineStatus"
-import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
+import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md"
+import { celebrateConfetti } from "../../helpers/particle-effects"
 
-
-
-function fire(particleRatio, opts) {
-
-    let count = 200;
-    let defaults = {
-        origin: { y: 0.7 }
-    };
-
-    confetti({
-      ...defaults,
-      ...opts,
-      particleCount: Math.floor(count * particleRatio)
-    });
-}
-
-function celebrate() {
-    fire(0.25, {
-        spread: 26,
-        startVelocity: 55,
-    })
-    fire(0.2, {
-        spread: 60,
-    })
-    fire(0.35, {
-        spread: 100,
-        decay: 0.91,
-        scalar: 0.8
-    })
-    fire(0.1, {
-        spread: 120,
-        startVelocity: 25,
-        decay: 0.92,
-        scalar: 1.2
-    })
-    fire(0.1, {
-        spread: 120,
-        startVelocity: 45,
-    })
-}
 
 
 
@@ -221,7 +180,7 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
 
         // Show confetti when a user gets accepted
         if((application.stage === 'idea' || application.stage === 'applying' || application.stage === 'applied') && e.target.value === 'accepted') {
-            celebrate()
+            celebrateConfetti()
         }
 
         // Update the record

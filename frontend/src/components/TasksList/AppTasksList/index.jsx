@@ -1,11 +1,9 @@
 import { useCallback, useEffect, useState } from "react"
 import { TableSection } from "../../TableSection"
-import { TableRows } from "../../ApplicationsList/TableRows"
 import styles from "./styles.module.css"
 import { Popup } from "../../Popup"
 import { TaskView } from "../../forms/TaskView"
 import { usePocket } from "../../../contexts/pocketContext"
-import { getDate } from "../../../helpers/dates"
 import { NewTask } from "../../forms/NewTask"
 import { Deadline } from "../../Deadline"
 
