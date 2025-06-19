@@ -102,7 +102,7 @@ export function LocationView() {
 
                 <Tooltip id="hide-location-view-tooltip" />
 
-                <Confirm trigger={hideConfirmOpen} setTrigger={setHideConfirmOpen} onConfirm={hideComponent} message={"Are you sure you want to hide this component? You can always un-hide it in Settings > Dashboard menu"} />
+                <Confirm trigger={hideConfirmOpen} setTrigger={setHideConfirmOpen} onConfirm={hideComponent} message={"Are you sure you want to hide this component? You can always un-hide it in Settings > Appearance"} />
             </div>
             <div className={styles.innerWrapper}>
                 <div className={styles.inner}>

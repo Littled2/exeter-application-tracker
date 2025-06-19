@@ -228,7 +228,7 @@ export function StageBreakdown() {
 
                         <Tooltip id="hide-stages-view-tooltip" />
 
-                        <Confirm trigger={hideConfirmOpen} setTrigger={setHideConfirmOpen} onConfirm={hideComponent} message={"Are you sure you want to hide this component? You can always un-hide it in Settings > Dashboard menu"} />
+                        <Confirm trigger={hideConfirmOpen} setTrigger={setHideConfirmOpen} onConfirm={hideComponent} message={"Are you sure you want to hide this component? You can always un-hide it in Settings > Appearance"} />
 
                     </div>
                     {
