@@ -6,7 +6,7 @@ import { AnimatedButton } from "../../AnimatedButton"
 
 export function CreateAccount() {
 
-    const { register } = usePocket()
+    const { register, pb } = usePocket()
 
     const [ processing, setProcessing ] = useState(false)
 
@@ -43,77 +43,98 @@ export function CreateAccount() {
     }, [email, password, passwordConfirm, name, err])
 
     return (
-        <form className={`form ${styles.form}`} onSubmit={submit}>
+        <div className="flex flex-col gap-m">
 
-            <div>
+            <form className={`form ${styles.form}`} onSubmit={submit}>
+
                 <div>
-                    <label>Email</label>
+                    <div>
+                        <label>Email</label>
+                    </div>
+                    <input name="create-account-email" id="create-account-email" style={{ width: "100%" }} value={email} onChange={e => setEmail(e.target.value)} type="email" required />
                 </div>
-                <input name="create-account-email" id="create-account-email" style={{ width: "100%" }} value={email} onChange={e => setEmail(e.target.value)} type="email" required />
-            </div>
 
-            <div>
                 <div>
-                    <label>Password</label>
+                    <div>
+                        <label>Password</label>
+                    </div>
+                    <input name="create-account-password" id="create-account-password" style={{ width: "100%" }} value={password} onChange={e => setPassword(e.target.value)} type="password" minLength={6} required />
                 </div>
-                <input name="create-account-password" id="create-account-password" style={{ width: "100%" }} value={password} onChange={e => setPassword(e.target.value)} type="password" minLength={6} required />
-            </div>
 
-            <div>
                 <div>
-                    <label>Confirm password</label>
+                    <div>
+                        <label>Confirm password</label>
+                    </div>
+                    <input name="create-account-password-confirm" id="create-account-password-confirm" style={{ width: "100%" }} value={passwordConfirm} onChange={e => setPasswordConfirm(e.target.value)} type="password" minLength={6} required />
                 </div>
-                <input name="create-account-password-confirm" id="create-account-password-confirm" style={{ width: "100%" }} value={passwordConfirm} onChange={e => setPasswordConfirm(e.target.value)} type="password" minLength={6} required />
-            </div>
 
-            <div>
-                <label className="flex gap-s">
-                    <input type="checkbox" required />
-                    <span>I agree to the <a className="text-orange underline" href="#">Terms & Conditions</a> and <a className="text-orange underline" href="#">Privacy Policy</a></span>
-                </label>
-            </div>
+                <div>
+                    <label className="flex gap-s">
+                        <input type="checkbox" required />
+                        <span>I agree to the <a className="text-orange underline" href="#">Terms & Conditions</a> and <a className="text-orange underline" href="#">Privacy Policy</a></span>
+                    </label>
+                </div>
 
-            {
-                err ? (
-                    <p className="text-red">{err?.response?.message}</p>
-                ) : (
-                    <></>
-                )
-            }
+                {
+                    err ? (
+                        <p className="text-red">{err?.response?.message}</p>
+                    ) : (
+                        <></>
+                    )
+                }
 
-            {
-                err?.response?.data?.email?.message ? (
-                    <p className="text-red">{err?.response?.data?.email?.message}</p>
-                ) : (
-                    <></>
-                )
-            }
+                {
+                    err?.response?.data?.email?.message ? (
+                        <p className="text-red">{err?.response?.data?.email?.message}</p>
+                    ) : (
+                        <></>
+                    )
+                }
 
-            {
-                err?.response?.data?.password?.message ? (
-                    <p className="text-red">{err?.response?.data?.password?.message}</p>
-                ) : (
-                    <></>
-                )
-            }
+                {
+                    err?.response?.data?.password?.message ? (
+                        <p className="text-red">{err?.response?.data?.password?.message}</p>
+                    ) : (
+                        <></>
+                    )
+                }
 
-            {
-                err?.response?.data?.passwordConfirm?.message ? (
-                    <p className="text-red">{err?.response?.data?.passwordConfirm?.message}</p>
-                ) : (
-                    <></>
-                )
-            }
-               
+                {
+                    err?.response?.data?.passwordConfirm?.message ? (
+                        <p className="text-red">{err?.response?.data?.passwordConfirm?.message}</p>
+                    ) : (
+                        <></>
+                    )
+                }
+                
 
-            <div>
+                <div>
 
-                <AnimatedButton submitting={processing} type="submit" className="m-submit-btn">
-                    Create Account
-                </AnimatedButton>
+                    <AnimatedButton submitting={processing} type="submit" className="m-submit-btn">
+                        Create Account
+                    </AnimatedButton>
 
-            </div>
+                </div>
 
-        </form>
+            </form>
+
+            <button
+                className={[ "button", styles.signInWithGoogleButton ].join(" ")}
+                role="button"
+                onClick={async () => {
+                    try {
+                        const authData = await pb.collection('users').authWithOAuth2({ provider: 'google' })
+                        console.log({authData})
+                    } catch (error) {
+                        console.error("OAUTH ERROR", error)
+                    }
+
+                }}
+            >
+                <img src="/sign-in-with-google-logo.svg" />
+                <span>Sign up with Google</span>
+            </button>
+
+        </div>
     )
 }

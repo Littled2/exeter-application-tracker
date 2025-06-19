@@ -6,7 +6,7 @@ import { BiKey } from "react-icons/bi"
 
 export function Login() {
 
-    const { login } = usePocket()
+    const { login, pb } = usePocket()
 
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('')
@@ -41,45 +41,64 @@ export function Login() {
     }, [email, password, err])
 
     return (
-        <form className={`form ${styles.form}`} onSubmit={submit}>
+        <div className="flex flex-col gap-m">
+            <form className={`form ${styles.form}`} onSubmit={submit}>
 
-            <div>
                 <div>
-                    <label>Email</label>
+                    <div>
+                        <label>Email</label>
+                    </div>
+                    <input style={{ width: "100%" }} value={email} onChange={e => setEmail(e.target.value)} type="email" required />
                 </div>
-                <input style={{ width: "100%" }} value={email} onChange={e => setEmail(e.target.value)} type="email" required />
-            </div>
 
-            <div>
                 <div>
-                    <label>Password</label>
+                    <div>
+                        <label>Password</label>
+                    </div>
+                    <input style={{ width: "100%" }} value={password} onChange={e => setPassword(e.target.value)} type="password" required />
                 </div>
-                <input style={{ width: "100%" }} value={password} onChange={e => setPassword(e.target.value)} type="password" required />
-            </div>
 
-            {
-                err ? (
-                    <p className="text-red">{err}</p>
-                ) : (
-                    <></>
-                )
-            }
+                {
+                    err ? (
+                        <p className="text-red">{err}</p>
+                    ) : (
+                        <></>
+                    )
+                }
 
-            {
-                incorrect ? (
-                    <p className="text-red">Incorrect login details</p>
-                ) : (
-                    <></>
-                )
-            }
+                {
+                    incorrect ? (
+                        <p className="text-red">Incorrect login details</p>
+                    ) : (
+                        <></>
+                    )
+                }
 
-            <div>
-                <AnimatedButton submitting={processing} type="submit" className="m-submit-btn flex gap-s align-center justify-center">
-                    <BiKey />
-                    <span>Log In</span>
-                </AnimatedButton>
-            </div>
+                <div>
+                    <AnimatedButton submitting={processing} type="submit" className="m-submit-btn flex gap-s align-center justify-center">
+                        <BiKey />
+                        <span>Log In</span>
+                    </AnimatedButton>
+                </div>
 
-        </form>
+            </form>
+
+            <button
+                className={[ "button", styles.signInWithGoogleButton ].join(" ")}
+                role="button"
+                onClick={async () => {
+                    try {
+                        const authData = await pb.collection('users').authWithOAuth2({ provider: 'google' })
+                        console.log({authData})
+                    } catch (error) {
+                        console.error("OAUTH ERROR", error)
+                    }
+
+                }}
+            >
+                <img src="/sign-in-with-google-logo.svg" />
+                <span>Sign in with Google</span>
+            </button>
+        </div>
     )
 }
