@@ -39,11 +39,12 @@ export function DocumentUploadDownload({ application, fileKeyName, displayName }
         fd.append(fileKeyName, file)
 
         pb.collection("applications").update(application.id, fd)
-        .then(() => setUploading(false))
         .catch((err) => {
             console.error("Error uploading file", err)
-            setUploading(false)
             setError(err)
+        })
+        .finally(() => {
+            setUploading(false)
         })
 
     }, [ pb, application ])
