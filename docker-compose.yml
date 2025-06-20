@@ -6,6 +6,8 @@ services:
     environment:
       - ADMIN_EMAIL
       - ADMIN_PASSWORD
+      - GOOGLE_OAUTH_CLIENT_ID
+      - GOOGLE_OAUTH_CLIENT_SECRET
     volumes:
       - ./backend/pb_data:/pb/pb_data
     expose:
