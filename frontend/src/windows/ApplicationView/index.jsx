@@ -20,6 +20,7 @@ import { indexDB } from "../../components/db"
 import useOnlineStatus from "../../hooks/useOnlineStatus"
 import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md"
 import { celebrateConfetti } from "../../helpers/particle-effects"
+import { Tooltip } from "react-tooltip"
 
 
 
