@@ -7,6 +7,10 @@ import { usePocket } from "../../contexts/pocketContext";
 import { useActiveYear } from "../../contexts/activeYearContext";
 import { useMasterCounter } from "../../contexts/masterCounterContext";
 
+function getCountAtStage(array, stage) {
+    return array.filter(t => t.stage === stage)[0].count
+}
+
 export function ApplicationsTabs({ setOpenAppID, openAppID }) {
 
     const { pb } = usePocket()
@@ -23,32 +27,16 @@ export function ApplicationsTabs({ setOpenAppID, openAppID }) {
         pb.collection("stageBreakdown").getFullList({ filter: `year = "${activeYear}"` })
         .then(totals => {
 
-            let idea = 0
-            
-            if(totals.filter(t => t.stage === "idea").length > 0) {
-                idea = totals.filter(t => t.stage === "idea")[0].count
-            }
+            // Calculate totals for each stage
+            let idea = getCountAtStage(totals, "idea")
 
-            let applying = 0
-            if(totals.filter(t => t.stage === "applying").length > 0) {
-                applying = totals.filter(t => t.stage === "applying")[0].count
-            }
+            let applying = getCountAtStage(totals, "applying")
 
-            let applied = 0
-            if(totals.filter(t => t.stage === "applied").length > 0) {
-                applied = totals.filter(t => t.stage === "applied")[0].count
-            }
+            let applied = getCountAtStage(totals, "applied")
 
-            let accepted = 0
-            if(totals.filter(t => t.stage === "accepted").length > 0) {
-                accepted = totals.filter(t => t.stage === "accepted")[0].count
-            }
+            let accepted = getCountAtStage(totals, "accepted")
 
-            let declined = 0
-            if(totals.filter(t => t.stage === "declined").length > 0) {
-                declined = totals.filter(t => t.stage === "declined")[0].count
-            }
-
+            let declined = getCountAtStage(totals, "declined")
 
 
             setIdeaApplying(idea + applying)

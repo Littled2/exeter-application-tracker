@@ -21,15 +21,22 @@ onRecordAfterCreateSuccess((e) => {
             "created": ""
         }))
 
+        // Get all applications from this year
         $app.db()
         .select("created")
         .from("applications")
         .where(
             $dbx.exp("year = {:year}", { year: ACTIVE_YEAR })
         )
+        .andWhere(
+            $dbx.exp("user = {:userId}", { userId: e.record.get("user") })
+        )
         .all(applicationsThisYear)
 
-        if(applicationsThisYear.length === 1) {
+        console.log("Application thi syear length:", applicationsThisYear.length)
+
+        // If there is only 1 application for this year...
+        if(applicationsThisYear && applicationsThisYear.length === 1) {
 
             send_notification(e.record.get("user"), "firstApplicationForGroup")
 
