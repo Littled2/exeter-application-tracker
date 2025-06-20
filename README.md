@@ -21,6 +21,12 @@ The ultimate dashboard for tracking applications to jobs, internships and placem
 - **Analytics**: Gain insights into your application trends and manage your overall performance.
   
 
+## Running in Development
+
+1. Start ngrok: `ngrok start --all --config ngrok.yml`
+2. Edit frontend `frontend/.env` file `REACT_APP_BACKEND_URL` with ngrok url to backend
+3. Start the frontend with `npm start`
+
 
 ## Self-hosting Instructions
 
