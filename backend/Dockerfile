@@ -18,5 +18,7 @@ COPY ./pb_hooks /pb/pb_hooks
 
 EXPOSE 8080
 
+RUN /pb/pocketbase superuser upsert "$ADMIN_EMAIL" "$ADMIN_PASSWORD"
+
 # start PocketBase
 CMD [ "/pb/pocketbase", "serve", "--http=0.0.0.0:8080" ]

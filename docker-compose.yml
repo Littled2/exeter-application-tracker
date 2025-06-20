@@ -3,6 +3,9 @@ services:
   backend:
     build: ./backend
     container_name: backend
+    environment:
+      - ADMIN_EMAIL
+      - ADMIN_PASSWORD
     volumes:
       - ./backend/pb_data:/pb/pb_data
     expose:

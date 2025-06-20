@@ -21,6 +21,7 @@ import { IoLocationOutline } from "react-icons/io5"
 import { indexDB } from "../../components/db"
 import useOnlineStatus from "../../hooks/useOnlineStatus"
 import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
+import { Tooltip } from "react-tooltip"
 
 
 
@@ -241,12 +242,26 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                 {
                     isOnline ? (
                         <div className="flex gap-s">
-                            <button className={styles.close} onClick={() => setConfirmOpen(true)}>
+                            <button
+                                className={styles.close}
+                                data-tooltip-id="delete-application-tooltip"
+                                data-tooltip-content="Delete application"
+                                data-tooltip-place="bottom"
+                                onClick={() => setConfirmOpen(true)}
+                            >
                                 <AiOutlineDelete />
                             </button>
-                            <button className={styles.close} onClick={() => setEditAppOpen(true)}>
+                            <Tooltip id="delete-application-tooltip" />
+                            <button
+                                className={styles.close}
+                                data-tooltip-id="edit-application-tooltip"
+                                data-tooltip-content="Edit application"
+                                data-tooltip-place="bottom"
+                                onClick={() => setEditAppOpen(true)}
+                            >
                                 <FiEdit />
                             </button>
+                            <Tooltip id="edit-application-tooltip" />
                         </div>
                     ) : (
                         <div className="flex align-center gap-s">
@@ -415,21 +430,31 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                 <div>
                                     <div className="flex gap-s align-center">
                                         <p className="text-white">Notes</p>
-                                        {
+                                        <>
                                             <span
                                                 style={{ fontSize: "0.9rem" }}
                                                 className="cursor-pointer text-grey simple-btn"
+                                                data-tooltip-id="edit-notes-tooltip-1"
+                                                data-tooltip-content="Edit notes"
+                                                data-tooltip-place="bottom"
                                                 onClick={() => setEditInfoOpen(true)}
                                             >
                                                 <BiPencil />
                                             </span>
-                                        }
+
+                                            <Tooltip id="edit-notes-tooltip-1" />
+                                        </>
                                     </div>
                                     <pre
                                         className={styles.info}
                                         style={{fontFamily:"inherit", whiteSpace:"pre-wrap", wordWrap:"break-word", margin:"0" }}
+                                        data-tooltip-id="edit-notes-tooltip-2"
+                                        data-tooltip-content="Edit notes"
+                                        data-tooltip-place="bottom"
                                         onClick={() => setEditInfoOpen(true)}
                                     >{application?.info}</pre>
+
+                                    <Tooltip id="edit-notes-tooltip-2" />
                                 </div>
 
                                 {/* <div>
