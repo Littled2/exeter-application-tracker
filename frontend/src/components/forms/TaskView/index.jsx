@@ -1,9 +1,7 @@
-import { useRef, useState } from "react"
+import { useState } from "react"
 import { usePocket } from "../../../contexts/pocketContext"
 import { DateInput } from "../../inputs/DateInput"
 import { IoCalendarOutline, IoClose } from "react-icons/io5"
-import { Popup } from "../../Popup"
-import { Confirm } from "../Confirm"
 
 export function TaskView({ task, counter, setCounter, setTrigger }) {
 

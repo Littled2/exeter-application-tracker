@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { Popup } from "../../components/Popup";
-import { TbHeadset } from "react-icons/tb"
+import { TbHeadset } from "react-icons/tb";
 import { NewTicket } from "../../components/forms/NewTicket";
-import { BsGear } from "react-icons/bs"
+import { BsGear } from "react-icons/bs";
 import { Settings } from "../../components/Settings";
-import styles from "./styles.module.css"
+import styles from "./styles.module.css";
 import { usePocket } from "../../contexts/pocketContext";
 import { useActiveYear } from "../../contexts/activeYearContext";
 import { useNewApplicationPopup } from "../../contexts/newApplicationPopupContext";

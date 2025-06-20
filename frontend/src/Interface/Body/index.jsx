@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { ApplicationView } from "../../windows/ApplicationView"
 import { LocationView } from "../../windows/LocationView"
 import { StageBreakdown } from "../../windows/StageBreakdown"
@@ -6,7 +5,7 @@ import styles from "./styles.module.css"
 import { ApplicationsTabs } from "../../windows/ApplicationsTabs"
 import { useActiveYear } from "../../contexts/activeYearContext"
 
-import 'react-day-picker/style.css';
+import 'react-day-picker/style.css'
 import { usePocket } from "../../contexts/pocketContext"
 import { BsPlus } from "react-icons/bs"
 import { useNewApplicationPopup } from "../../contexts/newApplicationPopupContext"
