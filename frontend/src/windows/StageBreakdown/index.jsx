@@ -73,7 +73,7 @@ export function StageBreakdown() {
 
     
     /**
-     * @deprecated
+     * Adds a little strip of colour at the bottom
      */
     function ensureBaselineValue(value) {
         if(value === 0) {
@@ -132,27 +132,27 @@ export function StageBreakdown() {
                 datasets: [
                     {
                         label: 'Idea stage',
-                        data: [ freq.idea, 0, 0, 0, 0 ],
+                        data: [ freq.idea === 0 ? 0 : ensureBaselineValue(freq.idea), 0, 0, 0, 0 ],
                         backgroundColor: 'coral',
                     },
                     {
                         label: 'Applying stage',
-                        data: [ 0, freq.applying, 0, 0, 0 ],
+                        data: [ 0, freq.idea === 0 ? 0 : ensureBaselineValue(freq.applying), 0, 0, 0 ],
                         backgroundColor: '#bcb067',
                     },
                     {
                         label: 'Applied stage',
-                        data: [ 0, 0, freq.applied, 0, 0 ],
+                        data: [ 0, 0, freq.idea === 0 ? 0 : ensureBaselineValue(freq.applied), 0, 0 ],
                         backgroundColor: 'lightblue',
                     },
                     {
                         label: 'Accepted stage',
-                        data: [ 0, 0, 0, freq.accepted, 0 ],
+                        data: [ 0, 0, 0, freq.idea === 0 ? 0 : ensureBaselineValue(freq.accepted), 0 ],
                         backgroundColor: '#00a522',
                     },
                     {
                         label: 'Declined stage',
-                        data: [ 0, 0, 0, 0, freq.declined ],
+                        data: [ 0, 0, 0, 0, freq.idea === 0 ? 0 : ensureBaselineValue(freq.declined) ],
                         backgroundColor: '#8b0b20',
                     }
                 ]
