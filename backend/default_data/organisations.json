@@ -1,0 +1,1850 @@
+[
+    {
+        "created": "2024-04-26 13:50:18.910Z",
+        "id": "6824xaogejj67fw",
+        "name": "Accenture",
+        "updated": "2025-06-11 23:39:43.232Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.917Z",
+        "id": "sjtjgt4fx18m72z",
+        "name": "Oracle",
+        "updated": "2025-06-11 23:39:48.041Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.918Z",
+        "id": "tpskij4rjwhiz8k",
+        "name": "IBM",
+        "updated": "2025-06-11 23:40:26.504Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.920Z",
+        "id": "m1701xtdu5qvbw4",
+        "name": "DSTL",
+        "updated": "2025-06-11 23:40:29.534Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.913Z",
+        "id": "vmdq5se4syyphw7",
+        "name": "BlackRock",
+        "updated": "2025-06-11 23:40:43.002Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.915Z",
+        "id": "3agpfu84l2thxsi",
+        "name": "UBS",
+        "updated": "2025-06-11 23:40:32.544Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.912Z",
+        "id": "d1ezlqbrutx8f20",
+        "name": "Deloitte",
+        "updated": "2025-06-11 23:40:45.796Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.923Z",
+        "id": "k6hqhk0vjsm28ry",
+        "name": "Ernst & Young",
+        "updated": "2025-06-11 23:40:48.812Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.925Z",
+        "id": "as0ng1zfn3jui8s",
+        "name": "Morgan Stanley",
+        "updated": "2025-06-11 23:40:51.590Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.927Z",
+        "id": "il63gy0vs5be4gw",
+        "name": "Microsoft",
+        "updated": "2025-06-11 23:40:55.591Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.928Z",
+        "id": "h7t7qyu4wvdvx9e",
+        "name": "cisco",
+        "updated": "2025-06-11 23:40:58.617Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.928Z",
+        "id": "azfk8cbd709mfw2",
+        "name": "Hindenberg Research",
+        "updated": "2025-06-11 23:41:01.169Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.929Z",
+        "id": "ksbuoid1c69s5up",
+        "name": "Lloyds Banking Group",
+        "updated": "2025-06-11 23:41:04.054Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.930Z",
+        "id": "f5zr4byay0rnujw",
+        "name": "Citi",
+        "updated": "2025-06-11 23:39:50.791Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.931Z",
+        "id": "kel56fnosd7uks9",
+        "name": "Deutsche Bank",
+        "updated": "2025-06-11 23:40:39.793Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.932Z",
+        "id": "fjaxxh663tjo3v5",
+        "name": "Starling Bank",
+        "updated": "2025-06-11 23:40:36.101Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.933Z",
+        "id": "lchlc7svgteqosu",
+        "name": "ARM",
+        "updated": "2025-06-11 23:39:59.247Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.934Z",
+        "id": "2kmuwwmve9vzj60",
+        "name": "Capital One",
+        "updated": "2025-06-11 23:39:56.399Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.935Z",
+        "id": "ytk0vfj6kyafn7d",
+        "name": "Cambridge Consultants",
+        "updated": "2025-06-11 23:39:53.721Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.936Z",
+        "id": "ewe6c4zew3zu6at",
+        "name": "Bloomberg",
+        "updated": "2025-06-11 23:40:02.795Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.937Z",
+        "id": "c3f5ftp7y17dc5o",
+        "name": "Amazon",
+        "updated": "2025-06-11 23:40:05.513Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.938Z",
+        "id": "zcb584wl0r904ne",
+        "name": "BAE Systems",
+        "updated": "2025-06-11 23:40:08.388Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.939Z",
+        "id": "a0z4wa0397q07xm",
+        "name": "Google",
+        "updated": "2025-06-11 23:40:18.165Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.940Z",
+        "id": "t97mms5bmz58634",
+        "name": "Bank of America",
+        "updated": "2025-06-11 23:40:23.476Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.941Z",
+        "id": "9o4uqtej6ntzpbo",
+        "name": "Airbus",
+        "updated": "2025-06-11 23:40:21.010Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.942Z",
+        "id": "d9o7cuf1x9imzvy",
+        "name": "Hewlett Packard",
+        "updated": "2025-06-11 23:40:15.584Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.943Z",
+        "id": "2eznts9ocv3k7m1",
+        "name": "SAP",
+        "updated": "2025-06-11 23:40:11.997Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.944Z",
+        "id": "2oxkwnh9noxqhbd",
+        "name": "Samsung",
+        "updated": "2025-06-11 23:39:37.508Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.946Z",
+        "id": "sc8xdxn7f1ew55c",
+        "name": "FCA",
+        "updated": "2025-06-11 23:39:34.833Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.946Z",
+        "id": "66iehtvfwkw1niv",
+        "name": "Nationwide",
+        "updated": "2025-06-11 23:39:32.849Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.948Z",
+        "id": "hovokar8pj5kfjo",
+        "name": "BMW",
+        "updated": "2025-06-11 23:39:30.839Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-26 13:50:18.950Z",
+        "id": "2gc5wrmwzrggv40",
+        "name": "JP Morgan",
+        "updated": "2025-06-11 23:39:28.737Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-27 12:48:34.008Z",
+        "id": "yatzlfig9d8yn5x",
+        "name": "Deutsche Bank'",
+        "updated": "2025-06-11 23:39:26.703Z",
+        "user": ""
+    },
+    {
+        "created": "2024-04-30 19:26:23.183Z",
+        "id": "9gczut5539smqpv",
+        "name": "Github",
+        "updated": "2025-06-11 23:39:24.244Z",
+        "user": ""
+    },
+    {
+        "created": "2024-06-18 14:57:51.535Z",
+        "id": "6hium02u3tcoqdu",
+        "name": "University of Oxford",
+        "updated": "2025-06-11 23:39:21.866Z",
+        "user": ""
+    },
+    {
+        "created": "2024-07-24 17:47:57.430Z",
+        "id": "i4yfpy1izb8th8v",
+        "name": "Lightworks",
+        "updated": "2025-06-11 23:39:19.620Z",
+        "user": ""
+    },
+    {
+        "created": "2025-01-13 00:15:29.391Z",
+        "id": "1f9pm6f5wl2hclq",
+        "name": "NHS",
+        "updated": "2025-06-11 23:39:16.426Z",
+        "user": ""
+    },
+    {
+        "created": "2025-01-14 11:39:13.838Z",
+        "id": "gyvdb41kmj897bq",
+        "name": "Mkinsey",
+        "updated": "2025-06-11 23:39:06.499Z",
+        "user": ""
+    },
+    {
+        "created": "2025-02-12 21:23:03.176Z",
+        "id": "bvs1h88eh542h80",
+        "name": "Ice Skating",
+        "updated": "2025-06-11 23:39:04.329Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-09 11:30:50.966Z",
+        "id": "3xt9778kpi7393q",
+        "name": "Test Organisation",
+        "updated": "2025-06-11 23:39:02.233Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.339Z",
+        "id": "y840f8r9sjrm546",
+        "name": "PwC",
+        "updated": "2025-06-11 23:43:58.339Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.346Z",
+        "id": "1as1d1mw15sk1xj",
+        "name": "Civil Service",
+        "updated": "2025-06-11 23:43:58.346Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.347Z",
+        "id": "80q31nywh6wg870",
+        "name": "BBC",
+        "updated": "2025-06-11 23:43:58.347Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.348Z",
+        "id": "y5f3t3lrreqkw2h",
+        "name": "J.P. Morgan",
+        "updated": "2025-06-11 23:43:58.348Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.348Z",
+        "id": "dk3g6qq3ezi8m9h",
+        "name": "Barclays",
+        "updated": "2025-06-11 23:43:58.348Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.349Z",
+        "id": "pzet619d9aw8qpg",
+        "name": "Aldi",
+        "updated": "2025-06-11 23:43:58.349Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.349Z",
+        "id": "yj5j9069cudn9c8",
+        "name": "Shell",
+        "updated": "2025-06-11 23:43:58.349Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.349Z",
+        "id": "0712j47iq389k6g",
+        "name": "British Army",
+        "updated": "2025-06-11 23:43:58.349Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.350Z",
+        "id": "pt915j60v0e4839",
+        "name": "MI5 - The Security Service",
+        "updated": "2025-06-11 23:43:58.350Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.350Z",
+        "id": "y491qng13h29t49",
+        "name": "Herbert Smith Freehills",
+        "updated": "2025-06-11 23:43:58.350Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.351Z",
+        "id": "nj2f0l9wmisbijf",
+        "name": "White & Case",
+        "updated": "2025-06-11 23:43:58.351Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.352Z",
+        "id": "eza4k606xggk80y",
+        "name": "Civil Service Fast Stream",
+        "updated": "2025-06-11 23:43:58.352Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.353Z",
+        "id": "ns2ujq5rg1i7551",
+        "name": "Teach First",
+        "updated": "2025-06-11 23:43:58.353Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.353Z",
+        "id": "262303ljv6e6l6u",
+        "name": "HSBC",
+        "updated": "2025-06-11 23:43:58.353Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.354Z",
+        "id": "j2ykm4rdu83c87m",
+        "name": "Santander",
+        "updated": "2025-06-11 23:43:58.354Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.354Z",
+        "id": "th3s5f1mptu23h4",
+        "name": "BP",
+        "updated": "2025-06-11 23:43:58.354Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.355Z",
+        "id": "036442ed6045etu",
+        "name": "KPMG",
+        "updated": "2025-06-11 23:43:58.355Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.355Z",
+        "id": "1mz00kfjsedlh72",
+        "name": "L’Oréal",
+        "updated": "2025-06-11 23:43:58.355Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.356Z",
+        "id": "clq289457f8w6i2",
+        "name": "Slaughter and May",
+        "updated": "2025-06-11 23:43:58.356Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.356Z",
+        "id": "90t283653839480",
+        "name": "AstraZeneca",
+        "updated": "2025-06-11 23:43:58.356Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.357Z",
+        "id": "gbd4087l274y20y",
+        "name": "Diageo",
+        "updated": "2025-06-11 23:43:58.357Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.357Z",
+        "id": "1n2dr7hk2a5p896",
+        "name": "Nestlé",
+        "updated": "2025-06-11 23:43:58.357Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.358Z",
+        "id": "xqy1rtef10h63wa",
+        "name": "Pfizer",
+        "updated": "2025-06-11 23:43:58.358Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.359Z",
+        "id": "qod97xy700wgi2z",
+        "name": "GSK",
+        "updated": "2025-06-11 23:43:58.359Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.359Z",
+        "id": "us145h503d4ceqk",
+        "name": "Rolls‑Royce",
+        "updated": "2025-06-11 23:43:58.359Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.360Z",
+        "id": "b2bym0s828n4g45",
+        "name": "Capgemini",
+        "updated": "2025-06-11 23:43:58.360Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.360Z",
+        "id": "b7mc46y48858m52",
+        "name": "Tesco",
+        "updated": "2025-06-11 23:43:58.360Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.360Z",
+        "id": "618m480ksfb52vx",
+        "name": "Lidl",
+        "updated": "2025-06-11 23:43:58.360Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.360Z",
+        "id": "5d60ln08r9pts9h",
+        "name": "Transport for London",
+        "updated": "2025-06-11 23:43:58.360Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.362Z",
+        "id": "6016uu3u7640h85",
+        "name": "Linklaters",
+        "updated": "2025-06-11 23:43:58.362Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.362Z",
+        "id": "ir881rr36j9c2t0",
+        "name": "Clifford Chance",
+        "updated": "2025-06-11 23:43:58.362Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.362Z",
+        "id": "64hurxjct413bh5",
+        "name": "WSP",
+        "updated": "2025-06-11 23:43:58.362Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.362Z",
+        "id": "7m3ic1094c235v3",
+        "name": "M&S",
+        "updated": "2025-06-11 23:43:58.362Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.362Z",
+        "id": "60467laf56700fn",
+        "name": "A&O Shearman",
+        "updated": "2025-06-11 23:43:58.362Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.362Z",
+        "id": "qibbg6fx1go7zss",
+        "name": "Freshfields",
+        "updated": "2025-06-11 23:43:58.362Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.362Z",
+        "id": "4io2r7617zj5q20",
+        "name": "Hogan Lovells",
+        "updated": "2025-06-11 23:43:58.362Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.362Z",
+        "id": "d7267rmo6q376l5",
+        "name": "Mazars",
+        "updated": "2025-06-11 23:43:58.362Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.362Z",
+        "id": "0d548f2i0tc7y45",
+        "name": "Grant Thornton",
+        "updated": "2025-06-11 23:43:58.362Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.362Z",
+        "id": "8hg55762vjvs3d5",
+        "name": "AON",
+        "updated": "2025-06-11 23:43:58.362Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.362Z",
+        "id": "0n5lk5m813340z6",
+        "name": "Arup",
+        "updated": "2025-06-11 23:43:58.362Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.362Z",
+        "id": "o9wx78ame603z6h",
+        "name": "AECOM",
+        "updated": "2025-06-11 23:43:58.362Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.362Z",
+        "id": "7722n1s50ujec8e",
+        "name": "Mott MacDonald",
+        "updated": "2025-06-11 23:43:58.362Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.362Z",
+        "id": "42h7895sg36o98u",
+        "name": "AtkinsRéalis",
+        "updated": "2025-06-11 23:43:58.362Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.362Z",
+        "id": "o8z7a3z7v5c8gjr",
+        "name": "NHS P&G",
+        "updated": "2025-06-11 23:43:58.362Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.362Z",
+        "id": "6mhkxvbld6s661p",
+        "name": "Forvis",
+        "updated": "2025-06-11 23:43:58.362Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:43:58.362Z",
+        "id": "f56k82c1fquk0i3",
+        "name": "Penguin",
+        "updated": "2025-06-11 23:43:58.362Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:44:42.386Z",
+        "id": "233z7cqz0ek09go",
+        "name": "Apple",
+        "updated": "2025-06-11 23:44:42.386Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:44:42.397Z",
+        "id": "zf70w0g8a5ae1j7",
+        "name": "JPMorgan",
+        "updated": "2025-06-11 23:44:42.397Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:44:42.397Z",
+        "id": "2m7s2sz0dqvut56",
+        "name": "Goldman Sachs",
+        "updated": "2025-06-11 23:44:42.397Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:44:42.397Z",
+        "id": "li7099e6xrj9828",
+        "name": "McKinsey & Company",
+        "updated": "2025-06-11 23:44:42.397Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:44:42.397Z",
+        "id": "28ljy44zxk8039q",
+        "name": "FDM Group",
+        "updated": "2025-06-11 23:44:42.397Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:44:42.397Z",
+        "id": "37h07883a37jkhb",
+        "name": "Cancer Research UK",
+        "updated": "2025-06-11 23:44:42.397Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:44:42.397Z",
+        "id": "c774734i1ac36gm",
+        "name": "Aviva",
+        "updated": "2025-06-11 23:44:42.397Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:44:42.397Z",
+        "id": "4991f7tbq2x65rq",
+        "name": "Bank of England",
+        "updated": "2025-06-11 23:44:42.397Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:44:42.407Z",
+        "id": "tbm04jbc3r2928v",
+        "name": "Arcadis",
+        "updated": "2025-06-11 23:44:42.407Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:44:42.407Z",
+        "id": "l8gsxl7a67x9aln",
+        "name": "Bain & Company",
+        "updated": "2025-06-11 23:44:42.407Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:44:42.407Z",
+        "id": "631ym1b0l9d3ms5",
+        "name": "Baker McKenzie",
+        "updated": "2025-06-11 23:44:42.407Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.464Z",
+        "id": "m170h68u3j6d5fe",
+        "name": "Latham & Watkins",
+        "updated": "2025-06-11 23:45:50.464Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.471Z",
+        "id": "m35k8iu75hkum0h",
+        "name": "DLA Piper",
+        "updated": "2025-06-11 23:45:50.471Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.471Z",
+        "id": "8uh1k048a8rq2h3",
+        "name": "NatWest Group",
+        "updated": "2025-06-11 23:45:50.471Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.472Z",
+        "id": "0736y238q8eolho",
+        "name": "Virgin Media",
+        "updated": "2025-06-11 23:45:50.472Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.472Z",
+        "id": "s9x0a3gc81yezln",
+        "name": "WPP",
+        "updated": "2025-06-11 23:45:50.472Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.473Z",
+        "id": "vz60wwj28c608j3",
+        "name": "Think Ahead",
+        "updated": "2025-06-11 23:45:50.473Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.474Z",
+        "id": "sebu8no666kqt5m",
+        "name": "Penguin Random House",
+        "updated": "2025-06-11 23:45:50.474Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.475Z",
+        "id": "aw1c29y7o9zowj8",
+        "name": "Police Now",
+        "updated": "2025-06-11 23:45:50.475Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.475Z",
+        "id": "sv3rxt5u914w8ck",
+        "name": "Royal Navy",
+        "updated": "2025-06-11 23:45:50.475Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.476Z",
+        "id": "u4u2h6nyyr1ls2e",
+        "name": "Royal Air Force",
+        "updated": "2025-06-11 23:45:50.476Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.476Z",
+        "id": "c5e227y8qm74l99",
+        "name": "UK Intelligence Services",
+        "updated": "2025-06-11 23:45:50.476Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.477Z",
+        "id": "8a92617v0265x44",
+        "name": "Local Government",
+        "updated": "2025-06-11 23:45:50.477Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.478Z",
+        "id": "y9ml9rjz46w72r3",
+        "name": "Enterprise Mobility",
+        "updated": "2025-06-11 23:45:50.478Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.479Z",
+        "id": "ou49qntjt50z1zq",
+        "name": "Network Rail",
+        "updated": "2025-06-11 23:45:50.479Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.479Z",
+        "id": "g16h818b79mqyn8",
+        "name": "BT",
+        "updated": "2025-06-11 23:45:50.479Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.480Z",
+        "id": "z5u3rhp9va0b6zx",
+        "name": "Facebook",
+        "updated": "2025-06-11 23:45:50.480Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.480Z",
+        "id": "5i90xbkg09o7871",
+        "name": "BMW Group",
+        "updated": "2025-06-11 23:45:50.480Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.480Z",
+        "id": "ww6nl7f3t6v7uvh",
+        "name": "Boots",
+        "updated": "2025-06-11 23:45:50.480Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.480Z",
+        "id": "x98ronnm0gwals1",
+        "name": "Charityworks",
+        "updated": "2025-06-11 23:45:50.480Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.480Z",
+        "id": "vbjjez52rrax11g",
+        "name": "NGDP for Local Government",
+        "updated": "2025-06-11 23:45:50.480Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.480Z",
+        "id": "eb43231l0og78b9",
+        "name": "Newton",
+        "updated": "2025-06-11 23:45:50.480Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.480Z",
+        "id": "86qgi912r76w8m9",
+        "name": "Savills",
+        "updated": "2025-06-11 23:45:50.480Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.480Z",
+        "id": "9z8c7mpw75qkuq4",
+        "name": "Clyde & Co",
+        "updated": "2025-06-11 23:45:50.480Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.480Z",
+        "id": "9zt2c1336kb8755",
+        "name": "Channel 4",
+        "updated": "2025-06-11 23:45:50.480Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.480Z",
+        "id": "t339oy1ohd4o74d",
+        "name": "Sky",
+        "updated": "2025-06-11 23:45:50.480Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.487Z",
+        "id": "nv28c2g01u9izs0",
+        "name": "Vodafone",
+        "updated": "2025-06-11 23:45:50.487Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.488Z",
+        "id": "0w0hhqqc1203452",
+        "name": "Norton Rose Fulbright",
+        "updated": "2025-06-11 23:45:50.488Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.489Z",
+        "id": "724z19jzlg3623t",
+        "name": "NGDP (Local Govt)",
+        "updated": "2025-06-11 23:45:50.489Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.489Z",
+        "id": "cg72076li85b3be",
+        "name": "ICAEW / ICAS",
+        "updated": "2025-06-11 23:45:50.489Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.490Z",
+        "id": "h95614pc61311rf",
+        "name": "Unilever",
+        "updated": "2025-06-11 23:45:50.490Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.490Z",
+        "id": "1jlcw001dn4548w",
+        "name": "John Lewis Partnership",
+        "updated": "2025-06-11 23:45:50.490Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.491Z",
+        "id": "833u675qnt9y7mb",
+        "name": "Mars",
+        "updated": "2025-06-11 23:45:50.491Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.492Z",
+        "id": "2h79c94kdi137eh",
+        "name": "Jaguar Land Rover",
+        "updated": "2025-06-11 23:45:50.492Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.492Z",
+        "id": "8n2a9q78557joyk",
+        "name": "Boston Consulting Group",
+        "updated": "2025-06-11 23:45:50.492Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.493Z",
+        "id": "440ti8t733824p3",
+        "name": "Siemens",
+        "updated": "2025-06-11 23:45:50.493Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.494Z",
+        "id": "d2il609ro7qu6hm",
+        "name": "ExxonMobil",
+        "updated": "2025-06-11 23:45:50.494Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.495Z",
+        "id": "59utm46b24m565p",
+        "name": "Allen & Overy",
+        "updated": "2025-06-11 23:45:50.495Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.495Z",
+        "id": "wzw0dg59ejrt25y",
+        "name": "CMS",
+        "updated": "2025-06-11 23:45:50.495Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.496Z",
+        "id": "xmc837l0ucai662",
+        "name": "Wellcome Trust",
+        "updated": "2025-06-11 23:45:50.496Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.497Z",
+        "id": "v2741miuz0r7v37",
+        "name": "Enterprise Rent-A-Car",
+        "updated": "2025-06-11 23:45:50.497Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.497Z",
+        "id": "f888r7k62usr794",
+        "name": "Frontline",
+        "updated": "2025-06-11 23:45:50.497Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.497Z",
+        "id": "3m379q69r5z7df7",
+        "name": "GCHQ",
+        "updated": "2025-06-11 23:45:50.497Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.497Z",
+        "id": "77fyo289b3a59x9",
+        "name": "MI6 - Secret Intelligence Service",
+        "updated": "2025-06-11 23:45:50.497Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.497Z",
+        "id": "a27y7zkj4686zca",
+        "name": "Unlocked",
+        "updated": "2025-06-11 23:45:50.497Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:45:50.497Z",
+        "id": "0w70w1c61xb7v4n",
+        "name": "Get into Teaching (DfE)",
+        "updated": "2025-06-11 23:45:50.497Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.382Z",
+        "id": "dah3425ac38xxz1",
+        "name": "Carnival Corporation & plc",
+        "updated": "2025-06-11 23:50:10.382Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.418Z",
+        "id": "3zqa6l9752qt93w",
+        "name": "Hargreaves Lansdown plc",
+        "updated": "2025-06-11 23:50:10.418Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.420Z",
+        "id": "ijh9062qq87om51",
+        "name": "Games Workshop Group plc",
+        "updated": "2025-06-11 23:50:10.420Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.421Z",
+        "id": "62wn5i0jj4z83ny",
+        "name": "Polar Capital Technology Trust",
+        "updated": "2025-06-11 23:50:10.421Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.423Z",
+        "id": "9715jj602y3920n",
+        "name": "Darktrace plc",
+        "updated": "2025-06-11 23:50:10.423Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.424Z",
+        "id": "nsy70y20042n9gq",
+        "name": "LondonMetric Property plc",
+        "updated": "2025-06-11 23:50:10.424Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.425Z",
+        "id": "8j689k039wer14f",
+        "name": "IG Group Holdings plc",
+        "updated": "2025-06-11 23:50:10.425Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.426Z",
+        "id": "6crf61757ff7pv4",
+        "name": "Hiscox Ltd",
+        "updated": "2025-06-11 23:50:10.426Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.428Z",
+        "id": "cx3i2958xp03ul6",
+        "name": "British Land Company plc",
+        "updated": "2025-06-11 23:50:10.428Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.430Z",
+        "id": "ihzv2tqepee3vp0",
+        "name": "Tritax Big Box REIT plc",
+        "updated": "2025-06-11 23:50:10.430Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.432Z",
+        "id": "l8b1vv609sl8nwo",
+        "name": "Royal Mail plc",
+        "updated": "2025-06-11 23:50:10.432Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.433Z",
+        "id": "nggpvn2hwv0f90o",
+        "name": "Endeavour Mining plc",
+        "updated": "2025-06-11 23:50:10.433Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.435Z",
+        "id": "rrl6otz0nk5g221",
+        "name": "Direct Line Insurance Group plc",
+        "updated": "2025-06-11 23:50:10.435Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.437Z",
+        "id": "6zyn73p0vmns4s1",
+        "name": "Britvic plc",
+        "updated": "2025-06-11 23:50:10.437Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.438Z",
+        "id": "qo45ie7bn2u8rn3",
+        "name": "Softcat plc",
+        "updated": "2025-06-11 23:50:10.438Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.438Z",
+        "id": "gy9q9g6xuzibaes",
+        "name": "3i Infrastructure plc",
+        "updated": "2025-06-11 23:50:10.438Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.441Z",
+        "id": "u68qhwd28y4mdi8",
+        "name": "Inchcape plc",
+        "updated": "2025-06-11 23:50:10.441Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.441Z",
+        "id": "vp8jyr1od66d3u7",
+        "name": "Tate & Lyle plc",
+        "updated": "2025-06-11 23:50:10.441Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.441Z",
+        "id": "454ht9l58131t6b",
+        "name": "Bellway plc",
+        "updated": "2025-06-11 23:50:10.441Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.446Z",
+        "id": "33hsy6h3q5scyf4",
+        "name": "Rotork plc",
+        "updated": "2025-06-11 23:50:10.446Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.448Z",
+        "id": "5303ip5tmpqujn3",
+        "name": "Cranswick plc",
+        "updated": "2025-06-11 23:50:10.448Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.449Z",
+        "id": "2a4uss4ko6m7g0h",
+        "name": "Spectris plc",
+        "updated": "2025-06-11 23:50:10.449Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.451Z",
+        "id": "p6mo9btszd4q766",
+        "name": "ITV plc",
+        "updated": "2025-06-11 23:50:10.451Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.452Z",
+        "id": "3m7lone0v1045e3",
+        "name": "Monks Investment Trust",
+        "updated": "2025-06-11 23:50:10.452Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.453Z",
+        "id": "p9m8u4k0hrn2sgr",
+        "name": "Babcock International Group plc",
+        "updated": "2025-06-11 23:50:10.453Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.454Z",
+        "id": "5nb05c84p977n64",
+        "name": "Premier Foods plc",
+        "updated": "2025-06-11 23:50:10.454Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.456Z",
+        "id": "2nvp3o4p9cph797",
+        "name": "Bankers Investment Trust plc",
+        "updated": "2025-06-11 23:50:10.456Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.457Z",
+        "id": "292922chw8329rq",
+        "name": "Morgan Sindall Group plc",
+        "updated": "2025-06-11 23:50:10.457Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.458Z",
+        "id": "4dqfzcl91p3vzw3",
+        "name": "Johnson Matthey plc",
+        "updated": "2025-06-11 23:50:10.458Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.459Z",
+        "id": "jn37owy6g979mp4",
+        "name": "Burberry Group plc",
+        "updated": "2025-06-11 23:50:10.459Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.460Z",
+        "id": "d51qwveta6k7179",
+        "name": "WHSmith plc",
+        "updated": "2025-06-11 23:50:10.460Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.462Z",
+        "id": "6pky8g3t92l8mt8",
+        "name": "Wetherspoon (J D) plc",
+        "updated": "2025-06-11 23:50:10.462Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.464Z",
+        "id": "ppku3sxkssco448",
+        "name": "Serco Group plc",
+        "updated": "2025-06-11 23:50:10.464Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.465Z",
+        "id": "18o6517v0hvf83a",
+        "name": "Pennon Group plc",
+        "updated": "2025-06-11 23:50:10.465Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.466Z",
+        "id": "y8aj8lnq55w21h3",
+        "name": "Vistry Group plc",
+        "updated": "2025-06-11 23:50:10.466Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.467Z",
+        "id": "rflyb89l35p8u21",
+        "name": "QinetiQ plc",
+        "updated": "2025-06-11 23:50:10.467Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:50:10.469Z",
+        "id": "67zf81bl19hq801",
+        "name": "Great Portland Estates plc",
+        "updated": "2025-06-11 23:50:10.469Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.308Z",
+        "id": "3v1d5w1o4so2dq1",
+        "name": "Shell plc",
+        "updated": "2025-06-11 23:52:11.308Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.318Z",
+        "id": "o7kee42l41ha33x",
+        "name": "Rio Tinto",
+        "updated": "2025-06-11 23:52:11.318Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.321Z",
+        "id": "39vmt9480l79732",
+        "name": "Linde",
+        "updated": "2025-06-11 23:52:11.321Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.322Z",
+        "id": "8a07nf05849d3z5",
+        "name": "GlaxoSmithKline",
+        "updated": "2025-06-11 23:52:11.322Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.323Z",
+        "id": "j1wh23cwh6tdu3h",
+        "name": "National Grid",
+        "updated": "2025-06-11 23:52:11.323Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.324Z",
+        "id": "nr1ev3758qq17u2",
+        "name": "Standard Chartered",
+        "updated": "2025-06-11 23:52:11.324Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.326Z",
+        "id": "25q2tx6po28hs4l",
+        "name": "Rolls-Royce",
+        "updated": "2025-06-11 23:52:11.326Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.326Z",
+        "id": "shat753039vqjwl",
+        "name": "LyondellBasell Industries",
+        "updated": "2025-06-11 23:52:11.326Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.326Z",
+        "id": "929xnmd43jirf4d",
+        "name": "London Stock Exchange Group",
+        "updated": "2025-06-11 23:52:11.326Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.329Z",
+        "id": "tu20ldzg672y220",
+        "name": "BT Group",
+        "updated": "2025-06-11 23:52:11.329Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.329Z",
+        "id": "9l3qkzvir54f60f",
+        "name": "Compass Group",
+        "updated": "2025-06-11 23:52:11.329Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.329Z",
+        "id": "qx822hbj1s3u552",
+        "name": "Prudential",
+        "updated": "2025-06-11 23:52:11.329Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.329Z",
+        "id": "1xv5em28xh9c4y1",
+        "name": "Reckitt Benckiser",
+        "updated": "2025-06-11 23:52:11.329Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.329Z",
+        "id": "k7l9s9cks1g7643",
+        "name": "Imperial Brands",
+        "updated": "2025-06-11 23:52:11.329Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.335Z",
+        "id": "wv682y77l2v91m6",
+        "name": "Legal & General",
+        "updated": "2025-06-11 23:52:11.335Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.335Z",
+        "id": "5j25y05i4z5m428",
+        "name": "Coca‑Cola Europacific Partners",
+        "updated": "2025-06-11 23:52:11.335Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.335Z",
+        "id": "v883aebcru537ys",
+        "name": "British American Tobacco",
+        "updated": "2025-06-11 23:52:11.335Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.335Z",
+        "id": "0nld62se6d12b7j",
+        "name": "CNH Industrial",
+        "updated": "2025-06-11 23:52:11.335Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.335Z",
+        "id": "g075y4d481ak2bs",
+        "name": "Haleon",
+        "updated": "2025-06-11 23:52:11.335Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.335Z",
+        "id": "734ya7u02gev7pv",
+        "name": "International Airlines Group",
+        "updated": "2025-06-11 23:52:11.335Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.335Z",
+        "id": "zp8sxt2ig6gy346",
+        "name": "Associated British Foods",
+        "updated": "2025-06-11 23:52:11.335Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.345Z",
+        "id": "4sx1il56362mgd6",
+        "name": "Ferguson",
+        "updated": "2025-06-11 23:52:11.345Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.345Z",
+        "id": "8kwp2z073ie9yd9",
+        "name": "RELX",
+        "updated": "2025-06-11 23:52:11.345Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.345Z",
+        "id": "7b899l63k13t33r",
+        "name": "Centrica",
+        "updated": "2025-06-11 23:52:11.345Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.345Z",
+        "id": "1ydcjf0x71mkfxw",
+        "name": "Anglo American",
+        "updated": "2025-06-11 23:52:11.345Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.345Z",
+        "id": "3j4agth15q7740p",
+        "name": "Ashtead Group",
+        "updated": "2025-06-11 23:52:11.345Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.345Z",
+        "id": "obzh1km0g7v9y0z",
+        "name": "3i Group",
+        "updated": "2025-06-11 23:52:11.345Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.345Z",
+        "id": "0y8k72e55s3zwjo",
+        "name": "SSE",
+        "updated": "2025-06-11 23:52:11.345Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.345Z",
+        "id": "2034jj966n1j1nd",
+        "name": "Willis Towers Watson",
+        "updated": "2025-06-11 23:52:11.345Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.345Z",
+        "id": "yu47lnr4h0gz7jx",
+        "name": "Phoenix Group",
+        "updated": "2025-06-11 23:52:11.345Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.345Z",
+        "id": "o70a8r8nyu62wy0",
+        "name": "St James's Place",
+        "updated": "2025-06-11 23:52:11.345Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.345Z",
+        "id": "xh51niuhyx03ijs",
+        "name": "M&G",
+        "updated": "2025-06-11 23:52:11.345Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.355Z",
+        "id": "684cgi1o9wj9uz9",
+        "name": "Antofagasta plc",
+        "updated": "2025-06-11 23:52:11.355Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.355Z",
+        "id": "k5ts08gfl24jzs4",
+        "name": "Sainsbury's",
+        "updated": "2025-06-11 23:52:11.355Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.355Z",
+        "id": "2251961thd4qx0p",
+        "name": "Amcor",
+        "updated": "2025-06-11 23:52:11.355Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.355Z",
+        "id": "51zcjx696l3k2kb",
+        "name": "Investec",
+        "updated": "2025-06-11 23:52:11.355Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.355Z",
+        "id": "3d9256st31e07o2",
+        "name": "Bunzl",
+        "updated": "2025-06-11 23:52:11.355Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.355Z",
+        "id": "34uf4n26976656l",
+        "name": "Sage Group",
+        "updated": "2025-06-11 23:52:11.355Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.355Z",
+        "id": "q4mgozo5244nd6g",
+        "name": "Croda International",
+        "updated": "2025-06-11 23:52:11.355Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.355Z",
+        "id": "jqv495529xx8q87",
+        "name": "EasyJet",
+        "updated": "2025-06-11 23:52:11.355Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.355Z",
+        "id": "u52hi981k9lp45d",
+        "name": "Smith & Nephew",
+        "updated": "2025-06-11 23:52:11.355Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.355Z",
+        "id": "4wus424c0408249",
+        "name": "Smiths Group",
+        "updated": "2025-06-11 23:52:11.355Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.365Z",
+        "id": "k2reduaru371d70",
+        "name": "Severn Trent",
+        "updated": "2025-06-11 23:52:11.365Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.365Z",
+        "id": "3n33m4f51n0k6f2",
+        "name": "United Utilities",
+        "updated": "2025-06-11 23:52:11.365Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.365Z",
+        "id": "u1g3c90ngws130q",
+        "name": "Scottish Mortgage Investment Trust",
+        "updated": "2025-06-11 23:52:11.365Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.365Z",
+        "id": "27tm5kvicb07td2",
+        "name": "Segro",
+        "updated": "2025-06-11 23:52:11.365Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.365Z",
+        "id": "wq53wc00l66alu5",
+        "name": "Land Securities",
+        "updated": "2025-06-11 23:52:11.365Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.365Z",
+        "id": "lmwtnj5f9779278",
+        "name": "Pearson",
+        "updated": "2025-06-11 23:52:11.365Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.365Z",
+        "id": "86357om381l61y0",
+        "name": "JD Sports",
+        "updated": "2025-06-11 23:52:11.365Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.365Z",
+        "id": "91647599fz0e8de",
+        "name": "Persimmon",
+        "updated": "2025-06-11 23:52:11.365Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.365Z",
+        "id": "fyr5kz62jl4e903",
+        "name": "Royal Mail Group",
+        "updated": "2025-06-11 23:52:11.365Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.365Z",
+        "id": "hbsxf18y32065v9",
+        "name": "RSA Insurance Group",
+        "updated": "2025-06-11 23:52:11.365Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.375Z",
+        "id": "k5353775jgs8735",
+        "name": "Melrose Industries",
+        "updated": "2025-06-11 23:52:11.375Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.375Z",
+        "id": "32648s1r76d16cs",
+        "name": "Mondi",
+        "updated": "2025-06-11 23:52:11.375Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.375Z",
+        "id": "1p89i110nz2bgep",
+        "name": "Pershing Square Holdings",
+        "updated": "2025-06-11 23:52:11.375Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.375Z",
+        "id": "c7zj283ktzxo8pf",
+        "name": "Howdens Joinery Group",
+        "updated": "2025-06-11 23:52:11.375Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.375Z",
+        "id": "f6ky5y9zv527g6e",
+        "name": "Rentokil Initial",
+        "updated": "2025-06-11 23:52:11.375Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.375Z",
+        "id": "hz2e2262xf1uj10",
+        "name": "Experian",
+        "updated": "2025-06-11 23:52:11.375Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.375Z",
+        "id": "p6lmy5t510l4ubd",
+        "name": "Auto Trader Group",
+        "updated": "2025-06-11 23:52:11.375Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.375Z",
+        "id": "ij528t869lc9br4",
+        "name": "Rightmove",
+        "updated": "2025-06-11 23:52:11.375Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.375Z",
+        "id": "174tpk8mw3erdh2",
+        "name": "Intertek",
+        "updated": "2025-06-11 23:52:11.375Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.375Z",
+        "id": "4403ziyvpf399nl",
+        "name": "Hikma Pharmaceuticals",
+        "updated": "2025-06-11 23:52:11.375Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.386Z",
+        "id": "092e34yiae0nlu8",
+        "name": "Halma plc",
+        "updated": "2025-06-11 23:52:11.386Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.386Z",
+        "id": "7k415j7781f1p6b",
+        "name": "Fresnillo plc",
+        "updated": "2025-06-11 23:52:11.386Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.386Z",
+        "id": "2q53g4he0at5a21",
+        "name": "Diploma",
+        "updated": "2025-06-11 23:52:11.386Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.386Z",
+        "id": "0x0b77uix2q0f73",
+        "name": "DCC plc",
+        "updated": "2025-06-11 23:52:11.386Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.386Z",
+        "id": "3021k15v147lrwy",
+        "name": "Informa",
+        "updated": "2025-06-11 23:52:11.386Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.386Z",
+        "id": "0o1z09r56uufabn",
+        "name": "Beazley",
+        "updated": "2025-06-11 23:52:11.386Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.386Z",
+        "id": "yf9j06109522i11",
+        "name": "Berkeley Group Holdings",
+        "updated": "2025-06-11 23:52:11.386Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.386Z",
+        "id": "kp2knrw5420mmwc",
+        "name": "Admiral Group",
+        "updated": "2025-06-11 23:52:11.386Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.386Z",
+        "id": "k231f8b9tdro5c4",
+        "name": "Airtel Africa",
+        "updated": "2025-06-11 23:52:11.386Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.386Z",
+        "id": "8216fmi3839uvrz",
+        "name": "Barratt Developments",
+        "updated": "2025-06-11 23:52:11.386Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.396Z",
+        "id": "eu49c171g3z7278",
+        "name": "Drax Group",
+        "updated": "2025-06-11 23:52:11.396Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.396Z",
+        "id": "l8272h1x35my16a",
+        "name": "Entain",
+        "updated": "2025-06-11 23:52:11.396Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.396Z",
+        "id": "boiaw0d147h429d",
+        "name": "Ferguson plc",
+        "updated": "2025-06-11 23:52:11.396Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.396Z",
+        "id": "gg7kr873uqe627q",
+        "name": "Glencore",
+        "updated": "2025-06-11 23:52:11.396Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.396Z",
+        "id": "1r62wzbadh68z80",
+        "name": "International Consolidated Airlines Group",
+        "updated": "2025-06-11 23:52:11.396Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.396Z",
+        "id": "yp7o8yp17s98c36",
+        "name": "Kingfisher",
+        "updated": "2025-06-11 23:52:11.396Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.396Z",
+        "id": "97bz281x95g6990",
+        "name": "Marks & Spencer",
+        "updated": "2025-06-11 23:52:11.396Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.406Z",
+        "id": "jcx82oq4a2syx4k",
+        "name": "Prudential plc",
+        "updated": "2025-06-11 23:52:11.406Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.408Z",
+        "id": "xhc184v8n79pv9l",
+        "name": "St. James's Place",
+        "updated": "2025-06-11 23:52:11.408Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.409Z",
+        "id": "7s3m763xicv5xs6",
+        "name": "Taylor Wimpey",
+        "updated": "2025-06-11 23:52:11.409Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.410Z",
+        "id": "52202d065893xt7",
+        "name": "Vodafone Group",
+        "updated": "2025-06-11 23:52:11.410Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.411Z",
+        "id": "b982ulwka30772v",
+        "name": "Weir Group",
+        "updated": "2025-06-11 23:52:11.411Z",
+        "user": ""
+    },
+    {
+        "created": "2025-06-11 23:52:11.412Z",
+        "id": "515495ue643z684",
+        "name": "Whitbread",
+        "updated": "2025-06-11 23:52:11.412Z",
+        "user": ""
+    }
+]
