@@ -77,18 +77,18 @@ export const PocketProvider = ({ children }) => {
 		return await pb.collection("users").authWithPassword(email, password);
 	}, [])
 	
-	const register = useCallback(async (email, password) => {
+	const register = useCallback(async (email, password, hasAgreedToAllPolicies) => {
 		return new Promise(((res, rej) => {
-			pb.collection("users").create({ email, password, passwordConfirm: password, locationsView: true, stagesView: true, deadlinesView: true })
+			pb.collection("users").create({ email, password, passwordConfirm: password, locationsView: true, stagesView: true, deadlinesView: true, hasAgreedToAllPolicies })
 			.then(() => {
-			login(email, password)
-			.then(() => {
-				res()
-			})
-			.catch(err => {
-				console.error("Error logging in after creating user", err)
-				rej(err)
-			})
+				login(email, password)
+				.then(() => {
+					res()
+				})
+				.catch(err => {
+					console.error("Error logging in after creating user", err)
+					rej(err)
+				})
 			})
 			.catch(err => {
 				console.error("Error creating user", err)

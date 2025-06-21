@@ -7,27 +7,3 @@
 .form button[type=submit] {
     font-size: 1.1rem;
 }
-
-.signInWithGoogleButton {
-    border: 2px solid var(--border-colour);
-    background-color: transparent;
-    color: var(--text-white);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--spacing-medium);
-    /* Keep padding same as login button */
-    padding: 8px 14px;
-}
-
-.signInWithGoogleButton > img {
-    font-size: 2rem;
-}
-
-
-@media screen and (max-width: 800px) {
-    .signInWithGoogleButton {
-        /* Keep padding same as login button on mobile */
-        padding: 16px;
-    }
-}

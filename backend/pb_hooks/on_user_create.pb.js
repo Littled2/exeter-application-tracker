@@ -3,6 +3,8 @@
 
 /**
  * Generates a token for each user that will be used to access their deadlines calender via an ical subscription link
+ * 
+ * Sets initial values for a new user
 */
 
 onRecordAfterCreateSuccess((e) => {
@@ -10,9 +12,14 @@ onRecordAfterCreateSuccess((e) => {
     try {
         
         
+        // Set a calendar token
         const calendarToken = $security.randomString(128)
-
         e.record.set("calendarToken", calendarToken)
+        
+        // Set the default values for locationsView, stagesView and deadlinesView
+        e.record.set("locationsView", true)
+        e.record.set("stagesView", true)
+        e.record.set("deadlinesView", true)
 
         $app.save(e.record)
 

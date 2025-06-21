@@ -14,6 +14,7 @@ export function CreateAccount() {
     const [ password, setPassword ] = useState('')
     const [ passwordConfirm, setPasswordConfirm ] = useState('')
     const [ name, setName ] = useState('')
+    const [ hasAgreedToAllPolicies, setHasAgreedToAllPolicies ] = useState(false)
 
     const [ err, setErr ] = useState()
 
@@ -30,7 +31,7 @@ export function CreateAccount() {
             return
         }
 
-        register(email, password, passwordConfirm)
+        register(email, password, hasAgreedToAllPolicies)
         .then(res => {
             console.log(res)
             setProcessing(false)
@@ -70,8 +71,8 @@ export function CreateAccount() {
 
                 <div>
                     <label className="flex gap-s">
-                        <input type="checkbox" required />
-                        <span>I agree to the <a className="text-orange underline" href="#">Terms & Conditions</a> and <a className="text-orange underline" href="#">Privacy Policy</a></span>
+                        <input type="checkbox" checked={hasAgreedToAllPolicies} onChange={e => setHasAgreedToAllPolicies(e.target.checked)} required />
+                        <span>I agree to the <a className="text-orange underline" href={process.env.TERMS_AND_CONDITIONS_URL}>Terms & Conditions</a> and <a className="text-orange underline" href={process.env.PRIVACY_POLICY_URL}>Privacy Policy</a></span>
                     </label>
                 </div>
 
@@ -106,7 +107,6 @@ export function CreateAccount() {
                         <></>
                     )
                 }
-                
 
                 <div>
 
@@ -117,23 +117,6 @@ export function CreateAccount() {
                 </div>
 
             </form>
-
-            <button
-                className={[ "button", styles.signInWithGoogleButton ].join(" ")}
-                role="button"
-                onClick={async () => {
-                    try {
-                        const authData = await pb.collection('users').authWithOAuth2({ provider: 'google' })
-                        console.log({authData})
-                    } catch (error) {
-                        console.error("OAUTH ERROR", error)
-                    }
-
-                }}
-            >
-                <img src="/sign-in-with-google-logo.svg" />
-                <span>Sign up with Google</span>
-            </button>
 
         </div>
     )
