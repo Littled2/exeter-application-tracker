@@ -82,23 +82,6 @@ export function Login() {
                 </div>
 
             </form>
-
-            <button
-                className={[ "button", styles.signInWithGoogleButton ].join(" ")}
-                role="button"
-                onClick={async () => {
-                    try {
-                        const authData = await pb.collection('users').authWithOAuth2({ provider: 'google' })
-                        console.log({authData})
-                    } catch (error) {
-                        console.error("OAUTH ERROR", error)
-                    }
-
-                }}
-            >
-                <img src="/sign-in-with-google-logo.svg" />
-                <span>Sign in with Google</span>
-            </button>
         </div>
     )
 }

@@ -1,0 +1,28 @@
+.wrapper {
+    padding: 24px;
+    max-width: 800px;
+    padding-top: var(--spacing-medium);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
+}
+
+.logOut {
+    background-color: transparent;
+    color: var(--text-white);
+    cursor: pointer;
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+}
+
+
+.notYetAgreedWrapper {
+    padding-top: 12%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
+}
