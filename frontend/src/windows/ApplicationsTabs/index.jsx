@@ -7,8 +7,8 @@ import { usePocket } from "../../contexts/pocketContext";
 import { useActiveYear } from "../../contexts/activeYearContext";
 import { useMasterCounter } from "../../contexts/masterCounterContext";
 
-function getCountAtStage(array, stage) {
-    return array.filter(t => t.stage === stage)[0].count
+function getCountAtStage(totals, stage) {
+    return totals.find(t => t.stage === stage)?.count || 0
 }
 
 export function ApplicationsTabs({ setOpenAppID, openAppID }) {
