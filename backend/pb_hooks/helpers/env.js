@@ -1,7 +1,7 @@
 
 function load_env_vars() {
 
-    let envStr = String.fromCharCode(...$os.readFile(__hooks + "/../.env"))
+    let envStr = String.fromCharCode(...$os.readFile(__hooks + "/../../.env"))
 
     const lines = envStr.split('\n');
     

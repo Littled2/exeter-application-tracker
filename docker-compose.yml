@@ -1,11 +1,11 @@
-version: "3.8"
+# version: "3.8"
 services:
   backend:
     build: ./backend
     container_name: backend
     environment:
-      - ADMIN_EMAIL
-      - ADMIN_PASSWORD
+      - DEFAULT_SUPERUSER_EMAIL
+      - DEFAULT_SUPERUSER_PASSWORD
       - GOOGLE_OAUTH_CLIENT_ID
       - GOOGLE_OAUTH_CLIENT_SECRET
     volumes:

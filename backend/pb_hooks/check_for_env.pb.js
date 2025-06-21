@@ -11,7 +11,7 @@ onBootstrap(e => {
     // Check that a .env file exists
     try {
 
-        let _ = $os.readFile(__hooks + "/../.env")
+        let _ = $os.readFile(__hooks + "/../../.env")
         
     } catch (error) {
         console.error(`\n*No .env file found*, or error reading the .env file\nExpected .env file at: ${__hooks}/../.env\n`)

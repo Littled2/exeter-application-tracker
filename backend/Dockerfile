@@ -18,7 +18,7 @@ COPY ./pb_hooks /pb/pb_hooks
 
 EXPOSE 8080
 
-RUN /pb/pocketbase superuser upsert "$ADMIN_EMAIL" "$ADMIN_PASSWORD"
+RUN /pb/pocketbase superuser upsert "$DEFAULT_SUPERUSER_EMAIL" "$DEFAULT_SUPERUSER_PASSWORD"
 
 RUN /pb/pocketbase set-oauth google $GOOGLE_OAUTH_CLIENT_ID $GOOGLE_OAUTH_CLIENT_SECRET
 
