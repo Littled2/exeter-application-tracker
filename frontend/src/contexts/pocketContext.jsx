@@ -50,61 +50,65 @@ export const PocketProvider = ({ children }) => {
 	}, [])
 
 	useEffect(() => {
+		
+		console.log({user})
 
-	if(!user || !token) {
-		return
-	}
+		if(!user || !user?.id || !token) {
+			return
+		}
 
-	pb.collection("users").subscribe(user.id, e => {
-		console.log("User record changed", user)
-		setUser(e.record)
-	})
-	.catch(err => {
-		console.error("Error initialising realtime subscription to user data", err)
-		setUser(null)
-	})
+		pb.collection("users").subscribe(user?.id, e => {
+			console.log("User record changed", user)
+			setUser(e.record)
+		})
+		.catch(err => {
+			console.error("Error initialising realtime subscription to user data", err)
+			console.log(err)
+			// setUser(null)
+		})
 
-	return () => pb.collection("users").unsubscribe()
+		return () => pb.collection("users").unsubscribe()
 
 	}, [ user ])
 
 
 	const login = useCallback(async (email, password) => {
+		console.log("Logging in")
 		return await pb.collection("users").authWithPassword(email, password);
 	}, [])
 	
-	const register = useCallback(async (email, password) => {
-	return new Promise(((res, rej) => {
-		pb.collection("users").create({ email, password, passwordConfirm: password, locationsView: true, stagesView: true, deadlinesView: true })
-		.then(() => {
-		login(email, password)
-		.then(() => {
-			res()
-		})
-		.catch(err => {
-			console.error("Error logging in after creating user", err)
-			rej(err)
-		})
-		})
-		.catch(err => {
-		console.error("Error creating user", err)
-		rej(err)
-		})
-	}))
+	const register = useCallback(async (email, password, hasAgreedToAllPolicies) => {
+		return new Promise(((res, rej) => {
+			pb.collection("users").create({ email, password, passwordConfirm: password, locationsView: true, stagesView: true, deadlinesView: true, hasAgreedToAllPolicies })
+			.then(() => {
+				login(email, password)
+				.then(() => {
+					res()
+				})
+				.catch(err => {
+					console.error("Error logging in after creating user", err)
+					rej(err)
+				})
+			})
+			.catch(err => {
+				console.error("Error creating user", err)
+				rej(err)
+			})
+		}))
 	}, [])
 
 	const deleteUser = useCallback(async () => {
-	return new Promise(((res, rej) => {
-		pb.collection("users").delete(user?.id)
-		.then(() => {
-		logout()
-		res()
-		})
-		.catch(err => {
-		console.error("Error deleting user", err)
-		rej(err)
-		})
-	}))
+		return new Promise(((res, rej) => {
+			pb.collection("users").delete(user?.id)
+			.then(() => {
+				logout()
+				res()
+			})
+			.catch(err => {
+				console.error("Error deleting user", err)
+				rej(err)
+			})
+		}))
 	}, [])
 
 	const logout = useCallback(async () => {
@@ -144,7 +148,7 @@ export const PocketProvider = ({ children }) => {
 
 	return (
 		<PocketContext.Provider
-		value={{ register, login, logout, deleteUser, user, token, pb }}
+			value={{ register, login, logout, deleteUser, user, token, pb }}
 		>
 		{
 			user ? (

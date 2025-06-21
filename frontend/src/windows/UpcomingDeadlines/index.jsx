@@ -4,7 +4,7 @@ import { useMasterCounter } from "../../contexts/masterCounterContext"
 import { Deadline } from "../../components/Deadline"
 import { useActiveYear } from "../../contexts/activeYearContext"
 import { daysToDate } from "../../helpers/dates"
-import { useMobile } from "../../contexts/mobileContext"
+
 
 export function UpcomingDeadlines({ setOpenAppID }) {
 
@@ -12,7 +12,6 @@ export function UpcomingDeadlines({ setOpenAppID }) {
     const { pb } = usePocket()
     const { masterCounter } = useMasterCounter()
     const { activeYear } = useActiveYear()
-    const { setActiveMobileTab } = useMobile()
     const [ loading, setLoading ] = useState(true)
 
     useEffect(() => {

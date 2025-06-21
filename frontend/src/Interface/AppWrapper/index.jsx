@@ -14,6 +14,7 @@ import { TutorialContextProvider } from "../../contexts/tutorialContext.jsx";
 import { OpenAppContextProvider } from "../../contexts/openAppContext.jsx";
 import { RecapPopupContextProvider } from "../../contexts/recapPopupContext.jsx";
 import { ThemeContextProvider } from "../../contexts/themeContext.jsx";
+import { PolicyCheck } from "../../components/PolicyCheck/index.jsx";
 
 ChartJS.register(ArcElement, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
@@ -42,27 +43,27 @@ export function AppWrapper() {
         <MasterCounterContextProvider>
           <PocketProvider>
             <PopupContextProvider>
-              <ActiveYearProvider>
-                <OpenAppContextProvider>
-                  <NewApplicationPopupContextProvider>
-                    <NotificationsContextProvider>
-                      <RecapPopupContextProvider>
-                        <TutorialContextProvider>
-                          <ThemeContextProvider>
+              <PolicyCheck>
+                <ActiveYearProvider>
+                  <OpenAppContextProvider>
+                    <NewApplicationPopupContextProvider>
+                      <NotificationsContextProvider>
+                        <RecapPopupContextProvider>
+                          <TutorialContextProvider>
+                            <ThemeContextProvider>
+                              <Header />
 
-                            <Header />
+                              <Body counter={counter} setCounter={setCounter} />
 
-                            <Body counter={counter} setCounter={setCounter} />
-
-                            <MobileNavTabs />
-
-                          </ThemeContextProvider>
-                        </TutorialContextProvider>
-                      </RecapPopupContextProvider>
-                    </NotificationsContextProvider>
-                  </NewApplicationPopupContextProvider>
-                </OpenAppContextProvider>
-              </ActiveYearProvider>
+                              <MobileNavTabs />
+                            </ThemeContextProvider>
+                          </TutorialContextProvider>
+                        </RecapPopupContextProvider>
+                      </NotificationsContextProvider>
+                    </NewApplicationPopupContextProvider>
+                  </OpenAppContextProvider>
+                </ActiveYearProvider>
+              </PolicyCheck>
             </PopupContextProvider>
           </PocketProvider>
         </MasterCounterContextProvider>

@@ -6,6 +6,7 @@ import {
 } from "react"
 import { usePocket } from "./pocketContext"
 import Joyride, { STATUS } from "react-joyride"
+import { useMobile } from "./mobileContext"
 
 
 
@@ -47,6 +48,8 @@ export const TutorialContextProvider = ({ children }) => {
 
 	const { pb, user } = usePocket()
 
+	const { isMobile } = useMobile()
+
 
 	const steps = [
 		{
@@ -73,7 +76,7 @@ export const TutorialContextProvider = ({ children }) => {
 
 		if(!user) return
 
-		if(!user.tutorialComplete) {
+		if(!user.tutorialComplete && !isMobile) {
 			setRunTutorial(true)
 		}
 

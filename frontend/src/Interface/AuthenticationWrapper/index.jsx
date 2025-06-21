@@ -1,10 +1,14 @@
 import { Tabs } from "../../components/Tabs"
 import { CreateAccount } from "../../components/forms/CreateAccount"
 import { Login } from "../../components/forms/Login"
+import { usePocket } from "../../contexts/pocketContext"
 import styles from "./styles.module.css"
 
 
 export function AuthenticationWrapper() {
+
+    const { pb } = usePocket()
+
     return(
         <div className={styles.wrapper}>
 
@@ -35,6 +39,23 @@ export function AuthenticationWrapper() {
                 }
 
             ]} />
+
+            <button
+                className={[ "button", styles.signInWithGoogleButton ].join(" ")}
+                onClick={async () => {
+                    try {
+                        const authData = await pb.collection('users').authWithOAuth2({ provider: 'google' })
+                        console.log({authData})
+                    } catch (error) {
+                        console.error("OAUTH ERROR", error)
+                    }
+
+                }}
+            >
+                <img src="/sign-in-with-google-logo.svg" alt="Google logo" />
+                <span>Or sign in with Google</span>
+            </button>
+
         </div>
     )
 }
