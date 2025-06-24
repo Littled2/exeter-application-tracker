@@ -1,4 +1,4 @@
-const ENV_PATH = __hooks + "/../../.env"
+const ENV_PATH = __hooks + "/../.env"
 
 
 function load_env_vars() {

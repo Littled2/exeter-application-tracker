@@ -3,13 +3,9 @@ services:
   backend:
     build: ./backend
     container_name: backend
-    environment:
-      - DEFAULT_SUPERUSER_EMAIL
-      - DEFAULT_SUPERUSER_PASSWORD
-      - GOOGLE_OAUTH_CLIENT_ID
-      - GOOGLE_OAUTH_CLIENT_SECRET
     volumes:
       - ./backend/pb_data:/pb/pb_data
+      - ./backend/.env:/pb/.env:ro
     expose:
       - 8080
 
