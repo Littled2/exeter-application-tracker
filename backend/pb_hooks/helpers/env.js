@@ -1,7 +1,9 @@
+const ENV_PATH = __hooks + "/../../.env"
+
 
 function load_env_vars() {
 
-    let envStr = String.fromCharCode(...$os.readFile(__hooks + "/../../.env"))
+    let envStr = String.fromCharCode(...$os.readFile(ENV_PATH))
 
     const lines = envStr.split('\n');
     
@@ -29,4 +31,6 @@ function load_env_vars() {
     }
 }
 
-module.exports = { load_env_vars }
+
+
+module.exports = { load_env_vars, ENV_PATH }

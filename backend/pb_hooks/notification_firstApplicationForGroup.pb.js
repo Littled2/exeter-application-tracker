@@ -33,8 +33,7 @@ onRecordAfterCreateSuccess((e) => {
         )
         .all(applicationsThisYear)
 
-        console.log("Application this year length:", applicationsThisYear.length)
-
+        
         // If there is only 1 application for this year...
         if(applicationsThisYear && applicationsThisYear.length === 1) {
 
