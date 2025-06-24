@@ -16,7 +16,6 @@ import { EditAppInfo } from "../../components/forms/EditAppInfo"
 import { FiEdit } from "react-icons/fi"
 import { InputInformation } from "../../components/InputInformation"
 import { IoLocationOutline } from "react-icons/io5"
-import { indexDB } from "../../components/db"
 import useOnlineStatus from "../../hooks/useOnlineStatus"
 import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md"
 import { celebrateConfetti } from "../../helpers/particle-effects"
@@ -107,13 +106,6 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
         } else {
 
             // If offline, fetch the application from indexDB
-            indexDB.applications.get(openAppID)
-            .then(setApplication)
-            .catch(err => {
-                console.error("Error getting application from indexDB", err)
-                setErr(true)
-            })
-            .finally(() => setLoading(false))
 
         }
 

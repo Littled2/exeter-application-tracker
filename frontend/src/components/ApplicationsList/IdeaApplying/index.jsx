@@ -7,7 +7,6 @@ import { useActiveYear } from "../../../contexts/activeYearContext"
 import { useNewApplicationPopup } from "../../../contexts/newApplicationPopupContext"
 import { useMasterCounter } from "../../../contexts/masterCounterContext"
 import illustration from "../illustration.svg"
-import { indexDB } from "../../db"
 import useOnlineStatus from "../../../hooks/useOnlineStatus"
 
 export function IdeasApplying({ openAppID, setOpenAppID }) {
@@ -39,8 +38,7 @@ export function IdeasApplying({ openAppID, setOpenAppID }) {
         } else {
 
             // If offline, fetch from database
-            indexDB.applications.where('stage').equals('idea').toArray().then(setIdeas)
-            indexDB.applications.where('stage').equals('applying').toArray().then(setApplying)
+
         }
 
     }, [ masterCounter, activeYear ])
@@ -65,21 +63,7 @@ export function IdeasApplying({ openAppID, setOpenAppID }) {
     
             setIdeas(apps.filter(app => app.stage === "idea"))
             setApplying(apps.filter(app => app.stage === "applying"))
-    
-            try {
-                // Remove all idea and applying applications from indexDB
-                await indexDB.applications.where('stage').equals('applying').delete()
-                await indexDB.applications.where('stage').equals('idea').delete()
-    
-                for (let i = 0; i < apps.length; i++) {
-                    await indexDB.applications.add(apps[i])                    
-                }
-    
-                // Add all fetched applications to indexDB
-                // indexDB.applications.bulkAdd(apps)
-            } catch (err) {
-                console.error("Error adding applications to indexDB", err)
-            }
+
 
         } catch (error) {
             console.error("Error getting applications", error)

@@ -9,7 +9,6 @@ import { useNewApplicationPopup } from "../../../contexts/newApplicationPopupCon
 import { useMasterCounter } from "../../../contexts/masterCounterContext"
 import illustration from "../illustration.svg"
 import useOnlineStatus from "../../../hooks/useOnlineStatus"
-import { indexDB } from "../../db"
 
 
 export function AcceptedDeclined({ openAppID, setOpenAppID }) {
@@ -42,8 +41,7 @@ export function AcceptedDeclined({ openAppID, setOpenAppID }) {
         } else {
 
             // If offline, fetch from database
-            indexDB.applications.where('stage').equals('accepted').toArray().then(setAccepted)
-            indexDB.applications.where('stage').equals('declined').toArray().then(setDeclined)
+
         }
 
             getApps()
@@ -74,21 +72,6 @@ export function AcceptedDeclined({ openAppID, setOpenAppID }) {
 
             setAccepted(apps.filter(app => app.stage === "accepted"))
             setDeclined(apps.filter(app => app.stage === "declined"))
-
-            try {
-                // Remove all idea and applying applications from indexDB
-                await indexDB.applications.where('stage').equals('accepted').delete()
-                await indexDB.applications.where('stage').equals('declined').delete()
-
-                for (let i = 0; i < apps.length; i++) {
-                    await indexDB.applications.add(apps[i])                    
-                }
-
-                // Add all fetched applications to indexDB
-                // indexDB.applications.bulkAdd(apps)
-            } catch (err) {
-                console.error("Error adding applications to indexDB", err)
-            }
 
         } catch (error) {
             console.error("Error getting applications", error)

@@ -7,15 +7,6 @@ import 'react-tooltip/dist/react-tooltip.css'
 
 import { AppWrapper } from './Interface/AppWrapper'
 
-if ("serviceWorker" in navigator) {
-	window.addEventListener("load", () => {
-		navigator.serviceWorker
-			.register("/service-worker.js")
-			.then(() => console.log("Service Worker Registered"))
-			.catch((error) => console.log("Service Worker Registration Failed", error))
-	})
-}
-
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   // <React.StrictMode>
