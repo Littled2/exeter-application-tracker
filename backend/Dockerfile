@@ -16,6 +16,8 @@ COPY ./pb_migrations /pb/pb_migrations
 # uncomment to copy the local pb_hooks dir into the image
 COPY ./pb_hooks /pb/pb_hooks
 
+COPY ../.env /.env
+
 EXPOSE 8080
 
 RUN /pb/pocketbase superuser upsert "$DEFAULT_SUPERUSER_EMAIL" "$DEFAULT_SUPERUSER_PASSWORD"
