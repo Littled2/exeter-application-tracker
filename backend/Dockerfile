@@ -18,9 +18,11 @@ COPY ./pb_hooks /pb/pb_hooks
 
 EXPOSE 8080
 
+RUN echo "DEFAULT_SUPERUSER_EMAIL: $DEFAULT_SUPERUSER_EMAIL"
+
 RUN /pb/pocketbase superuser upsert "$DEFAULT_SUPERUSER_EMAIL" "$DEFAULT_SUPERUSER_PASSWORD"
 
-RUN /pb/pocketbase set-oauth google $GOOGLE_OAUTH_CLIENT_ID $GOOGLE_OAUTH_CLIENT_SECRET
+# RUN /pb/pocketbase set-oauth google $GOOGLE_OAUTH_CLIENT_ID $GOOGLE_OAUTH_CLIENT_SECRET
 
 # start PocketBase
 CMD [ "/pb/pocketbase", "serve", "--http=0.0.0.0:8080" ]
