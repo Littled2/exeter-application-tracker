@@ -2,7 +2,7 @@ FROM alpine:latest
 
 ARG PB_VERSION=0.28.3
 
-RUN echo "Value of superuser email: $DEFAULT_SUPERUSER_EMAIL"
+CMD echo "Value of superuser email: $DEFAULT_SUPERUSER_EMAIL"
 
 RUN apk add --no-cache \
     unzip \
