@@ -31,3 +31,8 @@ services:
       - 3000
     depends_on:
       - backend
+
+
+networks:
+  proxy:
+    external: true
