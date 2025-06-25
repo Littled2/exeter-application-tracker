@@ -16,11 +16,10 @@ COPY ./pb_migrations /pb/pb_migrations
 # uncomment to copy the local pb_hooks dir into the image
 COPY ./pb_hooks /pb/pb_hooks
 
-EXPOSE 8080
+COPY ./.env /pb/.env
 
-RUN echo "DEFAULT_SUPERUSER_EMAIL: $DEFAULT_SUPERUSER_EMAIL"
-
-RUN /pb/pocketbase superuser upsert "$DEFAULT_SUPERUSER_EMAIL" "$DEFAULT_SUPERUSER_PASSWORD"
+# RUN /pb/pocketbase superuser upsert "$DEFAULT_SUPERUSER_EMAIL" "$DEFAULT_SUPERUSER_PASSWORD"
+RUN /pb/pocketbase superuser upsert edward@blewitt.com password
 
 # RUN /pb/pocketbase set-oauth google $GOOGLE_OAUTH_CLIENT_ID $GOOGLE_OAUTH_CLIENT_SECRET
 
