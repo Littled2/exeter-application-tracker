@@ -35,4 +35,4 @@ services:
 
 networks:
   proxy:
-    external: true
+    driver: bridge
