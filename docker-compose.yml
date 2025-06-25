@@ -5,8 +5,8 @@ services:
     image: nginx:latest
     container_name: nginx
     ports:
-      - "80:80"
-      - "443:443"
+      - "150:80"
+      - "151:443"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
     networks:
