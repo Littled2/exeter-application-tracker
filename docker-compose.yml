@@ -3,18 +3,13 @@ services:
 
   nginx:
     image: nginx:latest
-    container_name: nginx
-    ports:
-      - "150:80"
-      - "151:443"
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
-    networks:
-      - proxy
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./frontend/build:/usr/share/nginx/html:ro
+    ports:
+      - "80:80"
     depends_on:
       - backend
-      - frontend
-
 
   backend:
     build: ./backend
@@ -34,8 +29,3 @@ services:
       - 3000
     depends_on:
       - backend
-
-
-networks:
-  proxy:
-    driver: bridge
