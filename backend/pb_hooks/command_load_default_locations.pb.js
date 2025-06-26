@@ -1,4 +1,4 @@
-/// <reference path="../pb_data_OLD/types.d.ts" />
+/// <reference path="../pb_data/types.d.ts" />
 
 
 /**
