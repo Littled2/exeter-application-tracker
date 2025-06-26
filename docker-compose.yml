@@ -21,13 +21,13 @@ services:
     volumes:
       - ./backend/pb_data:/pb/pb_data
     expose:
-      - 8090
+      - "8090"
 
 
   frontend:
     build: ./frontend
     container_name: frontend
     expose:
-      - 3000
+      - "80"
     depends_on:
       - backend
