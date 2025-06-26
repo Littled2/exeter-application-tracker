@@ -24,4 +24,4 @@ RUN /pb/pocketbase superuser upsert edward@blewitt.com password
 # RUN /pb/pocketbase set-oauth google $GOOGLE_OAUTH_CLIENT_ID $GOOGLE_OAUTH_CLIENT_SECRET
 
 # start PocketBase
-CMD [ "/pb/pocketbase", "serve", "--http=0.0.0.0:8080" ]
+CMD [ "/pb/pocketbase", "serve", "--http=0.0.0.0:8090" ]
