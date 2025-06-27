@@ -1,4 +1,4 @@
-![Application tracker dashboard](./public/Long%20Logo.png)
+![Application tracker dashboard](./frontend/public/Long%20Logo.png)
 
 
 The ultimate dashboard for tracking applications to jobs, internships and placements. Designed for studnets who are applying to multiple schemes, stay on top of your applications, store documents and never miss a deadline.
@@ -9,7 +9,7 @@ The ultimate dashboard for tracking applications to jobs, internships and placem
 
 <br>
 
-![Application tracker dashboard](./public/dashboard.png)
+![Application tracker dashboard](./frontend/public/dashboard.png)
 
 
 
@@ -19,6 +19,10 @@ The ultimate dashboard for tracking applications to jobs, internships and placem
 - **Deadline Reminders**: Never miss a deadline with our reminders about upcoming application submissions.
 - **Document Management**: Store and organize different versions of CV and cover letters.
 - **Analytics**: Gain insights into your application trends and manage your overall performance.
+
+## Database Schema
+![Pocketbase database schema](./frontend/public/pb_diagram.png)
+
   
 
 ## Running in Development
