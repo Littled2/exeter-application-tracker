@@ -7,7 +7,7 @@ import { BiChevronLeft } from "react-icons/bi"
 
 export function Popup({ title, children, trigger, setTrigger, onDelete, size="normal", padding=true }) {
     
-    const { setPopups, openPopup } = usePopupsContext()
+    const { setPopups, openPopup, closeTopPopup } = usePopupsContext()
     const [ disableClickOut, setDisableClickOut ] = useState(false)
     const [ mouseOver, setMouseOver ] = useState(false)
 
@@ -18,9 +18,10 @@ export function Popup({ title, children, trigger, setTrigger, onDelete, size="no
     // Control the popups context
     useEffect(() => {
         if(trigger) {
-            openPopup(setTrigger, popupID.current)
+            openPopup(setTrigger, popupID.current, title)
         } else {
             // setPopups(prev => prev.filter(item => item !== setTrigger))
+            
         }
     }, [ trigger ])
 
@@ -33,7 +34,7 @@ export function Popup({ title, children, trigger, setTrigger, onDelete, size="no
             onMouseUp={e => {
                 // console.log(e.target === wrapperRef.current, !disableClickOut)
                 if(e.target === wrapperRef.current && !disableClickOut) {
-                    setTrigger(false)
+                    closeTopPopup()
                 }
             }}
         >
@@ -62,7 +63,9 @@ export function Popup({ title, children, trigger, setTrigger, onDelete, size="no
                                 </button>
                             )
                         }
-                        <button className="simple-btn" onClick={() => setTrigger(false)}>
+                        <button className="simple-btn" onClick={() => {
+                            closeTopPopup()
+                        }}>
                             {
                                 !isMobile ? (
                                     <AiOutlineClose />

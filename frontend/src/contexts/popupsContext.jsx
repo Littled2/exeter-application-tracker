@@ -3,6 +3,7 @@ import {
     useCallback,
     useContext,
     useEffect,
+    useRef,
     useState,
 } from "react"
 import { useMobile } from "./mobileContext"
@@ -17,40 +18,40 @@ export const PopupContextProvider = ({ children }) => {
 
     const { activeMobileTab } = useMobile()
 
+    const isManualNavigation = useRef(false)
 
-    const openPopup = useCallback((setTrigger, id) => {
 
-      window.history.pushState({ data: id }, "", "/?time=" + id)
 
-      setPopups(p => [ ...p, { trigger: setTrigger, id } ])
+    const openPopup = useCallback((setTrigger, id, popupName="") => {
+
+      window.history.pushState({ data: id }, "", "")
+
+      setPopups(p => [ ...p, { trigger: setTrigger, id, popupName } ])
 
     }, [ setPopups ])
 
 
-    const closeTopPopup = useCallback(() => {
-            
+    const closeTopPopup = useCallback((backNavigation = false) => {
+
         if(popups.length === 0) {
             return
         }
 
         const top = popups[popups.length - 1]
-        console.log("Closing top popup", top)
-        top.trigger(false)
+        top?.trigger(false)
 
-        // Close using the popup element's id
-        const popupEl = document.getElementById(top.id)
-        if(popupEl) {
-            popupEl.remove()
+        if(!backNavigation) {
+            isManualNavigation.current = true
+            window.history.back()
         }
 
         // Remove the last element from the array
         setPopups(prev => {
             let temp = prev
-            temp.slice(0, -1)
+            temp.pop()
             return temp
         })
-
-    }, [ popups, setPopups ])
+    }, [popups, setPopups])
 
 
     const handleKeyPress = useCallback(e => {
@@ -65,24 +66,20 @@ export const PopupContextProvider = ({ children }) => {
         document.addEventListener('keydown', handleKeyPress)
 
         // remove the event listener
-        return () => {
-            document.removeEventListener('keydown', handleKeyPress)
-        }
+        return () => document.removeEventListener('keydown', handleKeyPress)
     }, [ handleKeyPress ])
 
 
-    const handleBackNavigation = useCallback((event) => {
+    const handleBackNavigation = useCallback(() => {
 
-        console.log("back", {event})
-
-        if(popups.length === 0) {
-            return
+        if (isManualNavigation.current) {
+            isManualNavigation.current = false
+            return // Skip handling this popstate
         }
 
-        closeTopPopup()
+        closeTopPopup(true)
         
-
-    }, [ popups, closeTopPopup ])
+    }, [ closeTopPopup ])
 
     useEffect(() => {
 
@@ -93,12 +90,7 @@ export const PopupContextProvider = ({ children }) => {
           window.removeEventListener('popstate', handleBackNavigation)
         }
 
-    }, []);
-    
-
-    useEffect(() => {
-        console.log("popups list has changed", {popups})
-    }, [ popups ])
+    }, [handleBackNavigation]);
     
 
     useEffect(() => {

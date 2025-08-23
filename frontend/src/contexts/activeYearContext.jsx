@@ -38,8 +38,6 @@ export const ActiveYearProvider = ({ children }) => {
 		})
 		.then(yrs => {
 
-			console.log({yrs})
-
 		  	setLoading(false)
 
 			setYears(yrs)
