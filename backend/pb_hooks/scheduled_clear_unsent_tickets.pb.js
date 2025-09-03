@@ -3,6 +3,12 @@
 // Every 24 hours, delete all read notifications
 cronAdd("reTryUnsentTickets", "0 0 * * 1", () => {
 
+    const { load_env_vars } = require(`${__hooks}/helpers/env.js`)
+
+    // Load environment variables into process.env
+    load_env_vars()
+
+
     try {
     
         const unsentTickets = arrayOf(new DynamicModel({
@@ -27,12 +33,12 @@ cronAdd("reTryUnsentTickets", "0 0 * * 1", () => {
                 const formData = new FormData();
 
                 formData.append("title", doc.info)
-                formData.append("application_id", "674e4b64031d1")
+                formData.append("application_id", process.env.RAPID_APPS_APPLICATION_TRACKER_ID)
                 formData.append("ticket_id", doc.id)
                 formData.append("info", doc.info)
 
                 const res = $http.send({
-                    url: "https://apps.edward-blewitt.uk/backend/api/issue-tracker/issues/POST-new-issue.php",
+                    url: process.env.RAPID_APPS_CREATE_TICKET_URL,
                     method: "POST",
                     body: formData,
                 })

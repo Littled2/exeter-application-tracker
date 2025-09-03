@@ -5,6 +5,7 @@ import { Popup } from "../../../components/Popup"
 import styles from "./styles.module.css"
 import { Confirm } from "../../../components/forms/Confirm"
 import { useMasterCounter } from "../../../contexts/masterCounterContext"
+import { DocumentPreview } from "../../../components/DocumetPreview"
 
 export function DocumentUploadDownload({ application, fileKeyName, displayName }) {
 
@@ -84,7 +85,6 @@ export function DocumentUploadDownload({ application, fileKeyName, displayName }
                                             onClick={() => setPreviewDocumentOpen(true)}
                                         >
                                             <BiFileBlank style={{ fontSize: "1.2rem" }} />
-                                            {/* {application[fileKeyName].split('_').slice(0, -1).join('_')} */}
                                             {/* {displayName} */}
                                             <span style={{
                                                 maxWidth: "10ch",
@@ -127,8 +127,8 @@ export function DocumentUploadDownload({ application, fileKeyName, displayName }
                 <span style={{ color:"red" }}>{error?.response?.data[fileKeyName].message}</span>
             </Popup>
 
-            <Popup size="large" trigger={previewDocumentOpen} setTrigger={setPreviewDocumentOpen} title={application[fileKeyName]}>
-
+            <Popup trigger={previewDocumentOpen} setTrigger={setPreviewDocumentOpen} title={displayName}>
+                <DocumentPreview application={application} fileKeyName={fileKeyName} fileToken={fileToken} />
             </Popup>
 
             <Confirm

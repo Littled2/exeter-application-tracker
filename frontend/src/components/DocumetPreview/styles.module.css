@@ -1,0 +1,9 @@
+.download {
+    color: var(--text-blue);
+    cursor: pointer;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-small);
+}

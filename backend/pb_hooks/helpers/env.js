@@ -3,12 +3,6 @@ const ENV_PATH = __hooks + "/../.env"
 
 function load_env_vars() {
 
-    console.log(
-        JSON.stringify(
-            $os.readDir(__hooks + "/../")
-        )
-    )
-
     let envStr = String.fromCharCode(...$os.readFile(ENV_PATH))
 
     const lines = envStr.split('\n');
