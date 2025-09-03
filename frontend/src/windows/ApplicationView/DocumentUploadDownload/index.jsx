@@ -16,6 +16,7 @@ export function DocumentUploadDownload({ application, fileKeyName, displayName }
     const [ error, setError ] = useState()
 
     const [ confirmDelete, setConfirmDelete ] = useState(false)
+    const [ previewDocumentOpen, setPreviewDocumentOpen ] = useState(false)
     const { setMasterCounter } = useMasterCounter()
 
 
@@ -76,11 +77,21 @@ export function DocumentUploadDownload({ application, fileKeyName, displayName }
                             {
                                 application[fileKeyName] ? (
                                     <>
-                                        <a href={pb.files.getUrl(application, application[fileKeyName], { token: fileToken })} className={styles.file} download>
+                                        <div
+                                            // href={pb.files.getUrl(application, application[fileKeyName], { token: fileToken })}
+                                            className={styles.file}
+                                            // download
+                                            onClick={() => setPreviewDocumentOpen(true)}
+                                        >
                                             <BiFileBlank style={{ fontSize: "1.2rem" }} />
                                             {/* {application[fileKeyName].split('_').slice(0, -1).join('_')} */}
-                                            {displayName}
-                                        </a>
+                                            {/* {displayName} */}
+                                            <span style={{
+                                                maxWidth: "10ch",
+                                                overflow: "hidden",
+                                                textOverflow: "ellipsis"
+                                            }}>{application[fileKeyName]}</span>
+                                        </div>
                                         <span className="text-white"> | </span>
                                     </>
                                 ) : (
@@ -114,6 +125,10 @@ export function DocumentUploadDownload({ application, fileKeyName, displayName }
 
             <Popup trigger={error} setTrigger={setError}>
                 <span style={{ color:"red" }}>{error?.response?.data[fileKeyName].message}</span>
+            </Popup>
+
+            <Popup size="large" trigger={previewDocumentOpen} setTrigger={setPreviewDocumentOpen} title={application[fileKeyName]}>
+
             </Popup>
 
             <Confirm

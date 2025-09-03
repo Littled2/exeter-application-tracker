@@ -10,10 +10,10 @@ RUN apk add --no-cache \
 ADD https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_linux_amd64.zip /tmp/pb.zip
 RUN unzip /tmp/pb.zip -d /pb/
 
-# uncomment to copy the local pb_migrations dir into the image
+# Copy the local pb_migrations dir into the image
 COPY ./pb_migrations /pb/pb_migrations
 
-# uncomment to copy the local pb_hooks dir into the image
+# Copy the local pb_hooks dir into the image
 COPY ./pb_hooks /pb/pb_hooks
 
 COPY ./.env /pb/.env

@@ -5,6 +5,7 @@
     align-items: center;
     text-decoration: underline;
     color: var(--text-blue);
+    cursor: pointer;
 }
 
 .bin {
