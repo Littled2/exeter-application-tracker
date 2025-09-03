@@ -3,3 +3,5 @@ ngrok.yml
 ngrok*
 
 .env
+
+.env.secret

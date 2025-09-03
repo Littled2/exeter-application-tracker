@@ -16,6 +16,8 @@ services:
   backend:
     build: ./backend
     container_name: backend
+    secrets:
+      - backend_build_secrets
     env_file:
       - ./backend/.env
     volumes:
@@ -31,3 +33,8 @@ services:
       - "80"
     depends_on:
       - backend
+
+
+secrets:
+  backend_build_secrets:
+    file: .env.secret
