@@ -18,19 +18,9 @@ COPY ./pb_hooks /pb/pb_hooks
 
 COPY ./.env /pb/.env
 
-# Import the build secrets
-RUN --mount=type=secret,id=backend_build_secrets \
-    export $(cat /run/secrets/backend_build_secrets) && \
-    echo "Using secret $MY_SECRET_KEY for setup"
 
+# Copy entrypoint
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-RUN /pb/pocketbase superuser upsert "$DEFAULT_SUPERUSER_EMAIL" "$DEFAULT_SUPERUSER_PASSWORD"
-
-RUN /pb/pocketbase load-default-locations
-
-RUN /pb/pocketbase load-default-organisations
-
-RUN /pb/pocketbase set-oauth google "$GOOGLE_OAUTH_CLIENT_ID" "$GOOGLE_OAUTH_CLIENT_SECRET"
-
-# start PocketBase
-CMD [ "/pb/pocketbase", "serve", "--http=0.0.0.0:8090" ]
+CMD ["/entrypoint.sh"]
