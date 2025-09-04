@@ -27,7 +27,7 @@ RUN --mount=type=secret,id=backend_build_secrets \
     /pb/pocketbase load-default-organisations
 
 
-EXPOSE 8080
+EXPOSE 8090
 
 # start PocketBase
-CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8080"]
+CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8090"]
