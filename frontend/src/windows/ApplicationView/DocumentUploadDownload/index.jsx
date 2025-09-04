@@ -105,7 +105,13 @@ export function DocumentUploadDownload({ application, fileKeyName, displayName }
                                         <label className="underline cursor-pointer flex align-center text-blue" style={{ gap: "5px" }}>
                                             <BiUpload />
                                             Upload
-                                            <input style={{ display:"none" }} hidden type="file"  onChange={e => uploadFile(e.target.files[0])} accept=".doc,.docx,.pdf,.txt,.rtf,.odt,.ods,.odp,.wps,.wpd,.html,.htm,.xml,.xps,.tex,.md,.csv,.tsv,.xls,.xlsx,.ppt,.pptx,.pub,.one,.pages,.numbers,.key,.epub,.mobi,.djvu,.json,.yaml,.yml,.ini,.log,.cfg,.conf"/>    
+                                            <input
+                                                style={{ display:"none" }}
+                                                hidden
+                                                type="file"
+                                                onChange={e => uploadFile(e.target.files[0])}
+                                                accept=".pdf,.doc,.docx,.txt,.odt,.rtf,.xls,.xlsx,.csv,.ppt,.pptx"
+                                            />    
                                         </label>
                                     ) : (
                                         <small className="text-grey">Uploading...</small>

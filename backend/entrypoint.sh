@@ -10,11 +10,15 @@ fi
 
 echo "📦 Running PocketBase setup..."
 
-# Run one-off setup with secrets
-/pb/pocketbase superuser upsert "$DEFAULT_SUPERUSER_EMAIL" "$DEFAULT_SUPERUSER_PASSWORD"
-/pb/pocketbase set-oauth google "$GOOGLE_OAUTH_CLIENT_ID" "$GOOGLE_OAUTH_CLIENT_SECRET"
-/pb/pocketbase load-default-locations
-/pb/pocketbase load-default-organisations
+
+if [ ! -d "/pb/pb_data" ]; then
+  # Run one-off setup with secrets
+  /pb/pocketbase superuser upsert "$DEFAULT_SUPERUSER_EMAIL" "$DEFAULT_SUPERUSER_PASSWORD"
+  /pb/pocketbase set-oauth google "$GOOGLE_OAUTH_CLIENT_ID" "$GOOGLE_OAUTH_CLIENT_SECRET"
+  /pb/pocketbase load-default-locations
+  /pb/pocketbase load-default-organisations
+fi
+
 
 # Start PocketBase
 echo "🚀 Starting PocketBase server..."

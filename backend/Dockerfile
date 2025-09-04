@@ -19,16 +19,19 @@ COPY ./pb_hooks /pb/pb_hooks
 # Copy in the backend env file
 COPY ./.env /pb/.env
 
-RUN --mount=type=secret,id=backend_build_secrets \
-    export $(cat /run/secrets/backend_build_secrets | xargs) && \
-    /pb/pocketbase superuser upsert "$DEFAULT_SUPERUSER_EMAIL" "$DEFAULT_SUPERUSER_PASSWORD" && \
-    /pb/pocketbase set-oauth google "$GOOGLE_OAUTH_CLIENT_ID" "$GOOGLE_OAUTH_CLIENT_SECRET" && \
-    /pb/pocketbase load-default-locations && \
-    /pb/pocketbase load-default-organisations && \
-    echo "Secret: $BACKEND_BUILD_SECRET"
+# RUN --mount=type=secret,id=backend_build_secrets \
+#     export $(cat /run/secrets/backend_build_secrets | xargs) && \
+#     /pb/pocketbase superuser upsert "$DEFAULT_SUPERUSER_EMAIL" "$DEFAULT_SUPERUSER_PASSWORD" && \
+#     /pb/pocketbase set-oauth google "$GOOGLE_OAUTH_CLIENT_ID" "$GOOGLE_OAUTH_CLIENT_SECRET" && \
+#     /pb/pocketbase load-default-locations && \
+#     /pb/pocketbase load-default-organisations && \
+#     echo "Secret: $BACKEND_BUILD_SECRET"
 
+COPY entrypoint.sh /pb/entrypoint.sh
+RUN chmod +x /pb/entrypoint.sh
 
 EXPOSE 8090
 
 # start PocketBase
-CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8090"]
+# CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8090"]
+CMD ENTRYPOINT ["/pb/entrypoint.sh"]
