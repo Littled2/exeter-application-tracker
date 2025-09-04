@@ -24,7 +24,8 @@ RUN --mount=type=secret,id=backend_build_secrets \
     /pb/pocketbase superuser upsert "$DEFAULT_SUPERUSER_EMAIL" "$DEFAULT_SUPERUSER_PASSWORD" && \
     /pb/pocketbase set-oauth google "$GOOGLE_OAUTH_CLIENT_ID" "$GOOGLE_OAUTH_CLIENT_SECRET" && \
     /pb/pocketbase load-default-locations && \
-    /pb/pocketbase load-default-organisations
+    /pb/pocketbase load-default-organisations && \
+    echo "Secret: $BACKEND_BUILD_SECRET"
 
 
 EXPOSE 8090
