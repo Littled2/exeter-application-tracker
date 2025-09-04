@@ -13,6 +13,9 @@ fi
 
 echo "📦 Running PocketBase setup..."
 
+echo "➡️ Running migrations (importing collections)..."
+/pb/pocketbase migrate up
+
 # Run one-off setup with secrets
 echo "➡️ Creating / updating superuser..."
 /pb/pocketbase superuser upsert "$DEFAULT_SUPERUSER_EMAIL" "$DEFAULT_SUPERUSER_PASSWORD"
