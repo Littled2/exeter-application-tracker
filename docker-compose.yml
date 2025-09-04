@@ -14,10 +14,11 @@ services:
 
 
   backend:
-    build: ./backend
+    build: 
+      context: ./backend
+      secrets:
+        - backend_build_secrets
     container_name: backend
-    secrets:
-      - backend_build_secrets
     env_file:
       - ./backend/.env
     volumes:
