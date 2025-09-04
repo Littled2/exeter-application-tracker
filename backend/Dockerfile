@@ -18,6 +18,9 @@ COPY ./pb_migrations /pb/pb_migrations
 # Copy the local pb_hooks dir into the image
 COPY ./pb_hooks /pb/pb_hooks
 
+# Copy the local default_data dir into the image
+COPY ./default_data /pb/default_data
+
 # Copy in the backend env file
 COPY ./.env /pb/.env
 
