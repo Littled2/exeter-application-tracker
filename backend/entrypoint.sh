@@ -10,6 +10,7 @@ fi
 
 echo "📦 Running PocketBase setup..."
 
+echo "Secrets: $BACKEND_BUILD_SECRET"
 
 if [ ! -d "/pb/pb_data" ]; then
   # Run one-off setup with secrets
