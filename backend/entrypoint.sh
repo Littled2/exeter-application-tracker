@@ -13,12 +13,6 @@ fi
 
 echo "📦 Running PocketBase setup..."
 
-# Show secret values (be careful in prod logs!)
-echo "✅ DEFAULT_SUPERUSER_EMAIL: $DEFAULT_SUPERUSER_EMAIL"
-echo "✅ DEFAULT_SUPERUSER_PASSWORD: ${DEFAULT_SUPERUSER_PASSWORD:0:2}********"  # mask password
-echo "✅ GOOGLE_OAUTH_CLIENT_ID: ${GOOGLE_OAUTH_CLIENT_ID:0:4}..."
-echo "✅ GOOGLE_OAUTH_CLIENT_SECRET: ${GOOGLE_OAUTH_CLIENT_SECRET:0:4}..."
-
 # Run one-off setup with secrets
 echo "➡️ Creating / updating superuser..."
 /pb/pocketbase superuser upsert "$DEFAULT_SUPERUSER_EMAIL" "$DEFAULT_SUPERUSER_PASSWORD"
