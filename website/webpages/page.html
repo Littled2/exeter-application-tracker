@@ -1,0 +1,429 @@
+Title: Exeter Application Tracker
+Description: Track your job, internship, and placement applications and never miss a deadline.
+
+================
+
+
+<section class="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-content">
+        <!-- <h1 class="headline">Track  your <span id="hero-word" class="text-white">Internship</span><br> applications from one place</h1> -->
+
+        <h1 class="headline">The ultimate dashboard for tracking applications to <span id="hero-word" class="text-white">Internships</span></h1>
+
+
+        <p class="headline-small">A free tool for managing deadlines, savings versions of your CV and storing tasks.</p>
+
+        <a href="https://apps.edward-blewitt.uk/backend/api/urls/GET-goto-url.php?id=67870bd57d12e">
+            <button class="hero-btn button orange flex gap-s align-center">
+                <img src="/resources/images/logo-no-bg-black.png" alt="Exeter Application Tracker Logo" class="icon">
+                Try for free
+            </button>
+        </a>
+
+        <!-- <img class="icon" src="/resources/images/icons/scroll-down.svg" alt="Scroll down icon"> -->
+    </div>
+</section>
+
+<!-- <section class="m-hide">
+    <img loading="lazy" src="/resources/images/UI/dashboard-grey.webp" alt="Application Tracking Dashboard" style="width: 100%;">
+</section> -->
+
+<!-- <section class="text-center flex justify-center">
+    <p style="font-size: 1.8rem; max-width: 80%" class="text-white">Built for students applying to multiple schemes - track applications, deadlines, CVs, and cover letters with Exeter Application Tracker.</p>
+</section> -->
+
+<!-- <h2 class="text-center">Organise your applications by stage</h2>
+<section
+    x-data="{
+        selectedTab: 0,
+        tabs: [
+            [
+                {
+                    section: 'Ideas',
+                    open: true,
+                    applications: [
+                        {
+                            company: 'Accenture',
+                            name: 'Technology Placement',
+                            type: 'P',
+                            deadline: '10-12-2023',
+                            deadlineType: 'F'
+                        },
+                        {
+                            company: 'Accenture',
+                            name: 'Technology Placement',
+                            type: 'P'
+                        },
+                        {
+                            company: 'Accenture',
+                            name: 'Technology Placement',
+                            type: 'P'
+                        },
+                    ]
+                },
+                {
+                    section: 'Applying',
+                    open: true,
+                    applications: [
+                        {
+                            company: 'Accenture',
+                            name: 'Technology Placement',
+                            type: 'P',
+                            deadline: '10-12-2023',
+                            deadlineType: 'F'
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    section: 'Applied',
+                    open: true,
+                    applications: [
+                        {
+                            company: 'Accenture',
+                            name: 'Technology Placement',
+                            type: 'P',
+                            deadline: '10-12-2023',
+                            deadlineType: 'F'
+                        },
+                        {
+                            company: 'Accenture',
+                            name: 'Technology Placement',
+                            type: 'P'
+                        },
+                        {
+                            company: 'Accenture',
+                            name: 'Technology Placement',
+                            type: 'P'
+                        },
+                        {
+                            company: 'Accenture',
+                            name: 'Technology Placement',
+                            type: 'P'
+                        },
+                        {
+                            company: 'Accenture',
+                            name: 'Technology Placement',
+                            type: 'P'
+                        },
+                    ]
+                },
+            ],
+            [
+                {
+                    section: 'Accepted',
+                    open: true,
+                    applications: [
+                        {
+                            company: 'Accenture',
+                            name: 'Technology Placement',
+                            type: 'P',
+                            deadline: '10-12-2023',
+                            deadlineType: 'F'
+                        }
+                    ]
+                },
+                {
+                    section: 'Declined',
+                    open: true,
+                    applications: [
+                        {
+                            company: 'Accenture',
+                            name: 'Technology Placement',
+                            type: 'P',
+                            deadline: '10-12-2023',
+                            deadlineType: 'F'
+                        },
+                        {
+                            company: 'Accenture',
+                            name: 'Technology Placement',
+                            type: 'P',
+                            deadline: '10-12-2023',
+                            deadlineType: 'F'
+                        }
+                    ]
+                }
+            ]
+        ],
+        get selectedTabData() {
+            return this.tabs[this.selectedTab]
+        }
+    }"
+>
+    <div class="tracker">
+        <div class="tracker-tabs">
+            <button class="tracker-tab" :class="{ 'selected': selectedTab === 0 }" @click="selectedTab = 0">Idea / Applying (6)</button>
+            <button class="tracker-tab" :class="{ 'selected': selectedTab === 1 }" @click="selectedTab = 1">Applied (12)</button>
+            <button class="tracker-tab" :class="{ 'selected': selectedTab === 2 }" @click="selectedTab = 2">Accepted / Declined (22)</button>
+        </div>
+    <div>
+    
+    <table style="user-select: none;">
+        <thead>
+            <tr>
+                <th width="24%">Company</th>
+                <th>Name</th>
+                <th width="6%">Type</th>
+                <th width="10%">Dln</th>
+                <th width="10%">Dln Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <template x-for="section in selectedTabData">
+                <tr>
+                    <td class="tracker-row-heading" colspan="100%" @click="section.open = !section.open">
+                        <svg x-show="section.open" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M21.886 5.536A1.002 1.002 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13a.998.998 0 0 0 1.644 0l9-13a.998.998 0 0 0 .064-1.033zM12 17.243 4.908 7h14.184L12 17.243z"></path></svg>
+                        <svg x-show="!section.open" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3 19h18a1.002 1.002 0 0 0 .823-1.569l-9-13c-.373-.539-1.271-.539-1.645 0l-9 13A.999.999 0 0 0 3 19zm9-12.243L19.092 17H4.908L12 6.757z"></path></svg>
+                        <span style="white-space: nowrap;" x-text="section.section + ' (' + section.applications.length + ')'"></span>
+                    </td>
+                </tr>
+                <template x-if="section.open" x-for="application in section.applications">
+                    <tr>
+                        <td x-text="application?.company"></td>
+                        <td x-text="application?.name"></td>
+                        <td x-text="application?.type"></td>
+                        <td x-text="application?.deadline"></td>
+                        <td x-text="application?.deadlineType"></td>
+                    </tr>
+                </template>
+            </template>
+        </tbody>
+    </table>
+</section> -->
+
+<section class="feature">
+
+    <img src="/resources/images/UI/applications.png" alt="Applications table view" loading="lazy" class="hard-max">
+
+    <div class="feature-info flex flex-col gap-m">
+        <div class="flex flex-col gap-s">
+            <p class="feature-subtitle">Tracker</p>
+            <h2 class="feature-title">Track where you are applying</h2>
+        </div>
+        <p class="feature-description">Save information about each application in one place. Organise your applications by: idea, applying, applied, accepted and declined.</p>
+        <div>
+            <a href="https://apps.edward-blewitt.uk/backend/api/urls/GET-goto-url.php?id=67870bd57d12e" class="feature-button button orange">Try for free</a>
+        </div>
+    </div>
+
+</section>
+
+<section class="feature reverse">
+
+    <img src="/resources/images/UI/deadlines-annotated.png" alt="Deadlines calendar view" loading="lazy">
+
+    <div class="feature-info flex flex-col gap-m">
+        <div class="flex flex-col gap-s">
+            <p class="feature-subtitle">Deadlines Calendar</p>
+            <h2 class="feature-title">Manage multiple deadlines</h2>
+        </div>
+        <p class="feature-description">The tracker warns you when deadlines are approaching. You can even sync your personal calendar app with the deadlines.</p>
+        <div>
+            <a href="https://apps.edward-blewitt.uk/backend/api/urls/GET-goto-url.php?id=67870bd57d12e" class="feature-button button orange">Try for free</a>
+        </div>
+    </div>
+
+</section>
+
+<section class="feature">
+
+    <img src="/resources/images/UI/cv-annotated.png" alt="Vew of a specific application" loading="lazy">
+
+    <div class="feature-info flex flex-col gap-m">
+        <div class="flex flex-col gap-s">
+            <p class="feature-subtitle">Save Documents</p>
+            <h2 class="feature-title">Record the version of your CV you submitted</h2>
+        </div>
+        <p class="feature-description">Save a copy of the CV and Cover Letter that you used for each application.</p>
+        <div>
+            <a href="https://apps.edward-blewitt.uk/backend/api/urls/GET-goto-url.php?id=67870bd57d12e" class="feature-button button orange">Try for free</a>
+        </div>
+    </div>
+
+</section>
+
+<section class="feature reverse">
+
+    <div class="analytics-img">
+        <img src="/resources/images/UI/locations.webp" alt="Application locations graph" loading="lazy" alt="Image of the places map feature" class="main-img">
+        <img src="/resources/images/UI/stages-graph.webp" alt="Graph showing the distribution the different stages of your applications" class="small-img">
+    </div>
+
+    <div class="feature-info flex flex-col gap-m">
+        <div class="flex flex-col gap-s">
+            <p class="feature-subtitle">Analytics</p>
+            <h2 class="feature-title">Get insights into your applications</h2>
+        </div>
+        <p class="feature-description">View useful insights into where you are applying, and the number of applications at each stage.</p>
+        <div>
+            <a href="https://apps.edward-blewitt.uk/backend/api/urls/GET-goto-url.php?id=67870bd57d12e" class="feature-button button orange">Try for free</a>
+        </div>
+    </div>
+
+</section>
+
+<br><br>
+
+<h2 class="text-center heading text-white">What our users say<span class="text-orange">...</span></h2>
+<section class="testimonials">
+    <div class="testimonial" x-data="{ open: false }">
+        <p class="quote" :class="{ 'min': !open }">
+            Thanks to the tracker, I managed to stay on track and eventually got an offer! Can't recommend it enough to fellow students
+            <span class="grad"></span>
+        </p>
+        <button class="show-more-btn" @click="open = !open" x-text="!open ? 'Read more' : 'Show less'"></button>
+        <div class="flex flex-col align-center gap-s">
+            <p class="offer-from">Offer received from</p>
+            <img src="/resources/images/logos/ey.svg" alt="Ernst & Young logo" loading="lazy" class="logo">
+        </div>
+        <!-- <h4 class="author">Computer Science, 2nd Year</h4> -->
+    </div>
+    <div class="testimonial" x-data="{ open: false }">
+        <p class="quote" :class="{ 'min': !open }">
+            I used the tracker to stay on top of my 40+ applications and not miss any deadlines.
+            <span class="grad"></span>
+        </p>
+        <button class="show-more-btn" @click="open = !open" x-text="!open ? 'Read more' : 'Show less'"></button>
+        <div class="flex flex-col align-center gap-s">
+            <p class="offer-from">Offer received from</p>
+            <img src="/resources/images/logos/jp.png" alt="JP Morgan logo" loading="lazy" class="logo">
+        </div>
+        <!-- <h4 class="author">BSC Computer Science, 2nd Year</h4> -->
+    </div>
+    <div class="testimonial" x-data="{ open: false }">
+        <p class="quote" :class="{ 'min': !open }">
+            The Exeter Application Tracker was a total lifesaver during my internship hunt. It helped me keep everything organized. It made the whole process way less stressful, and in the end, I got an offer! Definitely worth using if you're applying for internships.
+            <span class="grad"></span>
+        </p>
+        <button class="show-more-btn" @click="open = !open" x-text="!open ? 'Read more' : 'Show less'"></button>
+        <div class="flex flex-col align-center gap-s">
+            <p class="offer-from">Offer received from</p>
+            <img src="/resources/images/logos/capital-one.png" alt="Capital One logo" loading="lazy" class="logo">
+        </div>
+        <!-- <h4 class="author">BSC Computer Science, 2nd Year</h4> -->
+    </div>
+    <div class="testimonial" x-data="{ open: false }">
+        <p class="quote" :class="{ 'min': !open }">
+            I used the tracker to store all the different versions of my CV that I sent to different companies. It was very useful when it came to the interview stage to know what I sent!
+            <span class="grad"></span>
+        </p>
+        <button class="show-more-btn" @click="open = !open" x-text="!open ? 'Read more' : 'Show less'"></button>
+        <div class="flex flex-col align-center gap-s">
+            <p class="offer-from">Offer received from</p>
+            <img src="/resources/images/logos/ibm.svg" alt="IBM logo" loading="lazy" class="logo">
+        </div>
+        <!-- <h4 class="author">BSC Computer Science, 2nd Year</h4> -->
+    </div>
+    <div class="testimonial" x-data="{ open: false }">
+        <p class="quote" :class="{ 'min': !open }">
+            Best bit of free software that I know. The cool-looking user interface makes you feel awesome while staying on top of your applications.
+            <span class="grad"></span>
+        </p>
+        <button class="show-more-btn" @click="open = !open" x-text="!open ? 'Read more' : 'Show less'"></button>
+        <div class="flex flex-col align-center gap-s">
+            <p class="offer-from">Offer received from</p>
+            <img src="/resources/images/logos/github.svg" alt="GitHub logo" loading="lazy" class="logo">
+        </div>
+        <!-- <h4 class="author">BSC Computer Science, 2nd Year</h4> -->
+    </div>
+</section>
+
+<section class="flex flex-col align-center gap-m">
+    <h1 class="text-center text-white heading">Start being more organised today</h1>
+    <a href="https://apps.edward-blewitt.uk/backend/api/urls/GET-goto-url.php?id=67870bd57d12e" class="button orange">Try it now - its free</a>
+</section>
+
+<!-- <section>
+    <h2 class="text-orange text-center faq-heading">FAQs</h2>
+
+    <div class="flex flex-col gap-m">
+        <div class="faq" x-data="{ open: false }">
+            <div class="top" @click="open = !open">
+                <h3 class="text-white">Are there any fees?</h3>
+                <img class="icon" src="/resources/images/icons/down.svg" alt="Down icon">
+            </div>
+            <div class="faq-content">
+                <p x-show="open">No, the tracker is 100% free to use.</p>
+            </div>
+        </div>
+
+        <div class="faq" x-data="{ open: false }">
+            <div class="top" @click="open = !open">
+                <h3 class="text-white">Are there any fees?</h3>
+                <img class="icon" src="/resources/images/icons/down.svg" alt="Down icon">
+            </div>
+            <div class="faq-content">
+                <p x-show="open">No, the tracker is 100% free to use.</p>
+            </div>
+        </div>
+
+        <div class="faq" x-data="{ open: false }">
+            <div class="top" @click="open = !open">
+                <h3 class="text-white">Are there any fees?</h3>
+                <img class="icon" src="/resources/images/icons/down.svg" alt="Down icon">
+            </div>
+            <div class="faq-content">
+                <p x-show="open">No, the tracker is 100% free to use.</p>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<!-- <section
+    x-data="{
+        email: '',
+        message: '',
+        honey: '',
+        responseMessage: '',
+        responseError: false,
+        show: false
+    }"
+    class="contact"
+>
+    <div class="form flex flex-col gap-m">
+        <h2 class="heading text-white">Contact Us</h2>
+
+        <p class="text-grey">Got an idea for an improvement, or want to get in touch? Please get in touch at <a class="text-orange underline" href="mailto:ed@exeter-tracker.uk">ed@exeter-tracker.uk</a> or fill in the form below.</p>
+    
+        <p class="text-orange cursor-pointer" @click="show = !show">Show form</p>
+    
+        <form
+            x-show="show"
+            @submit.prevent="$post({ route:'/backend/api/POST-contact-form.php', body: { email, message, honey } })"
+            @post="console.log(await $event.detail.response.text())"
+            class="flex flex-col gap-m"
+        >
+            <div class="flex flex-col gap-s">
+                <div>
+                    <label>Your email</label>
+                </div>
+                <input type="email" placeholder="you@example.com" x-model="email" required>
+            </div>
+    
+            <div class="flex flex-col gap-s">
+                <div>
+                    <label>Your Message</label>
+                </div>
+                <textarea placeholder="Type your message here" x-model="message" required></textarea>
+            </div>
+    
+            <div class="flex flex-col gap-s" style="display: none;">
+                <div>
+                    <label>Your Message</label>
+                </div>
+                <input type="text" x-model="honey"></input>
+            </div>
+    
+            <div>
+                <button class="button orange flex gap-s align-center" type="submit">
+                    <img src="/resources/images/icons/send.svg" alt="Send icon" class="icon">
+                    Submit
+                </button>
+            </div>
+    
+        </form>
+    </div>
+    
+</section> -->

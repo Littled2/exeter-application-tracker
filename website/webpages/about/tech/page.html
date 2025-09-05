@@ -1,0 +1,65 @@
+title: Our Tech Stack
+description: Learn about the different technologies that make the Exeter Application Tracker possible.
+
+======================
+
+
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="text-white heading">The Technology behind the Exeter Application Tracker</h1>
+        <h4 class="text-white">An Open Source Project, hosted for students' convenience</h4>
+    </div>
+</section>
+
+<section>
+    <div class="text">
+        <div class="flex flex-col gap-l">
+            <div class="flex flex-col gap-s">
+                <h2 class="text-white">Our Tech Stack</h2>
+    
+                <p>Designed around simplicity, ease of deployment and ease of development, I chose to use a React frontend and BaaS PocketBase backend.</p>
+            </div>
+
+            <div class="stack">
+                <div class="item">
+                    <img src="/resources/images/tech/pocketbase-logo.png" alt="PocketBase logo" class="icon">
+                    <p>PocketBase</p>
+                </div>
+                <div class="item">
+                    <img src="/resources/images/tech/react-js-icon.png" alt="PocketBase logo" class="icon">
+                    <p>React JS</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="flex flex-col gap-s">
+            <h2 class="text-white">Frontend</h2>
+    
+            <p>The frontend is a React SPA. For styling, I opted to use a selection of mini CSS libraries and conventions that I have developed myself previously. Functionally, it works a lot like Tailwind. Data is sent between the frontend and backend using the PocketBase SDK.</p>
+
+            <p>The frontend uses a number of react libraries to aid various functions such as the deadline calendar. View all of the packages in use by checking out the project on GitHub.</p>
+        </div>
+    
+        <div class="flex flex-col gap-m">
+            <div class="flex flex-col gap-s">
+                <h2 class="text-white">Backend</h2>
+    
+                <p>To avoid spending hours writing API routes and managing all the necessary security, I chose to use a favorite backend-as-a-service of mine, PocketBase. PocketBase is a an absolutely brilliant project and offers a backend and SQLite Database hosted from a single executable file. While this could lead to scalability issues, thanks to its efficient design PocketBase is more than sufficient for the Exeter Application Tracker.</p>    
+            </div>
+            <div class="flex flex-col gap-s">
+                <h4 class="text-white">The Database</h4>
+    
+                <p>PocketBase uses a built-in SQLite database. The schema for which is displayed below:</p>
+        
+                <img class="image" src="/resources/images/tech/pb_diagram.png" alt="Diagram showing the schema of the Exeter Application Tracker database">
+        
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-s">
+            <h2 class="text-white">Open Source</h2>
+    
+            <p>The Exeter Application Tracker is completely open source. View the <a href="https://github.com/Littled2/exeter-application-tracker" class="underline text-orange">source code</a> on GitHub.</p>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,51 @@
+.hero-mini {
+    padding-top: var(--spacing-large);
+    padding-bottom: var(--spacing-large);
+}
+
+.heading {
+    font-size: 3.5rem;
+}
+
+.important {
+    border-radius: 16px;
+    /* background-color: var(--border-colour); */
+    padding: var(--spacing-medium);
+    font-size: 1.2rem;
+    border: 2px solid var(--text-orange);
+}
+
+.important:hover {
+    background-color: var(--dark-grey);
+}
+
+.important img {
+    height: 7rem;
+}
+
+.important h3 {
+    font-size: 1.8em;
+}
+
+.option {
+    background-color: var(--border-colour);
+    border: 2px solid var(--dark-grey);
+    color: var(--text-white);
+    font-size: 1.2rem;
+    padding: var(--spacing-small);
+    border-radius: 8px;
+    display: flex;
+    gap: var(--spacing-small);
+    align-items: center;
+}
+
+.option:hover {
+    color: var(--text-orange);
+}
+
+
+@media screen and (max-width: 800px) {
+    .headline {
+        font-size: 2.75rem;
+    }
+}

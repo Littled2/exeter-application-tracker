@@ -40,8 +40,6 @@ $app.rootCmd.addCommand(new Command({
             let newOrganisationRecord = new Record(organisationsCollection)
 
             newOrganisationRecord.set("name", organisation.name)
-            newOrganisationRecord.set("distX", organisation.distX)
-            newOrganisationRecord.set("distY", organisation.distY)
             newOrganisationRecord.set("user", "")
 
             $app.save(newOrganisationRecord);

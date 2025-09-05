@@ -1,0 +1,188 @@
+.mono {
+    font-family: var(--mono-font);
+}
+
+.accent {
+    color: var(--accent-colour);
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.text-orange {
+    color: var(--text-orange);
+}
+
+.text-white {
+    color: var(--text-white);
+}
+
+.text-red {
+    color: var(--text-red);
+}
+
+.text-green {
+    color: var(--text-green);
+}
+
+.text-grey {
+    color: var(--text-grey);
+}
+
+.header-row {
+    background-color: var(--primary-colour);
+}
+
+
+.icon {
+    width: 1em;
+    height: 1em;
+    object-fit: contain;
+    display: inline;
+}
+
+.icon.icon-large {
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+.inline-flex {
+    display: inline-flex;
+}
+
+.flex {
+    display: flex;
+}
+
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-col,
+.col {
+    flex-direction: column;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.gap-s {
+    gap: var(--spacing-small);
+}
+
+.gap-l {
+    gap: var(--spacing-large);
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-right {
+    justify-content: right;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.gap-m {
+    gap: var(--spacing-medium);
+}
+
+.border-radius {
+    border-radius: var(--border-radius);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.button {
+    padding: 4px;
+    border: 1px solid var(--light-grey);
+    background-color: var(--dark-grey);
+    color: var(--text-white);
+    padding: 10px 20px;
+}
+
+.button.orange {
+    border-radius: 8px;
+    background-color: var(--text-orange);
+    font-size: 1.4em;
+    border: none;
+    color: var(--bg-colour);
+}
+
+.button.orange:hover {
+    transition: 0.15s;
+    background-color: var(--text-orange-darker);
+}
+
+.button:active {
+    color: var(--text-white);
+    transform: scale(0.95);
+}
+
+
+
+
+.window {
+    padding: var(--spacing-medium);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+.m-hide {
+    display: unset;
+}
+
+.m-show-flex,
+.m-show-block {
+    display: none !important;
+}
+
+/* Mobile responsive styles */
+@media screen and (max-width: 800px) {
+    .m-hide {
+        display: none;
+    }
+    .m-show-flex {
+        display: flex !important;
+    }
+    .m-show-block {
+        display: block !important;
+    }
+    .m-align-center {
+        align-items: center;
+    }
+    .button {
+        width: unset;
+    }
+    .m-flex-col {
+        flex-direction: column;
+    }
+    .m-align-center {
+        align-items: center;
+    }
+}

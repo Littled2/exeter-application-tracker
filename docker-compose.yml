@@ -7,10 +7,19 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - ./frontend/build:/usr/share/nginx/html:ro
+      - ./website:/var/www/website:ro
     ports:
       - "4500:80"
     depends_on:
       - backend
+      - frontend
+      - website
+
+  website:
+    image: php:8.2-fpm
+    container_name: website
+    volumes:
+      - ./website:/var/www/website
 
 
   backend:
