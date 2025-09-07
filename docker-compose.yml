@@ -17,6 +17,7 @@ services:
       - backend
       - frontend
       - website
+      - certbot
 
   website:
     image: php:8.2-fpm
