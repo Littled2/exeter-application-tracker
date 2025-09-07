@@ -25,17 +25,18 @@ The ultimate dashboard for tracking applications to jobs, internships and placem
 
   
 
-## Running in Development
+## Deployment Instructions
 
-1. Start ngrok: `ngrok start --all --config ngrok.yml`
-2. Edit frontend `frontend/.env` file `REACT_APP_BACKEND_URL` with ngrok url to backend
-3. Start the frontend with `npm start`
-
-
-## Self-hosting Instructions
-
-1. Download this repo
-2. Download PocketBase from [pocketbase.io](https://pocketbase.io/), run it,  and import the schema from pocketbase_schema.json
-3. Import the database schema `pb_schema.json` to PocketBase.
-3. Change the variable `BASE_URL` in the `./src/contexts/pocketContext.jsx` file to the host that you are running the PocketBase instance from.
-4. Build and run the React app
+1. Git clone this repo
+2. Add the three env files: frontend/.env, .env.secret and backend/.env
+3. Fill out the three .env files with correct information
+4. Ensure the server names in nginx.conf are correct
+5. Get the first SSL certificate using this command:
+    ```bash
+    docker-compose run --rm certbot certonly \
+    --webroot --webroot-path=/var/www/certbot \
+    --email your-email@example.com --agree-tos --no-eff-email \
+    -d app.exetertracker.com -d exetertracker.com -d www.exetertracker.com
+    ``` 
+6. Run `docker compose build`
+7. Run `docker compose up`

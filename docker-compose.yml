@@ -8,8 +8,11 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - ./frontend/build:/usr/share/nginx/html:ro
       - ./website:/var/www/website:ro
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
     ports:
-      - "4500:80"
+      - "80:80"
+      - "443:443"
     depends_on:
       - backend
       - frontend
@@ -45,6 +48,15 @@ services:
       - "80"
     depends_on:
       - backend
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do sleep 12h & wait $${!}; certbot renew --webroot -w /var/www/certbot --quiet && nginx -s reload; done;'"
+
 
 
 secrets:
