@@ -183,8 +183,8 @@ export function LocationsSelect({ locations, setLocations, setNewLocationOpen, c
                                     }
                                     
                                     {
-                                        !loading ? (
-                                            allLocations.map(loc => {
+                                        !loading && allLocations && allLocations?.length > 0 ? (
+                                            allLocations?.map(loc => {
                                                 return <div
                                                     className={styles.item}
                                                     value={loc.id}

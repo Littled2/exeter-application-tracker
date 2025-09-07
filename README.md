@@ -31,20 +31,30 @@ The ultimate dashboard for tracking applications to jobs, internships and placem
 2. Add the three env files: frontend/.env, .env.secret and backend/.env
 3. Fill out the three .env files with correct information
 4. Ensure the server names in nginx.conf are correct
-5. Get the first SSL certificate using this command **make sure you update the email address first**:
+5. Get the SSL certificate for app.exetertracker.com using this command **make sure you update the email address first**:
     ```bash
     docker run --rm -it \
-    -p 80:80 \
     -v "$(pwd)/certbot/conf:/etc/letsencrypt" \
     -v "$(pwd)/certbot/www:/var/www/certbot" \
     certbot/certbot certonly \
     --standalone \
     -d app.exetertracker.com \
-    -d exetertracker.com \
-    -d www.exetertracker.com \
-    --email edward.blewitt2@gmail.com \
+    --email you@mail.com \
     --agree-tos \
     --no-eff-email
-    ``` 
-6. Run `docker compose build`
-7. Run `docker compose up`
+    ```
+6. Get the SSL certificate for exetertracker.com and www.exetertracker.com using this command **make sure you update the email address first**:
+    ```bash
+    docker run --rm -it \
+    -v "$(pwd)/certbot/conf:/etc/letsencrypt" \
+    -v "$(pwd)/certbot/www:/var/www/certbot" \
+    certbot/certbot certonly \
+    --standalone \
+    -d exetertracker.com \
+    -d www.exetertracker.com \
+    --email you@mail.com \
+    --agree-tos \
+    --no-eff-email
+    ```
+7. Run `docker compose build`
+8. Run `docker compose up`
