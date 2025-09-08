@@ -23,7 +23,15 @@ The ultimate dashboard for tracking applications to jobs, internships and placem
 ## Database Schema
 ![Pocketbase database schema](./frontend/public/pb_diagram.png)
 
-  
+
+## Running in Development
+
+1. Git clone this repo
+2. Add the three env files: frontend/.env, .env.secret and backend/.env
+3. Fill out the three .env files with correct information
+4. run `./pocketbase serve --http="0.0.0.0:8090"` in the backend directory
+5. run `npm start` in the frontend directory
+
 
 ## Deployment Instructions
 

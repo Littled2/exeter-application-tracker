@@ -102,7 +102,7 @@ export function Header() {
                                             <div className={styles.groupSelect}>
                                                 <select onInput={e => setActiveYear(e.target.value)} value={activeYear}>
                                                     {
-                                                        years.map(year => {
+                                                        years?.map(year => {
                                                             return <option key={'_dd_' + year.id} value={year.id}>{year.year}</option>
                                                         })
                                                     }
@@ -185,7 +185,14 @@ export function Header() {
                                                 {
                                                     isOnline ? (
                                                         <div className={styles.newAppButtonWrapper}>
-                                                            <button id={"tutorial-step-3"} className={styles.newAppButton} onClick={() => setNewApplicationPopupOpen(true)}>
+                                                            <button
+                                                                id={"tutorial-step-3"}
+                                                                className={styles.newAppButton}
+                                                                onClick={() => {
+                                                                    setNewApplicationPopupOpen(true)
+                                                                }}
+                                                                
+                                                            >
                                                                 <span>+<span className="m-hide"> New Application</span></span>
                                                                 <span className={[ styles.keyIndicators, 'windows-only' ].join(' ')}>
                                                                     <span>ctrl</span>

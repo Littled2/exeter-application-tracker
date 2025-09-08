@@ -29,7 +29,14 @@ export function NewApp({ setTrigger }) {
     const [ deadline, setDeadline ] = useState(new Date())
     const [ locations, setLocations ] = useState([])
     const [ type, setType ] = useState('internship')
-    const [ stage, setStage ] = useState('idea')
+
+    const [ stage, setStage ] = useState(() => {
+        let tabs = [ "idea", "applied", "accepted" ]
+        let tab = localStorage.getItem("application_tabs")
+        if(!tab) return "idea"
+        tab = Number(tab)
+        return tabs[tab] || 'idea'   
+    })
 
     const [ newOrgOpen, setNewOrgOpen ] = useState(false)
     const [ newLocOpen, setNewLocOpen ] = useState(false)
@@ -89,10 +96,29 @@ export function NewApp({ setTrigger }) {
     const nameInput = useRef()
 
     useEffect(() => {
+
+        switch (stage) {
+            case "idea":
+                ideaRef.current.checked = true
+                break;
+            case "applied":
+                appliedRef.current.checked = true
+                break;
+            case "accepted":
+                acceptedRef.current.checked = true
+                break;
+            default:
+                break;
+        }
+
         if(!isMobile) {
             nameInput.current.focus()
         }
     }, [])
+
+    const ideaRef = useRef()
+    const appliedRef = useRef()
+    const acceptedRef = useRef()
 
     return (
         <>
@@ -196,7 +222,7 @@ export function NewApp({ setTrigger }) {
                     </div>
                     <div className="flex col gap-s" style={{ alignItems: "start" }}>
                         <label className="flex align-center gap-s text-grey">
-                            <input onChange={handleStageChange} defaultChecked={true} type="radio" name="Idea" value="idea" style={{ width: "16px", height: "16px" }}/>
+                            <input onChange={handleStageChange} ref={ideaRef} defaultChecked={false} type="radio" name="Idea" value="idea" style={{ width: "16px", height: "16px" }}/>
                             <div className="flex flex-col">
                                 <span className="text-white">Idea</span>
                                 <small>Something you might apply to</small>
@@ -210,14 +236,14 @@ export function NewApp({ setTrigger }) {
                             </div>
                         </label>
                         <label className="flex align-center gap-s text-grey">
-                            <input onChange={handleStageChange} defaultChecked={false} type="radio" name="Idea" value="applied" style={{ width: "16px", height: "16px" }}/>
+                            <input onChange={handleStageChange} ref={appliedRef} defaultChecked={false} type="radio" name="Idea" value="applied" style={{ width: "16px", height: "16px" }}/>
                             <div className="flex flex-col">
                                 <span className="text-white">Applied</span>
                                 <small>Application has been submitted</small>
                             </div>
                         </label>
                         <label className="flex align-center gap-s text-grey">
-                            <input onChange={handleStageChange} defaultChecked={false} type="radio" name="Idea" value="accepted" style={{ width: "16px", height: "16px" }}/>
+                            <input onChange={handleStageChange} ref={acceptedRef} defaultChecked={false} type="radio" name="Idea" value="accepted" style={{ width: "16px", height: "16px" }}/>
                             <div className="flex flex-col">
                                 <span className="text-green">Accepted</span>
                                 <small>Successful application</small>

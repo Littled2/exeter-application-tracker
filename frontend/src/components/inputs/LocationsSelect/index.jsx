@@ -24,7 +24,7 @@ export function LocationsSelect({ locations, setLocations, setNewLocationOpen, c
     useEffect(() => {
 
         // Fetch the locations
-        const filter = locations.map(id => `id="${id}"`).join(' || ');
+        const filter = locations?.map(id => `id="${id}"`).join(' || ');
 
         pb.collection("locations").getFullList({
             filter
@@ -166,7 +166,7 @@ export function LocationsSelect({ locations, setLocations, setNewLocationOpen, c
                             ddOpen && (
                                 <div className={styles.select}>
                                     {
-                                        (name.length !== 0 && allLocations.filter(loc => loc.name.toLowerCase() === name.toLowerCase()).length === 0) && (
+                                        (name.length !== 0 && allLocations && allLocations.length > 0 && allLocations?.filter(loc => loc.name.toLowerCase() === name.toLowerCase()).length === 0) && (
                                             <div
                                                 onClick={() => setNewLocationOpen(true)}
                                                 className={styles.item}

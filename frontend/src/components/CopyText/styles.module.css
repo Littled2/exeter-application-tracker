@@ -1,0 +1,14 @@
+@media screen and (max-width: 800px) {
+    .input {
+        height: max-content;
+        font-size: 1.2rem;
+        padding: 16px;
+        margin: 0 !important; 
+    }
+
+    .button {
+        margin: 0;
+        width: min-content;
+        padding: 12px;
+    }
+}

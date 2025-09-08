@@ -9,6 +9,7 @@ import { useMasterCounter } from "../../../contexts/masterCounterContext";
 import { NewLocation } from "../NewLocation";
 import { AnimatedButton } from "../../AnimatedButton";
 
+
 export function EditApp({ app, setTrigger }) {
 
     const [ orgID, setOrgID ] = useState(app?.organisation ? app?.organisation : '')
