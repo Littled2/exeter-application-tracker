@@ -14,7 +14,7 @@ export function SearchApplications({ searchOpen, setSearchOpen }) {
 
     const { setOpenAppID } = useOpenApp()
 
-    const { setActiveYear } = useActiveYear()
+    const { setActiveYear, years } = useActiveYear()
     
     const { pb } = usePocket()
 
@@ -79,7 +79,7 @@ export function SearchApplications({ searchOpen, setSearchOpen }) {
                                 }}
                             >
                                 <p>{m?.expand?.organisation?.name}</p>
-                                <small className="text-grey">{m?.role}</small>
+                                <small className="text-grey">{m?.role} | {years.filter(y => y.id === m.year)[0]?.year}</small>
                             </div>
                         )
                     })   
