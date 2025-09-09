@@ -15,6 +15,7 @@ import { OpenAppContextProvider } from "../../contexts/openAppContext.jsx";
 import { RecapPopupContextProvider } from "../../contexts/recapPopupContext.jsx";
 import { ThemeContextProvider } from "../../contexts/themeContext.jsx";
 import { PolicyCheck } from "../../components/PolicyCheck/index.jsx";
+import { SearchContextProvider } from "../../contexts/searchContext.jsx";
 
 ChartJS.register(ArcElement, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
@@ -50,13 +51,15 @@ export function AppWrapper() {
                       <NotificationsContextProvider>
                         <RecapPopupContextProvider>
                           <TutorialContextProvider>
-                            <ThemeContextProvider>
-                              <Header />
+                            <SearchContextProvider>
+                              <ThemeContextProvider>
+                                <Header />
 
-                              <Body counter={counter} setCounter={setCounter} />
+                                <Body counter={counter} setCounter={setCounter} />
 
-                              <MobileNavTabs />
-                            </ThemeContextProvider>
+                                <MobileNavTabs />
+                              </ThemeContextProvider>
+                            </SearchContextProvider>
                           </TutorialContextProvider>
                         </RecapPopupContextProvider>
                       </NotificationsContextProvider>

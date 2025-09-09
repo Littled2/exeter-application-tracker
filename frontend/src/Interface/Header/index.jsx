@@ -12,6 +12,8 @@ import { useMobile } from "../../contexts/mobileContext";
 import { Tooltip } from "react-tooltip";
 import useOnlineStatus from "../../hooks/useOnlineStatus";
 import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
+import { useSearchContext } from "../../contexts/searchContext";
+import { IoSearch } from "react-icons/io5";
 
 
 export function Header() {
@@ -19,6 +21,7 @@ export function Header() {
     const { pb, user } = usePocket()
 
     const { setNewApplicationPopupOpen} = useNewApplicationPopup()
+    const { setSearchOpen } = useSearchContext()
 
     const [ newTicketOpen, setNewTicketOpen ] = useState(false)
     const [ settingsOpen, setSettingsOpen ] = useState(false)
@@ -28,13 +31,21 @@ export function Header() {
     const { isMobile, activeMobileTab } = useMobile()
     const isOnline = useOnlineStatus()
 
+
     const handleKeyPress = useCallback(e => {
-        if(e.ctrlKey && e.key === "b") {
+
+        if(e.ctrlKey && (e.key === "b" || e.key === "B")) {
             e.preventDefault()
             e.stopPropagation()
             
             setNewApplicationPopupOpen(true)
+        } else if(e.ctrlKey && e.key === "/") {
+            e.preventDefault()
+            e.stopPropagation()
+
+            setSearchOpen(true)
         }
+
     }, [])
 
     useEffect(() => {
@@ -136,6 +147,21 @@ export function Header() {
                                         </button>
 
                                         <Tooltip id="contact-support-tooltip" />
+
+                                        <button
+                                            className="m-hide simple-btn"
+                                            onClick={() => setSearchOpen(true)}
+                                            data-tooltip-id="search-support-tooltip"
+                                            data-tooltip-content="Search all applications (ctrl + /)"
+                                            data-tooltip-place="bottom"
+                                        >
+                                            {/* <IoTicketOutline/> */}
+                                            {/* <IoHelpOutline /> */}
+                                            {/* <PiHeadsetDuotone  /> */}
+                                            <IoSearch />
+                                        </button>
+
+                                        <Tooltip id="search-support-tooltip" />
 
                                     </div>
                                     
