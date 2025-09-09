@@ -1,3 +1,7 @@
+.result {
+    cursor: pointer;
+}
+
 .result:hover {
     background-color: var(--dark-grey);
 }
