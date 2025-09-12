@@ -2,14 +2,20 @@
     background-color: var(--upcoming-deadline-bg) !important;
 } */
 
-.missed {
-    background-color: var(--missed-deadline-bg) !important;
+.passed {
+    background-color: var(--past-deadline-bg) !important;
     padding-left: 4px;
     padding-right: 4px;
 }
 
 .upcoming {
     background-color: var(--upcoming-deadline-bg);
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.today {
+    background-color: var(--today-deadline-bg);
     padding-left: 4px;
     padding-right: 4px;
 }

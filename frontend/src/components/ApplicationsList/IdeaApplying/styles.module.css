@@ -23,8 +23,8 @@
     padding-right: 4px;
 }
 
-.missed {
-    background-color: var(--missed-deadline-bg) !important;
+.today {
+    background-color: var(--today-deadline-bg) !important;
     padding-left: 4px;
     padding-right: 4px;
 }

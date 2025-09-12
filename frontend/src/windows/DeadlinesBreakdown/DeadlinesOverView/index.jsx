@@ -39,10 +39,17 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
             setUpcomingDeadlines(res)
             const today = new Date()
             today.setHours(0, 0, 0, 0);
+
+            const areSameDate = (d1, d2) => {
+                return d1.getFullYear() === d2.getFullYear() &&
+                        d1.getMonth() === d2.getMonth() &&
+                        d1.getDate() === d2.getDate();
+            }
+
             setModifiers({
-                missedDeadlines: res.filter(doc => new Date(doc?.deadline) < today && (doc.stage === "idea" || doc.stage === "applying")).map(day => new Date(day.deadline)),
-                pastDeadlines: res.filter(doc => new Date(doc?.deadline) < today && (doc.stage === "applied" || doc.stage === "accepted" || doc.stage === "declined") ).map(day => new Date(day.deadline)),
-                futureDeadlines: res.filter(doc => new Date(doc?.deadline) >= today).map(doc => new Date(doc.deadline))
+                todayDeadlines: res.filter(doc =>  (doc?.stage === "idea" || doc?.stage === "applying") && areSameDate(new Date(doc?.deadline), today)).map(day => new Date(day.deadline)),
+                pastDeadlines: res.filter(doc => (doc?.stage === "idea" || doc?.stage === "applying") && new Date(doc?.deadline) < today).map(day => new Date(day.deadline)),
+                futureDeadlines: res.filter(doc => (doc?.stage === "idea" || doc?.stage === "applying") && new Date(doc?.deadline) > today).map(doc => new Date(doc.deadline))
                 // dueMoreThanThreeDays: res.filter(doc => (new Date(doc?.deadline) - today) > 3 * 24 * 60 * 60 * 1000).map(day => new Date(day.deadline)),
                 // dueThreeDays: res.filter(doc => (new Date(doc?.deadline) - today) <= 3 * 24 * 60 * 60 * 1000 && (new Date(doc?.deadline) - today) > 24 * 60 * 60 * 1000).map(day => new Date(day.deadline)),
                 // dueToday: res.filter(doc => areSameDate(new Date(), new Date(doc?.deadline))).map(day => new Date(day.deadline))
@@ -106,7 +113,7 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
                     modifiers={modifiers}
                     // captionLayout="dropdown-months"
                     modifiersStyles={{
-                        missedDeadlines: { backgroundColor: "var(--missed-deadline-bg)" },
+                        todayDeadlines: { backgroundColor: "var(--today-deadline-bg)" },
                         pastDeadlines: { backgroundColor: "var(--passed-deadline-bg)" },
                         futureDeadlines: { backgroundColor: "var(--upcoming-deadline-bg)" }
                     }}
@@ -124,7 +131,7 @@ export function DeadlinesOverView({ openAppID, setOpenAppID }) {
 
             <div className="flex gap-s justify-center">
                 <span className={styles.past}>Past</span>
-                <span className={styles.missed}>Missed</span>
+                <span className={styles.today}>Today</span>
                 <span className={styles.upcoming}>Upcoming</span>
             </div>
             

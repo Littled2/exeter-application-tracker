@@ -20,21 +20,21 @@ export function Deadline({ deadline, highlight=true }) {
     return (
         // If the deadline has passed
         DAYS_TO_DEADLINE < 0 ? (
-            <span className={styles.missed}>
+            <span className={styles.passed}>
                 {
                     getDate(deadline)
                 }
             </span>
         ) : (
             // Deadline is today
-            DAYS_TO_DEADLINE >= 0 ? (
-                <span className={styles.upcoming}>
+            DAYS_TO_DEADLINE === 0 ? (
+                <span className={styles.today}>
                     {
                         getDate(deadline)
                     }
                 </span>
             ) : (
-                // Deadline is in the next three days
+                // Deadline is upcoming
                 <spa className={styles.upcoming}>
                     {
                         getDate(deadline)

@@ -145,7 +145,7 @@ export function IdeasApplying({ openAppID, setOpenAppID }) {
             {
                 (ideas.length > 0 || applying.length > 0) && !loading && (
                     <div className={[ styles.key, 'm-hide' ].join(" ")}>
-                        <span className={styles.missed}>Missed</span>
+                        <span className={styles.today}>Today</span>
                         <span className={styles.upcoming}>Upcoming</span>
                     </div>
                 )

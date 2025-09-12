@@ -187,7 +187,7 @@ export function EditApp({ app, setTrigger }) {
                     <div className="flex gap-s">
                         <div>
                             <div>
-                                <label>Deadline Type</label>
+                                <label>Deadline</label>
                             </div>
                             <select value={deadlineType} onInput={e => setDeadlineType(e.target.value)}>
                                 <option value="rolling">Rolling</option>
@@ -200,7 +200,7 @@ export function EditApp({ app, setTrigger }) {
                                 deadlineType === "fixed" ? (
                                     <>
                                         <div>
-                                            <label>Deadline</label>
+                                            <label>Date</label>
                                         </div>
                                         <DateInput date={deadline} setDate={setDeadline} />
                                     </>
