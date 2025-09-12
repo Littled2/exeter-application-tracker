@@ -51,8 +51,6 @@ export const PocketProvider = ({ children }) => {
 
 	useEffect(() => {
 		
-		console.log({user})
-
 		if(!user || !user?.id || !token) {
 			return
 		}

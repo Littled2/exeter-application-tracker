@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Confirm } from "../../forms/Confirm"
 import { CopyText } from "../../CopyText";
 import { Tabs } from "../../Tabs";
@@ -13,7 +13,9 @@ export function CalendarManager() {
 
     const { user, pb } = usePocket()
 
-    const linkPrefix = useRef(process.env.REACT_APP_BACKEND_URL + "/cal/")
+    useEffect(() => console.log(process.env.REACT_APP_CALENDER_URL), [])
+
+    const linkPrefix = useRef(process.env.REACT_APP_CALENDER_URL + "/cal/")
 
     const toWebcalUrl = useCallback(url => {
         return url.replace(/^https?:\/\//, "webcal://")

@@ -23,7 +23,6 @@ export function TasksWrapper({ setOpenAppID }) {
     useEffect(() => {
         pb.collection("tasks").getFullList({ sort: "deadline", filter: `year = '${activeYear}'` })
         .then(tasks => {
-            console.log(tasks)
             setTasks(tasks)
         })
         .catch(err => {
@@ -34,7 +33,6 @@ export function TasksWrapper({ setOpenAppID }) {
     const deleteTask = (taskID) => {
         pb.collection("tasks").delete(taskID)
         .then(() => {
-            console.log("Task deleted")
             setOpenTask(false)
             setCounter(c => c + 1)
         })
