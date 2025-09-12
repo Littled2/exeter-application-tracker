@@ -55,7 +55,7 @@
 
     <script type="module" src="/scripts/index.js"></script>
 
-    <script onload="attach_rapid_web_analytics('68abea027874c')" src="http://apps.edward-blewitt.uk/resources/web-analytics/analytics_v1.0.js"></script>
+    <script onload="attach_rapid_web_analytics('68abea027874c')" src="https://apps.edward-blewitt.uk/resources/web-analytics/analytics_v1.0.js"></script>
 
 </head>
 <body>
