@@ -21,7 +21,7 @@ The ultimate dashboard for tracking applications to jobs, internships and placem
 - **Analytics**: Gain insights into your application trends and manage your overall performance.
 
 ## Database Schema
-![Pocketbase database schema](./frontend/public/pb_diagram.png)
+![Pocketbase database schema](./website/resources/images/tech/pb_diagram.png)
 
 
 ## Running in Development

@@ -80,6 +80,9 @@
 
                 <a class="header-link" href="/about" @click="menuOpen = false">About</a>
 
+                <a class="header-link" href="/contact" @click="menuOpen = false">Contact</a>
+
+
                 <!-- <a class="header-link" href="/advice" @click="menuOpen = false">Advice</a> -->
 
                 <a href="https://apps.edward-blewitt.uk/backend/api/urls/GET-goto-url.php?id=67870bd57d12e&source=Exeter-Tracker-Website" @click="menuOpen = false">
