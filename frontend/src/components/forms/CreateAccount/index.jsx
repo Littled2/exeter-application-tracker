@@ -70,10 +70,10 @@ export function CreateAccount() {
                 </div>
 
                 <div>
-                    <label className="flex gap-s">
+                    <div className="flex gap-s">
                         <input type="checkbox" checked={hasAgreedToAllPolicies} onChange={e => setHasAgreedToAllPolicies(e.target.checked)} required />
-                        <span>I agree to the <a className="text-orange underline" href={process.env.TERMS_AND_CONDITIONS_URL}>Terms & Conditions</a> and <a className="text-orange underline" href={process.env.PRIVACY_POLICY_URL}>Privacy Policy</a></span>
-                    </label>
+                        <span>I agree to the <a className="text-orange underline" href={process.env.REACT_APP_TERMS_AND_CONDITIONS_URL}>Terms of Service</a> and <a className="text-orange underline" href={process.env.REACT_APP_PRIVACY_POLICY_URL}>Privacy Policy</a></span>
+                    </div>
                 </div>
 
                 {

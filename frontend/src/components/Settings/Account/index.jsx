@@ -39,6 +39,10 @@ export function Account({ setTrigger }) {
                 </div>
             </div>
 
+            <div>
+                <p className="text-grey">View the <a className="text-orange underline" href={process.env.REACT_APP_TERMS_AND_CONDITIONS_URL}>Terms of Service</a> and <a className="text-orange underline" href={process.env.REACT_APP_PRIVACY_POLICY_URL}>Privacy Policy</a>.</p>
+            </div>
+
             <Popup trigger={deleteConfirm} setTrigger={setDeleteConfirm}>
                 <div className="flex col gap-m">
                     <h5 className="text-red">Are you sure you want to delete your account?</h5>

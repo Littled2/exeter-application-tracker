@@ -137,7 +137,7 @@ export function Header() {
                                             className="m-hide simple-btn"
                                             onClick={() => setNewTicketOpen(true)}
                                             data-tooltip-id="contact-support-tooltip"
-                                            data-tooltip-content="Contact support / Suggest feature"
+                                            data-tooltip-content="Give feedback / Suggest feature"
                                             data-tooltip-place="bottom"
                                         >
                                             {/* <IoTicketOutline/> */}
@@ -255,7 +255,7 @@ export function Header() {
                 </header>
             </div>
 
-            <Popup title={"Contact Support"} trigger={newTicketOpen} setTrigger={setNewTicketOpen}>
+            <Popup title={"Give Feedback"} trigger={newTicketOpen} setTrigger={setNewTicketOpen}>
                 <NewTicket setTrigger={setNewTicketOpen} />
             </Popup>
 

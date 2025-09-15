@@ -16,11 +16,17 @@
 .logOutBtn {
     background-color: var(--text-orange);
     color: var(--text-white);
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-small) / 2);
 }
 
 .deleteBtn {
     background-color: var(--text-red);
     color: var(--text-white);
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-small) / 2);
 }
 
 @media screen and (max-width: 800px) {

@@ -16,6 +16,22 @@ export function AuthenticationWrapper() {
 
             <p className="text-center text-grey">Track applications to internships, grad schemes and more</p>
 
+            <button
+                className={[ "button", styles.signInWithGoogleButton ].join(" ")}
+                onClick={async () => {
+                    try {
+                        const authData = await pb.collection('users').authWithOAuth2({ provider: 'google' })
+                        console.log({authData})
+                    } catch (error) {
+                        console.error("OAUTH ERROR", error)
+                    }
+
+                }}
+            >
+                <img src="/sign-in-with-google-logo.svg" alt="Google logo" />
+                <span>Sign in with Google</span>
+            </button>
+
             <Tabs saveActiveTabAs={"auth_tabs"} tabs={[
                 {
                     name: "Log in",
@@ -39,22 +55,6 @@ export function AuthenticationWrapper() {
                 }
 
             ]} />
-
-            <button
-                className={[ "button", styles.signInWithGoogleButton ].join(" ")}
-                onClick={async () => {
-                    try {
-                        const authData = await pb.collection('users').authWithOAuth2({ provider: 'google' })
-                        console.log({authData})
-                    } catch (error) {
-                        console.error("OAUTH ERROR", error)
-                    }
-
-                }}
-            >
-                <img src="/sign-in-with-google-logo.svg" alt="Google logo" />
-                <span>Or sign in with Google</span>
-            </button>
 
         </div>
     )

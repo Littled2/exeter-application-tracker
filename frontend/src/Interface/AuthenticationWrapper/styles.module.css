@@ -39,6 +39,10 @@
     font-size: 2rem;
 }
 
+.signInWithGoogleButton:hover {
+    background-color: var(--dark-grey-hover);
+}
+
 
 
 
