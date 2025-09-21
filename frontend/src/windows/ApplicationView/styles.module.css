@@ -159,6 +159,16 @@
     color: var(--text-grey);
 }
 
+.responsesTable {
+    width: max-content;
+}
+
+.responsesTableLabel {
+    padding-right: 2rem;
+    color: var(--text-white);
+}
+
+
 @keyframes slideIn {
     from {
         transform: translateX(100%);
@@ -239,5 +249,13 @@
 
     .stages {
         flex-direction: column;
+    }
+
+    .responsesTable {
+        width: 100%;
+    }
+
+    .responsesTableLabel {
+        padding-right: 0;
     }
 }

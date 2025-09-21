@@ -7,7 +7,7 @@ import { usePocket } from "../../contexts/pocketContext"
 import { DocumentUploadDownload } from "./DocumentUploadDownload"
 import { useActiveYear } from "../../contexts/activeYearContext"
 import { Confirm } from "../../components/forms/Confirm"
-import { BiChevronLeft, BiPencil } from "react-icons/bi"
+import { BiChevronLeft, BiPencil, BiUpload } from "react-icons/bi"
 import { usePopupsContext } from "../../contexts/popupsContext"
 import { useMasterCounter } from "../../contexts/masterCounterContext"
 import { Deadline } from "../../components/Deadline"
@@ -163,8 +163,8 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
 
             const lastReminder = localStorage.getItem("lastRemindedAboutFileUpload")
 
-            // If user was reminded within the last 5 minutes, do not remind again
-            if(!lastReminder || (new Date().getTime() - lastReminder) > (1000 * 60 * 5)) {
+            // If user was reminded within the last 5 minutes, or has already uploaded, do not remind again
+            if(!lastReminder || ((new Date().getTime() - lastReminder) > (1000 * 60 * 5)) || !(application?.cv && application?.coverLetter)) {
                 setUploadCVReminder(true)
             }
 
@@ -341,6 +341,26 @@ export function ApplicationView({ openAppID, setOpenAppID, counter, setCounter }
                                         </tbody>
                                     </table>
                                 </div>
+
+                                {
+                                    application?.questionResponses && (
+                                        <div className="flex gap-l m-flex-col">
+                                            <table className={styles.responsesTable}>
+                                                <tbody>
+                                                    <tr className={styles.documentRow}>
+                                                        <td className={styles.responsesTableLabel}>Responses</td>
+                                                        <td>
+                                                            <DocumentUploadDownload displayName={"Responses"} application={application} fileKeyName={"questionResponses"} />
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <div></div>
+
+                                        </div>
+                                    )
+                                }
 
                                 <div className="flex flex-col">
                                     <div className="flex gap-s align-center">

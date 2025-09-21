@@ -8,6 +8,9 @@ import { DateInput } from "../../inputs/DateInput";
 import { useMasterCounter } from "../../../contexts/masterCounterContext";
 import { NewLocation } from "../NewLocation";
 import { AnimatedButton } from "../../AnimatedButton";
+import { DocumentUploadDownload } from "../../../windows/ApplicationView/DocumentUploadDownload";
+import styles from "./styles.module.css"
+
 
 
 export function EditApp({ app, setTrigger }) {
@@ -215,6 +218,42 @@ export function EditApp({ app, setTrigger }) {
                             <p className="text-red">{error?.response?.data?.deadline?.message} {error?.response?.data?.deadlineType?.message}</p>
                         )
                     }
+                </div>
+                <div>
+                    <table className={styles.table}>
+                        <tbody>
+                            <tr>
+                                <td className={styles.docName}>CV</td>
+                                <td>
+                                    <DocumentUploadDownload displayName={"CV"} application={app} fileKeyName={"cv"} />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <table className={styles.table}>
+                        <tbody>
+                            <tr>
+                                <td className={styles.docName}>Cover Letter</td>
+                                <td>
+                                    <DocumentUploadDownload displayName={"Cover Letter"} application={app} fileKeyName={"coverLetter"} />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <table className={styles.table}>
+                        <tbody>
+                            <tr>
+                                <td className={styles.docName}>Question Responses</td>
+                                <td>
+                                    <DocumentUploadDownload displayName={"Responses"} application={app} fileKeyName={"questionResponses"} />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div className="flex col">
                     <div>

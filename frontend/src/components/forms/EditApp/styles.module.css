@@ -1,0 +1,17 @@
+.table {
+    width: max-content;
+}
+
+.docName {
+    padding-right: 2rem;
+    text-wrap: nowrap;
+}
+
+@media screen and (max-width: 1024px) {
+    .table {
+        width: 100%;
+    }
+    .docName {
+        padding-right: 0;
+    }
+}
