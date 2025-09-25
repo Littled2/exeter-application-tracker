@@ -121,48 +121,50 @@ export function Header() {
                                             </div>
                                         </div>
 
-                                        <button
-                                            className="simple-btn"
-                                            onClick={() => setSettingsOpen(true)}
-                                            data-tooltip-id="open-settings-tooltip"
-                                            data-tooltip-content="Settings"
-                                            data-tooltip-place="bottom"
-                                        >
-                                            <BsGear />
-                                        </button>
+                                        <div className="flex gap-s align-center">
+                                            <button
+                                                className="simple-btn"
+                                                onClick={() => setSettingsOpen(true)}
+                                                data-tooltip-id="open-settings-tooltip"
+                                                data-tooltip-content="Settings"
+                                                data-tooltip-place="bottom"
+                                            >
+                                                <BsGear />
+                                            </button>
 
-                                        <Tooltip id="open-settings-tooltip" />
+                                            <Tooltip id="open-settings-tooltip" />
 
-                                        <button
-                                            className="m-hide simple-btn"
-                                            onClick={() => setNewTicketOpen(true)}
-                                            data-tooltip-id="contact-support-tooltip"
-                                            data-tooltip-content="Give feedback / Suggest feature"
-                                            data-tooltip-place="bottom"
-                                        >
-                                            {/* <IoTicketOutline/> */}
-                                            {/* <IoHelpOutline /> */}
-                                            {/* <PiHeadsetDuotone  /> */}
-                                            <TbHeadset />
-                                        </button>
+                                            <button
+                                                className="m-hide simple-btn"
+                                                onClick={() => setNewTicketOpen(true)}
+                                                data-tooltip-id="contact-support-tooltip"
+                                                data-tooltip-content="Give feedback / Suggest feature"
+                                                data-tooltip-place="bottom"
+                                            >
+                                                {/* <IoTicketOutline/> */}
+                                                {/* <IoHelpOutline /> */}
+                                                {/* <PiHeadsetDuotone  /> */}
+                                                <TbHeadset />
+                                            </button>
 
-                                        <Tooltip id="contact-support-tooltip" />
+                                            <Tooltip id="contact-support-tooltip" />
 
-                                        <button
-                                            className="m-hide simple-btn"
-                                            onClick={() => setSearchOpen(true)}
-                                            data-tooltip-id="search-support-tooltip"
-                                            data-tooltip-content="Search all applications (ctrl + /)"
-                                            data-tooltip-place="bottom"
-                                        >
-                                            {/* <IoTicketOutline/> */}
-                                            {/* <IoHelpOutline /> */}
-                                            {/* <PiHeadsetDuotone  /> */}
-                                            <IoSearch />
-                                        </button>
+                                            <button
+                                                className="simple-btn"
+                                                onClick={() => setSearchOpen(true)}
+                                                data-tooltip-id="search-support-tooltip"
+                                                data-tooltip-content="Search all applications (ctrl + /)"
+                                                data-tooltip-place="bottom"
+                                            >
+                                                {/* <IoTicketOutline/> */}
+                                                {/* <IoHelpOutline /> */}
+                                                {/* <PiHeadsetDuotone  /> */}
+                                                <IoSearch />
+                                            </button>
 
-                                        <Tooltip id="search-support-tooltip" />
+                                            <Tooltip id="search-support-tooltip" />
 
+                                        </div>
                                     </div>
                                     
 
