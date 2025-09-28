@@ -38,7 +38,7 @@ export function EditAppInfo({ appID, app, setTrigger }) {
 
             {
                 error && (
-                    <p className="text-red">Something went wrong</p>
+                    <p className="text-red">Something went wrong. {error?.response?.data?.info?.message}</p>
                 )
             }
 
