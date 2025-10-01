@@ -14,14 +14,16 @@
 } */
 
 .wrapper {
-    text-align: center;
+    /* text-align: center; */
     display: flex;
     flex-direction: column;
     gap: var(--spacing-large);
     height: 100%;
     background-image: url(/public/recap-bg.svg);
+	background-color: rgba(35, 35, 35, 0.6);
     background-size: cover;
     padding: var(--spacing-medium);
+    color: var(--text-white);
 }
 
 .top {
@@ -29,8 +31,8 @@
     justify-content: space-between;
 }
 
-.top .logo {
-    height: 2rem;
+.logo {
+    height: 3rem;
     object-fit: contain;
 }
 
@@ -39,17 +41,30 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: var(--spacing-large);
     flex: 1;
 }
 
+.content p {
+	font-size: 1.4rem;
+	font-weight: 500;
+}
+
+.contentInner {
+	display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
+	letter-spacing: 0.5px;
+}
+
 .subtitle {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     font-weight: 600;
     color: var(--text-white);
 }
 
 .figure {
-    font-size: 4rem;
-    font-weight: 800;
+    font-size: 1.2em;
+    font-weight: 600;
     color: var(--text-orange);
 }

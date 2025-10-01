@@ -36,7 +36,7 @@ export function Settings({ setTrigger }) {
                     <button className={tab === 4 && styles.selected} onClick={() => setTab(4)}>Account</button>
                     <button className={tab === 5 && styles.selected} onClick={() => setTab(5)}>Calendar</button>
                     <button onClick={() => { setTrigger(false); startTutorial() }}>Tutorial</button>
-                    <button onClick={() => setRecapPopupOpen(true)}>Your Recap 🥳</button>
+                    <button onClick={() => setRecapPopupOpen(true)}>Your Stats 🥳</button>
                 </div>
                 
                 <div className="flex-1">

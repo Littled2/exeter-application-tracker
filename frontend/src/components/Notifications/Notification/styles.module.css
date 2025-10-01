@@ -39,8 +39,11 @@
 
 .notification .textContent {
     flex: 1;
+    display: flex;
     justify-content: center;
+    align-items: center;
     text-align: center;
+    gap: var(--spacing-small);
     padding-left: var(--spacing-small);
     padding-right: var(--spacing-small);
     padding-top: calc(var(--spacing-small) / 2);
@@ -48,10 +51,25 @@
 }
 
 
+.recapButton {
+    background-color: var(--dark-grey);
+    color: var(--text-white);
+    padding: 4px 8px;
+}
+
+.recapButton:hover {
+        background-color: var(--dark-grey-hover);
+}
 
 /* I WANT ALL NOTIFICATIONS TO BE ORANGE */
 /* .notification.important { */
 .notification {
     color: var(--bg-colour);
     background-color: var(--text-orange);
+}
+
+@media screen and (max-width: 800px) {
+    .notification .textContent {
+        flex-direction: column;
+    }
 }

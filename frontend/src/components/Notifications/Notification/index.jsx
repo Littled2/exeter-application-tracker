@@ -17,7 +17,7 @@ export function Notification({ sentNotification, index, markAsRead }) {
                 {sentNotification?.expand?.notification?.textContent}
                 {
                     sentNotification?.expand?.notification?.showRecapButton && (
-                        <button onClick={() => setRecapPopupOpen(true)} style={{ display: "inline-flex" }}>View your recap</button>
+                        <button onClick={() => setRecapPopupOpen(true)} style={{ display: "inline-flex" }} className={styles.recapButton}>😎 View my ranking</button>
                     )
                 }
             </div>
