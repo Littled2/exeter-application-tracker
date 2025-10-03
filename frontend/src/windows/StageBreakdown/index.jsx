@@ -60,7 +60,6 @@ export function StageBreakdown() {
     
     const [ barChartOptionsState, setBarChartOptionsState ] = useState(barChartOptions)
 
-    const [ amounts, setAmounts ] = useState([ 0, 0, 0, 0, 0 ])
     const [ err, setErr ] = useState(false)
 
     const [ barChartData, setBarChartData ] = useState(null)
@@ -85,6 +84,13 @@ export function StageBreakdown() {
         }
 
         return value
+    }
+
+    /**
+     * Does the user have at least one application
+     */
+    function hasAtLeastOneApplication(freq) {
+        return Boolean(freq?.idea + freq?.applying + freq?.applied + freq?.accepted + freq?.declined)
     }
 
     useEffect(() => {
@@ -120,39 +126,33 @@ export function StageBreakdown() {
                 freq[stage.stage] = stage.count
             })
 
-            setAmounts([
-                freq.idea,
-                freq.applying,
-                freq.applied,
-            ])
-
 
             setBarChartData({
                 labels: [ "Idea", "Applying", "Applied", "Accepted", "Declined" ],
                 datasets: [
                     {
                         label: 'Idea stage',
-                        data: [ freq.idea === 0 ? 0 : ensureBaselineValue(freq.idea), 0, 0, 0, 0 ],
+                        data: [ hasAtLeastOneApplication(freq) ? ensureBaselineValue(freq.idea) : 0, 0, 0, 0, 0 ],
                         backgroundColor: 'coral',
                     },
                     {
                         label: 'Applying stage',
-                        data: [ 0, freq.idea === 0 ? 0 : ensureBaselineValue(freq.applying), 0, 0, 0 ],
+                        data: [ 0, hasAtLeastOneApplication(freq) ? ensureBaselineValue(freq.applying) : 0, 0, 0, 0 ],
                         backgroundColor: '#bcb067',
                     },
                     {
                         label: 'Applied stage',
-                        data: [ 0, 0, freq.idea === 0 ? 0 : ensureBaselineValue(freq.applied), 0, 0 ],
+                        data: [ 0, 0, hasAtLeastOneApplication(freq) ? ensureBaselineValue(freq.applied) : 0, 0, 0 ],
                         backgroundColor: 'lightblue',
                     },
                     {
                         label: 'Accepted stage',
-                        data: [ 0, 0, 0, freq.idea === 0 ? 0 : ensureBaselineValue(freq.accepted), 0 ],
+                        data: [ 0, 0, 0, hasAtLeastOneApplication(freq) ? ensureBaselineValue(freq.accepted) : 0, 0 ],
                         backgroundColor: '#00a522',
                     },
                     {
                         label: 'Declined stage',
-                        data: [ 0, 0, 0, 0, freq.idea === 0 ? 0 : ensureBaselineValue(freq.declined) ],
+                        data: [ 0, 0, 0, 0, hasAtLeastOneApplication(freq) ? ensureBaselineValue(freq.declined) : 0 ],
                         backgroundColor: '#8b0b20',
                     }
                 ]
@@ -179,39 +179,6 @@ export function StageBreakdown() {
     return (
         <div className={styles.outer}>
             <div className={styles.wrapper}>
-                {/* <div className="flex col gap-s text-center m-hide">
-                    <b><small>Pre Final Stage Applications</small></b>
-                    <div className={styles.chart}>
-                        <Pie
-                        options={{
-                            plugins: {
-                                legend: {
-                                    display: false
-                                }
-                            },
-                            responsive: true,
-                            maintainAspectRatio: true
-                        }}
-                        data={
-                            {
-                                labels: ['Idea', 'Applying', 'Applied'],
-                                datasets: [
-                                    {
-                                        label: '# apps at stage',
-                                        data: amounts,
-                                        backgroundColor: [
-                                            'coral',
-                                            '#bcb067',
-                                            'lightblue'
-                                        ],
-                                        borderWidth: 2,
-                                        borderColor: "transparent"
-                                    },
-                                ]
-                            }
-                        } />
-                    </div>
-                </div> */}
                 <div className={styles.barChartWrapper}>
                     <div className="flex space-between align-center m-justify-center">
                         <b className={styles.mobileHeading}><small className="text-grey">Your Applications by Stage</small></b>
