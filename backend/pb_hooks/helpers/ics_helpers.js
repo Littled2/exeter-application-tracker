@@ -85,7 +85,15 @@ function generateICSForApplications(apps) {
         icsContent += `\nDTSTAMP:${deadline}`
         icsContent += `\nDTSTART;VALUE=DATE:${formatYYYYMMDD(app.deadline)}`
         icsContent += `\nDTEND;VALUE=DATE:${formatYYYYMMDD(app.deadline)}`
-        icsContent += `\nEND:VEVENT\n`
+        icsContent += `\nCOLOR:orange`
+
+        icsContent += `\n\nBEGIN:VALARM`
+        icsContent += `\nTRIGGER:-P1D`
+        icsContent += `\nACTION:DISPLAY`
+        icsContent += `\n${icsEscapeAndFold(`Application to ${app?.organisation} due tomorrow!`, 75,  "DESCRIPTION")}`
+        icsContent += `\nEND:VALARM`
+
+        icsContent += `\n\nEND:VEVENT\n`
     })
 
     icsContent += '\nEND:VCALENDAR';
