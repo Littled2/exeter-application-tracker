@@ -27,7 +27,8 @@ routerAdd("GET", "/cal/{calendarToken}", (e) => {
     } catch (error) {
         
         console.error("Error processing", error)
-        return e.string(500, "Error processing: ", error)
+        $app.logger().error("Error processing calendar request", error?.message)
+        return e.string(500, "Error processing: ", error?.message)
 
     }
 

@@ -15,7 +15,8 @@ function getUpcomingDeadlinesForUser(userID) {
         .select("applications.id", "role", "info", "deadline", "organisations.name as organisation")
         .from("applications")
         .innerJoin("organisations", $dbx.exp("applications.organisation = organisations.id"))
-        .andWhere($dbx.exp("deadline > {:today}", { today: (new Date()).toISOString() }))
+        .andWhere($dbx.in("stage", "idea", "applying")) // No need to show deadlines for things you have already applied to
+        .andWhere($dbx.exp("deadline >= {:today}", { today: (new Date()).toISOString() }))
         .andWhere($dbx.exp("applications.user = {:user}", { user: userID }))
         .limit(1000)
         .all(result)

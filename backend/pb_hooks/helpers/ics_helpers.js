@@ -72,7 +72,7 @@ function icsEscapeAndFold(raw, maxBytes = 75, propName = 'SUMMARY') {
 
 function generateICSForApplications(apps) {
 
-    let icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Exeter Application Tracker//Application Deadlines//EN\nCALSCALE:GREGORIAN\nMETHOD:PUBLISH\n`
+    let icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Exeter Application Tracker//Application Deadlines//EN\nCALSCALE:GREGORIAN\nMETHOD:PUBLISH\nREFRESH-INTERVAL;VALUE=DURATION:PT1H\n`
 
     apps.forEach(app => {
 
