@@ -138,19 +138,36 @@ export function DocumentUploadDownload({ application, fileKeyName, displayName }
                 trigger={previewDocumentOpen}
                 setTrigger={setPreviewDocumentOpen}
                 title={
-                    <div style={{ display:"flex", alignItems:"center", gap:"10px" }}>
-                        {displayName}
-                        
-                        <a
-                            href={pb.files.getUrl(application, application[fileKeyName], { token: fileToken })}
-                            className={styles.download}
-                            target="_blank"
-                            download
-                        >
-                            <BiDownload />
-                            Click to download
-                        </a>
-                    </div>
+                    <>
+                        {
+                            (
+                                // Probably my wors code ever. Sorry.
+                                pb.files.getUrl(application, application[fileKeyName], { token: fileToken })
+                                && (
+                                    (new URL(pb.files.getUrl(application, application[fileKeyName], { token: fileToken }))).origin
+                                    + (new URL(pb.files.getUrl(application, application[fileKeyName], { token: fileToken }))).pathname
+                                ).toLowerCase().endsWith('.pdf')    
+                            ) ? (
+                                <div style={{ display:"flex", alignItems:"center", gap:"40px" }}>
+                                    {displayName}
+                                    
+                                    <small>
+                                        <a
+                                            href={pb.files.getUrl(application, application[fileKeyName], { token: fileToken })}
+                                            className={styles.download}
+                                            target="_blank"
+                                            download
+                                        >
+                                            <BiDownload />
+                                            Click to download
+                                        </a>
+                                    </small>
+                                </div>
+                            ) : (
+                                <>{displayName}</>
+                            )
+                        }
+                    </>
                 }
             >
                 <DocumentPreview displayName={displayName} url={pb.files.getUrl(application, application[fileKeyName], { token: fileToken })} application={application} fileKeyName={fileKeyName} fileToken={fileToken} />
