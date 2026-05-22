@@ -1,3 +1,10 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 100%;
+}
+
 .download {
     color: var(--text-blue);
     cursor: pointer;
@@ -6,4 +13,17 @@
     align-items: center;
     justify-content: center;
     gap: var(--spacing-small);
+    text-align: center;
+}
+
+.pdf {
+    flex: 1;
+    overflow: hidden;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-medium);
 }

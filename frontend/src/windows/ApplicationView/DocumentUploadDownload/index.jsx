@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from "react"
 import { usePocket } from "../../../contexts/pocketContext"
-import { BiFileBlank, BiTrash, BiUpload } from "react-icons/bi"
+import { BiDownload, BiFileBlank, BiTrash, BiUpload } from "react-icons/bi"
 import { Popup } from "../../../components/Popup"
 import styles from "./styles.module.css"
 import { Confirm } from "../../../components/forms/Confirm"
 import { useMasterCounter } from "../../../contexts/masterCounterContext"
 import { DocumentPreview } from "../../../components/DocumetPreview"
+import { PDFViewer } from "../../../components/PDFViewer"
 
 export function DocumentUploadDownload({ application, fileKeyName, displayName }) {
 
@@ -133,8 +134,26 @@ export function DocumentUploadDownload({ application, fileKeyName, displayName }
                 <span style={{ color:"red" }}>{error?.response?.data[fileKeyName].message}</span>
             </Popup>
 
-            <Popup trigger={previewDocumentOpen} setTrigger={setPreviewDocumentOpen} title={displayName}>
-                <DocumentPreview application={application} fileKeyName={fileKeyName} fileToken={fileToken} />
+            <Popup
+                trigger={previewDocumentOpen}
+                setTrigger={setPreviewDocumentOpen}
+                title={
+                    <div style={{ display:"flex", alignItems:"center", gap:"10px" }}>
+                        {displayName}
+                        
+                        <a
+                            href={pb.files.getUrl(application, application[fileKeyName], { token: fileToken })}
+                            className={styles.download}
+                            target="_blank"
+                            download
+                        >
+                            <BiDownload />
+                            Click to download
+                        </a>
+                    </div>
+                }
+            >
+                <DocumentPreview url={pb.files.getUrl(application, application[fileKeyName], { token: fileToken })} application={application} fileKeyName={fileKeyName} fileToken={fileToken} />
             </Popup>
 
             <Confirm

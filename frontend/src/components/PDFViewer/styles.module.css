@@ -1,0 +1,10 @@
+/* styles.module.css */
+.wrapper {
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+}
+
+.wrapper :global(.react-pdf__Page) {
+  margin-bottom: 8px;
+}

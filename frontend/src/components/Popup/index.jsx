@@ -53,7 +53,7 @@ export function Popup({ title, children, trigger, setTrigger, onDelete, size="no
             >
 
                 <div className={styles.top}>
-                    <p>{title}</p>
+                    <div>{title}</div>
 
                     <div className="flex gap-s">
                         {

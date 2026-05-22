@@ -66,3 +66,12 @@ The ultimate dashboard for tracking applications to jobs, internships and placem
     ```
 7. Run `docker compose build`
 8. Run `docker compose up`
+
+## Development Instructions
+1. Clone this repo
+2. Add the three env files: frontend/.env, .env.secret and backend/.env
+3. Fill out the three .env files with correct information
+4. From the `frontend/` directory, run `npm install`, then `npm start`
+5. Download pocketbase executable from pocketbase.io
+6. From the `backend/` directory, run `./pocketbase serve --http="0.0.0.0:8090"`
+7. To congfigure the default locations, organisation or 3rd party auth, see `backend/entrypoint.sh`

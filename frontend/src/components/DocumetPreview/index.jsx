@@ -1,33 +1,32 @@
 import { BiDownload } from "react-icons/bi"
 import { usePocket } from "../../contexts/pocketContext"
 import styles from "./styles.module.css"
+import { PDFViewer } from "../PDFViewer"
 
-export function DocumentPreview({ application, fileKeyName, fileToken }) {
+export function DocumentPreview({ url, application, fileKeyName, fileToken }) {
 
     const { pb } = usePocket()
     
 
     return (
-        <div className="text-center">
+        <div className={styles.wrapper}>
 
-            <br />
+            <div className={styles.pdf}>
+                <PDFViewer url={url} />
+            </div>
 
-            <p className="text-white">{application[fileKeyName]}</p>
-
-            <br />
-
-            <p>
+            <div className={styles.buttons}>
+                
                 <a
-                    href={pb.files.getUrl(application, application[fileKeyName], { token: fileToken })}
+                    href={url}
                     className={styles.download}
+                    target="_blank"
                     download
                 >
                     <BiDownload />
                     Click to download
                 </a>
-            </p>
-
-            <br />
+            </div>
 
         </div>
     )

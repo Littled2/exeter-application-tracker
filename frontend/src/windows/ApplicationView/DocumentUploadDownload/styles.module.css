@@ -16,3 +16,14 @@
 .bin:hover {
     color: var(--text-orange);
 }
+
+.download {
+    color: var(--text-blue);
+    cursor: pointer;
+    text-decoration: underline;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-small);
+    text-align: center;
+}
