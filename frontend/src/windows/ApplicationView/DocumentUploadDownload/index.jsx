@@ -153,7 +153,7 @@ export function DocumentUploadDownload({ application, fileKeyName, displayName }
                     </div>
                 }
             >
-                <DocumentPreview url={pb.files.getUrl(application, application[fileKeyName], { token: fileToken })} application={application} fileKeyName={fileKeyName} fileToken={fileToken} />
+                <DocumentPreview displayName={displayName} url={pb.files.getUrl(application, application[fileKeyName], { token: fileToken })} application={application} fileKeyName={fileKeyName} fileToken={fileToken} />
             </Popup>
 
             <Confirm

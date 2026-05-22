@@ -3,7 +3,7 @@ import { usePocket } from "../../contexts/pocketContext"
 import styles from "./styles.module.css"
 import { PDFViewer } from "../PDFViewer"
 
-export function DocumentPreview({ url, application, fileKeyName, fileToken }) {
+export function DocumentPreview({ url, application, fileKeyName, fileToken, displayName }) {
 
     const { pb } = usePocket()
     
@@ -11,9 +11,15 @@ export function DocumentPreview({ url, application, fileKeyName, fileToken }) {
     return (
         <div className={styles.wrapper}>
 
-            <div className={styles.pdf}>
-                <PDFViewer url={url} />
-            </div>
+            {
+                (url && url.toLowerCase().endsWith('.pdf')) ? (
+                    <div className={styles.pdf}>
+                        <PDFViewer url={url} />
+                    </div>
+                ) : (
+                    <p className="text-center">{displayName}<br /></p>
+                )
+            }
 
             <div className={styles.buttons}>
                 
