@@ -111,7 +111,7 @@
 
     <footer>
         <div class="ed">
-            <img src="https://edward-blewitt.uk/resources/images/me.jpg" class="ed-image" alt="Profile image of Ed Blewitt">
+            <img src="/resources/images/ed.jpg" class="ed-image" alt="Profile image of Ed Blewitt">
             <div class="ed-desc">
                 <p>
                     Designed with ❤ by <a target="_blank" class="text-orange underline" href="https://edward-blewitt.uk">Ed Blewitt</a> to help students.
